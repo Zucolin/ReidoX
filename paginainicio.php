@@ -1,3 +1,20 @@
+<?php
+
+
+    session_start();
+
+    // Verifica se o usuário está logado
+    if (!isset($_SESSION['nome_usuario'])) {
+        header('Location: index.php');
+        exit;
+    }
+
+    
+    $nome = $_SESSION['nome_usuario'];
+
+    // Se chegou aqui, usuário está logado
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +27,9 @@
 
     <section id="inicio">
     <header>
+        <div style="position: absolute; top: 10px; right: 20px;">
+         Olá, <?= htmlspecialchars($nome) ?>!
+        </div>
         <img src="" alt="">
         <ul>
             <li><a href="">Inicio</a></li>
