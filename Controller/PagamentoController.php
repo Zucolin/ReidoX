@@ -1,6 +1,6 @@
 <?php
 require_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/Model/PagamentoModel.php";
-
+ 
 class PagamentoController{
     private $pagamentoModel;
     public function __construct($pdo){
