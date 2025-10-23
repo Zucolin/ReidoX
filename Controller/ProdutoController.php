@@ -1,5 +1,5 @@
 <?php
-require_once "C:/Turma1/xampp/htdocs/programa/mvc/Model/ProdutoModel.php";
+require_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/Model/ProdutoModel.php";
 
 class ProdutoController{
     private $produtoModel;
@@ -8,7 +8,7 @@ class ProdutoController{
     }
     public function listarProduto(){
         $produtos = $this->produtoModel->buscarTodosProduto();
-        include_once "C:/Turma1/xampp/htdocs/programa/mvc/View/Produto/listar.php";
+        include_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/View/Produto/listar.php";
         return;
     }
     public function buscarProduto($id){

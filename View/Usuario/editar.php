@@ -1,6 +1,6 @@
 <?php
-require_once "C:/Turma1/xampp/htdocs/programa/mvc/DB/Database.php";
-require_once "C:/Turma1/xampp/htdocs/programa/mvc/Controller/UsuarioController.php";
+require_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/DB/Database.php";
+require_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/Controller/UsuarioController.php";
 
 $UsuarioController = new UsuarioController($pdo);
 if(isset($_GET['id'])){

@@ -1,5 +1,5 @@
 <?php
-require_once "C:/Turma1/xampp/htdocs/programa/mvc/Model/PagamentoModel.php";
+require_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/Model/PagamentoModel.php";
 
 class PagamentoController{
     private $pagamentoModel;
@@ -8,7 +8,7 @@ class PagamentoController{
     }
     public function listarPagamento(){
         $pagamentos = $this->pagamentoModel->buscarTodosPagamentos();
-        include_once "C:/Turma1/xampp/htdocs/programa/mvc/View/Pagamento/listar.php";
+        include_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/View/Pagamento/listar.php";
         return;
     }
     public function buscarPagamento($id){

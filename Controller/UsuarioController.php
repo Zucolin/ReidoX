@@ -3,8 +3,10 @@ require_once "Model/UsuarioModel.php";
 
 class UsuarioController{
     private $usuarioModel;
+    private $pdo;
     public function __construct($pdo){
         $this->usuarioModel= new UsuarioModel($pdo);
+        $this->pdo = $pdo; 
     }
     public function listar(){
         $usuarios = $this->usuarioModel->buscarTodos();
@@ -23,7 +25,20 @@ class UsuarioController{
     }
     public function deletar($id){
         $usuario=$this->usuarioModel->deletar($id);
+        return $usuario;}
+
+public function login($email, $senha) {
+    $stmt = $this->pdo->prepare("SELECT * FROM clientes WHERE email = ?");
+    $stmt->execute([$email]);
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($usuario && $senha === $usuario['senha']) { // comparação direta
         return $usuario;
     }
+
+    return false;
 }
+} 
+
+
 ?>
