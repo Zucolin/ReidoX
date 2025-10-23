@@ -69,7 +69,7 @@
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href=""><img src="" alt=""></a><!-- Combo 1-->
+        <a href=""><img src="img/combo.triplo.jpeg" alt=""></a><!-- Combo 1-->
         <a href=""><img src="" alt=""></a><!-- Combo 2-->
         <a href=""><img src="" alt=""></a><!-- Combo 3-->
         <section>
