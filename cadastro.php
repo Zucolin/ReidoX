@@ -25,17 +25,21 @@
 
 <?php
 try{
+     require_once 'DB/Database.php';
+        require_once 'Controller/UsuarioController.php';
+        require_once 'verificar.php';
+        
+      $controller = new UsuarioController($pdo);
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome=$_POST['nome'];
     $email=$_POST['email'];
     $senha=$_POST['senha'];
     $senhaconfirm=$_POST['senhaconfirm'];
     if($senha == $senhaconfirm){
-        require_once 'DB/Database.php';
-        require_once 'Controller/UsuarioController.php';
-        require_once 'verificar.php';
+       
 
-        $controller = new UsuarioController($pdo);
+        
         $controller->cadastrar($nome, $email, $senha); // chama a função do controller aqui mesmo
         
         session_start();
