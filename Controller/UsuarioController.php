@@ -10,8 +10,8 @@ class UsuarioController{
     }
     public function listar(){
         $usuarios = $this->usuarioModel->buscarTodos();
-        include_once "View/Usuario/listar.php";
-        return;
+        include_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/admin.php";
+        return $usuarios;
     }
     public function buscarUsuario($id){
         $usuario=$this->usuarioModel->buscarUsuario($id);

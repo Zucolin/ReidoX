@@ -5,7 +5,7 @@ public function __construct(PDO $pdo){
 $this->pdo = $pdo;
 }
 public function buscarTodos(){
-    $stmt=$this->pdo->query("SELECT * FROM clientes");
+    $stmt=$this->pdo->query('SELECT * FROM clientes');
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 public function buscarUsuario($id){
