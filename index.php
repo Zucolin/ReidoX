@@ -13,22 +13,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller = new UsuarioController($pdo);
     $usuario = $controller->login($email, $senha);
 
-    if ($usuario) {
-        // Inicia sessão com dados do usuário
-        $_SESSION['nome_usuario'] = $usuario['nome'];
-        $_SESSION['id_usuario'] = $usuario['id'];
+   if ($usuario) {
+    $_SESSION['nome_usuario'] = $usuario['nome'];
+    $_SESSION['id_usuario'] = $usuario['id'];
 
-        // Redireciona usando Verificar (se você usa essa lógica)
-        $verificar = new Verificar();
-        $permitido = true;
-        $verificar->Usuariopermitido($permitido);
-
-        // Redireciona para página inicial
-        header('Location: paginainicio.php');
+    // Se for admin
+    if ($usuario['email'] === "admin@hotmail.com") {
+        header('Location: admin.php');
         exit;
-    } else {
-        $erro = "E-mail ou senha incorretos!";
     }
+
+    // Redireciona usuário normal
+    $verificar = new Verificar();
+    $permitido = true;
+    $verificar->Usuariopermitido($permitido);
+    header('Location: paginainicio.php');
+    exit;
+} else {
+    $erro = "E-mail ou senha incorretos!";
+}
+
 }
 ?>
 <!DOCTYPE html>
