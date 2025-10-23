@@ -16,7 +16,7 @@ if(empty($usuarios)){
 echo" <a class='del' href='index.php'>Voltar</a>";
 echo "<table border='1' cellpadding='5' cellspacing='0'>";
 
-echo "<tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Senha</th><th>Pedidos</th><th>Endereço</th><th>Ações</th></tr>";
+echo "<tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Senha</th><th>Pedidos</th><th>Cep</th><th>Rua</th><th>Numero</th><th>Ações</th></tr>";
 
 foreach($usuarios as $usuario){
     $id = $usuario['id'];
@@ -26,7 +26,9 @@ foreach($usuarios as $usuario){
     echo "<td>{$usuario['email']}</td>";
     echo "<td>{$usuario['senha']}</td>";
     echo "<td>{$usuario['pedidos']}</td>";
-    echo "<td>{$usuario['endereco']}</td>";
+    echo "<td>{$usuario['cep']}</td>";
+    echo "<td>{$usuario['rua']}</td>";
+    echo "<td>{$usuario['numero']}</td>";
     echo "<td>
         
         <a class='del' href='deletar.php?id={$id}' onclick=\"return confirm('Tem certeza que deseja excluir o usuário?')\">Deletar</a>
