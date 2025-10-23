@@ -40,16 +40,15 @@ try{
        
 
         
-        $controller->cadastrar($nome, $email, $senha); // chama a função do controller aqui mesmo
+        $controller->cadastrar($nome, $email, $senha, $cep, $rua, $numero); // chama a função do controller aqui mesmo
         
         session_start();
         $_SESSION['nome_usuario'] = $_POST['nome'];
-
-        $verificar = new Verificar();
-        $permitido=true;
-        $verificar->Usuariopermitido($permitido); // redireciona só depois da sessão estar salva
+        header('Location: endereco.php'); // redireciona só depois da sessão estar salva
         exit;
-    }else{
+        
+    }
+    else{
         echo "<p>Erro ao se cadastrar! Senhas Diferrentes</p>";
     }
 }

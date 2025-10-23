@@ -19,7 +19,8 @@ public function cadastrar($nome, $email, $senha){
         return $stmt->execute([
             ':nome'=>$nome,
             ':email'=>$email,
-            ':senha'=>$senha
+            ':senha'=>$senha,
+
         ]);
     }catch(PDOException $e){
         if ($e->getCode() == 23000 && strpos($e->getMessage(), 'Duplicate entry') !== false) {
@@ -29,6 +30,19 @@ public function cadastrar($nome, $email, $senha){
         }
     }
     
+}
+public function cadastrarEndereco($cep, $rua, $numero){
+    try{
+        $sql = "INSERT INTO clientes (cep, rua, numero) VALUES (:cep, :rua, :numero)";
+        $stmt= $this->pdo->prepare($sql);
+        return $stmt->execute([
+            ':cep'=>$cep,
+            ':rua'=>$rua,
+            ':numero'=>$numero
+        ]);
+    }catch(PDOException $e){
+        $e->getMessage();
+    }
 }
 public function editar($nome, $email, $senha, $id) {
         $sql = "UPDATE clientes SET nome=?, email=?, senha=? WHERE id = ?";
