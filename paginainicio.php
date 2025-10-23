@@ -74,8 +74,10 @@ $nome = $_SESSION['nome_usuario'];
         </ul>
         </nav>
         <a href=""><img src="img/combo.triplo.jpeg" alt=""></a><!-- Combo 1-->
-        <a href=""><img src="" alt=""></a><!-- Combo 2-->
-        <a href=""><img src="" alt=""></a><!-- Combo 3-->
+        <a href=""><img src="img/combo.familia.batata.jpeg" alt=""></a><!-- Combo 2-->
+        <a href=""><img src="img/combo.familia.jpeg" alt=""></a><!-- Combo 3-->
+        <a href=""><img src="img/combo.simples.jpeg" alt=""></a><!-- Combo 4-->
+        <a href=""><img src="img/combotripo.frango.jpeg" alt=""></a><!-- Combo 5-->
         <section>
             <nav>
             <div class="menu-container">
@@ -95,8 +97,8 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="" alt=""> <!-- Imagem do combo-->
-        <p></p> <!-- Descrição do Combo-->
+        <img src="img/combo.triplo.jpeg" alt=""> <!-- Imagem do combo-->
+        <p>Uma grande porção de nuggets , uma montanha de batatas fritas no centro, e uma porção farta de linguiça calabresa fatiada e frita. O combo é complementado por três hambúrgueres (feitos com pães de brioche e recheio simples) e é servido com molhos. </p> <!-- Descrição do Combo-->
         <form action="">
             <input type="submit">
             <input type="number">
@@ -121,8 +123,8 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="" alt=""> <!-- Imagem do combo-->
-        <p></p> <!-- Descrição do Combo-->
+        <img src="img/combo.familia.batata.jpeg" alt=""> <!-- Imagem do combo-->
+        <p>O centro da bandeja é preenchido por uma montanha de batatas fritas crocantes, banhadas em um cremoso molho de queijo Cheddar derretido. Por cima, elas são carregadas com pedacinhos de bacon crocante. O combo é completado por quatro hambúrguer e acompanha porções individuais de um molho cremoso.</p> <!-- Descrição do Combo-->
         <form action="">
             <input type="submit">
             <input type="number">
@@ -147,8 +149,8 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="" alt=""> <!-- Imagem do combo-->
-        <p></p> <!-- Descrição do Combo-->
+        <img src="img/combo.familia.jpeg" alt="Combo Supremo Hot Chicken"> <!-- Imagem do combo-->
+        <p>O combo é centrado em generosos pedaços de frango frito com tempero apimentado, e é decorado com picles de jalapeño. Ele vem acompanhado por uma montanha de batatas fritas temperadas, além de quatro deliciosos hamburgueres de frango acompanhada da salada coleslaw. o combo oferece potinhos de molho extra.</p> <!-- Descrição do Combo-->
         <form action="">
             <input type="submit">
             <input type="number">
