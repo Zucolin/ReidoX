@@ -40,7 +40,7 @@ try{
        
 
         
-        $controller->cadastrar($nome, $email, $senha, $cep, $rua, $numero); // chama a função do controller aqui mesmo
+        $controller->cadastrar($nome, $email, $senha ); // chama a função do controller aqui mesmo
         
         session_start();
         $_SESSION['nome_usuario'] = $_POST['nome'];
