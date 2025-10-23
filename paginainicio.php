@@ -1,18 +1,22 @@
 <?php
 
+session_start();
 
-    session_start();
+// Se clicou em "sair"
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sair'])) {
+    session_destroy();
+    header('Location: index.php');
+    exit;
+}
 
-    // Verifica se o usuário está logado
-    if(!isset($_SESSION['nome_usuario'])  && $permitido === true ) {
-        header('Location: index.php');
-        exit;
-    }
+// Verifica se o usuário está logado
+if (!isset($_SESSION['nome_usuario'])) {
+    header('Location: index.php');
+    exit;
+}
 
-    
-    $nome = $_SESSION['nome_usuario'];
-
-    // Se chegou aqui, usuário está logado
+// Pega o nome do usuário logado
+$nome = $_SESSION['nome_usuario'];
     ?>
 
 <!DOCTYPE html>
@@ -60,7 +64,7 @@
                     <button type="submit" name="sair" href="#">Sair</button>
                     <button href="#">Detalhes</button>
                     </form>
-            </  div>
+            </div>
             <img src="" alt="">
             <h1>Combos</h1>
         <ul>
@@ -77,7 +81,7 @@
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes" id="menu">
-                <form method="post">
+            <form method="POST">
             <button type="submit" name="editar" href="#">Editar</button>
             <button type="submit" name="sair" href="#">Sair</button>
             <button href="#">Detalhes</button>
@@ -453,7 +457,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sair'])) {
-        $permitido=false;
         header('Location: index.php');
         exit;
     }
