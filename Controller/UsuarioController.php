@@ -31,7 +31,7 @@ class UsuarioController {
 
     public function listar() {
         $usuarios = $this->usuarioModel->buscarTodos();
-        include_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/admin.php";
+        include_once "C:/Turma1/xampp/htdocs/programa/ReidoX/admin.php";
         return $usuarios;
     }
 
