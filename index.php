@@ -1,24 +1,41 @@
+<?php
+session_start();
+require_once 'DB/Database.php';
+require_once 'Controller/UsuarioController.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $senha = $_POST['senha'] ?? '';
+
+    $controller = new UsuarioController($pdo);
+    $usuario = $controller->login($email, $senha);
+
+    if ($usuario) {
+        $_SESSION['nome_usuario'] = $usuario['nome'];
+        $_SESSION['id_usuario'] = $usuario['id'];
+        header('Location: paginainicio.php');
+        exit;
+    } else {
+        $erro = "E-mail ou senha incorretos!";
+    }
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lancheonete</title>
+<meta charset="UTF-8">
+<title>Login</title>
 </head>
 <body>
-    <img src="logo" alt=""> <!-- Logo no centro da tela-->
-    <!-- Abaixo o formulario de login -->
-    <form action="POST">
-        <label for="email">E-mail</label>
-        <input type="email" name="email" required>
-        <label for="senha">Senha</label>
-        <input name="senha" type="password" required>
-        <input type="submit">
-        <!-- Depois de o usuario enviar as informações faz uma verificação de se aquele usuario existe, se sim ele é redirecionado a paginainicio, se não ele vai para tela de cadastro -->
-
-        <!-- Caso o Usuario não possue Cadastro ele entra na tela de cadastro-->
-        <p><a href="cadastro.php">Cadastre-se</a></p>
-        
-    </form>
+<h2>Entrar no sistema</h2>
+<?php if (!empty($erro)) echo "<p style='color:red;'>$erro</p>"; ?>
+<form method="post">
+<label>E-mail:</label>
+<input type="email" name="email" required>
+<label>Senha:</label>
+<input type="password" name="senha" required>
+<input type="submit" value="Entrar">
+</form>
+<a href="cadastro.php">Cadastrar-se</a>
 </body>
 </html>

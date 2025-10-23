@@ -1,6 +1,6 @@
 <?php
-require_once "C:/Turma1/xampp/htdocs/programa/mvc/DB/Database.php";
-require_once "C:/Turma1/xampp/htdocs/programa/mvc/Controller/PagamentoController.php";
+require_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/DB/Database.php";
+require_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/Controller/PagamentoController.php";
 
 $PagamentoController = new PagamentoController($pdo);
 if(isset($_GET['id'])){

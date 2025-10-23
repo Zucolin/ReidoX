@@ -20,6 +20,7 @@
         <input type="submit">
         <!-- Depois de o usuario enviar as informações para o banco de dados ele é redirecionado a paginainicio -->
     </form>
+    <a href="index.php">voltar</a>
 </body>
 
 <?php

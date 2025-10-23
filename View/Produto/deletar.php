@@ -1,6 +1,6 @@
 <?php
-require_once "C:/Turma1/xampp/htdocs/programa/mvc/DB/Database.php";
-require_once "C:/Turma1/xampp/htdocs/programa/mvc/Controller/ProdutoController.php";
+require_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/DB/Database.php";
+require_once "C:/Turma1/xampp/htdocs/REIDOX/mvc/Controller/ProdutoController.php";
 
 $prdoutoController = new ProdutoController($pdo);
 if(isset($_GET['id'])){
