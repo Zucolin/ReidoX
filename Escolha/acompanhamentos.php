@@ -5,7 +5,7 @@ session_start();
 // Se clicou em "sair"
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sair'])) {
     session_destroy();
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit;
 }
 
@@ -14,6 +14,7 @@ if (!isset($_SESSION['nome_usuario'])) {
     header('Location: index.php');
     exit;
 }
+$nome = $_SESSION['nome_usuario'];
 ?>
  <!DOCTYPE html>
  <html lang="en">
@@ -201,7 +202,7 @@ if (!isset($_SESSION['nome_usuario'])) {
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sair'])) {
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit;
     }
 }
