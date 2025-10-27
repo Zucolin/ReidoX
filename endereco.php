@@ -6,7 +6,7 @@
     <title>Cadastro</title>
 </head>
 <body>
-    <img src="" alt=""> <!-- Logo no centro da tela-->
+    <img src="img/logo.jpeg" alt=""> <!-- Logo no centro da tela-->
     <!-- Abaixo o formulario de cadastro-->
     <form method="post"> 
         <label for="cep">CEP:</label>
