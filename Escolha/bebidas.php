@@ -39,12 +39,12 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href="#coca1.5"><img src="img/bebida.coca1,5.jpeg" alt=""></a><!-- Bebida 1-->
-        <a href="#coca2"><img src="img/bebida.coca2l.jpeg" alt=""></a><!-- Bebida 2-->
-        <a href="#energetico"><img src="img/bebida.energetico.jpeg" alt=""></a><!-- Bebida 3-->
-        <a href="#fanta"><img src="img/bebida.fanta.jpeg" alt=""></a><!-- Bebida 4-->
-        <a href="#guarana"><img src="img/bebida.guarana.jpeg" alt=""></a><!-- Bebida 5-->
-        <a href="#sprite"><img src="img/bebida.sprite.jpeg" alt=""></a><!-- Bebida 6-->
+        <a href="#coca1.5"><img src="../img/bebida.coca1,5.jpeg" alt=""></a><!-- Bebida 1-->
+        <a href="#coca2"><img src="../img/bebida.coca2l.jpeg" alt=""></a><!-- Bebida 2-->
+        <a href="#energetico"><img src="../img/bebida.energetico.jpeg" alt=""></a><!-- Bebida 3-->
+        <a href="#fanta"><img src="../img/bebida.fanta.jpeg" alt=""></a><!-- Bebida 4-->
+        <a href="#guarana"><img src="../img/bebida.guarana.jpeg" alt=""></a><!-- Bebida 5-->
+        <a href="#sprite"><img src="../img/bebida.sprite.jpeg" alt=""></a><!-- Bebida 6-->
 
         <!-- Coca Cola 1.5-->
         <section id="coca1.5">
@@ -58,7 +58,7 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>      
             </div>
-            <img src="img/bebida.coca1,5.jpeg" alt=""> 
+            <img src="../img/bebida.coca1,5.jpeg" alt=""> 
             <h1>Coca-Cola</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -66,7 +66,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/bebida.coca1,5.jpeg" alt=""> <!-- Imagem da Bebida-->
+        <img src="../img/bebida.coca1,5.jpeg" alt=""> <!-- Imagem da Bebida-->
         <p>Coca-Cola de 1,5L </p> <!-- Descrição da Bebida-->
         <form action="">
             <input type="submit">
@@ -85,7 +85,7 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>      
             </div>
-            <img src="img/bebida.coca2l.jpeg" alt=""> 
+            <img src="../img/bebida.coca2l.jpeg" alt=""> 
             <h1>Coca-Cola</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -93,7 +93,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/bebida.coca2l.jpeg" alt=""> <!-- Imagem da Bebida-->
+        <img src="../img/bebida.coca2l.jpeg" alt=""> <!-- Imagem da Bebida-->
         <p>Coca-Cola de 2L </p> <!-- Descrição da Bebida-->
         <form action="">
             <input type="submit">
@@ -112,7 +112,7 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>      
             </div>
-            <img src="img/bebida.energetico.jpeg" alt=""> 
+            <img src="../img/bebida.energetico.jpeg" alt=""> 
             <h1>Energetico</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -120,7 +120,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/bebida.energetico.jpeg" alt=""> <!-- Imagem da Bebida-->
+        <img src="../img/bebida.energetico.jpeg" alt=""> <!-- Imagem da Bebida-->
         <p>Lata de energetico, Monster Mango Loco</p> <!-- Descrição da Bebida-->
         <form action="">
             <input type="submit">
@@ -139,7 +139,7 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>      
             </div>
-            <img src="img/bebida.fanta.jpeg" alt=""> 
+            <img src="../img/bebida.fanta.jpeg" alt=""> 
             <h1>Fanta</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -147,7 +147,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/bebida.fanta.jpeg" alt=""> <!-- Imagem da Bebida-->
+        <img src="../img/bebida.fanta.jpeg" alt=""> <!-- Imagem da Bebida-->
         <p>Lata de fanta </p> <!-- Descrição da Bebida-->
         <form action="">
             <input type="submit">
@@ -166,7 +166,7 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>      
             </div>
-            <img src="img/bebida.guarana.jpeg" alt=""> 
+            <img src="../img/bebida.guarana.jpeg" alt=""> 
             <h1>Guaraná</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -174,7 +174,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/bebida.guarana.jpeg" alt=""> <!-- Imagem da Bebida-->
+        <img src="../img/bebida.guarana.jpeg" alt=""> <!-- Imagem da Bebida-->
         <p>Guaraná 2L </p> <!-- Descrição da Bebida-->
         <form action="">
             <input type="submit">
@@ -195,7 +195,7 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>      
             </div>
-            <img src="img/bebida.sprite.jpeg" alt=""> 
+            <img src="../img/bebida.sprite.jpeg" alt=""> 
             <h1>Sprite</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -203,7 +203,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/bebida.sprite.jpeg" alt=""> <!-- Imagem da Bebida-->
+        <img src="../img/bebida.sprite.jpeg" alt=""> <!-- Imagem da Bebida-->
         <p>Sprite 2L </p> <!-- Descrição da Bebida-->
         <form action="">
             <input type="submit">

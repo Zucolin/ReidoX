@@ -38,11 +38,11 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href="#camaroes"><img src="img/porção.camarão.jpeg" alt=""></a><!-- Porção 1-->
-        <a href="#cebolas"><img src="img/porção.cebolitos.jpeg" alt=""></a><!-- Porção 2-->
-        <a href="#churrasco"><img src="img/porção.churrasco.jpeg" alt=""></a><!-- Porção 3-->
-        <a href="#fritas"><img src="img/porção.fritas.jpeg" alt=""></a><!-- Porção 4-->
-        <a href="#peixes"><img src="img/porção.peixe.jpeg" alt=""></a><!-- Porção 5-->
+        <a href="#camaroes"><img src="../img/porção.camarão.jpeg" alt=""></a><!-- Porção 1-->
+        <a href="#cebolas"><img src="../img/porção.cebolitos.jpeg" alt=""></a><!-- Porção 2-->
+        <a href="#churrasco"><img src="../img/porção.churrasco.jpeg" alt=""></a><!-- Porção 3-->
+        <a href="#fritas"><img src="../img/porção.fritas.jpeg" alt=""></a><!-- Porção 4-->
+        <a href="#peixes"><img src="../img/porção.peixe.jpeg" alt=""></a><!-- Porção 5-->
 
         <!-- Porção de Camarões-->
         <section id="camaroes">
@@ -56,7 +56,7 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>      
             </div>
-            <img src="img/porção.camarão.jpeg" alt=""> 
+            <img src="../img/porção.camarão.jpeg" alt=""> 
             <h1>Porção de Camarões</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -64,7 +64,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/porção.camarão.jpeg" alt=""> <!-- Imagem do   porção-->
+        <img src="../img/porção.camarão.jpeg" alt=""> <!-- Imagem do   porção-->
         <p>A travessa apresenta camarões grandes, empanados em uma farinha dourada e fritos. A porção é servida com fatias de limão e um potinho central de molho cremoso e temperado.</p> <!-- Descrição do porção-->
         <form action="">
             <input type="submit">
@@ -84,7 +84,7 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>      
             </div>
-            <img src="img/porção.cebolitos.jpeg" alt=""> 
+            <img src="../img/porção.cebolitos.jpeg" alt=""> 
             <h1>Porção Anéis de Cebola </h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -92,7 +92,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/porção.cebolitos.jpeg" alt=""> <!-- Imagem do porção-->
+        <img src="../img/porção.cebolitos.jpeg" alt=""> <!-- Imagem do porção-->
         <p>A travessa é preenchida com anéis de cebola grandes, empanados em uma farinha dourada e fritos. A porção é servida com um generoso potinho de molho cremoso no centro.</p> <!-- Descrição do porção-->
         <form action="">
             <input type="submit">
@@ -112,7 +112,7 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>      
             </div>
-            <img src="img/porção.churrasco.jpeg" alt=""> 
+            <img src="../img/porção.churrasco.jpeg" alt=""> 
             <h1>Porção Churrasco</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -120,7 +120,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/porção.churrasco.jpeg" alt=""> <!-- Imagem do porção-->
+        <img src="../img/porção.churrasco.jpeg" alt=""> <!-- Imagem do porção-->
         <p>O prato é um mix generoso que combina iscas de carne bovina suculenta e cubos de frango grelhado, acompanhados de fatias de linguiça acebolada, inclui uma porção farta de batatas fritas e fatias de pão de alho grelhado. Servido com três opções de molho.</p> <!-- Descrição do porção-->
         <form action="">
             <input type="submit">
@@ -140,7 +140,7 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>      
             </div>
-            <img src="img/porção.fritas.jpeg" alt=""> 
+            <img src="../img/porção.fritas.jpeg" alt=""> 
             <h1>Porção de Fritas</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -148,7 +148,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/porção.fritas.jpeg" alt=""> <!-- Imagem do porção-->
+        <img src="../img/porção.fritas.jpeg" alt=""> <!-- Imagem do porção-->
         <p>Ela é composta por uma vasta variedade de batatas fritas,incluindo as clássicas, as onduladas, as em waffle, as em espiral (curly) e os bolinhos de batata (tots). Circulando o mix de batatas, há uma roda de dez molhos diferentes de variadas cores e sabores garantindo que cada mordida tenha um sabor novo e personalizado.</p> <!-- Descrição do porção-->
         <form action="">
             <input type="submit">
@@ -168,7 +168,7 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>      
             </div>
-            <img src="img/porção.peixe.jpeg" alt=""> 
+            <img src="../img/porção.peixe.jpeg" alt=""> 
             <h1>Porção Peixe</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -176,7 +176,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/porção.peixe.jpeg" alt=""> <!-- Imagem do porção-->
+        <img src="../img/porção.peixe.jpeg" alt=""> <!-- Imagem do porção-->
         <p>A travessa é generosamente preenchida com pedaços crocantes e dourados de peixe , os empanados servidos sobre uma base fresca de alface. O prato é decorado com fatias de limão. No centro, um molho cremoso e suavemente picante.</p> <!-- Descrição do porção-->
         <form action="">
             <input type="submit">
