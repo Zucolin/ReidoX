@@ -39,13 +39,15 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href=""><img src="img/bebida.coca1,5.jpeg" alt=""></a><!-- Bebida 1-->
-        <a href=""><img src="img/bebida.coca2l.jpeg" alt=""></a><!-- Bebida 2-->
-        <a href=""><img src="img/bebida.energetico.jpeg" alt=""></a><!-- Bebida 3-->
-        <a href=""><img src="img/bebida.fanta.jpeg" alt=""></a><!-- Bebida 4-->
-        <a href=""><img src="img/bebida.guarana.jpeg" alt=""></a><!-- Bebida 5-->
-        <a href=""><img src="img/bebida.sprite.jpeg" alt=""></a><!-- Bebida 6-->
-        <section>
+        <a href="#coca1.5"><img src="img/bebida.coca1,5.jpeg" alt=""></a><!-- Bebida 1-->
+        <a href="#coca2"><img src="img/bebida.coca2l.jpeg" alt=""></a><!-- Bebida 2-->
+        <a href="#energetico"><img src="img/bebida.energetico.jpeg" alt=""></a><!-- Bebida 3-->
+        <a href="#fanta"><img src="img/bebida.fanta.jpeg" alt=""></a><!-- Bebida 4-->
+        <a href="#guarana"><img src="img/bebida.guarana.jpeg" alt=""></a><!-- Bebida 5-->
+        <a href="#sprite"><img src="img/bebida.sprite.jpeg" alt=""></a><!-- Bebida 6-->
+
+        <!-- Coca Cola 1.5-->
+        <section id="coca1.5">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -71,8 +73,8 @@ $nome = $_SESSION['nome_usuario'];
             <input type="number">
         </section>
 
-
-        <section>
+        <!-- Coca Cola 2-->
+        <section class="coca2">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -97,7 +99,9 @@ $nome = $_SESSION['nome_usuario'];
             <input type="submit">
             <input type="number">
         </section>
-        <section>
+
+        <!-- Energetico-->
+        <section class="energetico">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -123,7 +127,8 @@ $nome = $_SESSION['nome_usuario'];
             <input type="number">
         </section>
 
-  <section>
+        <!-- Fanta-->
+        <section id="fanta">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -149,8 +154,8 @@ $nome = $_SESSION['nome_usuario'];
             <input type="number">
         </section>
 
-
-         <section>
+        <!-- Guaraná-->
+         <section id="guarana">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -178,8 +183,8 @@ $nome = $_SESSION['nome_usuario'];
 
 
 
-
-         <section>
+        <!-- Sprite-->
+         <section id="sprite">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -204,8 +209,6 @@ $nome = $_SESSION['nome_usuario'];
             <input type="submit">
             <input type="number">
         </section>
-
-
 
     </section>
  </body>

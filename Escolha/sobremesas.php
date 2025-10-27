@@ -39,12 +39,14 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href=""><img src="img/sobrimesa.bolopote.jpeg" alt=""></a><!-- Sobrimesa 1-->
-        <a href=""><img src="img/sobrimesa.milkshake.jpeg" alt=""></a><!-- Sobrimesa 2-->
-        <a href=""><img src="img/sobrimesa.mousse.jpeg" alt=""></a><!-- Sobrimesa 3-->
-        <a href=""><img src="img/sobrimesa.pudim.jpeg" alt=""></a><!-- Sobrimesa 4-->
-        <a href=""><img src="img/sobrimesa.torta.jpeg" alt=""></a><!-- Sobrimesa 5-->
-        <section>
+        <a href="#bolopote"><img src="img/sobrimesa.bolopote.jpeg" alt=""></a><!-- Sobrimesa 1-->
+        <a href="#milkshake"><img src="img/sobrimesa.milkshake.jpeg" alt=""></a><!-- Sobrimesa 2-->
+        <a href="#mousse"><img src="img/sobrimesa.mousse.jpeg" alt=""></a><!-- Sobrimesa 3-->
+        <a href="#pudim"><img src="img/sobrimesa.pudim.jpeg" alt=""></a><!-- Sobrimesa 4-->
+        <a href="#torta"><img src="img/sobrimesa.torta.jpeg" alt=""></a><!-- Sobrimesa 5-->
+
+        <!-- Bolo de Pote-->
+        <section class="bolopote">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -71,8 +73,8 @@ $nome = $_SESSION['nome_usuario'];
         </form>
         </section>
 
-
-        <section>
+        <!-- MilkShake-->
+        <section id="milkshake">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -99,8 +101,8 @@ $nome = $_SESSION['nome_usuario'];
         </form>
         </section>
 
-
-        <section>
+        <!-- Mousse de Chocolate-->
+        <section id="mousse">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -127,8 +129,8 @@ $nome = $_SESSION['nome_usuario'];
         </form>
         </section>
 
-
-<section>
+        <!-- Pudim-->
+        <section id="pudim">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -155,8 +157,8 @@ $nome = $_SESSION['nome_usuario'];
         </form>
         </section>
 
-
-        <section>
+        <!-- Torta de Chocolate-->
+        <section id="torta">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>

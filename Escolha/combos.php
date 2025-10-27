@@ -44,12 +44,14 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href=""><img src="img/combo.triplo.jpeg" alt=""></a><!-- Combo 1-->
-        <a href=""><img src="img/combo.familia.batata.jpeg" alt=""></a><!-- Combo 2-->
-        <a href=""><img src="img/combo.familia.jpeg" alt=""></a><!-- Combo 3-->
-        <a href=""><img src="img/combo.simples.jpeg" alt=""></a><!-- Combo 4-->
-        <a href=""><img src="img/combotripo.frango.jpeg" alt=""></a><!-- Combo 5-->
-        <section>
+        <a href="#triplo"><img src="img/combo.triplo.jpeg" alt=""></a><!-- Combo 1-->
+        <a href="#batatafamilia"><img src="img/combo.familia.batata.jpeg" alt=""></a><!-- Combo 2-->
+        <a href="#familia"><img src="img/combo.familia.jpeg" alt=""></a><!-- Combo 3-->
+        <a href="#simples"><img src="img/combo.simples.jpeg" alt=""></a><!-- Combo 4-->
+        <a href="#triplofrango"><img src="img/combotripo.frango.jpeg" alt=""></a><!-- Combo 5-->
+
+        <!-- Combo Triplo-->
+        <section id="triplo">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -75,7 +77,9 @@ $nome = $_SESSION['nome_usuario'];
             <input type="number">
         </form>
         </section>
-        <section>
+
+        <!-- Combo Familia-->
+        <section id="familia">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -96,61 +100,14 @@ $nome = $_SESSION['nome_usuario'];
         </nav>
         <img src="img/combo.familia.batata.jpeg" alt=""> <!-- Imagem do combo-->
         <p>O centro da bandeja é preenchido por uma montanha de batatas fritas crocantes, banhadas em um cremoso molho de queijo Cheddar derretido. Por cima, elas são carregadas com pedacinhos de bacon crocante. O combo é completado por quatro hambúrguer e acompanha porções individuais de um molho cremoso.</p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section><section id="combos">
-        <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                    <button type="submit" name="editar" href="#">Editar</button>
-                    <button type="submit" name="sair" href="#">Sair</button>
-                    <button href="#">Detalhes</button>
-                    </form>
-            </div>
-            <img src="img/combo.triplo.jpeg" alt="">
-            <h1>Combos</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <a href=""><img src="img/combo.triplo.jpeg" alt=""></a><!-- Combo 1-->
-        <a href=""><img src="img/combo.familia.batata.jpeg" alt=""></a><!-- Combo 2-->
-        <a href=""><img src="img/combo.familia.jpeg" alt=""></a><!-- Combo 3-->
-        <a href=""><img src="img/combo.simples.jpeg" alt=""></a><!-- Combo 4-->
-        <a href=""><img src="img/combotripo.frango.jpeg" alt=""></a><!-- Combo 5-->
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-            <form method="POST">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/combo.triplo.jpeg" alt=""> 
-            <h1>Combo Triplo</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/combo.triplo.jpeg" alt=""> <!-- Imagem do combo-->
-        <p>Acompanha uma grande porção de nuggets, uma montanha de batatas fritas no centro, e uma porção farta de linguiça calabresa fatiada e frita. O combo é complementado por três hambúrgueres (feitos com pães de brioche e recheio simples) e é servido com molhos. </p> <!-- Descrição do Combo-->
         <form action="">
             <input type="submit">
             <input type="number">
         </form>
         </section>
-        <section>
+
+        <!-- Combo Familia Batata-->
+        <section id="batatafamilia">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -175,7 +132,10 @@ $nome = $_SESSION['nome_usuario'];
             <input type="submit">
             <input type="number">
         </form>
-        <section>
+        </section>
+
+        <!-- Combo Familia Frango-->
+        <section id="familiafrango">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -203,8 +163,8 @@ $nome = $_SESSION['nome_usuario'];
         </section>
 
 
-
-      <section>
+    <!-- Combo Simples-->
+      <section id="simples">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -233,8 +193,8 @@ $nome = $_SESSION['nome_usuario'];
 
 
 
-
-        <section>
+        <!-- Combo Triplo Frango-->
+        <section id="triplofrango">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>

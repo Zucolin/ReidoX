@@ -49,6 +49,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="sobrenos.html">Sobre nós</a></li>
         </ul>
     </nav>
+    <!-- Escolhas-->
     <a href="Escolha/combos.php"><img src="img/combo.familia.batata.jpeg" alt=""></a><!-- Combos-->
     <a href="Escolha/lanches.php"><img src="img/lanche. frango.jpeg" alt=""></a><!-- X-Lanches -->
     <a href="Escolha/acompanhamentos.php"><img src="img/porção.fritas.jpeg" alt=""></a><!-- Acompanhamentos -->

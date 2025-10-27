@@ -38,12 +38,14 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href=""><img src="img/porção.camarão.jpeg" alt=""></a><!-- Porção 1-->
-        <a href=""><img src="img/porção.cebolitos.jpeg" alt=""></a><!-- Porção 2-->
-        <a href=""><img src="img/porção.churrasco.jpeg" alt=""></a><!-- Porção 3-->
-        <a href=""><img src="img/porção.fritas.jpeg" alt=""></a><!-- Porção 4-->
-        <a href=""><img src="img/porção.peixe.jpeg" alt=""></a><!-- Porção 5-->
-        <section>
+        <a href="#camaroes"><img src="img/porção.camarão.jpeg" alt=""></a><!-- Porção 1-->
+        <a href="#cebolas"><img src="img/porção.cebolitos.jpeg" alt=""></a><!-- Porção 2-->
+        <a href="#churrasco"><img src="img/porção.churrasco.jpeg" alt=""></a><!-- Porção 3-->
+        <a href="#fritas"><img src="img/porção.fritas.jpeg" alt=""></a><!-- Porção 4-->
+        <a href="#peixes"><img src="img/porção.peixe.jpeg" alt=""></a><!-- Porção 5-->
+
+        <!-- Porção de Camarões-->
+        <section id="camaroes">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -70,8 +72,8 @@ $nome = $_SESSION['nome_usuario'];
         </form>
         </section>
 
-
-        <section>
+        <!-- Porção de Cebola-->
+        <section id="cebolas">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -98,8 +100,8 @@ $nome = $_SESSION['nome_usuario'];
         </form>
         </section>
 
-
-        <section>
+        <!-- Porção Churrasco-->
+        <section id="churrasco">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -126,8 +128,8 @@ $nome = $_SESSION['nome_usuario'];
         </form>
         </section>
 
-
-<section>
+        <!-- Porção de Fritas-->
+        <section id="fritas">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -154,8 +156,8 @@ $nome = $_SESSION['nome_usuario'];
         </form>
         </section>
 
-
-        <section>
+        <!-- Porção Peixes-->
+        <section id="peixes">
             <nav>
             <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
