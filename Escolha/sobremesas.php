@@ -23,14 +23,21 @@ $nome = $_SESSION['nome_usuario'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../estilo.css">
+    
 </head>
 <body>
     <section id="sobremesas">
-        <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            </div>
+       <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="" alt="">
             <h1>Sobremesa</h1>
         <ul>
@@ -47,16 +54,17 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Bolo de Pote-->
         <section class="bolopote">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
+           <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="img/sobrimesa.bolopote.jpeg" alt=""> 
             <h1>Bolo de Pote </h1>
         <ul>
@@ -75,16 +83,17 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- MilkShake-->
         <section id="milkshake">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
+           <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="img/sobrimesa.milkshake.jpeg" alt=""> 
             <h1>Milkshake </h1>
         <ul>
@@ -103,16 +112,17 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Mousse de Chocolate-->
         <section id="mousse">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
+           <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="img/sobrimesa.mousse.jpeg" alt=""> 
             <h1>Mousse </h1>
         <ul>
@@ -131,16 +141,17 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Pudim-->
         <section id="pudim">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
+           <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="img/sobrimesa.pudim.jpeg" alt=""> 
             <h1>Pudim</h1>
         <ul>
@@ -159,16 +170,17 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Torta de Chocolate-->
         <section id="torta">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
+           <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="img/sobrimesa.torta.jpeg" alt=""> 
             <h1>Torta de chocolate</h1>
         <ul>
@@ -188,20 +200,24 @@ $nome = $_SESSION['nome_usuario'];
 </body>
 </html>
 <script>
-  function toggleMenu() {
-    const menu = document.getElementById("menu");
+function toggleMenu(button) {
+    // Pega o menu correspondente ao botão clicado dentro do mesmo container
+    const menu = button.parentElement.querySelector('.menu-opcoes');
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
-  }
+}
 
-  // Fecha o menu se clicar fora dele
-  window.addEventListener('click', function(e) {
-    const menu = document.getElementById("menu");
-    const btn = document.querySelector('.menu-btn');
-    if (!btn.contains(e.target)) {
-      menu.style.display = "none";
-    }
-  });
+// Fecha todos os menus se clicar fora
+window.addEventListener('click', function(e) {
+    document.querySelectorAll('.menu-opcoes').forEach(menu => {
+        const btn = menu.parentElement.querySelector('.menu-btn');
+        if (menu.style.display === "block" && !btn.contains(e.target) && !menu.contains(e.target)) {
+            menu.style.display = "none";
+        }
+    });
+});
 </script>
+</body>
+</html>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sair'])) {
@@ -210,3 +226,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+ 

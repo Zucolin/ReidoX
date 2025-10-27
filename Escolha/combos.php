@@ -26,16 +26,17 @@ $nome = $_SESSION['nome_usuario'];
     <link rel="stylesheet" href="../estilo.css">
 </head>
 <body>
-        <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                    <button type="submit" name="editar" href="#">Editar</button>
-                    <button type="submit" name="sair" href="#">Sair</button>
-                    <button href="#">Detalhes</button>
-                    </form>
-            </div>
+       <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="img/combo.triplo.jpeg" alt="">
             <h1>Combos</h1>
         <ul>
@@ -52,16 +53,17 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Combo Triplo-->
         <section id="triplo">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-            <form method="POST">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
+           <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="img/combo.triplo.jpeg" alt=""> 
             <h1>Combo Triplo</h1>
         <ul>
@@ -80,16 +82,17 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Combo Familia-->
         <section id="familia">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
+           <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="img/combo.familia.batata.jpeg" alt=""> 
             <h1>Combo Familia Batata </h1>
         <ul>
@@ -108,16 +111,17 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Combo Familia Batata-->
         <section id="batatafamilia">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
+           <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="img/combo.familia.batata.jpeg" alt=""> 
             <h1>Combo Familia Batata </h1>
         <ul>
@@ -136,16 +140,17 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Combo Familia Frango-->
         <section id="familiafrango">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
+           <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="img/combo.familia.jpeg" alt=""> 
             <h1>Combo Familia Frango</h1>
         <ul>
@@ -165,16 +170,17 @@ $nome = $_SESSION['nome_usuario'];
 
     <!-- Combo Simples-->
       <section id="simples">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
+           <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="" alt=""> 
             <h1>Combo Simples</h1>
         <ul>
@@ -195,16 +201,17 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Combo Triplo Frango-->
         <section id="triplofrango">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
+           <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
             <img src="" alt=""> 
             <h1>Combo Triplo de Frango</h1>
         <ul>
@@ -223,20 +230,24 @@ $nome = $_SESSION['nome_usuario'];
 </body>
 </html>
 <script>
-  function toggleMenu() {
-    const menu = document.getElementById("menu");
+function toggleMenu(button) {
+    // Pega o menu correspondente ao botão clicado dentro do mesmo container
+    const menu = button.parentElement.querySelector('.menu-opcoes');
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
-  }
+}
 
-  // Fecha o menu se clicar fora dele
-  window.addEventListener('click', function(e) {
-    const menu = document.getElementById("menu");
-    const btn = document.querySelector('.menu-btn');
-    if (!btn.contains(e.target)) {
-      menu.style.display = "none";
-    }
-  });
+// Fecha todos os menus se clicar fora
+window.addEventListener('click', function(e) {
+    document.querySelectorAll('.menu-opcoes').forEach(menu => {
+        const btn = menu.parentElement.querySelector('.menu-btn');
+        if (menu.style.display === "block" && !btn.contains(e.target) && !menu.contains(e.target)) {
+            menu.style.display = "none";
+        }
+    });
+});
 </script>
+</body>
+</html>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sair'])) {
@@ -245,3 +256,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+ 
