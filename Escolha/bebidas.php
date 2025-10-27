@@ -46,12 +46,12 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href="#coca1.5"><img src="img/bebida.coca1,5.jpeg" alt=""></a><!-- Bebida 1-->
-        <a href="#coca2"><img src="img/bebida.coca2l.jpeg" alt=""></a><!-- Bebida 2-->
-        <a href="#energetico"><img src="img/bebida.energetico.jpeg" alt=""></a><!-- Bebida 3-->
-        <a href="#fanta"><img src="img/bebida.fanta.jpeg" alt=""></a><!-- Bebida 4-->
-        <a href="#guarana"><img src="img/bebida.guarana.jpeg" alt=""></a><!-- Bebida 5-->
-        <a href="#sprite"><img src="img/bebida.sprite.jpeg" alt=""></a><!-- Bebida 6-->
+        <a href="#coca1.5"><img src="../img/bebida.coca1,5.jpeg" alt=""></a><!-- Bebida 1-->
+        <a href="#coca2"><img src="../img/bebida.coca2l.jpeg" alt=""></a><!-- Bebida 2-->
+        <a href="#energetico"><img src="../img/bebida.energetico.jpeg" alt=""></a><!-- Bebida 3-->
+        <a href="#fanta"><img src="../img/bebida.fanta.jpeg" alt=""></a><!-- Bebida 4-->
+        <a href="#guarana"><img src="../img/bebida.guarana.jpeg" alt=""></a><!-- Bebida 5-->
+        <a href="#sprite"><img src="../img/bebida.sprite.jpeg" alt=""></a><!-- Bebida 6-->
 
         <!-- Coca Cola 1.5-->
         <section id="coca1.5">
@@ -74,7 +74,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/bebida.coca1,5.jpeg" alt=""> <!-- Imagem da Bebida-->
+        <img src="../img/bebida.coca1,5.jpeg" alt=""> <!-- Imagem da Bebida-->
         <p>Coca-Cola de 1,5L </p> <!-- Descrição da Bebida-->
         <form action="">
             <input type="submit">
@@ -83,17 +83,16 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Coca Cola 2-->
         <section class="coca2">
-           <nav>
-                <div class="menu-container">
-                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                    <div class="menu-opcoes">
-                        <form method="post">
-                            <button type="submit" name="editar">Editar</button>
-                            <button type="submit" name="sair">Sair</button>
-                            <button type="button">Detalhes</button>
-                        </form>
-                    </div>
-                </div>
+            <nav>
+            <div class="menu-container">
+            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+            <button type="submit" name="editar" href="#">Editar</button>
+            <button type="submit" name="sair" href="#">Sair</button>
+            <button href="#">Detalhes</button>
+            </form>      
+            </div>
             <img src="img/bebida.coca2l.jpeg" alt=""> 
             <h1>Coca-Cola</h1>
         <ul>
@@ -102,7 +101,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/bebida.coca2l.jpeg" alt=""> <!-- Imagem da Bebida-->
+        <img src="../img/bebida.coca2l.jpeg" alt=""> <!-- Imagem da Bebida-->
         <p>Coca-Cola de 2L </p> <!-- Descrição da Bebida-->
         <form action="">
             <input type="submit">
@@ -111,17 +110,16 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Energetico-->
         <section class="energetico">
-           <nav>
-                <div class="menu-container">
-                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                    <div class="menu-opcoes">
-                        <form method="post">
-                            <button type="submit" name="editar">Editar</button>
-                            <button type="submit" name="sair">Sair</button>
-                            <button type="button">Detalhes</button>
-                        </form>
-                    </div>
-                </div>
+            <nav>
+            <div class="menu-container">
+            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+            <button type="submit" name="editar" href="#">Editar</button>
+            <button type="submit" name="sair" href="#">Sair</button>
+            <button href="#">Detalhes</button>
+            </form>      
+            </div>
             <img src="img/bebida.energetico.jpeg" alt=""> 
             <h1>Energetico</h1>
         <ul>
@@ -130,7 +128,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/bebida.energetico.jpeg" alt=""> <!-- Imagem da Bebida-->
+        <img src="../img/bebida.energetico.jpeg" alt=""> <!-- Imagem da Bebida-->
         <p>Lata de energetico, Monster Mango Loco</p> <!-- Descrição da Bebida-->
         <form action="">
             <input type="submit">
@@ -139,17 +137,16 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Fanta-->
         <section id="fanta">
-           <nav>
-                <div class="menu-container">
-                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                    <div class="menu-opcoes">
-                        <form method="post">
-                            <button type="submit" name="editar">Editar</button>
-                            <button type="submit" name="sair">Sair</button>
-                            <button type="button">Detalhes</button>
-                        </form>
-                    </div>
-                </div>
+            <nav>
+            <div class="menu-container">
+            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+            <button type="submit" name="editar" href="#">Editar</button>
+            <button type="submit" name="sair" href="#">Sair</button>
+            <button href="#">Detalhes</button>
+            </form>      
+            </div>
             <img src="img/bebida.fanta.jpeg" alt=""> 
             <h1>Fanta</h1>
         <ul>
@@ -158,7 +155,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/bebida.fanta.jpeg" alt=""> <!-- Imagem da Bebida-->
+        <img src="../img/bebida.fanta.jpeg" alt=""> <!-- Imagem da Bebida-->
         <p>Lata de fanta </p> <!-- Descrição da Bebida-->
         <form action="">
             <input type="submit">
@@ -167,17 +164,16 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Guaraná-->
          <section id="guarana">
-           <nav>
-                <div class="menu-container">
-                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                    <div class="menu-opcoes">
-                        <form method="post">
-                            <button type="submit" name="editar">Editar</button>
-                            <button type="submit" name="sair">Sair</button>
-                            <button type="button">Detalhes</button>
-                        </form>
-                    </div>
-                </div>
+            <nav>
+            <div class="menu-container">
+            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+            <button type="submit" name="editar" href="#">Editar</button>
+            <button type="submit" name="sair" href="#">Sair</button>
+            <button href="#">Detalhes</button>
+            </form>      
+            </div>
             <img src="img/bebida.guarana.jpeg" alt=""> 
             <h1>Guaraná</h1>
         <ul>
@@ -186,7 +182,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/bebida.guarana.jpeg" alt=""> <!-- Imagem da Bebida-->
+        <img src="../img/bebida.guarana.jpeg" alt=""> <!-- Imagem da Bebida-->
         <p>Guaraná 2L </p> <!-- Descrição da Bebida-->
         <form action="">
             <input type="submit">
@@ -197,17 +193,16 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Sprite-->
          <section id="sprite">
-           <nav>
-                <div class="menu-container">
-                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                    <div class="menu-opcoes">
-                        <form method="post">
-                            <button type="submit" name="editar">Editar</button>
-                            <button type="submit" name="sair">Sair</button>
-                            <button type="button">Detalhes</button>
-                        </form>
-                    </div>
-                </div>
+            <nav>
+            <div class="menu-container">
+            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+            <button type="submit" name="editar" href="#">Editar</button>
+            <button type="submit" name="sair" href="#">Sair</button>
+            <button href="#">Detalhes</button>
+            </form>      
+            </div>
             <img src="img/bebida.sprite.jpeg" alt=""> 
             <h1>Sprite</h1>
         <ul>
@@ -216,7 +211,7 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <img src="img/bebida.sprite.jpeg" alt=""> <!-- Imagem da Bebida-->
+        <img src="../img/bebida.sprite.jpeg" alt=""> <!-- Imagem da Bebida-->
         <p>Sprite 2L </p> <!-- Descrição da Bebida-->
         <form action="">
             <input type="submit">
