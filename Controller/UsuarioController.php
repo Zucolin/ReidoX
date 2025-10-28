@@ -43,9 +43,8 @@ class UsuarioController {
     public function cadastrar($nome, $email, $senha) {
         return $this->usuarioModel->cadastrar($nome, $email, $senha);
     }
-
-    public function cadastrarEndereco($cep, $rua, $numero) {
-        return $this->usuarioModel->cadastrarEndereco($cep, $rua, $numero);
+public function atualizar($cep,$rua,$numero,$idatual) {
+        return $this->usuarioModel->atualizar($cep,$rua,$numero,$idatual);
     }
 
     public function editar($nome, $email, $senha, $id) {

@@ -16,12 +16,16 @@ public function cadastrar($nome, $email, $senha){
     try{
         $sql = "INSERT INTO clientes (nome, email, senha) VALUES (:nome, :email, :senha)";
         $stmt= $this->pdo->prepare($sql);
-        return $stmt->execute([
+        $stmt->execute([
             ':nome'=>$nome,
             ':email'=>$email,
             ':senha'=>$senha,
-
+           
         ]);
+
+         // ✅ Retorna o ID do cliente recém-inserido
+        return $this->pdo->lastInsertId();
+
     }catch(PDOException $e){
         if ($e->getCode() == 23000 && strpos($e->getMessage(), 'Duplicate entry') !== false) {
             throw new Exception("E-mail já cadastrado!");
@@ -31,19 +35,21 @@ public function cadastrar($nome, $email, $senha){
     }
     
 }
-public function cadastrarEndereco($cep, $rua, $numero){
+public function atualizar($cep,$rua,$numero,$idatual){
     try{
-        $sql = "INSERT INTO clientes (cep, rua, numero) VALUES (:cep, :rua, :numero)";
+        $sql = "UPDATE clientes SET cep=?, rua=?, numero=? WHERE id = ?";
         $stmt= $this->pdo->prepare($sql);
-        return $stmt->execute([
-            ':cep'=>$cep,
-            ':rua'=>$rua,
-            ':numero'=>$numero
-        ]);
+        return $stmt->execute([$cep,$rua,$numero,$idatual]);
     }catch(PDOException $e){
-        $e->getMessage();
+        if ($e->getCode() == 23000 && strpos($e->getMessage(), 'Duplicate entry') !== false) {
+            throw new Exception("E-mail já cadastrado!");
+        } else {
+            throw $e;
+        }
     }
+    
 }
+
 public function editar($nome, $email, $senha, $id) {
         $sql = "UPDATE clientes SET nome=?, email=?, senha=? WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);

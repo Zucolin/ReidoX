@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <title>Login</title>
 </head>
 <body>
-<h2>Entrar no sistema</h2>
+<h2>Entrar</h2>
 
 <?php if ($erro) echo "<p style='color:red;'>$erro</p>"; ?>
 

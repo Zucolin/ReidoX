@@ -6,7 +6,7 @@
     <title>Cadastro</title>
 </head>
 <body>
-    <img src="" alt=""> <!-- Logo no centro da tela-->
+    <img src="img/logo.jpeg" alt=""> <!-- Logo no centro da tela-->
     <!-- Abaixo o formulario de cadastro-->
     <form method="post"> 
         <label for="nome">Nome:</label>
@@ -40,11 +40,11 @@ try{
        
 
         
-        $controller->cadastrar($nome, $email, $senha); // chama a função do controller aqui mesmo
+       $idatual = $controller->cadastrar($nome, $email, $senha); // chama a função do controller aqui mesmo
         
         session_start();
         $_SESSION['nome_usuario'] = $_POST['nome'];
-        header('Location: endereco.php'); // redireciona só depois da sessão estar salva
+        header("Location: endereco.php?id=$idatual"); // redireciona só depois da sessão estar salva
         exit;
         
     }
