@@ -54,147 +54,251 @@ $nome = $_SESSION['nome_usuario'];
         <a href="#xtropical"><img src="../img/lanche.tropical.jpeg" alt=""></a><!-- Lanche 5-->
 
         <!-- Lanche de Frango-->
-        <section id="xfrango">
-           <nav>
-                <div class="menu-container">
-                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                    <div class="menu-opcoes">
-                        <form method="post">
-                            <button type="submit" name="editar">Editar</button>
-                            <button type="submit" name="sair">Sair</button>
-                            <button type="button">Detalhes</button>
-                        </form>
-                    </div>
-                </div>
-            <img src="img/lanche.frango.jpeg" alt=""> 
-            <h1>Lanche de Frango</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/lanche.frango.jpeg" alt=""> <!-- Imagem do lanche1-->
-        <p>Este lanche é construído em um pão de brioche. O recheio são duas porções de frango empanado e frito. Entre as camadas de frango e no topo da montagem, o lanche leva queijo cheddar derretido e uma cobertura de alface picada. Tudo é finalizado com um molho cremoso</p> <!-- Descrição do Lanche-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
+   <!-- Produto: Lanche de Frango -->
 
-        <!-- Lanche Triplo-->
-        <section id="xtriplo">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/lanche.triplo.jpeg" alt=""> 
-            <h1>Lanche Triplo</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/lanche.triplo.jpeg" alt=""> <!-- Imagem do lanche-->
-        <p>Este é um hambúrguer é caracterizado pelas suas três camadas de carne separadas por fatias de queijo. A montagem inclui uma base de molho cremoso e é coroada com uma mistura de alface, tomate e bacon, todos cobertos por um molho cremoso final.</p> <!-- Descrição do Lanche-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
+<!-- 1ª seção: Página de escolha do produto -->
+    
+<section id="xfrango">
+    <div>
+        <img src="../img/lanche.frango.jpeg" alt="">
+        <h1>Lanche de Frango</h1>
+        <p>Este lanche é construído em um pão de brioche. O recheio são duas porções de frango empanado e frito. Entre as camadas de frango e no topo da montagem, o lanche leva queijo cheddar derretido e uma cobertura de alface picada. Tudo é finalizado com um molho cremoso.</p>
+    </div>
+    <form method="post">
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade">
+        <button><a href="#finalizacaofrango">Comprar</a></button>
+    </form>
 
-        <!-- Lanche Bacon-->
-        <section id="xbacon">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/lanche.baicon.jpeg" alt=""> 
-            <h1>Lanche de Bacon</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
+<!-- 3ª seção: Finalização da compra -->
+    <section id="finalizacaofrango">
+        <nav>
+            <img src="../img/logo.jpeg" alt="">
+            <ul>
+                <li><a href="paginainicio.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
         </nav>
-        <img src="../img/lanche.baicon.jpeg" alt=""> <!-- Imagem do lanche-->
-        <p>Ele é composto por um pão macio de brioche que serve de base para algumas fatias de picles. O recheio consiste em duas de carne de hambúrguer, cada um coberto por uma generosa camada de queijo cheddar derretido. Entre as carnes, e no topo da montagem, encontram-se fatias de bacon crocante e espesso.</p> <!-- Descrição do Lanche-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
+        <div>
+            <img src="../img/lanche.frango.jpeg" alt="">
+        </div>
+        <form method="post">
+            <h2>Entregar</h2>
+            <input name="entrega" type="radio">
         </form>
-        </section>
-
-        <!-- Lanche Cebola-->
-        <section id="xcebola">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/lanche.cebolitos.jpeg" alt=""> 
-            <h1>Lanche aneis de cebola</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/lanche.cebolitos.jpeg" alt=""> <!-- Imagem do lanche-->
-        <p>Este Hambúrguer é servido em um pão macio e levemente tostado, a base é um generoso e suculento hambúrguer de carne. Sobre ele uma camada de queijo derretido e tiras de bacon crocante. vem também com uma pilha de anéis de cebola dourados, tudo coroado por um delicioso e cremoso molho.</p> <!-- Descrição do Lanche-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
+        <form method="post">
+            <h2>Retirar</h2>
+            <input name="entrega" type="radio">
         </form>
-        </section>
-
-
-        <!-- Lanche Tropical-->
-         <section id="xtropical">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/lanche.tropical.jpeg" alt=""> 
-            <h1>Lanche Tropical</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/lanche.tropical.jpeg" alt=""> <!-- Imagem do lanche-->
-        <p>Este Hambúrguer tem um pão de hambúrguer grelhado, ele começa com uma base fresca de alface, seguida por um hambúrguer de carne bovina. O sabor é intensificado por uma fatia de queijo cheddar derretido .O grande diferencial é a generosa rodela de abacaxi grelhado.</p> <!-- Descrição do Lanche-->
-        <form action="">
+        <form method="post">
+            <h3>Método Pagamento</h3>
+            <select name="pagamento">
+                <option value="cartao-credito">Cartão de Crédito</option>
+                <option value="cartao-debito">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
             <input type="submit">
-            <input type="number">
         </form>
-        </section>
     </section>
+</section>
+<!-- Produto: Lanche Triplo -->
+
+<!-- 1ª seção: Página de escolha do produto -->
+<section id="xtriplo">
+    <div>
+        <img src="../img/lanche.triplo.jpeg" alt="">
+        <h1>Lanche Triplo</h1>
+        <p>Este hambúrguer é caracterizado pelas suas três camadas de carne separadas por fatias de queijo. A montagem inclui uma base de molho cremoso e é coroada com uma mistura de alface, tomate e bacon, todos cobertos por um molho cremoso final.</p>
+    </div>
+    <form method="post">
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade">
+        <button><a href="#finalizacaotriplo">Comprar</a></button>
+    </form>
+
+<!-- 3ª seção: Finalização da compra -->
+    <section id="finalizacaotriplo">
+        <nav>
+            <img src="../img/logo.jpeg" alt="">
+            <ul>
+                <li><a href="paginainicio.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
+        </nav>
+        <div>
+            <img src="../img/lanche.triplo.jpeg" alt="">
+        </div>
+        <form method="post">
+            <h2>Entregar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h2>Retirar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h3>Método Pagamento</h3>
+            <select name="pagamento">
+                <option value="cartao-credito">Cartão de Crédito</option>
+                <option value="cartao-debito">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+            <input type="submit">
+        </form>
+    </section>
+</section>
+
+<!-- Produto: Lanche Triplo -->
+
+<!-- 1ª seção: Página de escolha do produto -->
+<section id="xtriplo">
+    <div>
+        <img src="../img/lanche.triplo.jpeg" alt="">
+        <h1>Lanche Triplo</h1>
+        <p>Este hambúrguer é caracterizado pelas suas três camadas de carne separadas por fatias de queijo. A montagem inclui uma base de molho cremoso e é coroada com uma mistura de alface, tomate e bacon, todos cobertos por um molho cremoso final.</p>
+    </div>
+    <form method="post">
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade">
+        <button><a href="#finalizacaotriplo">Comprar</a></button>
+    </form>
+
+<!-- 3ª seção: Finalização da compra -->
+    <section id="finalizacaotriplo">
+        <nav>
+            <img src="../img/logo.jpeg" alt="">
+            <ul>
+                <li><a href="paginainicio.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
+        </nav>
+        <div>
+            <img src="../img/lanche.triplo.jpeg" alt="">
+        </div>
+        <form method="post">
+            <h2>Entregar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h2>Retirar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h3>Método Pagamento</h3>
+            <select name="pagamento">
+                <option value="cartao-credito">Cartão de Crédito</option>
+                <option value="cartao-debito">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+            <input type="submit">
+        </form>
+    </section>
+</section>
+<!-- Produto: Lanche Aneis de Cebola -->
+
+<!-- 1ª seção: Página de escolha do produto -->
+<section id="xcebola">
+    <div>
+        <img src="../img/lanche.cebolitos.jpeg" alt="">
+        <h1>Lanche Aneis de Cebola</h1>
+        <p>Este Hambúrguer é servido em um pão macio e levemente tostado, a base é um generoso e suculento hambúrguer de carne. Sobre ele uma camada de queijo derretido e tiras de bacon crocante. Vem também com uma pilha de anéis de cebola dourados, tudo coroado por um delicioso e cremoso molho.</p>
+    </div>
+    <form method="post">
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade">
+        <button><a href="#finalizacaocebola">Comprar</a></button>
+    </form>
+
+
+<!-- 3ª seção: Finalização da compra -->
+    <section id="finalizacaocebola">
+        <nav>
+            <img src="../img/logo.jpeg" alt="">
+            <ul>
+                <li><a href="paginainicio.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
+        </nav>
+        <div>
+            <img src="../img/lanche.cebolitos.jpeg" alt="">
+        </div>
+        <form method="post">
+            <h2>Entregar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h2>Retirar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h3>Método Pagamento</h3>
+            <select name="pagamento">
+                <option value="cartao-credito">Cartão de Crédito</option>
+                <option value="cartao-debito">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+            <input type="submit">
+        </form>
+    </section>
+</section>
+<!-- Produto: Lanche Aneis de Cebola -->
+
+<!-- 1ª seção: Página de escolha do produto -->
+<section id="xcebola">
+    <div>
+        <img src="../img/lanche.cebolitos.jpeg" alt="">
+        <h1>Lanche Aneis de Cebola</h1>
+        <p>Este Hambúrguer é servido em um pão macio e levemente tostado, a base é um generoso e suculento hambúrguer de carne. Sobre ele uma camada de queijo derretido e tiras de bacon crocante. Vem também com uma pilha de anéis de cebola dourados, tudo coroado por um delicioso e cremoso molho.</p>
+    </div>
+    <form method="post">
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade">
+        <button><a href="#finalizacaocebola">Comprar</a></button>
+    </form>
+
+
+<!-- 3ª seção: Finalização da compra -->
+    <section id="finalizacaocebola">
+        <nav>
+            <img src="../img/logo.jpeg" alt="">
+            <ul>
+                <li><a href="paginainicio.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
+        </nav>
+        <div>
+            <img src="../img/lanche.cebolitos.jpeg" alt="">
+        </div>
+        <form method="post">
+            <h2>Entregar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h2>Retirar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h3>Método Pagamento</h3>
+            <select name="pagamento">
+                <option value="cartao-credito">Cartão de Crédito</option>
+                <option value="cartao-debito">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+            <input type="submit">
+        </form>
+    </section>
+</section>
+
 </body>
 </html>
 <script>

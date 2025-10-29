@@ -1,4 +1,4 @@
-  <?php
+<?php
 
 session_start();
 
@@ -55,170 +55,262 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Coca Cola 1.5-->
         <section id="coca1.5">
-           <nav>
-                <div class="menu-container">
-                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                    <div class="menu-opcoes">
-                        <form method="post">
-                            <button type="submit" name="editar">Editar</button>
-                            <button type="submit" name="sair">Sair</button>
-                            <button type="button">Detalhes</button>
-                        </form>
-                    </div>
+                <h1>Coca-Cola 1.5L</h1>
+            <img src="../img/bebida.coca1,5.jpeg" alt="Coca-Cola 1.5L">
+            <p>Coca-Cola de 1,5L </p>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaococa1.5">Comprar</a></button>
+            </form>
+            
+            <section id="finalizacaococa1.5">
+                <nav>
+                    <img src="../img/logo.jpeg" alt=""> <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/bebida.coca1,5.jpeg" alt="Coca-Cola 1.5L">
                 </div>
-            <img src="img/bebida.coca1,5.jpeg" alt=""> 
-            <h1>Coca-Cola</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/bebida.coca1,5.jpeg" alt=""> <!-- Imagem da Bebida-->
-        <p>Coca-Cola de 1,5L </p> <!-- Descrição da Bebida-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
+                <form method="post">
+                    <h2>Entregar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h2>Retirar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento">
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
         </section>
 
-        <!-- Coca Cola 2-->
-        <section class="coca2">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
+        <section id="coca2">
+            <img src="../img/bebida.coca2l.jpeg" alt="Coca-Cola 2L">
+            <p>Coca-Cola de 2L </p>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaococa2">Comprar</a></button>
+            </form>
+
+            <section id="finalizacaococa2">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/bebida.coca2l.jpeg" alt="Coca-Cola 2L">
+                </div>
                 <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/bebida.coca2l.jpeg" alt=""> 
-            <h1>Coca-Cola</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/bebida.coca2l.jpeg" alt=""> <!-- Imagem da Bebida-->
-        <p>Coca-Cola de 2L </p> <!-- Descrição da Bebida-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
+                    <h2>Entregar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h2>Retirar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento">
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
         </section>
 
-        <!-- Energetico-->
-        <section class="energetico">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/bebida.energetico.jpeg" alt=""> 
+        <section id="energetico">
             <h1>Energetico</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/bebida.energetico.jpeg" alt=""> <!-- Imagem da Bebida-->
-        <p>Lata de energetico, Monster Mango Loco</p> <!-- Descrição da Bebida-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
+            <img src="../img/bebida.energetico.jpeg" alt="Energético">
+            <p>Lata de energético, Monster Mango Loco</p>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaoenergetico">Comprar</a></button>
+            </form>
+
+            <section id="finalizacaoenergetico">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/bebida.energetico.jpeg" alt="Energético">
+                </div>
+                <form method="post">
+                    <h2>Entregar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h2>Retirar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento">
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
         </section>
 
-        <!-- Fanta-->
         <section id="fanta">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/bebida.fanta.jpeg" alt=""> 
+            
             <h1>Fanta</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/bebida.fanta.jpeg" alt=""> <!-- Imagem da Bebida-->
-        <p>Lata de fanta </p> <!-- Descrição da Bebida-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
+            <img src="../img/bebida.fanta.jpeg" alt="Fanta">
+            <p>Lata de fanta </p>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaofanta">Comprar</a></button>
+            </form>
+
+            <section id="finalizacaofanta">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/bebida.fanta.jpeg" alt="Fanta">
+                </div>
+                <form method="post">
+                    <h2>Entregar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h2>Retirar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento">
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
         </section>
 
-        <!-- Guaraná-->
-         <section id="guarana">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/bebida.guarana.jpeg" alt=""> 
+        <section id="guarana">
             <h1>Guaraná</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/bebida.guarana.jpeg" alt=""> <!-- Imagem da Bebida-->
-        <p>Guaraná 2L </p> <!-- Descrição da Bebida-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </section>
+            <img src="../img/bebida.guarana.jpeg" alt="Guaraná">
+            <p>Guaraná 2L </p>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaoguarana">Comprar</a></button>
+            </form>
 
-
-
-        <!-- Sprite-->
-         <section id="sprite">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
+            <section id="finalizacaoguarana">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/bebida.guarana.jpeg" alt="Guaraná">
+                </div>
                 <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/bebida.sprite.jpeg" alt=""> 
-            <h1>Sprite</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/bebida.sprite.jpeg" alt=""> <!-- Imagem da Bebida-->
-        <p>Sprite 2L </p> <!-- Descrição da Bebida-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
+                    <h2>Entregar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h2>Retirar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento">
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
         </section>
 
-    </section>
+        <section id="sprite">
+            
+            <h1>Sprite</h1>
+            <img src="../img/bebida.sprite.jpeg" alt="Sprite">
+            <p>Sprite 2L </p>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaosprite">Comprar</a></button>
+            </form>
+
+            <section id="finalizacaosprite">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/bebida.sprite.jpeg" alt="Sprite">
+                </div>
+                <form method="post">
+                    <h2>Entregar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h2>Retirar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento">
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
+        </section>
  
 <script>
 function toggleMenu(button) {

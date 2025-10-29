@@ -52,177 +52,203 @@ $nome = $_SESSION['nome_usuario'];
         <a href="#triplofrango"><img src="../img/combotripo.frango.jpeg" alt=""></a><!-- Combo 5-->
 
         <!-- Combo Triplo-->
-        <section id="triplo">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-            <form method="POST">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
+    <!-- COMBO TRIPLO -->
+    <section id="triplo">
+        <h1>Combo Triplo</h1>
+        <img src="../img/combo.triplo.jpeg" alt="">
+
+        <section id="detalhesTriplo">
+            <div>
+                <img src="../img/combo.triplo.jpeg" alt="">
+                <p>Acompanha uma grande porção de nuggets, batatas fritas, linguiça calabresa fatiada e três hambúrgueres com molhos especiais.</p>
             </div>
-            <img src="img/combo.triplo.jpeg" alt=""> 
-            <h1>Combo Triplo</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/combo.triplo.jpeg" alt=""> <!-- Imagem do combo-->
-        <p>Acompanha uma grande porção de nuggets, uma montanha de batatas fritas no centro, e uma porção farta de linguiça calabresa fatiada e frita. O combo é complementado por três hambúrgueres (feitos com pães de brioche e recheio simples) e é servido com molhos. </p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaoTriplo">Comprar</a></button>
+            </form>
 
-        <!-- Combo Familia-->
-        <section id="familia">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/combo.familia.batata.jpeg" alt=""> 
-            <h1>Combo Familia Batata </h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/combo.familia.batata.jpeg" alt=""> <!-- Imagem do combo-->
-        <p>O centro da bandeja é preenchido por uma montanha de batatas fritas crocantes, banhadas em um cremoso molho de queijo Cheddar derretido. Por cima, elas são carregadas com pedacinhos de bacon crocante. O combo é completado por quatro hambúrguer e acompanha porções individuais de um molho cremoso.</p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
-
-        <!-- Combo Familia Batata-->
-        <section id="batatafamilia">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/combo.familia.batata.jpeg" alt=""> 
-            <h1>Combo Familia Batata </h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/combo.familia.batata.jpeg" alt=""> <!-- Imagem do combo-->
-        <p>O centro da bandeja é preenchido por uma montanha de batatas fritas crocantes, banhadas em um cremoso molho de queijo Cheddar derretido. Por cima, elas são carregadas com pedacinhos de bacon crocante. O combo é completado por quatro hambúrguer e acompanha porções individuais de um molho cremoso.</p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
-
-        <!-- Combo Familia Frango-->
-        <section id="familiafrango">
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/combo.familia.jpeg" alt=""> 
-            <h1>Combo Familia Frango</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/combo.familia.jpeg" alt="Combo Supremo Hot Chicken"> <!-- Imagem do combo-->
-        <p>O combo é centrado em generosos pedaços de frango frito com tempero apimentado, e com picles de jalapeño. Ele vem acompanhado por uma montanha de batatas fritas temperadas, além de quatro deliciosos hamburgueres de frango acompanhada da salada coleslaw. o combo oferece potinhos de molho extra.</p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
-
-
-    <!-- Combo Simples-->
-      <section id="simples">
-           <nav>
-                <div class="menu-container">
-                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                    <div class="menu-opcoes">
-                        <form method="post">
-                            <button type="submit" name="editar">Editar</button>
-                            <button type="submit" name="sair">Sair</button>
-                            <button type="button">Detalhes</button>
-                        </form>
-                    </div>
+            <section id="finalizacaoTriplo">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/combo.triplo.jpeg" alt="">
                 </div>
-            <img src="" alt=""> 
-            <h1>Combo Simples</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/combo.simples.jpeg" alt=""> <!-- Imagem do combo 4-->
-        <p>No hambúrguer a duas carnes suculentas em um mar de queijo cheddar derretido e pedaços de bacon crocante. com cebola roxa fresca e um molho especial cremoso, envolto em um pão macio. O combo é complementado por uma porção de batatas fritas e uma lata gelada de Coca-Cola Zero.</p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
+                <form method="post">
+                    <h2>Entregar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h2>Retirar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento">
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
         </section>
+    </section>
 
+    <!-- COMBO FAMÍLIA BATATA -->
+    <section id="batatafamilia">
+        <h1>Combo Família Batata</h1>
+        <img src="../img/combo.familia.batata.jpeg" alt="">
+        <section id="detalhesBatataFamilia">
+            <div>
+                <img src="../img/combo.familia.batata.jpeg" alt="">
+                <p>Batatas fritas crocantes com molho cheddar, bacon, quatro hambúrgueres e molhos individuais.</p>
+            </div>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaoBatataFamilia">Comprar</a></button>
+            </form>
 
-
-        <!-- Combo Triplo Frango-->
-        <section id="triplofrango">
-           <nav>
-                <div class="menu-container">
-                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                    <div class="menu-opcoes">
-                        <form method="post">
-                            <button type="submit" name="editar">Editar</button>
-                            <button type="submit" name="sair">Sair</button>
-                            <button type="button">Detalhes</button>
-                        </form>
-                    </div>
+            <section id="finalizacaoBatataFamilia">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/combo.familia.batata.jpeg" alt="">
                 </div>
-            <img src="" alt=""> 
-            <h1>Combo Triplo de Frango</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="../img/combotripo.frango.jpeg" alt=""> <!-- Imagem do combo 5-->
-        <p>O combo tem uma porção de frango frito crocante e uma montanha de batatas fritas. Com hambúrgueres variados: desde o hambúgueres de frango com alface e molho, até hambúrgueres duplos com queijo e, uma opção com carne desfiada, além de uma fusão de frango frito e carne bovina.</p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
+                <form method="post">
+                    <h2>Entregar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h2>Retirar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento">
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
         </section>
+    </section>
+
+    <!-- COMBO SIMPLES -->
+    <section id="simples">
+        <h1>Combo Simples</h1>
+        <img src="../img/combo.simples.jpeg" alt="">
+        <section id="detalhesSimples">
+            <div>
+                <img src="../img/combo.simples.jpeg" alt="">
+                <p>Hambúrguer duplo com queijo, bacon, cebola roxa, molho especial e batatas fritas, acompanhado de refrigerante.</p>
+            </div>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaoSimples">Comprar</a></button>
+            </form>
+
+            <section id="finalizacaoSimples">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/combo.simples.jpeg" alt="">
+                </div>
+                <form method="post">
+                    <h2>Entregar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h2>Retirar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento">
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
+        </section>
+    </section>
+</section>
+
+<section id="triplofrango">
+    <h1>Combo Triplo de Frango</h1>
+    <img src="../img/combotripo.frango.jpeg" alt="">
+    <section id="detalhesTriploFrango">
+        <div>
+            <img src="../img/combotripo.frango.jpeg" alt="">
+            <p>O combo possui porção de frango frito crocante, montanha de batatas fritas, hambúrgueres variados (frango, duplos com queijo, carne desfiada) e salada coleslaw. Inclui potinhos de molho extra.</p>
+        </div>
+        <form method="post">
+            <label>Quantidade:</label>
+            <input type="number" name="quantidade">
+            <button><a href="#finalizacaoTriploFrango">Comprar</a></button>
+        </form>
+
+        <section id="finalizacaoTriploFrango">
+            <nav>
+                <img src="../img/logo.jpeg" alt="">
+                <ul>
+                    <li><a href="paginainicio.php">Inicio</a></li>
+                    <li><a href="pedidos.php">Pedidos</a></li>
+                    <li><a href="sobrenos.html">Sobre nós</a></li>
+                </ul>
+            </nav>
+            <div>
+                <img src="../img/combotripo.frango.jpeg" alt="">
+            </div>
+            <form method="post">
+                <h2>Entregar</h2>
+                <input name="entrega" type="radio">
+            </form>
+            <form method="post">
+                <h2>Retirar</h2>
+                <input name="entrega" type="radio">
+            </form>
+            <form method="post">
+                <h3>Método Pagamento</h3>
+                <select name="pagamento">
+                    <option value="cartao-credito">Cartão de Crédito</option>
+                    <option value="cartao-debito">Cartão de Débito</option>
+                    <option value="pix">Pix</option>
+                    <option value="dinheiro">Dinheiro</option>
+                </select>
+                <input type="submit">
+            </form>
+        </section>
+    </section>
+</section>
+
 </body>
 </html>
 <script>

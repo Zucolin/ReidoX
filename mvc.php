@@ -7,6 +7,5 @@ require_once "Controller/PagamentoController.php";
 $usuarioController = new UsuarioController($pdo);
 
 $usuarios = $usuarioController->listar();
-$produtos = $produtoController->listarProduto();
-$pagamentos = $pagamentoController->listarPagamento();
+
 ?>
