@@ -86,14 +86,10 @@ $nome = $_SESSION['nome_usuario'];
             <img src="../img/X_CheeseBurguer.png" alt="">
         </div>
         <form method="post">
-            <h2>Entregar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
-            <h2>Retirar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
+                <input type="hidden" name="produto" value="X-ChesseBurguer">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
             <h3>Método Pagamento</h3>
             <select name="pagamento">
                 <option value="cartao-credito">Cartão de Crédito</option>
@@ -134,14 +130,10 @@ $nome = $_SESSION['nome_usuario'];
             <img src="../img/X_Bacon.png" alt="">
         </div>
         <form method="post">
-            <h2>Entregar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
-            <h2>Retirar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
+                <input type="hidden" name="produto" value="X-Bacon">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
             <h3>Método Pagamento</h3>
             <select name="pagamento">
                 <option value="cartao-credito">Cartão de Crédito</option>
@@ -183,14 +175,10 @@ $nome = $_SESSION['nome_usuario'];
             <img src="../img/X_CatupiryBacon.png" alt="">
         </div>
         <form method="post">
-            <h2>Entregar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
-            <h2>Retirar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
+                <input type="hidden" name="produto" value="X-Catupiry Bacon">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
             <h3>Método Pagamento</h3>
             <select name="pagamento">
                 <option value="cartao-credito">Cartão de Crédito</option>
@@ -232,14 +220,10 @@ $nome = $_SESSION['nome_usuario'];
             <img src="../img/X_Chicken.png" alt="">
         </div>
         <form method="post">
-            <h2>Entregar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
-            <h2>Retirar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
+                <input type="hidden" name="produto" value="X-Chicken">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
             <h3>Método Pagamento</h3>
             <select name="pagamento">
                 <option value="cartao-credito">Cartão de Crédito</option>
@@ -281,14 +265,10 @@ $nome = $_SESSION['nome_usuario'];
             <img src="../img/X-Costela" alt="">
         </div>
         <form method="post">
-            <h2>Entregar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
-            <h2>Retirar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
+                <input type="hidden" name="produto" value="X-Costela">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
             <h3>Método Pagamento</h3>
             <select name="pagamento">
                 <option value="cartao-credito">Cartão de Crédito</option>
@@ -330,14 +310,10 @@ $nome = $_SESSION['nome_usuario'];
             <img src="../img/X-Salada.png" alt="">
         </div>
         <form method="post">
-            <h2>Entregar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
-            <h2>Retirar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
+                <input type="hidden" name="produto" value="X-Salada">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
             <h3>Método Pagamento</h3>
             <select name="pagamento">
                 <option value="cartao-credito">Cartão de Crédito</option>
@@ -379,14 +355,10 @@ $nome = $_SESSION['nome_usuario'];
             <img src="../img/X_Tudo.png" alt="">
         </div>
         <form method="post">
-            <h2>Entregar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
-            <h2>Retirar</h2>
-            <input name="entrega" type="radio">
-        </form>
-        <form method="post">
+                <input type="hidden" name="produto" value="X-Tudo">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
             <h3>Método Pagamento</h3>
             <select name="pagamento">
                 <option value="cartao-credito">Cartão de Crédito</option>
@@ -426,6 +398,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ../index.php');
         exit;
     }
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nomepedido=$_POST['produto'];
+    $quantidade=$_POST['quantidade'];
+
+    $pedido=$nomepedido." x".$quantidade;
+    require_once '../Controller/UsuarioController.php';
+    $controller = new UsuarioController($pdo);
+    $controller->enviarpedidos($pedido);
+    
 }
 ?>
  

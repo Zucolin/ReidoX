@@ -55,7 +55,7 @@ $nome = $_SESSION['nome_usuario'];
 
         <!-- Água-->
         <section id="agua">
-                <h1>Água (com/sem gás)</h1>
+                <h1>Água</h1>
             <img src="../img/agua.png" alt="">
             <p>Garrafa de água 500ml </p>
             <form method="post">
@@ -76,13 +76,10 @@ $nome = $_SESSION['nome_usuario'];
                     <img src="../img/agua.png" alt="">
                 </div>
                 <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
+                <input type="hidden" name="produto" value="Água">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                 <form method="post">
                     <h3>Método Pagamento</h3>
                     <select name="pagamento">
@@ -118,13 +115,10 @@ $nome = $_SESSION['nome_usuario'];
                     <img src="../img/coca.png" alt="">
                 </div>
                 <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
+                <input type="hidden" name="produto" value="Coca-Cola 350ml">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                 <form method="post">
                     <h3>Método Pagamento</h3>
                     <select name="pagamento">
@@ -161,13 +155,10 @@ $nome = $_SESSION['nome_usuario'];
                     <img src="../img/uva.png" alt="">
                 </div>
                 <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
+                <input type="hidden" name="produto" value="Lata Uva 350ml">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                 <form method="post">
                     <h3>Método Pagamento</h3>
                     <select name="pagamento">
@@ -205,13 +196,10 @@ $nome = $_SESSION['nome_usuario'];
                     <img src="../img/kuat.png" alt="kuat">
                 </div>
                 <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
+                <input type="hidden" name="produto" value="Lata Kuat 350ml">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                 <form method="post">
                     <h3>Método Pagamento</h3>
                     <select name="pagamento">
@@ -248,13 +236,10 @@ $nome = $_SESSION['nome_usuario'];
                     <img src="../img/sucoMaracuja.png" alt="">
                 </div>
                 <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
+                <input type="hidden" name="produto" value="Del-Valle Marácuja 290ml">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                 <form method="post">
                     <h3>Método Pagamento</h3>
                     <select name="pagamento">
@@ -292,13 +277,10 @@ $nome = $_SESSION['nome_usuario'];
                     <img src="../img/sucoUva.png" alt="uva">
                 </div>
                 <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
+                <input type="hidden" name="produto" value="Del-Valle Uva 290ml">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                 <form method="post">
                     <h3>Método Pagamento</h3>
                     <select name="pagamento">
@@ -337,6 +319,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ../index.php');
         exit;
     }
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nomepedido=$_POST['produto'];
+    $quantidade=$_POST['quantidade'];
+
+    $pedido=$nomepedido." x".$quantidade;
+    require_once '../Controller/UsuarioController.php';
+    $controller = new UsuarioController($pdo);
+    $controller->enviarpedidos($pedido);
+    
 }
 ?>
  
