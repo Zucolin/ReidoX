@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
     <header>
-            <img src="img/logo.jpeg" alt="">
+            <img class="logo" src="img/logo.jpeg" alt="">
         <ul>
             <li><a href="">Inicio</a></li> 
             <li><a href="">Pedidos</a></li>

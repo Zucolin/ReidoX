@@ -34,3 +34,11 @@ html, body {
       left: 10px;
       z-index: 10;
     }
+
+   .logo {
+    max-width: 80px;
+   } 
+
+   .tamanhoimg {
+    max-width: 80px;
+   }
