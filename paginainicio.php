@@ -49,11 +49,11 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="sobrenos.html">Sobre nós</a></li>
         </ul>
     </nav>
-    <a href="Escolha/combos.php"><img src="img/combo.familia.batata.jpeg" alt=""></a><!-- Combos-->
-    <a href="Escolha/lanches.php"><img src="img/lanche. frango.jpeg" alt=""></a><!-- X-Lanches -->
-    <a href="Escolha/acompanhamentos.php"><img src="img/porção.fritas.jpeg" alt=""></a><!-- Acompanhamentos -->
-    <a href="Escolha/sobremesas.php"><img src="img/sobrimesa.torta.jpeg" alt=""></a><!-- Sobrimesas -->
-    <a href="Escolha/bebidas.php"><img src="img/bebida.coca2l.jpeg" alt=""></a><!-- Bebidas-->
+    <a href="Escolha/combos.php"><img src="img/X_ComboIndividual.png" alt=""></a><!-- Combos-->
+    <a href="Escolha/lanches.php"><img src="img/X_Tudo.png" alt=""></a><!-- X-Lanches -->
+    <a href="Escolha/acompanhamentos.php"><img src="img/porcaobatata.png" alt=""></a><!-- Acompanhamentos -->
+    <a href="Escolha/sobremesas.php"><img src="img/mousseMaracuja.png" alt=""></a><!-- Sobrimesas -->
+    <a href="Escolha/bebidas.php"><img src="img/refri_capa.png" alt=""></a><!-- Bebidas-->
     </section>
     
 

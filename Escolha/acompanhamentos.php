@@ -46,20 +46,24 @@ $nome = $_SESSION['nome_usuario'];
         </ul>
     </nav>
 
-    <a href="#porcaocebola"><img src="../img/porcaoAnelbatata.png" alt=""></a>
-    <a href="#porcaobatata"><img src="../img/porcaobatata.png" alt=""></a>
-    <a href="#porcaofrangofrito"><img src="../img/porcaoFrangoFrito.png" alt=""></a>
-    <a href="#porcaomucarela"><img src="../img/porcaoMucarela.png" alt=""></a>
+    <a href="#porcaocebola" class="produto-link">
+        <img src="../img/porcaoAnelbatata.png" alt=""></a>
+    <a href="#porcaobatata" class="produto-link">
+        <img src="../img/porcaobatata.png" alt=""></a>
+    <a href="#porcaofrangofrito" class="produto-link">
+        <img src="../img/porcaoFrangoFrito.png" alt=""></a>
+    <a href="#porcaomucarela" class="produto-link">
+        <img src="../img/porcaoMucarela.png" alt=""></a>
    
     <!-- Porção Batata -->
 
 
         <!-- Produto específico -->
         <section id="porcaobatata">
-            <div>
-                <img src="../img/porcaobatata.png" alt="">
-                <h1>Porção de Fritas</h1>
-                <p>Crocrante por fora, macia por dentro, servida quentinha para acompanhar seu hambúrguer.</p>
+            <div class="produto-detalhe">
+                <img src="../img/porcaobatata.png" alt="" class="produto-img-detalhe">
+                <h1 class="produto-titulo">Porção de Fritas</h1>
+                <p class="produto-descricao">Crocrante por fora, macia por dentro, servida quentinha para acompanhar seu hambúrguer.</p>
             </div>
             <form method="post">
                 <label class="label-qtd">Quantidade:</label>
@@ -68,17 +72,17 @@ $nome = $_SESSION['nome_usuario'];
             </form>
 
             <!-- Finalização -->
-            <section id="finalizacaobatata">
-                <nav>
-                    <img src="../img/logo.jpeg" alt="">
-                    <ul>
+            <section id="finalizacaobatata" class="finalizacao">
+                <nav class="nav-escolha">
+                    <img src="../img/logo.jpeg" alt="" class="logo">
+                    <ul class="menu-principal">
                         <li><a href="paginainicio.php">Inicio</a></li>
                         <li><a href="pedidos.php">Pedidos</a></li>
                         <li><a href="sobrenos.html">Sobre nós</a></li>
                     </ul>
                 </nav>
-                <div>
-                    <img src="../img/porcaobatata.png" alt="">
+                <div class="produto-finalizacao">
+                    <img src="../img/porcaobatata.png" alt="" class="img-produto-finalizacao">
                 </div>
                 <form method="post">
                 <input type="hidden" name="produto" value="Porção de Batata" >
@@ -205,31 +209,33 @@ $nome = $_SESSION['nome_usuario'];
                 <button class="btn-comprar" type="submit"><a href="#finalizacaocebola">Comprar</a></button>
             </form>
 
-            <section id="finalizacaocebola">
-                <nav>
-                    <img src="../img/logo.png" alt="">
-                    <ul>
+            <section id="finalizacaocebola" class="finalização">
+                <nav class="nav-escolha">
+                    <img src="../img/logo.png" alt="" class="logo">
+                    <ul class="menu-principal">
                         <li><a href="paginainicio.php">Inicio</a></li>
                         <li><a href="pedidos.php">Pedidos</a></li>
                         <li><a href="sobrenos.html">Sobre nós</a></li>
                     </ul>
                 </nav>
-                <div>
-                    <img src="../img/porcaoAnelCebola.png" alt="">
+                <div class="produto-finalizacao">
+                    <img src="../img/porcaoAnelCebola.png" alt="" class="img-produto-finalizacao">
                 </div>
                 <form method="post">
                 <input type="hidden" name="produto" value="Porção de Aneis Cebola">
-                <h2>Tipo de Entrega</h2>
-                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-                    <h3>Método Pagamento</h3>
-                    <select name="pagamento" required>
+                <h2 class="forma-entrega">Tipo de Entrega</h2>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Entregar" class="input-entregas"required> Entregar</label>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Retirar" class="input-entregas" required> Retirar</label>
+                    <h3 class="forma-pagamento">Método Pagamento</h3>
+                    <select name="pagamento" class="escolha-pagamento" required>
                         <option value="cartao-credito">Cartão de Crédito</option>
                         <option value="cartao-debito">Cartão de Débito</option>
                         <option value="pix">Pix</option>
                         <option value="dinheiro">Dinheiro</option>
                     </select>
-                    <input type="submit">
+                    <input type="submit" class="btn-pagamento">
                 </form>
             </section>
         </section>
