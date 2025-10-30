@@ -34,7 +34,7 @@ class UsuarioController {
     }
 
     public function buscarUsuario($id) {
-        return $this->usuarioModel->buscarUsuario($id);
+        return $this->usuarioModel->buscarUsuario(id: $id);
     }
 
     public function cadastrar($nome, $email, $senha) {
@@ -98,5 +98,8 @@ class UsuarioController {
             ':user_id' => $user_id
         ]);
     }
+  
+    
 }
+
 ?>

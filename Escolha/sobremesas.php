@@ -38,62 +38,67 @@ $nome = $_SESSION['nome_usuario'];
                         </form>
                     </div>
                 </div>
-            <img src="logo.png" alt="">
-            <h1>Sobremesas</h1>
-        <ul>
+            <img src="logo.png" alt="" class="logo">
+            <h1 class="titulo-pagina">Sobremesas</h1>
+        <ul class="menu-principal">
             <li><a href="">Inicio</a></li>
             <li><a href="">Pedidos</a></li>
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href="#browniesorvete"><img src="img/brownieSorvete.png" alt=""></a><!-- Sobremesa 1-->
-        <a href="#moussemaracuja"><img src="img/mousseMaracuja.png" alt=""></a><!-- Sobremesa 2-->
-        <a href="#moussemorango"><img src="img/mousseMorango.png" alt=""></a><!-- Sobremesa 3-->
-        <a href="#sorveteflocos"><img src="img/sorveteflocos.png" alt=""></a><!-- Sobremesa 4-->
-        <a href="#torta"><img src="img/torta.png" alt=""></a><!-- Sobremesa 5-->
+        <a href="#browniesorvete" class="produto-link">
+            <img src="img/brownieSorvete.png" alt=""></a><!-- Sobremesa 1-->
+        <a href="#moussemaracuja"class="produto-link">
+            <img src="img/mousseMaracuja.png" alt=""></a><!-- Sobremesa 2-->
+        <a href="#moussemorango"class="produto-link">
+            <img src="img/mousseMorango.png" alt=""></a><!-- Sobremesa 3-->
+        <a href="#sorveteflocos"class="produto-link">
+            <img src="img/sorveteflocos.png" alt=""></a><!-- Sobremesa 4-->
+        <a href="#torta"class="produto-link">
+            <img src="img/torta.png" alt=""></a><!-- Sobremesa 5-->
 
 <!-- Sobremesa: Brownie e Sorvete  -->
 
 <!-- 1ª Seção: Página de escolha do produto -->
 <section id="brownieesorvete">
-    <div>
-        <img src="img/brownieSorvete.png" alt="">
-        <h1>Brownie com Sorvete</h1>
-        <p>Brownie quentinho e macio com uma bola de sorvete cremoso e calda de Morango. Irresistível!</p>
+    <div class="produto-detalhe">
+        <img src="img/brownieSorvete.png" alt="" class="produto-img-detalhe">
+        <h1 class="produto-titulo">Brownie com Sorvete</h1>
+        <p class="produto-descricao">Brownie quentinho e macio com uma bola de sorvete cremoso e calda de Morango. Irresistível!</p>
     </div>
     <form method="post">
-        <label>Quantidade:</label>
-        <input type="number" name="quantidade">
-        <button><a href="#finalizacaobrownieesorvete">Comprar</a></button>
+        <label class="label-qtd">Quantidade:</label>
+        <input type="number" name="quantidade" class="input-qtd">
+        <button class="btn-comprar"><a href="#finalizacaobrownieesorvete">Comprar</a></button>
     </form>
 
 
 <!-- 3ª Seção: Finalização da compra -->
-    <section id="finalizacaobrownieesorvete">
-        <nav>
-            <img src="../img/logo.jpeg" alt="">
-            <ul>
+    <section id="finalizacaobrownieesorvete" class="finalizacao">
+        <nav class="nav-escolha">
+            <img src="../img/logo.jpeg" alt="" class="logo">
+            <ul class="menu-principal">
                 <li><a href="paginainicio.php">Inicio</a></li>
                 <li><a href="pedidos.php">Pedidos</a></li>
                 <li><a href="sobrenos.html">Sobre nós</a></li>
             </ul>
         </nav>
-        <div>
-            <img src="img/brownieSorvete.png" alt="">
+        <div class="produto-finalizacao">
+            <img src="img/brownieSorvete.png" alt="" class="img-produto-finalizacao">
         </div>
         <form method="post">
                 <input type="hidden" name="produto" value="Brownie e Sorvete">
-                <h2>Tipo de Entrega</h2>
-                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-            <h3>Método Pagamento</h3>
-            <select name="pagamento">
+                <h2 class="forma-entrega">Tipo de Entrega</h2>
+                <label class="metodo-entrega"><input type="radio" name="entrega" value="Entregar" class="input-entregas" required> Entregar</label>
+                <label class="metodo-entrega"><input type="radio" name="entrega" value="Retirar" class="input-entregas"required> Retirar</label>
+            <h3 class="forma-pagamento">Método Pagamento</h3>
+            <select name="pagamento" class="escolha-pagamento">
                 <option value="cartao-credito">Cartão de Crédito</option>
                 <option value="cartao-debito">Cartão de Débito</option>
                 <option value="pix">Pix</option>
                 <option value="dinheiro">Dinheiro</option>
             </select>
-            <input type="submit">
+            <input type="submit" class="btn-pagamento">
         </form>
     </section>
 </section>
@@ -101,44 +106,46 @@ $nome = $_SESSION['nome_usuario'];
 
 <!-- 1ª Seção: Página de escolha do produto -->
 <section id="moussemaracuja">
-    <div>
-        <img src="img/mousseMaracuja.png" alt="">
-        <h1>Mousse de Maracujá</h1>
-        <p>Sobremesa leve e cremosa, com o equilíbrio perfeito entre o doce e o azedinho do maracujá.</p>
+    <div class="produto-detalhe">
+        <img src="img/mousseMaracuja.png" alt="" class="produto-img-detalhe">
+        <h1 class="produto-titulo">Mousse de Maracujá</h1>
+        <p class="produto-descricao">Sobremesa leve e cremosa, com o equilíbrio perfeito entre o doce e o azedinho do maracujá.</p>
     </div>
     <form method="post">
-        <label>Quantidade:</label>
-        <input type="number" name="quantidade">
-        <button><a href="#finalizacaomoussemaracuja">Comprar</a></button>
+        <label class="label-qtd">Quantidade:</label>
+        <input type="number" name="quantidade" class="input-qtd">
+        <button class="btn-comprar"><a href="#finalizacaomoussemaracuja">Comprar</a></button>
     </form>
 
 
 <!-- 3ª Seção: Finalização da compra -->
-    <section id="finalizacaomoussemaracuja">
-        <nav>
-            <img src="../img/logo.jpeg" alt="">
-            <ul>
+    <section id="finalizacaomoussemaracuja" class="finalizacao">
+        <nav class="nav-escolha">
+            <img src="../img/logo.png" alt="" class="logo">
+            <ul class="menu-principal">
                 <li><a href="paginainicio.php">Inicio</a></li>
                 <li><a href="pedidos.php">Pedidos</a></li>
                 <li><a href="sobrenos.html">Sobre nós</a></li>
             </ul>
         </nav>
-        <div>
-            <img src="img/mousseMaracuja" alt="">
+        <div class="produto-finalizacao">
+            <img src="img/mousseMaracuja" alt="" class="img-produto-finalizacao">
         </div>
         <form method="post">
                 <input type="hidden" name="produto" value="Mousse Maracujá">
-                <h2>Tipo de Entrega</h2>
-                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-            <h3>Método Pagamento</h3>
-            <select name="pagamento">
+                <h2 class="forma-entrega">Tipo de Entrega</h2>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Entregar" class="input-entregas" required> Entregar</label>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Retirar" class="input-entregas" required> Retirar</label>
+            <h3 class="forma-pagamento">Método Pagamento</h3>
+            <select name="pagamento" class="escolha-pagamento">
                 <option value="cartao-credito">Cartão de Crédito</option>
                 <option value="cartao-debito">Cartão de Débito</option>
                 <option value="pix">Pix</option>
                 <option value="dinheiro">Dinheiro</option>
             </select>
-            <input type="submit">
+            <input type="submit" class="btn-pagamento">
         </form>
     </section>
 </section>
@@ -146,43 +153,45 @@ $nome = $_SESSION['nome_usuario'];
 
 <!-- 1ª Seção: Página de escolha do produto -->
 <section id="moussemorango">
-    <div>
-        <img src="img/sobrimesa.mousse.jpeg" alt="">
-        <h1>Mousse de Morango</h1>
-        <p>Camadas cremosas e leves com pedaços de morango fresco, unindo doçura e frescor em cada colherada.</p>
+    <div class="produto-detalhe">
+        <img src="img/sobrimesa.mousse.jpeg" alt="" class="produto-img-detalhe">
+        <h1 class="produto-titulo">Mousse de Morango</h1>
+        <p class="produto-descricao">Camadas cremosas e leves com pedaços de morango fresco, unindo doçura e frescor em cada colherada.</p>
     </div>
     <form method="post">
-        <label>Quantidade:</label>
-        <input type="number" name="quantidade">
-        <button><a href="#finalizacaomoussemorango">Comprar</a></button>
+        <label class="label-qtd">Quantidade:</label>
+        <input type="number" name="quantidade" class="input-qtd">
+        <button class="btn-comprar"><a href="#finalizacaomoussemorango">Comprar</a></button>
     </form>
 
 <!-- 3ª Seção: Finalização da compra -->
-    <section id="finalizacaomoussemorango">
-        <nav>
-            <img src="../img/logo.jpeg" alt="">
-            <ul>
+    <section id="finalizacaomoussemorango" class="finalizacao">
+        <nav class="nav-escolha">
+            <img src="../img/logo.png" alt="" class="logo">
+            <ul class="menu-principal">
                 <li><a href="paginainicio.php">Inicio</a></li>
                 <li><a href="pedidos.php">Pedidos</a></li>
                 <li><a href="sobrenos.html">Sobre nós</a></li>
             </ul>
         </nav>
-        <div>
-            <img src="img/mousseMorango.png" alt="">
+        <div class="produto-finalizacao">
+            <img src="img/mousseMorango.png" alt=""class="img-produto-finalizacao">
         </div>
         <form method="post">
                 <input type="hidden" name="produto" value="Mousse Morango">
-                <h2>Tipo de Entrega</h2>
-                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-            <h3>Método Pagamento</h3>
-            <select name="pagamento">
+                <h2 class="forma-entrega">Tipo de Entrega</h2>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Entregar" class="input-entregas " required> Entregar</label>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Retirar" class="input-entregas"required> Retirar</label>
+            <h3 class="forma-pagamento">Método Pagamento</h3>
+            <select name="pagamento" class="escolha-pagamento">
                 <option value="cartao-credito">Cartão de Crédito</option>
                 <option value="cartao-debito">Cartão de Débito</option>
                 <option value="pix">Pix</option>
                 <option value="dinheiro">Dinheiro</option>
             </select>
-            <input type="submit">
+            <input type="submit" class="btn-pagamento">
         </form>
     </section>
 </section>
@@ -190,44 +199,46 @@ $nome = $_SESSION['nome_usuario'];
 
 <!-- 1ª Seção: Página de escolha do produto -->
 <section id="sorveteflocos">
-    <div>
-        <img src="img/sorveteFlocos" alt="">
-        <h1>Sorvete de Flocos</h1>
-        <p>Sorvete de flocos cremoso servido com brownie de chocolate e calda deliciosa. Uma combinação perfeita!</p>
+    <div class="produto-detalhe">
+        <img src="img/sorveteFlocos" alt="" class="produto-img-detalhe">
+        <h1 class="produto-titulo">Sorvete de Flocos</h1>
+        <p class="produto-descricao">Sorvete de flocos cremoso servido com brownie de chocolate e calda deliciosa. Uma combinação perfeita!</p>
     </div>
     <form method="post">
-        <label>Quantidade:</label>
-        <input type="number" name="quantidade">
-        <button><a href="#finalizacaosorvete">Comprar</a></button>
+        <label class="label-qtd">Quantidade:</label>
+        <input type="number" name="quantidade" class="input-qtd">
+        <button class="btn-comprar"><a href="#finalizacaosorvete">Comprar</a></button>
     </form>
 
 
 <!-- 3ª Seção: Finalização da compra -->
-    <section id="finalizacaosorvete">
-        <nav>
-            <img src="../img/logo.jpeg" alt="">
-            <ul>
+    <section id="finalizacaosorvete" class="finalizacao">
+        <nav class="nav-escolha">
+            <img src="../img/logo.png" alt="" class="logo">
+            <ul class="menu-principal">
                 <li><a href="paginainicio.php">Inicio</a></li>
                 <li><a href="pedidos.php">Pedidos</a></li>
                 <li><a href="sobrenos.html">Sobre nós</a></li>
             </ul>
         </nav>
-        <div>
-            <img src="img/sorveteflocos.png" alt="">
+        <div class="produto-finalizacao">
+            <img src="img/sorveteflocos.png" alt="" class="img-produto-finalizacao">
         </div>
         <form method="post">
                 <input type="hidden" name="produto" value="Sorvete">
-                <h2>Tipo de Entrega</h2>
-                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-            <h3>Método Pagamento</h3>
-            <select name="pagamento">
+                <h2 class="forma-entrega">Tipo de Entrega</h2>
+                <label class="metodo-entrega ">
+                    <input type="radio" name="entrega" value="Entregar" class="input-entregas"required> Entregar</label>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Retirar" class="input-entregas"required> Retirar</label>
+            <h3 class="forma-pagamento">Método Pagamento</h3>
+            <select name="pagamento" class="escolha-pagamento">
                 <option value="cartao-credito">Cartão de Crédito</option>
                 <option value="cartao-debito">Cartão de Débito</option>
                 <option value="pix">Pix</option>
                 <option value="dinheiro">Dinheiro</option>
             </select>
-            <input type="submit">
+            <input type="submit" class="btn-pagamento">
         </form>
     </section>
 </section>
@@ -235,44 +246,46 @@ $nome = $_SESSION['nome_usuario'];
 
 <!-- 1ª Seção: Página de escolha do produto -->
 <section id="torta">
-    <div>
-        <img src="img/torta.png" alt="">
-        <h1>Torta de Oreo</h1>
-        <p>Camadas cremosas de chocolate e baunilha sobre base crocante de biscoito Oreo, finalizada com calda de chocolate.</p>
+    <div class="produto-detalhe">
+        <img src="img/torta.png" alt="" class="produto-img-detalhe">
+        <h1 class="produto-titulo ">Torta de Oreo</h1>
+        <p class="produto-descricao">Camadas cremosas de chocolate e baunilha sobre base crocante de biscoito Oreo, finalizada com calda de chocolate.</p>
     </div>
     <form method="post">
-        <label>Quantidade:</label>
-        <input type="number" name="quantidade">
-        <button><a href="#finalizacaotorta">Comprar</a></button>
+        <label class="label-qtd">Quantidade:</label>
+        <input type="number" name="quantidade" class="input-qtd">
+        <button class="btn-comprar"><a href="#finalizacaotorta">Comprar</a></button>
     </form>
 
 
 <!-- 3ª Seção: Finalização da compra -->
-    <section id="finalizacaotorta">
-        <nav>
-            <img src="../img/logo.jpeg" alt="">
-            <ul>
+    <section id="finalizacaotorta" class="finalizacao">
+        <nav class="nav-escolha">
+            <img src="../img/logo.png" alt="" class="logo">
+            <ul class="menu-principal">
                 <li><a href="paginainicio.php">Inicio</a></li>
                 <li><a href="pedidos.php">Pedidos</a></li>
                 <li><a href="sobrenos.html">Sobre nós</a></li>
             </ul>
         </nav>
-        <div>
-            <img src="img/torta.png" alt="">
+        <div class="produto-finalizacao">
+            <img src="img/torta.png" alt="" class="img-produto-finalizacao">
         </div>
         <form method="post">
                 <input type="hidden" name="produto" value="Torta de Oreo">
-                <h2>Tipo de Entrega</h2>
-                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-            <h3>Método Pagamento</h3>
-            <select name="pagamento">
+                <h2 class="forma-entrega">Tipo de Entrega</h2>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Entregar" class="input-entregas" required> Entregar</label>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Retirar" class="input-entregas" required> Retirar</label>
+            <h3 class="forma-pagamento">Método Pagamento</h3>
+            <select name="pagamento" class="escolha-pagamento">
                 <option value="cartao-credito">Cartão de Crédito</option>
                 <option value="cartao-debito">Cartão de Débito</option>
                 <option value="pix">Pix</option>
                 <option value="dinheiro">Dinheiro</option>
             </select>
-            <input type="submit">
+            <input type="submit" class="btn-pagamento">
         </form>
     </section>
 </section>
