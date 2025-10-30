@@ -66,23 +66,23 @@ $nome = $_SESSION['nome_usuario'];
                 <p class="produto-descricao">Crocrante por fora, macia por dentro, servida quentinha para acompanhar seu hambúrguer.</p>
             </div>
             <form method="post">
-                <label>Quantidade:</label>
+                <label class="label-quantidade">Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button type="submit"><a href="#finalizacaobatata">Comprar</a></button>
+                <button class="btn-comprar"type="submit"><a href="#finalizacaobatata">Comprar</a></button>
             </form>
 
             <!-- Finalização -->
-            <section id="finalizacaobatata">
-                <nav>
-                    <img src="../img/logo.jpeg" alt="">
-                    <ul>
+            <section id="finalizacaobatata"  class="finalizacao">
+                <nav class="nav-escolha">
+                    <img src="../img/logo.png" alt="" class="logo">
+                    <ul class="menu-principal">
                         <li><a href="paginainicio.php">Inicio</a></li>
                         <li><a href="pedidos.php">Pedidos</a></li>
                         <li><a href="sobrenos.html">Sobre nós</a></li>
                     </ul>
                 </nav>
-                <div>
-                    <img src="../img/porcaobatata.png" alt="">
+                <div class="produto-finalizacao">
+                    <img src="../img/porcaobatata.png" alt="" class="img-produto-finalizacao">
                 </div>
                 <h2>Tipo de Entrega</h2>
                 <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
