@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <img class="logo" src="img/logo.jpeg" alt=""> <!-- Logo no centro da tela-->
+    <img src="img/logo.jpeg" alt=""> <!-- Logo no centro da tela-->
     <!-- Abaixo o formulario de cadastro-->
     <form method="post"> 
         <label for="cep">CEP:</label>
@@ -23,6 +23,8 @@
 </body>
 
 <?php
+
+$idatual = $_GET["id"];
 try{
      require_once 'DB/Database.php';
         require_once 'Controller/UsuarioController.php';
@@ -36,7 +38,7 @@ try{
     $numero=$_POST['numero'];
 
         
-        $controller->cadastrarEndereco($cep, $rua, $numero); // chama a função do controller aqui mesmo
+        $controller->atualizar($cep, $rua, $numero,$idatual); // chama a função do controller aqui mesmo
         
         session_start();
 

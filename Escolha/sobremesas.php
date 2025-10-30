@@ -5,7 +5,7 @@ session_start();
 // Se clicou em "sair"
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sair'])) {
     session_destroy();
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit;
 }
 
@@ -14,6 +14,7 @@ if (!isset($_SESSION['nome_usuario'])) {
     header('Location: index.php');
     exit;
 }
+$nome = $_SESSION['nome_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -22,188 +23,306 @@ if (!isset($_SESSION['nome_usuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../estilo.css">
+    
 </head>
 <body>
     <section id="sobremesas">
+       <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
+            <img src="logo.png" alt="">
+            <h1>Sobremesas</h1>
+        <ul>
+            <li><a href="">Inicio</a></li>
+            <li><a href="">Pedidos</a></li>
+            <li><a href="">Sobre nós</a></li>
+        </ul>
+        </nav>
+        <a href="#browniesorvete"><img src="img/brownieSorvete.png" alt=""></a><!-- Sobremesa 1-->
+        <a href="#moussemaracuja"><img src="img/mousseMaracuja.png" alt=""></a><!-- Sobremesa 2-->
+        <a href="#moussemorango"><img src="img/mousseMorango.png" alt=""></a><!-- Sobremesa 3-->
+        <a href="#sorveteflocos"><img src="img/sorveteflocos.png" alt=""></a><!-- Sobremesa 4-->
+        <a href="#torta"><img src="img/torta.png" alt=""></a><!-- Sobremesa 5-->
+
+<!-- Sobremesa: Brownie e Sorvete  -->
+
+<!-- 1ª Seção: Página de escolha do produto -->
+<section id="brownieesorvete">
+    <div>
+        <img src="img/brownieSorvete.png" alt="">
+        <h1>Brownie com Sorvete</h1>
+        <p>Brownie quentinho e macio com uma bola de sorvete cremoso e calda de Morango. Irresistível!</p>
+    </div>
+    <form method="post">
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade">
+        <button><a href="#finalizacaobrownieesorvete">Comprar</a></button>
+    </form>
+
+
+<!-- 3ª Seção: Finalização da compra -->
+    <section id="finalizacaobrownieesorvete">
         <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            </div>
-            <img src="" alt="">
-            <h1>Sobremesa</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
+            <img src="../img/logo.jpeg" alt="">
+            <ul>
+                <li><a href="paginainicio.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
         </nav>
-        <a href=""><img src="img/sobrimesa.bolopote.jpeg" alt=""></a><!-- Sobrimesa 1-->
-        <a href=""><img src="img/sobrimesa.milkshake.jpeg" alt=""></a><!-- Sobrimesa 2-->
-        <a href=""><img src="img/sobrimesa.mousse.jpeg" alt=""></a><!-- Sobrimesa 3-->
-        <a href=""><img src="img/sobrimesa.pudim.jpeg" alt=""></a><!-- Sobrimesa 4-->
-        <a href=""><img src="img/sobrimesa.torta.jpeg" alt=""></a><!-- Sobrimesa 5-->
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/sobrimesa.bolopote.jpeg" alt=""> 
-            <h1>Bolo de Pote </h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/sobrimesa.bolopote.jpeg" alt=""> <!-- Imagem do   sobrimesa-->
-        <p>A base da sobremesa é uma mistura de cremes e massas de chocolate, uma camada de creme de chocolate ao leite, uma camada de massa bolo, e uma camada de castanhas, é finalizada no topo com um chantilly e um brigadeiro no topo coberto por castanhas.</p> <!-- Descrição do sobrimesa-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
+        <div>
+            <img src="img/brownieSorvete.png" alt="">
+        </div>
+        <form method="post">
+            <h2>Entregar</h2>
+            <input name="entrega" type="radio">
         </form>
-        </section>
-
-
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/sobrimesa.milkshake.jpeg" alt=""> 
-            <h1>Milkshake </h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/sobrimesa.milkshake.jpeg" alt=""> <!-- Imagem do SOBRIMESA-->
-        <p>O Milkshake apresenta uma base espessa e gelada de sabor achocolatado, realçada por um ziguezague de calda de chocolate. É coroado com um  farelo de biscoito de chocolate. Finalizado com chantilly</p> <!-- Descrição do SOBRIMESA-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
+        <form method="post">
+            <h2>Retirar</h2>
+            <input name="entrega" type="radio">
         </form>
-        </section>
-
-
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/sobrimesa.mousse.jpeg" alt=""> 
-            <h1>Mousse </h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/sobrimesa.mousse.jpeg" alt=""> <!-- Imagem do sobremesa-->
-        <p>A sobremesa começa com uma base crocante de biscoito de chocolate. Sobre ela, repousam camadas de mousse de chocolate, que variam do doce ao leite e amargo. O topo é coroado com uma espiral de chantilly, lascas de chocolate e framboesas frescas, com um toque de hortelã.</p> <!-- Descrição do sobremesa-->
-        <form action="">
+        <form method="post">
+            <h3>Método Pagamento</h3>
+            <select name="pagamento">
+                <option value="cartao-credito">Cartão de Crédito</option>
+                <option value="cartao-debito">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
             <input type="submit">
-            <input type="number">
         </form>
-        </section>
-
-
-<section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/sobrimesa.pudim.jpeg" alt=""> 
-            <h1>Pudim</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/sobrimesa.pudim.jpeg" alt=""> <!-- Imagem do sobrimesa-->
-        <p>A sobremesa apresenta uma massa suave e aveludada. Ela é banhada por uma calda de caramelo dourado. O prato é decorado com uma coroa de frutas vermelhas frescas. Um toque final de folhas de hortelã.</p> <!-- Descrição do sobrimesa-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
-
-
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/sobrimesa.torta.jpeg" alt=""> 
-            <h1>Torta de chocolate</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/sobrimesa.torta.jpeg" alt=""> <!-- Imagem do porção-->
-        <p>A fatia revela camadas, começando por uma base de bolo de chocolate, seguida por texturas cremosas que variam, indo do chocolate preto ao leite e um creme de baunilha. A torta é finalizada com uma camada lisa de ganache e um ziguezague de calda de chocolate. O toque final é dado pelos biscoitos, que adicionam crocância</p> <!-- Descrição do porção-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
     </section>
+</section>
+<!-- Sobremesa: mousse de maracuja -->
+
+<!-- 1ª Seção: Página de escolha do produto -->
+<section id="moussemaracuja">
+    <div>
+        <img src="img/mousseMaracuja.png" alt="">
+        <h1>Mousse de Maracujá</h1>
+        <p>Sobremesa leve e cremosa, com o equilíbrio perfeito entre o doce e o azedinho do maracujá.</p>
+    </div>
+    <form method="post">
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade">
+        <button><a href="#finalizacaomoussemaracuja">Comprar</a></button>
+    </form>
+
+
+<!-- 3ª Seção: Finalização da compra -->
+    <section id="finalizacaomoussemaracuja">
+        <nav>
+            <img src="../img/logo.jpeg" alt="">
+            <ul>
+                <li><a href="paginainicio.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
+        </nav>
+        <div>
+            <img src="img/mousseMaracuja" alt="">
+        </div>
+        <form method="post">
+            <h2>Entregar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h2>Retirar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h3>Método Pagamento</h3>
+            <select name="pagamento">
+                <option value="cartao-credito">Cartão de Crédito</option>
+                <option value="cartao-debito">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+            <input type="submit">
+        </form>
+    </section>
+</section>
+<!-- Sobremesa: Mousse de Morango -->
+
+<!-- 1ª Seção: Página de escolha do produto -->
+<section id="moussemorango">
+    <div>
+        <img src="img/sobrimesa.mousse.jpeg" alt="">
+        <h1>Mousse de Morango</h1>
+        <p>Camadas cremosas e leves com pedaços de morango fresco, unindo doçura e frescor em cada colherada.</p>
+    </div>
+    <form method="post">
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade">
+        <button><a href="#finalizacaomoussemorango">Comprar</a></button>
+    </form>
+
+<!-- 3ª Seção: Finalização da compra -->
+    <section id="finalizacaomoussemorango">
+        <nav>
+            <img src="../img/logo.jpeg" alt="">
+            <ul>
+                <li><a href="paginainicio.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
+        </nav>
+        <div>
+            <img src="img/mousseMorango.png" alt="">
+        </div>
+        <form method="post">
+            <h2>Entregar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h2>Retirar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h3>Método Pagamento</h3>
+            <select name="pagamento">
+                <option value="cartao-credito">Cartão de Crédito</option>
+                <option value="cartao-debito">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+            <input type="submit">
+        </form>
+    </section>
+</section>
+<!-- Sobremesa: Sorvete Flocos-->
+
+<!-- 1ª Seção: Página de escolha do produto -->
+<section id="sorveteflocos">
+    <div>
+        <img src="img/sorveteFlocos" alt="">
+        <h1>Sorvete de Flocos</h1>
+        <p>Sorvete de flocos cremoso servido com brownie de chocolate e calda deliciosa. Uma combinação perfeita!</p>
+    </div>
+    <form method="post">
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade">
+        <button><a href="#finalizacaosorvete">Comprar</a></button>
+    </form>
+
+
+<!-- 3ª Seção: Finalização da compra -->
+    <section id="finalizacaosorvete">
+        <nav>
+            <img src="../img/logo.jpeg" alt="">
+            <ul>
+                <li><a href="paginainicio.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
+        </nav>
+        <div>
+            <img src="img/sorveteflocos.png" alt="">
+        </div>
+        <form method="post">
+            <h2>Entregar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h2>Retirar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h3>Método Pagamento</h3>
+            <select name="pagamento">
+                <option value="cartao-credito">Cartão de Crédito</option>
+                <option value="cartao-debito">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+            <input type="submit">
+        </form>
+    </section>
+</section>
+<!-- Sobremesa: Torta de Oreo -->
+
+<!-- 1ª Seção: Página de escolha do produto -->
+<section id="torta">
+    <div>
+        <img src="img/torta.png" alt="">
+        <h1>Torta de Oreo</h1>
+        <p>Camadas cremosas de chocolate e baunilha sobre base crocante de biscoito Oreo, finalizada com calda de chocolate.</p>
+    </div>
+    <form method="post">
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade">
+        <button><a href="#finalizacaotorta">Comprar</a></button>
+    </form>
+
+
+<!-- 3ª Seção: Finalização da compra -->
+    <section id="finalizacaotorta">
+        <nav>
+            <img src="../img/logo.jpeg" alt="">
+            <ul>
+                <li><a href="paginainicio.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
+        </nav>
+        <div>
+            <img src="img/torta.png" alt="">
+        </div>
+        <form method="post">
+            <h2>Entregar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h2>Retirar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h3>Método Pagamento</h3>
+            <select name="pagamento">
+                <option value="cartao-credito">Cartão de Crédito</option>
+                <option value="cartao-debito">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+            <input type="submit">
+        </form>
+    </section>
+</section>
 </body>
 </html>
 <script>
-  function toggleMenu() {
-    const menu = document.getElementById("menu");
+function toggleMenu(button) {
+    // Pega o menu correspondente ao botão clicado dentro do mesmo container
+    const menu = button.parentElement.querySelector('.menu-opcoes');
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
-  }
+}
 
-  // Fecha o menu se clicar fora dele
-  window.addEventListener('click', function(e) {
-    const menu = document.getElementById("menu");
-    const btn = document.querySelector('.menu-btn');
-    if (!btn.contains(e.target)) {
-      menu.style.display = "none";
-    }
-  });
+// Fecha todos os menus se clicar fora
+window.addEventListener('click', function(e) {
+    document.querySelectorAll('.menu-opcoes').forEach(menu => {
+        const btn = menu.parentElement.querySelector('.menu-btn');
+        if (menu.style.display === "block" && !btn.contains(e.target) && !menu.contains(e.target)) {
+            menu.style.display = "none";
+        }
+    });
+});
 </script>
+</body>
+</html>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sair'])) {
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit;
     }
 }
 ?>
+ 

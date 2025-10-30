@@ -41,11 +41,12 @@ try{
        
 
         
-        $controller->cadastrar($nome, $email, $senha); // chama a função do controller aqui mesmo
+       $idatual = $controller->cadastrar($nome, $email, $senha); // chama a função do controller aqui mesmo
         
         session_start();
         $_SESSION['nome_usuario'] = $_POST['nome'];
-        header('Location: endereco.php'); // redireciona só depois da sessão estar salva
+        $_SESSION['user_id'] = $idatual;
+        header("Location: endereco.php?id=$idatual"); // redireciona só depois da sessão estar salva
         exit;
         
     }

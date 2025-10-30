@@ -42,18 +42,18 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>
             </div>
-     <img class="logo" src="img/logo.jpeg" alt="">
+     <img src="img/logo.jpeg" alt="">
         <ul>
             <li><a href="paginainicio.php">Inicio</a></li>
             <li><a href="pedidos.php">Pedidos</a></li>
             <li><a href="sobrenos.html">Sobre nós</a></li>
         </ul>
     </nav>
-    <a class="tamanhoimg" href="Escolha/combos.php"><img src="img/combo.familia.batata.jpeg" alt=""></a><!-- Combos-->
-    <a class="tamanhoimg" href="Escolha/lanches.php"><img src="img/lanche. frango.jpeg" alt=""></a><!-- X-Lanches -->
-    <a class="tamanhoimg" href="Escolha/acompanhamentos.php"><img src="img/porção.fritas.jpeg" alt=""></a><!-- Acompanhamentos -->
-    <a class="tamanhoimg" href="Escolha/sobremesas.php"><img src="img/sobrimesa.torta.jpeg" alt=""></a><!-- Sobrimesas -->
-    <a class="tamanhoimg" href="Escolha/bebidas.php"><img src="img/bebida.coca2l.jpeg" alt=""></a><!-- Bebidas-->
+    <a href="Escolha/combos.php"><img src="img/combo.familia.batata.jpeg" alt=""></a><!-- Combos-->
+    <a href="Escolha/lanches.php"><img src="img/lanche. frango.jpeg" alt=""></a><!-- X-Lanches -->
+    <a href="Escolha/acompanhamentos.php"><img src="img/porção.fritas.jpeg" alt=""></a><!-- Acompanhamentos -->
+    <a href="Escolha/sobremesas.php"><img src="img/sobrimesa.torta.jpeg" alt=""></a><!-- Sobrimesas -->
+    <a href="Escolha/bebidas.php"><img src="img/bebida.coca2l.jpeg" alt=""></a><!-- Bebidas-->
     </section>
     
 

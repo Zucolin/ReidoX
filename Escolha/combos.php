@@ -5,7 +5,7 @@ session_start();
 // Se clicou em "sair"
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sair'])) {
     session_destroy();
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit;
 }
 
@@ -14,6 +14,7 @@ if (!isset($_SESSION['nome_usuario'])) {
     header('Location: index.php');
     exit;
 }
+$nome = $_SESSION['nome_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -25,17 +26,18 @@ if (!isset($_SESSION['nome_usuario'])) {
     <link rel="stylesheet" href="../estilo.css">
 </head>
 <body>
-        <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                    <button type="submit" name="editar" href="#">Editar</button>
-                    <button type="submit" name="sair" href="#">Sair</button>
-                    <button href="#">Detalhes</button>
-                    </form>
-            </div>
-            <img src="img/combo.triplo.jpeg" alt="">
+       <nav>
+                <div class="menu-container">
+                    <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                    <div class="menu-opcoes">
+                        <form method="post">
+                            <button type="submit" name="editar">Editar</button>
+                            <button type="submit" name="sair">Sair</button>
+                            <button type="button">Detalhes</button>
+                        </form>
+                    </div>
+                </div>
+            <img src="logo.png" alt="">
             <h1>Combos</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -43,244 +45,178 @@ if (!isset($_SESSION['nome_usuario'])) {
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href=""><img src="img/combo.triplo.jpeg" alt=""></a><!-- Combo 1-->
-        <a href=""><img src="img/combo.familia.batata.jpeg" alt=""></a><!-- Combo 2-->
-        <a href=""><img src="img/combo.familia.jpeg" alt=""></a><!-- Combo 3-->
-        <a href=""><img src="img/combo.simples.jpeg" alt=""></a><!-- Combo 4-->
-        <a href=""><img src="img/combotripo.frango.jpeg" alt=""></a><!-- Combo 5-->
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-            <form method="POST">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
+        <a href="#x-simples"><img src="../img/X_ComboSimples.png" alt=""></a><!-- Combo 1-->
+        <a href="#x-individual"><img src="../img/X_ComboIndividual.png" alt=""></a><!-- Combo 2-->
+        <a href="#x-familia"><img src="../img/X_ComboFamilia.png" alt=""></a><!-- Combo 3-->
+      
+        <!-- Combo simples-->
+    <!-- COMBO SIMPLES -->
+    <section id="x-simples">
+            <div>
+                <img src="../img/X_ComboSimples.png" alt="">
+                <p>Hambúrguer clássico com queijo, alface, tomate e batata frita crocante. Uma combinação tradicional e deliciosa!</p>
             </div>
-            <img src="img/combo.triplo.jpeg" alt=""> 
-            <h1>Combo Triplo</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/combo.triplo.jpeg" alt=""> <!-- Imagem do combo-->
-        <p>Acompanha uma grande porção de nuggets, uma montanha de batatas fritas no centro, e uma porção farta de linguiça calabresa fatiada e frita. O combo é complementado por três hambúrgueres (feitos com pães de brioche e recheio simples) e é servido com molhos. </p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaox-simples">Comprar</a></button>
+            </form>
+
+            <section id="finalizacaox-simples">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/X_ComboSimples.png" alt="">
+                </div>
+                <form method="post">
+                    <h2>Entregar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h2>Retirar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento">
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
         </section>
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
+    </section>
+
+    <!-- COMBO INDIVIDUAL -->
+    <section id="x-individual">
+            <div>
+                <img src="../img/X_ComboIndividual.png" alt="">
+                <p>Hambúrguer artesanal com queijo derretido, bacon, alface, tomate, batata frita e refrigerante. Sabor completo em uma refeição prática!</p>
+            </div>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaox-individual">Comprar</a></button>
+            </form>
+
+            <section id="finalizacaox-individual">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/X_ComboIndividual.png" alt="">
+                </div>
                 <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/combo.familia.batata.jpeg" alt=""> 
-            <h1>Combo Familia Batata </h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/combo.familia.batata.jpeg" alt=""> <!-- Imagem do combo-->
-        <p>O centro da bandeja é preenchido por uma montanha de batatas fritas crocantes, banhadas em um cremoso molho de queijo Cheddar derretido. Por cima, elas são carregadas com pedacinhos de bacon crocante. O combo é completado por quatro hambúrguer e acompanha porções individuais de um molho cremoso.</p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section><section id="combos">
-        <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
+                    <h2>Entregar</h2>
+                    <input name="entrega" type="radio">
+                </form>
                 <form method="post">
-                    <button type="submit" name="editar" href="#">Editar</button>
-                    <button type="submit" name="sair" href="#">Sair</button>
-                    <button href="#">Detalhes</button>
-                    </form>
-            </div>
-            <img src="img/combo.triplo.jpeg" alt="">
-            <h1>Combos</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <a href=""><img src="img/combo.triplo.jpeg" alt=""></a><!-- Combo 1-->
-        <a href=""><img src="img/combo.familia.batata.jpeg" alt=""></a><!-- Combo 2-->
-        <a href=""><img src="img/combo.familia.jpeg" alt=""></a><!-- Combo 3-->
-        <a href=""><img src="img/combo.simples.jpeg" alt=""></a><!-- Combo 4-->
-        <a href=""><img src="img/combotripo.frango.jpeg" alt=""></a><!-- Combo 5-->
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-            <form method="POST">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/combo.triplo.jpeg" alt=""> 
-            <h1>Combo Triplo</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/combo.triplo.jpeg" alt=""> <!-- Imagem do combo-->
-        <p>Acompanha uma grande porção de nuggets, uma montanha de batatas fritas no centro, e uma porção farta de linguiça calabresa fatiada e frita. O combo é complementado por três hambúrgueres (feitos com pães de brioche e recheio simples) e é servido com molhos. </p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
+                    <h2>Retirar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento">
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
         </section>
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
+    </section>
+
+    <!-- COMBO Familia -->
+    <section id="x-familia">
+
+            <div>
+                <img src="../img/X_ComboFamília.png" alt="">
+                <p>rês hambúrgueres artesanais acompanhados de fritas, pedaços de carne e molhos especiais. Perfeito para compartilhar e saborear juntos!</p>
             </div>
-            <img src="img/combo.familia.batata.jpeg" alt=""> 
-            <h1>Combo Familia Batata </h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/combo.familia.batata.jpeg" alt=""> <!-- Imagem do combo-->
-        <p>O centro da bandeja é preenchido por uma montanha de batatas fritas crocantes, banhadas em um cremoso molho de queijo Cheddar derretido. Por cima, elas são carregadas com pedacinhos de bacon crocante. O combo é completado por quatro hambúrguer e acompanha porções individuais de um molho cremoso.</p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaox-familia">Comprar</a></button>
+            </form>
+
+            <section id="finalizacaox-familia">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/X_ComboFamília.png" alt="">
+                </div>
                 <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/combo.familia.jpeg" alt=""> 
-            <h1>Combo Familia Frango</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/combo.familia.jpeg" alt="Combo Supremo Hot Chicken"> <!-- Imagem do combo-->
-        <p>O combo é centrado em generosos pedaços de frango frito com tempero apimentado, e com picles de jalapeño. Ele vem acompanhado por uma montanha de batatas fritas temperadas, além de quatro deliciosos hamburgueres de frango acompanhada da salada coleslaw. o combo oferece potinhos de molho extra.</p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
+                    <h2>Entregar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h2>Retirar</h2>
+                    <input name="entrega" type="radio">
+                </form>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento">
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
         </section>
+    </section>
+</section>
 
-
-
-      <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="" alt=""> 
-            <h1>Combo Simples</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/combo.simples.jpeg" alt=""> <!-- Imagem do combo 4-->
-        <p>No hambúrguer a duas carnes suculentas em um mar de queijo cheddar derretido e pedaços de bacon crocante. com cebola roxa fresca e um molho especial cremoso, envolto em um pão macio. O combo é complementado por uma porção de batatas fritas e uma lata gelada de Coca-Cola Zero.</p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
-
-
-
-
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="" alt=""> 
-            <h1>Combo Triplo de Frango</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/combotripo.frango.jpeg" alt=""> <!-- Imagem do combo 5-->
-        <p>O combo tem uma porção de frango frito crocante e uma montanha de batatas fritas. Com hambúrgueres variados: desde o hambúgueres de frango com alface e molho, até hambúrgueres duplos com queijo e, uma opção com carne desfiada, além de uma fusão de frango frito e carne bovina.</p> <!-- Descrição do Combo-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
 </body>
 </html>
 <script>
-  function toggleMenu() {
-    const menu = document.getElementById("menu");
+function toggleMenu(button) {
+    // Pega o menu correspondente ao botão clicado dentro do mesmo container
+    const menu = button.parentElement.querySelector('.menu-opcoes');
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
-  }
+}
 
-  // Fecha o menu se clicar fora dele
-  window.addEventListener('click', function(e) {
-    const menu = document.getElementById("menu");
-    const btn = document.querySelector('.menu-btn');
-    if (!btn.contains(e.target)) {
-      menu.style.display = "none";
-    }
-  });
+// Fecha todos os menus se clicar fora
+window.addEventListener('click', function(e) {
+    document.querySelectorAll('.menu-opcoes').forEach(menu => {
+        const btn = menu.parentElement.querySelector('.menu-btn');
+        if (menu.style.display === "block" && !btn.contains(e.target) && !menu.contains(e.target)) {
+            menu.style.display = "none";
+        }
+    });
+});
 </script>
+</body>
+</html>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sair'])) {
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit;
     }
 }
 ?>
+ 

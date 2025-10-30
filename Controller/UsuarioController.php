@@ -23,29 +23,26 @@ class UsuarioController {
         if ($existe == 0) {
             $insert = $this->pdo->prepare("INSERT INTO clientes (nome, email, senha) VALUES (?, ?, ?)");
             $insert->execute([$nomeAdmin, $emailAdmin, $senhaAdmin]);
-          
-         
         }
         // ==========================================
     }
 
     public function listar() {
         $usuarios = $this->usuarioModel->buscarTodos();
-        include_once "C:/Turma1/xampp/htdocs/ReidoX/mvc/admin.php";
+        include_once "C:/xampp/htdocs/ReidoX/admin.php";
         return $usuarios;
     }
 
     public function buscarUsuario($id) {
-        $usuario = $this->usuarioModel->buscarUsuario($id);
-        return $usuario;
+        return $this->usuarioModel->buscarUsuario($id);
     }
 
     public function cadastrar($nome, $email, $senha) {
         return $this->usuarioModel->cadastrar($nome, $email, $senha);
     }
 
-    public function cadastrarEndereco($cep, $rua, $numero) {
-        return $this->usuarioModel->cadastrarEndereco($cep, $rua, $numero);
+    public function atualizar($cep, $rua, $numero, $idatual) {
+        return $this->usuarioModel->atualizar($cep, $rua, $numero, $idatual);
     }
 
     public function editar($nome, $email, $senha, $id) {
@@ -53,20 +50,53 @@ class UsuarioController {
     }
 
     public function deletar($id) {
-        $usuario = $this->usuarioModel->deletar($id);
-        return $usuario;
+        return $this->usuarioModel->deletar($id);
     }
 
+    // ===========================
+    // 🔹 Login com sessão
+    // ===========================
     public function login($email, $senha) {
         $stmt = $this->pdo->prepare("SELECT * FROM clientes WHERE email = ?");
         $stmt->execute([$email]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($usuario && $senha === $usuario['senha']) { // comparação direta
+        if ($usuario && $senha === $usuario['senha']) { // ajuste se usar hash
+            // inicia sessão
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            // salva informações do usuário na sessão
+            $_SESSION['user_id'] = $usuario['id'];
+            $_SESSION['user_email'] = $usuario['email'];
+            $_SESSION['user_nome'] = $usuario['nome'];
+
             return $usuario;
         }
 
         return false;
+    }
+
+    // ===========================
+    // 🔹 Enviar pedidos para o usuário logado
+    // ===========================
+    public function enviarpedidos($pedido): void {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $user_id = $_SESSION['user_id'] ?? 0;
+        if ($user_id === 0) {
+            throw new Exception("Usuário não logado.");
+        }
+
+        $sql = "UPDATE clientes SET pedidos = :pedidos WHERE id = :user_id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ':pedidos' => $pedido,
+            ':user_id' => $user_id
+        ]);
     }
 }
 ?>

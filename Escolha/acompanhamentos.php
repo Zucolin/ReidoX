@@ -1,5 +1,4 @@
- <?php
-
+<?php
 session_start();
 
 // Se clicou em "sair"
@@ -14,195 +13,245 @@ if (!isset($_SESSION['nome_usuario'])) {
     header('Location: index.php');
     exit;
 }
+
+$nome = $_SESSION['nome_usuario'];
 ?>
- <!DOCTYPE html>
- <html lang="en">
- <head>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Porções</title>
     <link rel="stylesheet" href="../estilo.css">
- </head>
- <body>
-     <section id="acompanhamentos">
-        <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
+</head>
+<body>
+<section id="acompanhamentos">
+    <nav class="nav-escolha">
+        <div class="menu-container">
+            <button type="required" class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes">
+                <form method="post" >
+                    <button type="required" type="submit" name="editar">Editar</button>
+                    <button type="required" type="submit" name="sair">Sair</button>
+                    <button type="required" type="button">Detalhes</button>
+                </form>
             </div>
-            <img src="img/porção.fritas.jpeg" alt="">
-            <h1>Porção</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
+        </div>
+        <img src="logo.png" alt="" class="logo">
+        <h1 class="titulo-pagina">Porções</h1>
+        <ul class="menu-principal">
+            <li><a href="paginainicio.php" >Inicio</a></li>
+            <li><a href="pedidos.php" >Pedidos</a></li>
+            <li><a href="sobrenos.html">Sobre nós</a></li>
         </ul>
-        </nav>
-        <a href=""><img src="img/porção.camarão.jpeg" alt=""></a><!-- Porção 1-->
-        <a href=""><img src="img/porção.cebolitos.jpeg" alt=""></a><!-- Porção 2-->
-        <a href=""><img src="img/porção.churrasco.jpeg" alt=""></a><!-- Porção 3-->
-        <a href=""><img src="img/porção.fritas.jpeg" alt=""></a><!-- Porção 4-->
-        <a href=""><img src="img/porção.peixe.jpeg" alt=""></a><!-- Porção 5-->
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
+    </nav>
+
+    <a href="#porcaocebola"><img src="../img/porcaoAnelbatata.png" alt=""></a>
+    <a href="#porcaobatata"><img src="../img/porcaobatata.png" alt=""></a>
+    <a href="#porcaofrangofrito"><img src="../img/porcaoFrangoFrito.png" alt=""></a>
+    <a href="#porcaomucarela"><img src="../img/porcaoMucarela.png" alt=""></a>
+   
+    <!-- Porção Batata -->
+
+
+        <!-- Produto específico -->
+        <section id="porcaobatata">
+            <div>
+                <img src="../img/porcaobatata.png" alt="">
+                <h1>Porção de Fritas</h1>
+                <p>Crocrante por fora, macia por dentro, servida quentinha para acompanhar seu hambúrguer.</p>
+            </div>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button type="submit"><a href="#finalizacaobatata">Comprar</a></button>
+            </form>
+
+            <!-- Finalização -->
+            <section id="finalizacaobatata">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/porcaobatata.png" alt="">
+                </div>
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                 <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/porção.camarão.jpeg" alt=""> 
-            <h1>Porção de Camarões</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/porção.camarão.jpeg" alt=""> <!-- Imagem do   porção-->
-        <p>A travessa apresenta camarões grandes, empanados em uma farinha dourada e fritos. A porção é servida com fatias de limão e um potinho central de molho cremoso e temperado.</p> <!-- Descrição do porção-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
-
-
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/porção.cebolitos.jpeg" alt=""> 
-            <h1>Porção Anéis de Cebola </h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/porção.cebolitos.jpeg" alt=""> <!-- Imagem do porção-->
-        <p>A travessa é preenchida com anéis de cebola grandes, empanados em uma farinha dourada e fritos. A porção é servida com um generoso potinho de molho cremoso no centro.</p> <!-- Descrição do porção-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
-
-
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/porção.churrasco.jpeg" alt=""> 
-            <h1>Porção Churrasco</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/porção.churrasco.jpeg" alt=""> <!-- Imagem do porção-->
-        <p>O prato é um mix generoso que combina iscas de carne bovina suculenta e cubos de frango grelhado, acompanhados de fatias de linguiça acebolada, inclui uma porção farta de batatas fritas e fatias de pão de alho grelhado. Servido com três opções de molho.</p> <!-- Descrição do porção-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
-
-
-<section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/porção.fritas.jpeg" alt=""> 
-            <h1>Porção de Fritas</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/porção.fritas.jpeg" alt=""> <!-- Imagem do porção-->
-        <p>Ela é composta por uma vasta variedade de batatas fritas,incluindo as clássicas, as onduladas, as em waffle, as em espiral (curly) e os bolinhos de batata (tots). Circulando o mix de batatas, há uma roda de dez molhos diferentes de variadas cores e sabores garantindo que cada mordida tenha um sabor novo e personalizado.</p> <!-- Descrição do porção-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
-        </section>
-
-
-        <section>
-            <nav>
-            <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-            <button type="submit" name="editar" href="#">Editar</button>
-            <button type="submit" name="sair" href="#">Sair</button>
-            <button href="#">Detalhes</button>
-            </form>      
-            </div>
-            <img src="img/porção.peixe.jpeg" alt=""> 
-            <h1>Porção Peixe</h1>
-        <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Pedidos</a></li>
-            <li><a href="">Sobre nós</a></li>
-        </ul>
-        </nav>
-        <img src="img/porção.peixe.jpeg" alt=""> <!-- Imagem do porção-->
-        <p>A travessa é generosamente preenchida com pedaços crocantes e dourados de peixe , os empanados servidos sobre uma base fresca de alface. O prato é decorado com fatias de limão. No centro, um molho cremoso e suavemente picante.</p> <!-- Descrição do porção-->
-        <form action="">
-            <input type="submit">
-            <input type="number">
-        </form>
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento" required>
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
         </section>
     </section>
- </body>
- </html>
- <script>
-  function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
-  }
 
-  // Fecha o menu se clicar fora dele
-  window.addEventListener('click', function(e) {
-    const menu = document.getElementById("menu");
-    const btn = document.querySelector('.menu-btn');
-    if (!btn.contains(e.target)) {
-      menu.style.display = "none";
-    }
-  });
+    <!-- Porção frango frito -->
+
+        <section id="porcaofrangofrito">
+            <div>
+                <img src="../img/porcaoFrangoFrito.png" alt="">
+                <h1>Porção Frango Frito </h1>
+                <p>Pedaços selecionados, crocantes por fora e suculentos por dentro, preparados na hora para máxima qualidade.</p>
+            </div>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button type="submit"><a href="#finalizacaocebola">Comprar</a></button>
+            </form>
+
+            <section id="finalizacaofrangofrito">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/porcaoFrangoFrito.png" alt="">
+                </div>
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento" required>
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
+        </section>
+    </section>
+
+    <!-- Porção Muçarela -->
+
+        <section id="porcaomucarela">
+            <div>
+                <img src="../img/porcaoMucarela.png" alt="">
+                <h1>Porção Palitos de Muçarela</h1>
+                <p>Deliciosos palitos de muçarela empanados, dourados e crocantes por fora, com queijo derretido e irresistível por dentro.</p>
+            </div>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade">
+                <button type="submit"><a href="#finalizacaochurrasco">Comprar</a></button>
+            </form>
+
+            <section id="finalizacaomucarela">
+                <nav>
+                    <img src="../img/logo.jpeg" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/porcaoMucarela.png" alt="">
+                </div>
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento" required>
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
+        </section>
+    </section>
+
+    <!-- Porção Anel cebola -->
+
+        <section id="porcaocebola">
+            <div>
+                <img src="../img/porcaoAnelCebola.png" alt="">
+                <h1>Porcão Anéis de Cebola </h1>
+                <p>Anéis de cebola empanados e fritos, com crocância envolvente e sabor suave que conquista em cada mordida.</p>
+            </div>
+            <form method="post">
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade" required>
+                <button type="submit"><a href="#finalizacaofritas">Comprar</a></button>
+            </form>
+
+            <section id="finalizacaocebola">
+                <nav>
+                    <img src="../img/logo.png" alt="">
+                    <ul>
+                        <li><a href="paginainicio.php">Inicio</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="sobrenos.html">Sobre nós</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <img src="../img/porcaoAnelCebola.png" alt="">
+                </div>
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
+                <form method="post">
+                    <h3>Método Pagamento</h3>
+                    <select name="pagamento" required>
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                        <option value="cartao-debito">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </section>
+        </section>
+    </section>
+</section>
+
+<script>
+function toggleMenu(button) {
+    const menu = button.parentElement.querySelector('.menu-opcoes');
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+window.addEventListener('click', function(e) {
+    document.querySelectorAll('.menu-opcoes').forEach(menu => {
+        const btn = menu.parentElement.querySelector('.menu-btn');
+        if (menu.style.display === "block" && !btn.contains(e.target) && !menu.contains(e.target)) {
+            menu.style.display = "none";
+        }
+    });
+});
 </script>
+</body>
+</html>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sair'])) {
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit;
     }
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
 }
 ?>
