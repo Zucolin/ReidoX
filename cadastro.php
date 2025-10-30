@@ -44,6 +44,7 @@ try{
         
         session_start();
         $_SESSION['nome_usuario'] = $_POST['nome'];
+        $_SESSION['user_id'] = $idatual;
         header("Location: endereco.php?id=$idatual"); // redireciona só depois da sessão estar salva
         exit;
         

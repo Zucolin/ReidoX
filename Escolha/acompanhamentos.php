@@ -28,12 +28,12 @@ $nome = $_SESSION['nome_usuario'];
 <section id="acompanhamentos">
     <nav>
         <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <button type="required" class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes">
                 <form method="post">
-                    <button type="submit" name="editar">Editar</button>
-                    <button type="submit" name="sair">Sair</button>
-                    <button type="button">Detalhes</button>
+                    <button type="required" type="submit" name="editar">Editar</button>
+                    <button type="required" type="submit" name="sair">Sair</button>
+                    <button type="required" type="button">Detalhes</button>
                 </form>
             </div>
         </div>
@@ -64,8 +64,8 @@ $nome = $_SESSION['nome_usuario'];
             </div>
             <form method="post">
                 <label>Quantidade:</label>
-                <input type="number" name="quantidade">
-                <button><a href="#finalizacaocamarao">Comprar</a></button>
+                <input type="number" name="quantidade" required>
+                <button type="required"><a href="#finalizacaocamarao">Comprar</a></button>
             </form>
 
             <!-- Finalização -->
@@ -81,17 +81,12 @@ $nome = $_SESSION['nome_usuario'];
                 <div>
                     <img src="../img/porção.camarão.jpeg" alt="">
                 </div>
-                <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                 <form method="post">
                     <h3>Método Pagamento</h3>
-                    <select name="pagamento">
+                    <select name="pagamento" required>
                         <option value="cartao-credito">Cartão de Crédito</option>
                         <option value="cartao-debito">Cartão de Débito</option>
                         <option value="pix">Pix</option>
@@ -113,8 +108,8 @@ $nome = $_SESSION['nome_usuario'];
             </div>
             <form method="post">
                 <label>Quantidade:</label>
-                <input type="number" name="quantidade">
-                <button><a href="#finalizacaocebola">Comprar</a></button>
+                <input type="number" name="quantidade" required>
+                <button type="required"><a href="#finalizacaocebola">Comprar</a></button>
             </form>
 
             <section id="finalizacaocebola">
@@ -129,17 +124,12 @@ $nome = $_SESSION['nome_usuario'];
                 <div>
                     <img src="../img/porção.cebolitos.jpeg" alt="">
                 </div>
-                <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                 <form method="post">
                     <h3>Método Pagamento</h3>
-                    <select name="pagamento">
+                    <select name="pagamento" required>
                         <option value="cartao-credito">Cartão de Crédito</option>
                         <option value="cartao-debito">Cartão de Débito</option>
                         <option value="pix">Pix</option>
@@ -161,8 +151,8 @@ $nome = $_SESSION['nome_usuario'];
             </div>
             <form method="post">
                 <label>Quantidade:</label>
-                <input type="number" name="quantidade">
-                <button><a href="#finalizacaochurrasco">Comprar</a></button>
+                <input type="number" name="quantidade" required>
+                <button type="required"><a href="#finalizacaochurrasco">Comprar</a></button>
             </form>
 
             <section id="finalizacaochurrasco">
@@ -177,17 +167,12 @@ $nome = $_SESSION['nome_usuario'];
                 <div>
                     <img src="../img/porção.churrasco.jpeg" alt="">
                 </div>
-                <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                 <form method="post">
                     <h3>Método Pagamento</h3>
-                    <select name="pagamento">
+                    <select name="pagamento" required>
                         <option value="cartao-credito">Cartão de Crédito</option>
                         <option value="cartao-debito">Cartão de Débito</option>
                         <option value="pix">Pix</option>
@@ -209,8 +194,8 @@ $nome = $_SESSION['nome_usuario'];
             </div>
             <form method="post">
                 <label>Quantidade:</label>
-                <input type="number" name="quantidade">
-                <button><a href="#finalizacaofritas">Comprar</a></button>
+                <input type="number" name="quantidade" required>
+                <button type="required"><a href="#finalizacaofritas">Comprar</a></button>
             </form>
 
             <section id="finalizacaofritas">
@@ -225,17 +210,12 @@ $nome = $_SESSION['nome_usuario'];
                 <div>
                     <img src="../img/porção.fritas.jpeg" alt="">
                 </div>
-                <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                 <form method="post">
                     <h3>Método Pagamento</h3>
-                    <select name="pagamento">
+                    <select name="pagamento" required>
                         <option value="cartao-credito">Cartão de Crédito</option>
                         <option value="cartao-debito">Cartão de Débito</option>
                         <option value="pix">Pix</option>
@@ -257,8 +237,8 @@ $nome = $_SESSION['nome_usuario'];
             </div>
             <form method="post">
                 <label>Quantidade:</label>
-                <input type="number" name="quantidade">
-                <button><a href="#finalizacaopeixe">Comprar</a></button>
+                <input type="number" name="quantidade" required>
+                <button type="required"><a href="#finalizacaopeixe">Comprar</a></button>
             </form>
 
             <section id="finalizacaopeixe">
@@ -273,17 +253,12 @@ $nome = $_SESSION['nome_usuario'];
                 <div>
                     <img src="../img/porção.peixe.jpeg" alt="">
                 </div>
-                <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                 <form method="post">
                     <h3>Método Pagamento</h3>
-                    <select name="pagamento">
+                    <select name="pagamento" required>
                         <option value="cartao-credito">Cartão de Crédito</option>
                         <option value="cartao-debito">Cartão de Débito</option>
                         <option value="pix">Pix</option>
@@ -319,5 +294,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ../index.php');
         exit;
     }
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
 }
 ?>
