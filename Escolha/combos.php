@@ -23,7 +23,7 @@ $nome = $_SESSION['nome_usuario'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
        <nav>
@@ -37,57 +37,62 @@ $nome = $_SESSION['nome_usuario'];
                         </form>
                     </div>
                 </div>
-            <img src="logo.png" alt="">
-            <h1>Combos</h1>
-        <ul>
+            <img src="logo.png" alt="" class="logo">
+            <h1 class="titulo-pagina">Combos</h1>
+        <ul class="menu-principal">
             <li><a href="">Inicio</a></li>
             <li><a href="">Pedidos</a></li>
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href="#x-simples"><img src="../img/X_ComboSimples.png" alt=""></a><!-- Combo 1-->
-        <a href="#x-individual"><img src="../img/X_ComboIndividual.png" alt=""></a><!-- Combo 2-->
-        <a href="#x-familia"><img src="../img/X_ComboFamilia.png" alt=""></a><!-- Combo 3-->
+        <a href="#x-simples" class="produto-link">
+            <img src="../img/X_ComboSimples.png" alt=""></a><!-- Combo 1-->
+        <a href="#x-individual" class="produto-link">
+            <img src="../img/X_ComboIndividual.png" alt=""></a><!-- Combo 2-->
+        <a href="#x-familia"class="produto-link">
+            <img src="../img/X_ComboFamilia.png" alt=""></a><!-- Combo 3-->
       
         <!-- Combo simples-->
     <!-- COMBO SIMPLES -->
     <section id="x-simples">
-            <div>
-                <h1>X-Simples</h1>
-                <img src="../img/X_ComboSimples.png" alt="">
-                <p>Hambúrguer clássico com queijo, alface, tomate e batata frita crocante. Uma combinação tradicional e deliciosa!</p>
+            <div class="produto-detalhe">
+                <h1 class="produto-titulo">X-Simples</h1>
+                <img src="../img/X_ComboSimples.png" alt="" class="produto-img-detalhe">
+                <p class="produto-descricao">Hambúrguer clássico com queijo, alface, tomate e batata frita crocante. Uma combinação tradicional e deliciosa!</p>
             </div>
             <form method="post">
-                <label>Quantidade:</label>
-                <input type="number" name="quantidade">
+                <label class="label-qtd">Quantidade:</label>
+                <input class=" btn-comprar"type="number" name="quantidade">
                 <button><a href="#finalizacaox-simples">Comprar</a></button>
             </form>
 
             <section id="finalizacaox-simples">
-                <nav>
-                    <img src="../img/logo.jpeg" alt="">
-                    <ul>
+                <nav class="nav-escolha">
+                    <img src="../img/logo.png" alt="" class="logo">
+                    <ul class="menu-principal">
                         <li><a href="paginainicio.php">Inicio</a></li>
                         <li><a href="pedidos.php">Pedidos</a></li>
                         <li><a href="sobrenos.html">Sobre nós</a></li>
                     </ul>
                 </nav>
-                <div>
-                    <img src="../img/X_ComboSimples.png" alt="">
+                <div class="produto-finalizacao">
+                    <img src="../img/X_ComboSimples.png" alt="" class="img-produto-finalizacao">
                 </div>
                 <form method="post">
                 <input type="hidden" name="produto" value="Combo Simples">
-                <h2>Tipo de Entrega</h2>
-                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-                    <h3>Método Pagamento</h3>
-                    <select name="pagamento">
+                <h2 class="forma-entrega">Tipo de Entrega</h2>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Entregar" class="input-entregas" required> Entregar</label>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Retirar" class="input-entregas"required> Retirar</label>
+                    <h3 class="forma-pagamento">Método Pagamento</h3>
+                    <select name="pagamento" class="escolha-pagamento">
                         <option value="cartao-credito">Cartão de Crédito</option>
                         <option value="cartao-debito">Cartão de Débito</option>
                         <option value="pix">Pix</option>
                         <option value="dinheiro">Dinheiro</option>
                     </select>
-                    <input type="submit">
+                    <input type="submit" class="btn-pagamento">
                 </form>
             </section>
         </section>
@@ -95,42 +100,44 @@ $nome = $_SESSION['nome_usuario'];
 
     <!-- COMBO INDIVIDUAL -->
     <section id="x-individual">
-            <div>
-                <h1>X-Individual</h1>
-                <img src="../img/X_ComboIndividual.png" alt="">
-                <p>Hambúrguer artesanal com queijo derretido, bacon, alface, tomate, batata frita e refrigerante. Sabor completo em uma refeição prática!</p>
+            <div class="produto-detalhe">
+                <h1 class="produto-titulo">X-Individual</h1>
+                <img src="../img/X_ComboIndividual.png" alt="" class="prduto-img-detalhe">
+                <p class="produto-descricao">Hambúrguer artesanal com queijo derretido, bacon, alface, tomate, batata frita e refrigerante. Sabor completo em uma refeição prática!</p>
             </div>
             <form method="post">
-                <label>Quantidade:</label>
-                <input type="number" name="quantidade">
-                <button><a href="#finalizacaox-individual">Comprar</a></button>
+                <label class="label-qtd">Quantidade:</label>
+                <input class="input-qtd" type="number" name="quantidade">
+                <button class="btn-comprar"><a href="#finalizacaox-individual">Comprar</a></button>
             </form>
 
-            <section id="finalizacaox-individual">
-                <nav>
-                    <img src="../img/logo.jpeg" alt="">
-                    <ul>
+            <section id="finalizacaox-individual" class="finalzacao">
+                <nav class="nav-escolha">
+                    <img src="../img/logo.jpeg" alt="" class="logo">
+                    <ul class="menu-principal">
                         <li><a href="paginainicio.php">Inicio</a></li>
                         <li><a href="pedidos.php">Pedidos</a></li>
                         <li><a href="sobrenos.html">Sobre nós</a></li>
                     </ul>
                 </nav>
-                <div>
-                    <img src="../img/X_ComboIndividual.png" alt="">
+                <div class="produto-finalizacao">
+                    <img src="../img/X_ComboIndividual.png" alt="" class="img-produto-finalizacao">
                 </div>
                 <form method="post">
                 <input type="hidden" name="produto" value="Coombo Individual">
-                <h2>Tipo de Entrega</h2>
-                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-                    <h3>Método Pagamento</h3>
-                    <select name="pagamento">
+                <h2 class="forma-entrega">Tipo de Entrega</h2>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Entregar" class="input-entregas" required> Entregar</label>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Retirar" class="input-entregas" required> Retirar</label>
+                    <h3 class="forma-pagamento">Método Pagamento</h3>
+                    <select name="pagamento" class="escolha-pagamento">
                         <option value="cartao-credito">Cartão de Crédito</option>
                         <option value="cartao-debito">Cartão de Débito</option>
                         <option value="pix">Pix</option>
                         <option value="dinheiro">Dinheiro</option>
                     </select>
-                    <input type="submit">
+                    <input type="submit" class="btn-pagamento">
                 </form>
             </section>
         </section>
@@ -139,42 +146,44 @@ $nome = $_SESSION['nome_usuario'];
     <!-- COMBO Familia -->
     <section id="x-familia">
 
-            <div>
-                <h1>X-Familia</h1>
-                <img src="../img/X_ComboFamília.png" alt="">
-                <p>rês hambúrgueres artesanais acompanhados de fritas, pedaços de carne e molhos especiais. Perfeito para compartilhar e saborear juntos!</p>
+            <div class="produto-detalhe">
+                <h1 class="produto-titulo">X-Familia</h1>
+                <img src="../img/X_ComboFamília.png" alt="" class="produto-img-detalhe">
+                <p class="produto-descricao">rês hambúrgueres artesanais acompanhados de fritas, pedaços de carne e molhos especiais. Perfeito para compartilhar e saborear juntos!</p>
             </div>
             <form method="post">
-                <label>Quantidade:</label>
-                <input type="number" name="quantidade">
-                <button><a href="#finalizacaox-familia">Comprar</a></button>
+                <label class="label-qtd">Quantidade:</label>
+                <input type="number" name="quantidade" class="input-qtd">
+                <button class="btn-comprar"><a href="#finalizacaox-familia">Comprar</a></button>
             </form>
 
-            <section id="finalizacaox-familia">
-                <nav>
-                    <img src="../img/logo.jpeg" alt="">
-                    <ul>
+            <section id="finalizacaox-familia" class="finalizacao">
+                <nav class="=nav-escolha">
+                    <img src="../img/logo.png" alt="" class="logo">
+                    <ul class="menu-principal">
                         <li><a href="paginainicio.php">Inicio</a></li>
                         <li><a href="pedidos.php">Pedidos</a></li>
                         <li><a href="sobrenos.html">Sobre nós</a></li>
                     </ul>
                 </nav>
-                <div>
-                    <img src="../img/X_ComboFamília.png" alt="">
+                <div class="produto-finalizacao">
+                    <img src="../img/X_ComboFamília.png" alt="" class="img-produto-finalizacao">
                 </div>
                 <form method="post">
                 <input type="hidden" name="produto" value="Combo Familia">
-                <h2>Tipo de Entrega</h2>
-                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-                    <h3>Método Pagamento</h3>
-                    <select name="pagamento">
+                <h2 class="forma-entrega">Tipo de Entrega</h2>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Entregar" class="input-entregas" required> Entregar</label>
+                <label class="metodo-entrega">
+                    <input type="radio" name="entrega" value="Retirar" class="input-entregas"required> Retirar</label>
+                    <h3 class="forma-pagamento">Método Pagamento</h3>
+                    <select name="pagamento" class="escolha-pagamento">
                         <option value="cartao-credito">Cartão de Crédito</option>
                         <option value="cartao-debito">Cartão de Débito</option>
                         <option value="pix">Pix</option>
                         <option value="dinheiro">Dinheiro</option>
                     </select>
-                    <input type="submit">
+                    <input type="submit" class="btn-pagamento">
                 </form>
             </section>
         </section>
