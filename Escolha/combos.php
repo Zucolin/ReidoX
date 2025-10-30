@@ -53,6 +53,7 @@ $nome = $_SESSION['nome_usuario'];
     <!-- COMBO SIMPLES -->
     <section id="x-simples">
             <div>
+                <h1>X-Simples</h1>
                 <img src="../img/X_ComboSimples.png" alt="">
                 <p>Hambúrguer clássico com queijo, alface, tomate e batata frita crocante. Uma combinação tradicional e deliciosa!</p>
             </div>
@@ -75,14 +76,10 @@ $nome = $_SESSION['nome_usuario'];
                     <img src="../img/X_ComboSimples.png" alt="">
                 </div>
                 <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
+                <input type="hidden" name="produto" value="Combo Simples">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                     <h3>Método Pagamento</h3>
                     <select name="pagamento">
                         <option value="cartao-credito">Cartão de Crédito</option>
@@ -99,6 +96,7 @@ $nome = $_SESSION['nome_usuario'];
     <!-- COMBO INDIVIDUAL -->
     <section id="x-individual">
             <div>
+                <h1>X-Individual</h1>
                 <img src="../img/X_ComboIndividual.png" alt="">
                 <p>Hambúrguer artesanal com queijo derretido, bacon, alface, tomate, batata frita e refrigerante. Sabor completo em uma refeição prática!</p>
             </div>
@@ -121,14 +119,10 @@ $nome = $_SESSION['nome_usuario'];
                     <img src="../img/X_ComboIndividual.png" alt="">
                 </div>
                 <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
+                <input type="hidden" name="produto" value="Coombo Individual">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                     <h3>Método Pagamento</h3>
                     <select name="pagamento">
                         <option value="cartao-credito">Cartão de Crédito</option>
@@ -146,6 +140,7 @@ $nome = $_SESSION['nome_usuario'];
     <section id="x-familia">
 
             <div>
+                <h1>X-Familia</h1>
                 <img src="../img/X_ComboFamília.png" alt="">
                 <p>rês hambúrgueres artesanais acompanhados de fritas, pedaços de carne e molhos especiais. Perfeito para compartilhar e saborear juntos!</p>
             </div>
@@ -168,14 +163,10 @@ $nome = $_SESSION['nome_usuario'];
                     <img src="../img/X_ComboFamília.png" alt="">
                 </div>
                 <form method="post">
-                    <h2>Entregar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
-                    <h2>Retirar</h2>
-                    <input name="entrega" type="radio">
-                </form>
-                <form method="post">
+                <input type="hidden" name="produto" value="Combo Familia">
+                <h2>Tipo de Entrega</h2>
+                <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+                <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
                     <h3>Método Pagamento</h3>
                     <select name="pagamento">
                         <option value="cartao-credito">Cartão de Crédito</option>
@@ -217,6 +208,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ../index.php');
         exit;
     }
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nomepedido=$_POST['produto'];
+    $quantidade=$_POST['quantidade'];
+
+    $pedido=$nomepedido." x".$quantidade;
+    require_once '../Controller/UsuarioController.php';
+    $controller = new UsuarioController($pdo);
+    $controller->enviarpedidos($pedido);
+    
 }
 ?>
  
