@@ -63,10 +63,8 @@ $nome = $_SESSION['nome_usuario'];
             </div>
             <form method="post">
                 <label>Quantidade:</label>
-                <input type="number" name="quantidade" required>
-                <button type="required"><a href="#finalizacaocamarao">Comprar</a></button>
                 <input type="number" name="quantidade">
-                <button><a href="#finalizacaobatata">Comprar</a></button>
+                <button type="submit"><a href="#finalizacaobatata">Comprar</a></button>
             </form>
 
             <!-- Finalização -->
@@ -110,7 +108,7 @@ $nome = $_SESSION['nome_usuario'];
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button><a href="#finalizacaocebola">Comprar</a></button>
+                <button type="submit"><a href="#finalizacaocebola">Comprar</a></button>
             </form>
 
             <section id="finalizacaofrangofrito">
@@ -153,7 +151,7 @@ $nome = $_SESSION['nome_usuario'];
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button><a href="#finalizacaochurrasco">Comprar</a></button>
+                <button type="submit"><a href="#finalizacaochurrasco">Comprar</a></button>
             </form>
 
             <section id="finalizacaomucarela">
@@ -196,7 +194,7 @@ $nome = $_SESSION['nome_usuario'];
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade" required>
-                <button type="required"><a href="#finalizacaofritas">Comprar</a></button>
+                <button type="submit"><a href="#finalizacaofritas">Comprar</a></button>
             </form>
 
             <section id="finalizacaofritas">
@@ -239,7 +237,7 @@ $nome = $_SESSION['nome_usuario'];
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade" required>
-                <button type="required"><a href="#finalizacaopeixe">Comprar</a></button>
+                <button type="submit"><a href="#finalizacaopeixe">Comprar</a></button>
             </form>
 
             <section id="finalizacaopeixe">
