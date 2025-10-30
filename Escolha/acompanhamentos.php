@@ -37,7 +37,7 @@ $nome = $_SESSION['nome_usuario'];
                 </form>
             </div>
         </div>
-        <img src="" alt="">
+        <img src="logo.png" alt="">
         <h1>Porções</h1>
         <ul>
             <li><a href="paginainicio.php">Inicio</a></li>

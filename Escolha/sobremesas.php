@@ -38,8 +38,8 @@ $nome = $_SESSION['nome_usuario'];
                         </form>
                     </div>
                 </div>
-            <img src="" alt="">
-            <h1>Sobremesa</h1>
+            <img src="logo.png" alt="">
+            <h1>Sobremesas</h1>
         <ul>
             <li><a href="">Inicio</a></li>
             <li><a href="">Pedidos</a></li>

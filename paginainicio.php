@@ -42,7 +42,7 @@ $nome = $_SESSION['nome_usuario'];
             <button href="#">Detalhes</button>
             </form>
             </div>
-     <img src="img/logo.jpeg" alt="">
+     <img src="img/logo.png" alt="">
         <ul>
             <li><a href="paginainicio.php">Inicio</a></li>
             <li><a href="pedidos.php">Pedidos</a></li>

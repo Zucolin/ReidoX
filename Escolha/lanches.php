@@ -39,7 +39,7 @@ $nome = $_SESSION['nome_usuario'];
                         </form>
                     </div>
                 </div>
-            <img src="" alt="">
+            <img src="logo.png" alt="">
             <h1>Lanches</h1>
         <ul>
             <li><a href="">Inicio</a></li>
