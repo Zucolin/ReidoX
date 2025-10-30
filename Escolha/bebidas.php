@@ -38,7 +38,7 @@ $nome = $_SESSION['nome_usuario'];
                         </form>
                     </div>
                 </div>
-            <img src="" alt="">
+            <img src="logo.png" alt="">
             <h1>Bebidas</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -46,25 +46,25 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href="#coca1.5"><img src="../img/bebida.coca1,5.jpeg" alt=""></a><!-- Bebida 1-->
-        <a href="#coca2"><img src="../img/bebida.coca2l.jpeg" alt=""></a><!-- Bebida 2-->
-        <a href="#energetico"><img src="../img/bebida.energetico.jpeg" alt=""></a><!-- Bebida 3-->
-        <a href="#fanta"><img src="../img/bebida.fanta.jpeg" alt=""></a><!-- Bebida 4-->
-        <a href="#guarana"><img src="../img/bebida.guarana.jpeg" alt=""></a><!-- Bebida 5-->
-        <a href="#sprite"><img src="../img/bebida.sprite.jpeg" alt=""></a><!-- Bebida 6-->
+        <a href="#agua"><img src="../img/agua.png" alt=""></a><!-- Bebida 1-->
+        <a href="#coca"><img src="../img/coca.png" alt=""></a><!-- Bebida 2-->
+        <a href="#uva"><img src="../img/uva.png" alt=""></a><!-- Bebida 3-->
+        <a href="#kuat"><img src="../img/kuat.png" alt=""></a><!-- Bebida 4-->
+        <a href="#sucomaracuja"><img src="../img/sucoMaracuja.png" alt=""></a><!-- Bebida 5-->
+        <a href="#sucouva"><img src="../img/sucoUva.png" alt=""></a><!-- Bebida 6-->
 
-        <!-- Coca Cola 1.5-->
-        <section id="coca1.5">
-                <h1>Coca-Cola 1.5L</h1>
-            <img src="../img/bebida.coca1,5.jpeg" alt="Coca-Cola 1.5L">
-            <p>Coca-Cola de 1,5L </p>
+        <!-- Água-->
+        <section id="agua">
+                <h1>Água (com/sem gás)</h1>
+            <img src="../img/agua.png" alt="">
+            <p>Garrafa de água 500ml </p>
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button><a href="#finalizacaococa1.5">Comprar</a></button>
+                <button><a href="#finalizacaoagua">Comprar</a></button>
             </form>
             
-            <section id="finalizacaococa1.5">
+            <section id="finalizacaoagua">
                 <nav>
                     <img src="../img/logo.jpeg" alt=""> <ul>
                         <li><a href="paginainicio.php">Inicio</a></li>
@@ -73,7 +73,7 @@ $nome = $_SESSION['nome_usuario'];
                     </ul>
                 </nav>
                 <div>
-                    <img src="../img/bebida.coca1,5.jpeg" alt="Coca-Cola 1.5L">
+                    <img src="../img/agua.png" alt="">
                 </div>
                 <form method="post">
                     <h2>Entregar</h2>
@@ -96,16 +96,16 @@ $nome = $_SESSION['nome_usuario'];
             </section>
         </section>
 
-        <section id="coca2">
-            <img src="../img/bebida.coca2l.jpeg" alt="Coca-Cola 2L">
-            <p>Coca-Cola de 2L </p>
+        <section id="coca">
+            <img src="../img/coca.png" alt="">
+            <p>Lata Coca-Cola 350ml </p>
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button><a href="#finalizacaococa2">Comprar</a></button>
+                <button><a href="#finalizacaococa">Comprar</a></button>
             </form>
 
-            <section id="finalizacaococa2">
+            <section id="finalizacaococa">
                 <nav>
                     <img src="../img/logo.jpeg" alt="">
                     <ul>
@@ -115,7 +115,7 @@ $nome = $_SESSION['nome_usuario'];
                     </ul>
                 </nav>
                 <div>
-                    <img src="../img/bebida.coca2l.jpeg" alt="Coca-Cola 2L">
+                    <img src="../img/coca.png" alt="">
                 </div>
                 <form method="post">
                     <h2>Entregar</h2>
@@ -138,17 +138,17 @@ $nome = $_SESSION['nome_usuario'];
             </section>
         </section>
 
-        <section id="energetico">
-            <h1>Energetico</h1>
-            <img src="../img/bebida.energetico.jpeg" alt="Energético">
-            <p>Lata de energético, Monster Mango Loco</p>
+        <section id="uva">
+            <h1>uva</h1>
+            <img src="../img/uva.png" alt="">
+            <p>Lata uva 350ml</p>
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button><a href="#finalizacaoenergetico">Comprar</a></button>
+                <button><a href="#finalizacaouva">Comprar</a></button>
             </form>
 
-            <section id="finalizacaoenergetico">
+            <section id="finalizacaouva">
                 <nav>
                     <img src="../img/logo.jpeg" alt="">
                     <ul>
@@ -158,7 +158,7 @@ $nome = $_SESSION['nome_usuario'];
                     </ul>
                 </nav>
                 <div>
-                    <img src="../img/bebida.energetico.jpeg" alt="Energético">
+                    <img src="../img/uva.png" alt="">
                 </div>
                 <form method="post">
                     <h2>Entregar</h2>
@@ -181,18 +181,18 @@ $nome = $_SESSION['nome_usuario'];
             </section>
         </section>
 
-        <section id="fanta">
+        <section id="kuat">
             
-            <h1>Fanta</h1>
-            <img src="../img/bebida.fanta.jpeg" alt="Fanta">
-            <p>Lata de fanta </p>
+            <h1>Kuat</h1>
+            <img src="../img/kuat.png" alt="">
+            <p>Lata Kuat 350ml </p>
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button><a href="#finalizacaofanta">Comprar</a></button>
+                <button><a href="#finalizacaokuat">Comprar</a></button>
             </form>
 
-            <section id="finalizacaofanta">
+            <section id="finalizacaokuat">
                 <nav>
                     <img src="../img/logo.jpeg" alt="">
                     <ul>
@@ -202,7 +202,7 @@ $nome = $_SESSION['nome_usuario'];
                     </ul>
                 </nav>
                 <div>
-                    <img src="../img/bebida.fanta.jpeg" alt="Fanta">
+                    <img src="../img/kuat.png" alt="kuat">
                 </div>
                 <form method="post">
                     <h2>Entregar</h2>
@@ -225,17 +225,17 @@ $nome = $_SESSION['nome_usuario'];
             </section>
         </section>
 
-        <section id="guarana">
-            <h1>Guaraná</h1>
-            <img src="../img/bebida.guarana.jpeg" alt="Guaraná">
-            <p>Guaraná 2L </p>
+        <section id="sucomaracuja">
+            <h1>Suco Marácuja</h1>
+            <img src="../img/sujoMaracuja.png" alt="">
+            <p>Del Valle Marácuja 290ml </p>
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button><a href="#finalizacaoguarana">Comprar</a></button>
+                <button><a href="#finalizacaomaracuja">Comprar</a></button>
             </form>
 
-            <section id="finalizacaoguarana">
+            <section id="finalizacaomaracuja">
                 <nav>
                     <img src="../img/logo.jpeg" alt="">
                     <ul>
@@ -245,7 +245,7 @@ $nome = $_SESSION['nome_usuario'];
                     </ul>
                 </nav>
                 <div>
-                    <img src="../img/bebida.guarana.jpeg" alt="Guaraná">
+                    <img src="../img/sucoMaracuja.png" alt="">
                 </div>
                 <form method="post">
                     <h2>Entregar</h2>
@@ -268,18 +268,18 @@ $nome = $_SESSION['nome_usuario'];
             </section>
         </section>
 
-        <section id="sprite">
+        <section id="sucouva">
             
-            <h1>Sprite</h1>
-            <img src="../img/bebida.sprite.jpeg" alt="Sprite">
-            <p>Sprite 2L </p>
+            <h1>uva</h1>
+            <img src="../img/sucoUva.png" alt="uva">
+            <p>Del Valle Uva 290ml  </p>
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button><a href="#finalizacaosprite">Comprar</a></button>
+                <button><a href="#finalizacaouva">Comprar</a></button>
             </form>
 
-            <section id="finalizacaosprite">
+            <section id="finalizacaouva">
                 <nav>
                     <img src="../img/logo.jpeg" alt="">
                     <ul>
@@ -289,7 +289,7 @@ $nome = $_SESSION['nome_usuario'];
                     </ul>
                 </nav>
                 <div>
-                    <img src="../img/bebida.sprite.jpeg" alt="Sprite">
+                    <img src="../img/sucoUva.png" alt="uva">
                 </div>
                 <form method="post">
                     <h2>Entregar</h2>

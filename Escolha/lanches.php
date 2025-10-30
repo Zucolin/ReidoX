@@ -39,7 +39,7 @@ $nome = $_SESSION['nome_usuario'];
                         </form>
                     </div>
                 </div>
-            <img src="" alt="">
+            <img src="logo.png" alt="">
             <h1>Lanches</h1>
         <ul>
             <li><a href="">Inicio</a></li>
@@ -47,31 +47,33 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href="#xfrango"><img src="../img/lanche.frango.jpeg" alt=""></a><!-- Lanche 1-->
-        <a href="#xtriplo"><img src="../img/lanche.triplo.jpeg" alt=""></a><!-- Lanche 2-->
-        <a href="#xbacon"><img src="../img/lanche.baicon.jpeg" alt=""></a><!-- Lanche 3-->
-        <a href="#xcebola"><img src="../img/lanche.cebolitos.jpeg" alt=""></a><!-- Lanche 4-->
-        <a href="#xtropical"><img src="../img/lanche.tropical.jpeg" alt=""></a><!-- Lanche 5-->
+        <a href="#x-cheese"><img src="../img/X_CheeseBurguer.png" alt=""></a><!-- Lanche 1-->
+        <a href="#x-bacon"><img src="../img/X_Bacon.png" alt=""></a><!-- Lanche 2-->
+        <a href="#x-catupiry"><img src="../img/X_CatupiryBacon.png" alt=""></a><!-- Lanche 3-->
+        <a href="#x-chicken"><img src="../img/X_Chicken.png" alt=""></a><!-- Lanche 4-->
+        <a href="#x-costela"><img src="../img/X_Costela.png" alt=""></a><!-- Lanche 5-->
+        <a href="#x-salada"><img src="../img/X_Salada.png" alt=""></a><!-- Lanche 6-->
+        <a href="#x-tudo"><img src="../img/X_Tudo.png" alt=""></a><!-- Lanche 7-->
 
-        <!-- Lanche de Frango-->
-   <!-- Produto: Lanche de Frango -->
+        <!-- Cheese Burguer-->
+   <!-- Produto: Cheese Burguer -->
 
 <!-- 1ª seção: Página de escolha do produto -->
     
-<section id="xfrango">
+<section id="x-cheese">
     <div>
-        <img src="../img/lanche.frango.jpeg" alt="">
-        <h1>Lanche de Frango</h1>
-        <p>Este lanche é construído em um pão de brioche. O recheio são duas porções de frango empanado e frito. Entre as camadas de frango e no topo da montagem, o lanche leva queijo cheddar derretido e uma cobertura de alface picada. Tudo é finalizado com um molho cremoso.</p>
+        <img src="../img/X_CheeseBurguer.png" alt="">
+        <h1>X-Cheese Burguer</h1>
+        <p>Pão e Maionese da Casa, Hambúrguer prensado e Queijo Cheddar derretido.</p>
     </div>
     <form method="post">
         <label>Quantidade:</label>
         <input type="number" name="quantidade">
-        <button><a href="#finalizacaofrango">Comprar</a></button>
+        <button><a href="#finalizacaocheeseburguer">Comprar</a></button>
     </form>
 
 <!-- 3ª seção: Finalização da compra -->
-    <section id="finalizacaofrango">
+    <section id="finalizacaocheeseburguer">
         <nav>
             <img src="../img/logo.jpeg" alt="">
             <ul>
@@ -81,7 +83,7 @@ $nome = $_SESSION['nome_usuario'];
             </ul>
         </nav>
         <div>
-            <img src="../img/lanche.frango.jpeg" alt="">
+            <img src="../img/X_CheeseBurguer.png" alt="">
         </div>
         <form method="post">
             <h2>Entregar</h2>
@@ -103,23 +105,23 @@ $nome = $_SESSION['nome_usuario'];
         </form>
     </section>
 </section>
-<!-- Produto: Lanche Triplo -->
+<!-- Produto: x-bacon -->
 
 <!-- 1ª seção: Página de escolha do produto -->
-<section id="xtriplo">
+<section id="x-bacon">
     <div>
-        <img src="../img/lanche.triplo.jpeg" alt="">
-        <h1>Lanche Triplo</h1>
-        <p>Este hambúrguer é caracterizado pelas suas três camadas de carne separadas por fatias de queijo. A montagem inclui uma base de molho cremoso e é coroada com uma mistura de alface, tomate e bacon, todos cobertos por um molho cremoso final.</p>
+        <img src="../img/X_Bacon.png" alt="">
+        <h1>X-Bacon</h1>
+        <p>Pão Especial, Maionese da Casa, Hambúrguer prensado, Queijo Cheddar e Bacon em tiras.</p>
     </div>
     <form method="post">
         <label>Quantidade:</label>
         <input type="number" name="quantidade">
-        <button><a href="#finalizacaotriplo">Comprar</a></button>
+        <button><a href="#finalizacaox-bacon">Comprar</a></button>
     </form>
 
 <!-- 3ª seção: Finalização da compra -->
-    <section id="finalizacaotriplo">
+    <section id="finalizacaox-bacon">
         <nav>
             <img src="../img/logo.jpeg" alt="">
             <ul>
@@ -129,7 +131,7 @@ $nome = $_SESSION['nome_usuario'];
             </ul>
         </nav>
         <div>
-            <img src="../img/lanche.triplo.jpeg" alt="">
+            <img src="../img/X_Bacon.png" alt="">
         </div>
         <form method="post">
             <h2>Entregar</h2>
@@ -152,23 +154,23 @@ $nome = $_SESSION['nome_usuario'];
     </section>
 </section>
 
-<!-- Produto: Lanche Triplo -->
+<!-- Produto: x-catupiry -->
 
 <!-- 1ª seção: Página de escolha do produto -->
-<section id="xtriplo">
+<section id="x-catupiry">
     <div>
-        <img src="../img/lanche.triplo.jpeg" alt="">
-        <h1>Lanche Triplo</h1>
-        <p>Este hambúrguer é caracterizado pelas suas três camadas de carne separadas por fatias de queijo. A montagem inclui uma base de molho cremoso e é coroada com uma mistura de alface, tomate e bacon, todos cobertos por um molho cremoso final.</p>
+        <img src="../img/X_CatupiryBacon.png" alt="">
+        <h1>X-Catupiry Bacon</h1>
+        <p>Pão da Casa, Molho de Tomate Le Pinguê, Hambúrguer, Catupiry e Bacon crocante.</p>
     </div>
     <form method="post">
         <label>Quantidade:</label>
         <input type="number" name="quantidade">
-        <button><a href="#finalizacaotriplo">Comprar</a></button>
+        <button><a href="#finalizacaox-catupiry">Comprar</a></button>
     </form>
 
 <!-- 3ª seção: Finalização da compra -->
-    <section id="finalizacaotriplo">
+    <section id="finalizacaox-catupiry">
         <nav>
             <img src="../img/logo.jpeg" alt="">
             <ul>
@@ -178,7 +180,7 @@ $nome = $_SESSION['nome_usuario'];
             </ul>
         </nav>
         <div>
-            <img src="../img/lanche.triplo.jpeg" alt="">
+            <img src="../img/X_CatupiryBacon.png" alt="">
         </div>
         <form method="post">
             <h2>Entregar</h2>
@@ -200,24 +202,24 @@ $nome = $_SESSION['nome_usuario'];
         </form>
     </section>
 </section>
-<!-- Produto: Lanche Aneis de Cebola -->
+<!-- Produto: x-chicken -->
 
 <!-- 1ª seção: Página de escolha do produto -->
-<section id="xcebola">
+<section id="x-chicken">
     <div>
-        <img src="../img/lanche.cebolitos.jpeg" alt="">
-        <h1>Lanche Aneis de Cebola</h1>
-        <p>Este Hambúrguer é servido em um pão macio e levemente tostado, a base é um generoso e suculento hambúrguer de carne. Sobre ele uma camada de queijo derretido e tiras de bacon crocante. Vem também com uma pilha de anéis de cebola dourados, tudo coroado por um delicioso e cremoso molho.</p>
+        <img src="../img/X_Chicken.png" alt="">
+        <h1>X-Chicken</h1>
+        <p>Pão e Maionese da Casa, Hambúrguer de Frango empanado e Alface.</p>
     </div>
     <form method="post">
         <label>Quantidade:</label>
         <input type="number" name="quantidade">
-        <button><a href="#finalizacaocebola">Comprar</a></button>
+        <button><a href="#finalizax-chicken">Comprar</a></button>
     </form>
 
 
 <!-- 3ª seção: Finalização da compra -->
-    <section id="finalizacaocebola">
+    <section id="finalizacaox-chicken">
         <nav>
             <img src="../img/logo.jpeg" alt="">
             <ul>
@@ -227,7 +229,7 @@ $nome = $_SESSION['nome_usuario'];
             </ul>
         </nav>
         <div>
-            <img src="../img/lanche.cebolitos.jpeg" alt="">
+            <img src="../img/X_Chicken.png" alt="">
         </div>
         <form method="post">
             <h2>Entregar</h2>
@@ -249,24 +251,24 @@ $nome = $_SESSION['nome_usuario'];
         </form>
     </section>
 </section>
-<!-- Produto: Lanche Aneis de Cebola -->
+<!-- Produto: x-costela -->
 
 <!-- 1ª seção: Página de escolha do produto -->
-<section id="xcebola">
+<section id="x-costela">
     <div>
-        <img src="../img/lanche.cebolitos.jpeg" alt="">
-        <h1>Lanche Aneis de Cebola</h1>
-        <p>Este Hambúrguer é servido em um pão macio e levemente tostado, a base é um generoso e suculento hambúrguer de carne. Sobre ele uma camada de queijo derretido e tiras de bacon crocante. Vem também com uma pilha de anéis de cebola dourados, tudo coroado por um delicioso e cremoso molho.</p>
+        <img src="../img/X-Costela" alt="">
+        <h1>X-Costela</h1>
+        <p>Pão e Maionese da Casa, Bacon crocante, Hambúrguer de Costela, Queijo Provolone, Molho Barbecue e Cebola Roxa.</p>
     </div>
     <form method="post">
         <label>Quantidade:</label>
         <input type="number" name="quantidade">
-        <button><a href="#finalizacaocebola">Comprar</a></button>
+        <button><a href="#finalizacaox-costela">Comprar</a></button>
     </form>
 
 
 <!-- 3ª seção: Finalização da compra -->
-    <section id="finalizacaocebola">
+    <section id="finalizacaox-costela">
         <nav>
             <img src="../img/logo.jpeg" alt="">
             <ul>
@@ -276,7 +278,105 @@ $nome = $_SESSION['nome_usuario'];
             </ul>
         </nav>
         <div>
-            <img src="../img/lanche.cebolitos.jpeg" alt="">
+            <img src="../img/X-Costela" alt="">
+        </div>
+        <form method="post">
+            <h2>Entregar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h2>Retirar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h3>Método Pagamento</h3>
+            <select name="pagamento">
+                <option value="cartao-credito">Cartão de Crédito</option>
+                <option value="cartao-debito">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+            <input type="submit">
+        </form>
+    </section>
+</section>
+<!-- Produto: x-salada -->
+
+<!-- 1ª seção: Página de escolha do produto -->
+<section id="x-salada">
+    <div>
+        <img src="../img/X_Salada.png" alt="">
+        <h1>X-Salada</h1>
+        <p>Pão Especial, Maionese da Casa, Hambúrguer prensado, Queijo Cheddar, Alface e Tomate.</p>
+    </div>
+    <form method="post">
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade">
+        <button><a href="#finalizacaox-salada">Comprar</a></button>
+    </form>
+
+
+<!-- 3ª seção: Finalização da compra -->
+    <section id="finalizacaox-salada">
+        <nav>
+            <img src="../img/logo.jpeg" alt="">
+            <ul>
+                <li><a href="paginainicio.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
+        </nav>
+        <div>
+            <img src="../img/X-Salada.png" alt="">
+        </div>
+        <form method="post">
+            <h2>Entregar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h2>Retirar</h2>
+            <input name="entrega" type="radio">
+        </form>
+        <form method="post">
+            <h3>Método Pagamento</h3>
+            <select name="pagamento">
+                <option value="cartao-credito">Cartão de Crédito</option>
+                <option value="cartao-debito">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+            <input type="submit">
+        </form>
+    </section>
+</section>
+<!-- Produto: x-tudo -->
+
+<!-- 1ª seção: Página de escolha do produto -->
+<section id="x-tudo">
+    <div>
+        <img src="../img/X_Tudo.png" alt="">
+        <h1>X-Tudo</h1>
+        <p>Pão da Casa, Maionese de Bacon, Hambúrguer, Queijo Muçarela, Cebola Roxa, Alface e Tomate.</p>
+    </div>
+    <form method="post">
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade">
+        <button><a href="#finalizacaox-tudo">Comprar</a></button>
+    </form>
+
+
+<!-- 3ª seção: Finalização da compra -->
+    <section id="finalizacaox-tudo">
+        <nav>
+            <img src="../img/logo.jpeg" alt="">
+            <ul>
+                <li><a href="paginainicio.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+            </ul>
+        </nav>
+        <div>
+            <img src="../img/X_Tudo.png" alt="">
         </div>
         <form method="post">
             <h2>Entregar</h2>

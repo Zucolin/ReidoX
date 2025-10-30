@@ -37,7 +37,7 @@ $nome = $_SESSION['nome_usuario'];
                 </form>
             </div>
         </div>
-        <img src="../img/porção.fritas.jpeg" alt="">
+        <img src="logo.png" alt="">
         <h1>Porções</h1>
         <ul>
             <li><a href="paginainicio.php">Inicio</a></li>
@@ -46,30 +46,31 @@ $nome = $_SESSION['nome_usuario'];
         </ul>
     </nav>
 
-    <a href="#porcaocamaroes"><img src="../img/porção.camarão.jpeg" alt=""></a>
-    <a href="#porcaocebolas"><img src="../img/porção.cebolitos.jpeg" alt=""></a>
-    <a href="#porcaochurrasco"><img src="../img/porção.churrasco.jpeg" alt=""></a>
-    <a href="#porcaofritas"><img src="../img/porção.fritas.jpeg" alt=""></a>
-    <a href="#porcaopeixes"><img src="../img/porção.peixe.jpeg" alt=""></a>
-
-    <!-- Porção Camarões -->
+    <a href="#porcaobatata"><img src="../img/porcaoAnelbatata.png" alt=""></a>
+    <a href="#porcaobatata"><img src="../img/porcaobatata.png" alt=""></a>
+    <a href="#porcaofrangofrito"><img src="../img/porcaoFrangoFrito.png" alt=""></a>
+    <a href="#porcaomuçarela"><img src="../img/porcaoMucarela.png" alt=""></a>
+   
+    <!-- Porção Batata -->
 
 
         <!-- Produto específico -->
-        <section id="porcaocamarao">
+        <section id="porcaobatata">
             <div>
-                <img src="../img/porção.camarão.jpeg" alt="">
-                <h1>Porção Camarões</h1>
-                <p>A travessa apresenta camarões grandes, empanados em uma farinha dourada e fritos. Servidos com fatias de limão e molho cremoso no centro.</p>
+                <img src="../img/porcaobatata.png" alt="">
+                <h1>Porção de Fritas</h1>
+                <p>Crocrante por fora, macia por dentro, servida quentinha para acompanhar seu hambúrguer.</p>
             </div>
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade" required>
                 <button type="required"><a href="#finalizacaocamarao">Comprar</a></button>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaobatata">Comprar</a></button>
             </form>
 
             <!-- Finalização -->
-            <section id="finalizacaocamarao">
+            <section id="finalizacaobatata">
                 <nav>
                     <img src="../img/logo.jpeg" alt="">
                     <ul>
@@ -79,7 +80,7 @@ $nome = $_SESSION['nome_usuario'];
                     </ul>
                 </nav>
                 <div>
-                    <img src="../img/porção.camarão.jpeg" alt="">
+                    <img src="../img/porcaobatata.png" alt="">
                 </div>
                 <h2>Tipo de Entrega</h2>
                 <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
@@ -98,21 +99,21 @@ $nome = $_SESSION['nome_usuario'];
         </section>
     </section>
 
-    <!-- Porção Cebolas -->
+    <!-- Porção frango frito -->
 
-        <section id="porcaocebola">
+        <section id="porcaofrangofrito">
             <div>
-                <img src="../img/porção.cebolitos.jpeg" alt="">
-                <h1>Porção Anéis de Cebola</h1>
-                <p>Anéis de cebola crocantes e dourados, servidos com um delicioso molho cremoso ao centro.</p>
+                <img src="../img/porcaoFrangoFrito.png" alt="">
+                <h1>Porção Frango Frito </h1>
+                <p>Pedaços selecionados, crocantes por fora e suculentos por dentro, preparados na hora para máxima qualidade.</p>
             </div>
             <form method="post">
                 <label>Quantidade:</label>
-                <input type="number" name="quantidade" required>
-                <button type="required"><a href="#finalizacaocebola">Comprar</a></button>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaocebola">Comprar</a></button>
             </form>
 
-            <section id="finalizacaocebola">
+            <section id="finalizacaofrangofrito">
                 <nav>
                     <img src="../img/logo.jpeg" alt="">
                     <ul>
@@ -122,7 +123,7 @@ $nome = $_SESSION['nome_usuario'];
                     </ul>
                 </nav>
                 <div>
-                    <img src="../img/porção.cebolitos.jpeg" alt="">
+                    <img src="../img/porcaoFrangoFrito.png" alt="">
                 </div>
                 <h2>Tipo de Entrega</h2>
                 <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
@@ -141,21 +142,21 @@ $nome = $_SESSION['nome_usuario'];
         </section>
     </section>
 
-    <!-- Porção Churrasco -->
+    <!-- Porção Muçarela -->
 
-        <section id="porcaochurrasco">
+        <section id="porcaomucarela">
             <div>
-                <img src="../img/porção.churrasco.jpeg" alt="">
-                <h1>Porção Churrasco</h1>
-                <p>Mix de carnes suculentas com linguiça, batatas fritas e pão de alho grelhado. Acompanha molhos variados.</p>
+                <img src="../img/porcaoMucarela.png" alt="">
+                <h1>Porção Palitos de Muçarela</h1>
+                <p>Deliciosos palitos de muçarela empanados, dourados e crocantes por fora, com queijo derretido e irresistível por dentro.</p>
             </div>
             <form method="post">
                 <label>Quantidade:</label>
-                <input type="number" name="quantidade" required>
-                <button type="required"><a href="#finalizacaochurrasco">Comprar</a></button>
+                <input type="number" name="quantidade">
+                <button><a href="#finalizacaochurrasco">Comprar</a></button>
             </form>
 
-            <section id="finalizacaochurrasco">
+            <section id="finalizacaomucarela">
                 <nav>
                     <img src="../img/logo.jpeg" alt="">
                     <ul>
@@ -165,7 +166,7 @@ $nome = $_SESSION['nome_usuario'];
                     </ul>
                 </nav>
                 <div>
-                    <img src="../img/porção.churrasco.jpeg" alt="">
+                    <img src="../img/porcaoMucarela.png" alt="">
                 </div>
                 <h2>Tipo de Entrega</h2>
                 <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>

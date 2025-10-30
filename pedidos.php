@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-            <img src="img/logo.jpeg" alt="">
+            <img src="img/logo.png" alt="">
         <ul>
             <li><a href="">Inicio</a></li> 
             <li><a href="">Pedidos</a></li>
