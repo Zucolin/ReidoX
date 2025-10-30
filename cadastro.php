@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +7,29 @@
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <img class="logo" src="img/logo.jpeg" alt=""> <!-- Logo no centro da tela-->
+    <br>
+
+    <div class="enfeiteborda">
+        <br>
+        <div class="ajustarlogo">
+    <img class="logo" src="img/logo.jpeg.jpeg" alt=""> <!-- Logo no centro da tela-->
     <!-- Abaixo o formulario de cadastro-->
+     <h1 class="tituloprincipal">Cadrastro: </h1>
+
+     </div>
+     <br>
+
+
     <form method="post"> 
-        <label for="nome">Nome:</label>
-        <input name="nome" type="text" required>
+        <div class="formulario">
+        <label  for="nome">Nome:</label>
+        <input class="bordas" name="nome" type="text" required><br>
         <label for="email">E-mail:</label>
-        <input name="email" type="email" required>
+        <input class="bordas" name="email" type="email" required><br>
         <label for="senha">Senha:</label>
-        <input name="senha" type="password" required>
+        <input class="bordas" name="senha" type="password" required><br>
         <label for="">Confirme sua senha:</label> <!-- If senha == confirmarsenha { envia } -->
-        <input name="senhaconfirm" type="password" required>
-        <input type="submit">
-        <!-- Depois de o usuario enviar as informações para o banco de dados ele é redirecionado a paginainicio -->
-    </form>
-    <a href="index.php">voltar</a>
-</body>
+        <input class="bordas" name="senhaconfirm" type="password" required><br>
 
 <?php
 try{
@@ -53,10 +60,25 @@ try{
     else{
         echo "<p>Erro ao se cadastrar! Senhas Diferrentes</p>";
     }
+    
 }
 }catch(Exception $e){
     echo "<p style='color: red;'>Erro: " . htmlspecialchars($e->getMessage()) . "</p>";
 }
 
 ?>
+
+        <input type="submit"><br><br>
+        <!-- Depois de o usuario enviar as informações para o banco de dados ele é redirecionado a paginainicio -->
+    
+    <a href="index.php">voltar</a>
+    <br>
+
+    </form>
+    <br><br>
+
+</div>
+</div>
+</body>
+
 </html>
