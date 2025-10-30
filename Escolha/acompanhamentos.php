@@ -46,39 +46,43 @@ $nome = $_SESSION['nome_usuario'];
         </ul>
     </nav>
 
-    <a href="#porcaocebola"><img src="../img/porcaoAnelbatata.png" alt=""></a>
-    <a href="#porcaobatata"><img src="../img/porcaobatata.png" alt=""></a>
-    <a href="#porcaofrangofrito"><img src="../img/porcaoFrangoFrito.png" alt=""></a>
-    <a href="#porcaomucarela"><img src="../img/porcaoMucarela.png" alt=""></a>
+    <a href="#porcaocebola" class="produto-link">
+        <img src="../img/porcaoAnelbatata.png" alt="" class="produto-img"></a>
+    <a href="#porcaobatata"class="produto-link">
+        <img src="../img/porcaobatata.png" alt="" class="produto-img"></a>
+    <a href="#porcaofrangofrito"class="produto-link">
+        <img src="../img/porcaoFrangoFrito.png" alt="" class="produto-img"></a>
+    <a href="#porcaomucarela"class="produto-link">
+        <img src="../img/porcaoMucarela.png" alt="" class="produto-img"></a>
    
     <!-- Porção Batata -->
 
 
         <!-- Produto específico -->
         <section id="porcaobatata">
-            <div>
-                <img src="../img/porcaobatata.png" alt="">
-                <h1>Porção de Fritas</h1>
-                <p>Crocrante por fora, macia por dentro, servida quentinha para acompanhar seu hambúrguer.</p>
+            <div class="produto-detalhe">
+                <img src="../img/porcaobatata.png" alt="" class="produto-img-detalhe">
+                <h1 class="produto-titulo">Porção de Fritas</h1>
+                <p class="produto-descricao">Crocrante por fora, macia por dentro, servida quentinha para acompanhar seu hambúrguer.</p>
             </div>
             <form method="post">
-                <label>Quantidade:</label>
+                <label class="label-quantidade">Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button type="submit"><a href="#finalizacaobatata">Comprar</a></button>
+                <button class="btn-comprar"type="submit"><a href="#finalizacaobatata">Comprar</a></button>
             </form>
 
             <!-- Finalização -->
-            <section id="finalizacaobatata">
-                <nav>
-                    <img src="../img/logo.jpeg" alt="">
-                    <ul>
+            <section id="finalizacaobatata"  class="finalizacao">
+                <nav class="nav-escolha">
+                    <img src="../img/logo.png" alt="" class="logo">
+                    <ul class="menu-principal">
                         <li><a href="paginainicio.php">Inicio</a></li>
                         <li><a href="pedidos.php">Pedidos</a></li>
                         <li><a href="sobrenos.html">Sobre nós</a></li>
                     </ul>
                 </nav>
-                <div>
-                    <img src="../img/porcaobatata.png" alt="">
+                <div class="produto-finalizacao">
+                    <img src="../img/porcaobatata.png" alt="" class="img-produto-finalizacao">
                 </div>
                 <form method="post">
                 <input type="hidden" name="produto" value="Porção de Batata">

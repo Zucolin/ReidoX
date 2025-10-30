@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <img src="img/logo.png" alt=""> <!-- Logo no centro da tela-->
+    <img src="img/logo.jpeg" alt=""> <!-- Logo no centro da tela-->
     <!-- Abaixo o formulario de cadastro-->
     <form method="post"> 
         <label for="cep">CEP:</label>
