@@ -65,12 +65,10 @@ $nome = $_SESSION['nome_usuario'];
                 <h1 class="produto-titulo">Porção de Fritas</h1>
                 <p class="produto-descricao">Crocrante por fora, macia por dentro, servida quentinha para acompanhar seu hambúrguer.</p>
             </div>
-            <form method="post" class="form-compra">
-                <label class="label-quantidade">Quantidade:</label>
-                <input type="number" name="quantidade" required>
-                <button class="btn-comprar" type="required"><a href="#finalizacaobatata">Comprar</a></button>
+            <form method="post">
+                <label>Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button><a href="#finalizacaobatata">Comprar</a></button>
+                <button type="submit"><a href="#finalizacaobatata">Comprar</a></button>
             </form>
 
             <!-- Finalização -->
@@ -114,7 +112,7 @@ $nome = $_SESSION['nome_usuario'];
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button><a href="#finalizacaocebola">Comprar</a></button>
+                <button type="submit"><a href="#finalizacaocebola">Comprar</a></button>
             </form>
 
             <section id="finalizacaofrangofrito">
@@ -157,7 +155,7 @@ $nome = $_SESSION['nome_usuario'];
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade">
-                <button><a href="#finalizacaochurrasco">Comprar</a></button>
+                <button type="submit"><a href="#finalizacaochurrasco">Comprar</a></button>
             </form>
 
             <section id="finalizacaomucarela">
@@ -200,7 +198,7 @@ $nome = $_SESSION['nome_usuario'];
             <form method="post">
                 <label>Quantidade:</label>
                 <input type="number" name="quantidade" required>
-                <button type="required"><a href="#finalizacaofritas">Comprar</a></button>
+                <button type="submit"><a href="#finalizacaofritas">Comprar</a></button>
             </form>
 
             <section id="finalizacaocebola">
