@@ -46,30 +46,30 @@ $nome = $_SESSION['nome_usuario'];
             <li><a href="">Sobre nós</a></li>
         </ul>
         </nav>
-        <a href="#bolopote"><img src="img/sobrimesa.bolopote.jpeg" alt=""></a><!-- Sobrimesa 1-->
-        <a href="#milkshake"><img src="img/sobrimesa.milkshake.jpeg" alt=""></a><!-- Sobrimesa 2-->
-        <a href="#mousse"><img src="img/sobrimesa.mousse.jpeg" alt=""></a><!-- Sobrimesa 3-->
-        <a href="#pudim"><img src="img/sobrimesa.pudim.jpeg" alt=""></a><!-- Sobrimesa 4-->
-        <a href="#torta"><img src="img/sobrimesa.torta.jpeg" alt=""></a><!-- Sobrimesa 5-->
+        <a href="#browniesorvete"><img src="img/brownieSorvete.png" alt=""></a><!-- Sobremesa 1-->
+        <a href="#moussemaracuja"><img src="img/mousseMaracuja.png" alt=""></a><!-- Sobremesa 2-->
+        <a href="#moussemorango"><img src="img/mousseMorango.png" alt=""></a><!-- Sobremesa 3-->
+        <a href="#sorveteflocos"><img src="img/sorveteflocos.png" alt=""></a><!-- Sobremesa 4-->
+        <a href="#torta"><img src="img/torta.png" alt=""></a><!-- Sobremesa 5-->
 
-<!-- Sobremesa: Bolo de Pote -->
+<!-- Sobremesa: Brownie e Sorvete  -->
 
 <!-- 1ª Seção: Página de escolha do produto -->
-<section id="bolopote">
+<section id="brownieesorvete">
     <div>
-        <img src="img/sobrimesa.bolopote.jpeg" alt="">
-        <h1>Bolo de Pote</h1>
-        <p>A base da sobremesa é uma mistura de cremes e massas de chocolate, uma camada de creme de chocolate ao leite, uma camada de massa bolo, e uma camada de castanhas, finalizada com chantilly e um brigadeiro coberto por castanhas.</p>
+        <img src="img/brownieSorvete.png" alt="">
+        <h1>Brownie com Sorvete</h1>
+        <p>Brownie quentinho e macio com uma bola de sorvete cremoso e calda de Morango. Irresistível!</p>
     </div>
     <form method="post">
         <label>Quantidade:</label>
         <input type="number" name="quantidade">
-        <button><a href="#finalizacaobolopote">Comprar</a></button>
+        <button><a href="#finalizacaobrownieesorvete">Comprar</a></button>
     </form>
 
 
 <!-- 3ª Seção: Finalização da compra -->
-    <section id="finalizacaobolopote">
+    <section id="finalizacaobrownieesorvete">
         <nav>
             <img src="../img/logo.jpeg" alt="">
             <ul>
@@ -79,7 +79,7 @@ $nome = $_SESSION['nome_usuario'];
             </ul>
         </nav>
         <div>
-            <img src="img/sobrimesa.bolopote.jpeg" alt="">
+            <img src="img/brownieSorvete.png" alt="">
         </div>
         <form method="post">
             <h2>Entregar</h2>
@@ -101,24 +101,24 @@ $nome = $_SESSION['nome_usuario'];
         </form>
     </section>
 </section>
-<!-- Sobremesa: Milkshake -->
+<!-- Sobremesa: mousse de maracuja -->
 
 <!-- 1ª Seção: Página de escolha do produto -->
-<section id="milkshake">
+<section id="moussemaracuja">
     <div>
-        <img src="img/sobrimesa.milkshake.jpeg" alt="">
-        <h1>Milkshake</h1>
-        <p>O Milkshake apresenta uma base espessa e gelada de sabor achocolatado, realçada por um ziguezague de calda de chocolate. É coroado com farelo de biscoito de chocolate e finalizado com chantilly.</p>
+        <img src="img/mousseMaracuja.png" alt="">
+        <h1>Mousse de Maracujá</h1>
+        <p>Sobremesa leve e cremosa, com o equilíbrio perfeito entre o doce e o azedinho do maracujá.</p>
     </div>
     <form method="post">
         <label>Quantidade:</label>
         <input type="number" name="quantidade">
-        <button><a href="#finalizacaomilkshake">Comprar</a></button>
+        <button><a href="#finalizacaomoussemaracuja">Comprar</a></button>
     </form>
 
 
 <!-- 3ª Seção: Finalização da compra -->
-    <section id="finalizacaomilkshake">
+    <section id="finalizacaomoussemaracuja">
         <nav>
             <img src="../img/logo.jpeg" alt="">
             <ul>
@@ -128,7 +128,7 @@ $nome = $_SESSION['nome_usuario'];
             </ul>
         </nav>
         <div>
-            <img src="img/sobrimesa.milkshake.jpeg" alt="">
+            <img src="img/mousseMaracuja" alt="">
         </div>
         <form method="post">
             <h2>Entregar</h2>
@@ -150,23 +150,23 @@ $nome = $_SESSION['nome_usuario'];
         </form>
     </section>
 </section>
-<!-- Sobremesa: Mousse de Chocolate -->
+<!-- Sobremesa: Mousse de Morango -->
 
 <!-- 1ª Seção: Página de escolha do produto -->
-<section id="mousse">
+<section id="moussemorango">
     <div>
         <img src="img/sobrimesa.mousse.jpeg" alt="">
-        <h1>Mousse de Chocolate</h1>
-        <p>A sobremesa começa com uma base crocante de biscoito de chocolate. Sobre ela, repousam camadas de mousse de chocolate, que variam do doce ao leite e amargo. O topo é coroado com uma espiral de chantilly, lascas de chocolate e framboesas frescas, com um toque de hortelã.</p>
+        <h1>Mousse de Morango</h1>
+        <p>Camadas cremosas e leves com pedaços de morango fresco, unindo doçura e frescor em cada colherada.</p>
     </div>
     <form method="post">
         <label>Quantidade:</label>
         <input type="number" name="quantidade">
-        <button><a href="#finalizacaomousse">Comprar</a></button>
+        <button><a href="#finalizacaomoussemorango">Comprar</a></button>
     </form>
 
 <!-- 3ª Seção: Finalização da compra -->
-    <section id="finalizacaomousse">
+    <section id="finalizacaomoussemorango">
         <nav>
             <img src="../img/logo.jpeg" alt="">
             <ul>
@@ -176,7 +176,7 @@ $nome = $_SESSION['nome_usuario'];
             </ul>
         </nav>
         <div>
-            <img src="img/sobrimesa.mousse.jpeg" alt="">
+            <img src="img/mousseMorango.png" alt="">
         </div>
         <form method="post">
             <h2>Entregar</h2>
@@ -198,24 +198,24 @@ $nome = $_SESSION['nome_usuario'];
         </form>
     </section>
 </section>
-<!-- Sobremesa: Pudim -->
+<!-- Sobremesa: Sorvete Flocos-->
 
 <!-- 1ª Seção: Página de escolha do produto -->
-<section id="pudim">
+<section id="sorveteflocos">
     <div>
-        <img src="img/sobrimesa.pudim.jpeg" alt="">
-        <h1>Pudim</h1>
-        <p>A sobremesa apresenta uma massa suave e aveludada. Ela é banhada por uma calda de caramelo dourado. O prato é decorado com uma coroa de frutas vermelhas frescas. Um toque final de folhas de hortelã.</p>
+        <img src="img/sorveteFlocos" alt="">
+        <h1>Sorvete de Flocos</h1>
+        <p>Sorvete de flocos cremoso servido com brownie de chocolate e calda deliciosa. Uma combinação perfeita!</p>
     </div>
     <form method="post">
         <label>Quantidade:</label>
         <input type="number" name="quantidade">
-        <button><a href="#finalizacaopudim">Comprar</a></button>
+        <button><a href="#finalizacaosorvete">Comprar</a></button>
     </form>
 
 
 <!-- 3ª Seção: Finalização da compra -->
-    <section id="finalizacaopudim">
+    <section id="finalizacaosorvete">
         <nav>
             <img src="../img/logo.jpeg" alt="">
             <ul>
@@ -225,7 +225,7 @@ $nome = $_SESSION['nome_usuario'];
             </ul>
         </nav>
         <div>
-            <img src="img/sobrimesa.pudim.jpeg" alt="">
+            <img src="img/sorveteflocos.png" alt="">
         </div>
         <form method="post">
             <h2>Entregar</h2>
@@ -247,14 +247,14 @@ $nome = $_SESSION['nome_usuario'];
         </form>
     </section>
 </section>
-<!-- Sobremesa: Torta de Chocolate -->
+<!-- Sobremesa: Torta de Oreo -->
 
 <!-- 1ª Seção: Página de escolha do produto -->
 <section id="torta">
     <div>
-        <img src="img/sobrimesa.torta.jpeg" alt="">
-        <h1>Torta de Chocolate</h1>
-        <p>A fatia revela camadas, começando por uma base de bolo de chocolate, seguida por texturas cremosas que variam, indo do chocolate preto ao leite e um creme de baunilha. A torta é finalizada com uma camada lisa de ganache e um ziguezague de calda de chocolate. O toque final é dado pelos biscoitos, que adicionam crocância.</p>
+        <img src="img/torta.png" alt="">
+        <h1>Torta de Oreo</h1>
+        <p>Camadas cremosas de chocolate e baunilha sobre base crocante de biscoito Oreo, finalizada com calda de chocolate.</p>
     </div>
     <form method="post">
         <label>Quantidade:</label>
@@ -274,7 +274,7 @@ $nome = $_SESSION['nome_usuario'];
             </ul>
         </nav>
         <div>
-            <img src="img/sobrimesa.torta.jpeg" alt="">
+            <img src="img/torta.png" alt="">
         </div>
         <form method="post">
             <h2>Entregar</h2>
