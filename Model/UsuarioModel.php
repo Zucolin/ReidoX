@@ -1,4 +1,4 @@
-<?php
+<?php // define $pdo
 class UsuarioModel{
     private $pdo;
 public function __construct(PDO $pdo){

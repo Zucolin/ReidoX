@@ -9,6 +9,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
+  overflow-y: hidden;
 }
 
 nav {
@@ -72,7 +73,7 @@ nav ul li a:hover {
 
 .menu-btn:hover {
     background-color: #f5c518;
-    color: #000;
+    color: #000000;
 }
 
 /* Dropdown */
@@ -128,7 +129,7 @@ nav ul li a:hover {
     height: 230px;
     object-fit: contain;
     border-radius: 20px;
-    background: #111;
+    background: #111111;
     margin: 25px;
     transition: all 0.3s ease;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.05);
@@ -214,56 +215,48 @@ nav ul li a:hover {
 }
 
 /* Container principal */
-.container {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid #ffd90080;
-  padding: 80x 50px 75px 50px;
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(255, 255, 0, 0.05);
-  width: 90%;
-  max-width: 750px; /* largura ideal */
-  animation: fadeIn 0.8s ease-in-out;
-  margin-top: 30px; /* desce o container 40px para baixo */
-  height: auto;
-  text-align: center;
-  box-sizing: border-box;
-}
-.container-cadastro {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid #ffd90080;
-  padding: 80x 50px 75px 50px;
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(255, 255, 0, 0.05);
-  width: 90%;
-  max-width: 750px; /* largura ideal */
-  animation: fadeIn 0.8s ease-in-out;
-  margin-top: 110px; /* desce o container 40px para baixo */
-  height: auto;
-  text-align: center;
-  box-sizing: border-box;
-}
+.container,
+.container-cadastro,
 .container-endereco {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid #ffd90080;
-  padding: 90x 50px 75px 50px;
+  padding: 50px; /* corrige '80x' para 50px padrão */
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(255, 255, 0, 0.05);
-  width: 90%;
-  max-width: 750px; /* largura ideal */
-  text-align: center;
+  width: 786px; 
+  margin: 30px auto;
   animation: fadeIn 0.8s ease-in-out;
-  margin-top: 240px; /* desce o container 40px para baixo */
-  height: auto;
+  text-align: center;
+  box-sizing: border-box;
 }
-/* Animação de entrada suave */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.97);
+
+/* ajustes específicos de espaçamento para variantes */
+.container{ height: 900px; }
+.container-cadastro { margin-top: 100px; height: 800px; }
+.container-endereco { margin-top: 190px; }
+
+@media (max-width: 599px) {
+  .container,
+  .container-cadastro,
+  .container-endereco {
+    width: calc(100% - 32px);
+    padding: 14px;
+    border-radius: 12px;
+    margin: 18px auto;
+    max-height: calc(100vh - 120px);
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+  .container-cadastro { margin-top: 60px; }
+  .container-endereco { margin-top: 100px; }
+}
+
+/* telas muito grandes: limitar um pouco mais para não ficar esticado demais */
+@media (min-width: 1400px) {
+  .container,
+  .container-cadastro,
+  .container-endereco {
+    max-width: 1100px;
+    padding: 60px;
+    max-height: calc(200vh - 400px);
   }
 }
 
