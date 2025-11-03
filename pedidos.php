@@ -27,7 +27,7 @@ $pedidos = $usuario['pedidos'] ?? '';
        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="pedidos.css">
 </head>
 <body>
     <h1>Pedidos de <?= htmlspecialchars($usuario['nome']) ?></h1>

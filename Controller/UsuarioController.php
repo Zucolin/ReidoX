@@ -1,5 +1,5 @@
 <?php
-require_once "C:/Turma1/xampp/htdocs/programa/ReidoX/Model/UsuarioModel.php";
+require_once "C:/Turma1/xampp/htdocs/ReidoX/Model/UsuarioModel.php";
 
 class UsuarioController {
     private $usuarioModel;
@@ -29,7 +29,7 @@ class UsuarioController {
 
     public function listar() {
         $usuarios = $this->usuarioModel->buscarTodos();
-        include_once "C:/xampp/htdocs/ReidoX/admin.php";
+        include_once "C:/Turma1/xampp/htdocs/ReidoX/admin.php";
         return $usuarios;
     }
 
