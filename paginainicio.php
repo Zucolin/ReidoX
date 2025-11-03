@@ -51,7 +51,7 @@ $nome = $_SESSION['nome_usuario'];
 
         .brand{flex:0; display:flex; align-items:center}
         .brand img{
-            height:190px;
+            height:200px;
             width:150px;
             display:block;
         }
