@@ -1,5 +1,5 @@
 <?php
-require_once "Model/UsuarioModel.php";
+require_once "C:/Turma1/xampp/htdocs/programa/ReidoX/Model/UsuarioModel.php";
 
 class UsuarioController {
     private $usuarioModel;

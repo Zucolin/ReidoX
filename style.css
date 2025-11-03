@@ -235,7 +235,30 @@ nav ul li a:hover {
 .container-cadastro { margin-top: 100px; height: 800px; }
 .container-endereco { margin-top: 190px; }
 
+@media (max-width: 599px) {
+  .container,
+  .container-cadastro,
+  .container-endereco {
+    width: calc(100% - 32px);
+    padding: 14px;
+    border-radius: 12px;
+    margin: 18px auto;
+    max-height: calc(100vh - 120px);
+  }
+  .container-cadastro { margin-top: 60px; }
+  .container-endereco { margin-top: 100px; }
+}
 
+/* telas muito grandes: limitar um pouco mais para não ficar esticado demais */
+@media (min-width: 1400px) {
+  .container,
+  .container-cadastro,
+  .container-endereco {
+    max-width: 1100px;
+    padding: 60px;
+    max-height: calc(200vh - 400px);
+  }
+}
 
 /* Logo */
 header img.logo-cadastro {
