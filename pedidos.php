@@ -23,12 +23,14 @@ $pedidos = $usuario['pedidos'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-       <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos</title>
     <link rel="stylesheet" href="pedidos.css">
 </head>
+
 <body>
     <h1>Pedidos de <?= htmlspecialchars($usuario['nome']) ?></h1>
 
@@ -45,4 +47,5 @@ $pedidos = $usuario['pedidos'] ?? '';
         <p>Você ainda não realizou nenhum pedido.</p>
     <?php endif; ?>
 </body>
+
 </html>

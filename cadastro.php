@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="fundo">
     <header>
-    <img class="logo-cadastro" src="img/logo.png" alt="Logo">    
+        <img class="logo-cadastro" src="img/logo.png" alt="Logo">
     </header>
-    
+
     <div class="container-cadastro">
-        
         <h1 class="titulo">Cadastro</h1>
 
         <form method="post" class="formulario">
             <div class="campo">
-            <input class="input" type="text" name="nome" placeholder=" " required>
-            <label class="label-flutuante">Nome</label>
+                <input class="input" type="text" name="nome" placeholder=" " required>
+                <label class="label-flutuante">Nome</label>
             </div>
 
             <div class="campo">
-            <input class="input" type="email" name="email" placeholder=" " required>
-            <label class="label-flutuante">E-mail</label>
+                <input class="input" type="email" name="email" placeholder=" " required>
+                <label class="label-flutuante">E-mail</label>
             </div>
 
             <div class="campo">
-            <input class="input" type="password" name="senha" placeholder=" " required>
-            <label class="label-flutuante">Senha</label>
+                <input class="input" type="password" name="senha" placeholder=" " required>
+                <label class="label-flutuante">Senha</label>
             </div>
 
             <div class="campo">
-            <input class="input" type="password" name="senhaconfirm" placeholder=" " required>
-            <label class="label-flutuante">Confirmar Senha</label>
+                <input class="input" type="password" name="senhaconfirm" placeholder=" " required>
+                <label class="label-flutuante">Confirmar Senha</label>
             </div>
 
 
@@ -45,7 +46,7 @@
             require_once 'DB/Database.php';
             require_once 'Controller/UsuarioController.php';
             require_once 'verificar.php';
-            
+
             $controller = new UsuarioController($pdo);
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -69,8 +70,9 @@
             echo "<p class='erro'>Erro: " . htmlspecialchars($e->getMessage()) . "</p>";
         }
         ?>
-    
-    <a class="link" href="index.php">Login</a>
-</div>
+
+        <a class="link" href="index.php">Login</a>
+    </div>
 </body>
+
 </html>

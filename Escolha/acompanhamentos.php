@@ -1,32 +1,26 @@
 <?php
 session_start();
-
-// Se clicou em "sair"
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sair'])) {
     session_destroy();
     header('Location: ../index.php');
     exit;
 }
-
-// Verifica se o usuário está logado
 if (!isset($_SESSION['nome_usuario'])) {
     header('Location: ../index.php');
     exit;
 }
-
 $nome = $_SESSION['nome_usuario'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Porções</title>
-    <link rel="stylesheet" href="estilo.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Porções</title>
+<link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-<!-- Página principal da seção "Acompanhamentos" (galeria) -->
 <section id="acompanhamentos">
     <nav class="nav-escolha">
         <div class="menu-container">
@@ -35,14 +29,11 @@ $nome = $_SESSION['nome_usuario'];
                 <form method="post">
                     <button type="submit" name="editar">Editar</button>
                     <button type="submit" name="sair">Sair</button>
-                    <button type="button">Detalhes</button>
                 </form>
             </div>
         </div>
-
         <img src="logo.png" alt="logo" class="logo">
         <h1 class="titulo-pagina">Porções</h1>
-
         <ul class="menu-principal">
             <li><a href="../paginainicio.php">Inicio</a></li>
             <li><a href="../pedidos.php">Pedidos</a></li>
@@ -50,7 +41,6 @@ $nome = $_SESSION['nome_usuario'];
         </ul>
     </nav>
 
-    <!-- Links rápidos / galeria -->
     <div style="text-align:center; width:100%;">
         <a href="#porcaobatata" class="produto-link"><img src="../img/porcaobatata.png" alt="Porção Batata"></a>
         <a href="#porcaofrangofrito" class="produto-link"><img src="../img/porcaoFrangoFrito.png" alt="Frango Frito"></a>
@@ -59,47 +49,35 @@ $nome = $_SESSION['nome_usuario'];
     </div>
 </section>
 
-<!-- Porção Batata -->
-<section id="porcaobatata">
-    <nav class="nav-escolha">
-        <img src="../img/logo.jpeg" alt="logo" class="logo">
+<!-- Porção Batata - detalhe -->
+<section id="porcaobatata" class="produto-page">
+    <nav class="nav-escolha"><img src="../img/logo.jpeg" alt="logo" class="logo">
         <h1 class="titulo-pagina">Porção de Fritas</h1>
-        <ul class="menu-principal">
-            <li><a href="../paginainicio.php">Inicio</a></li>
-            <li><a href="../pedidos.php">Pedidos</a></li>
-            <li><a href="../sobrenos.html">Sobre nós</a></li>
-        </ul>
+        <ul class="menu-principal"><li><a href="#acompanhamentos">Voltar</a></li></ul>
     </nav>
 
     <div class="produto-detalhe">
         <img src="../img/porcaobatata.png" alt="Porção Batata" class="produto-img-detalhe">
         <div>
-            <h1 class="produto-titulo">Porção de Fritas</h1>
+            <h2 class="produto-titulo">Porção de Fritas</h2>
             <p class="produto-descricao">Crocrante por fora, macia por dentro, servida quentinha para acompanhar seu hambúrguer.</p>
+            <form method="post" action="#finalizacaobatata">
+                <input type="hidden" name="produto" value="Porção de Batata">
+                <label class="label-qtd">Quantidade:</label>
+                <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
+                <button class="btn-comprar" type="submit">Ir para finalização</button>
+            </form>
         </div>
     </div>
-
-    <form method="post" action="#finalizacaobatata">
-        <label class="label-qtd">Quantidade:</label>
-        <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-        <a class="btn-comprar" href="#finalizacaobatata">Finalizar compra</a>
-    </form>
 </section>
 
-<!-- Finalização Porção Batata -->
+<!-- Porção Batata - finalização -->
 <section id="finalizacaobatata" class="finalizacao">
-    <nav class="nav-escolha">
-        <img src="../img/logo.jpeg" alt="logo" class="logo">
-        <ul class="menu-principal">
-            <li><a href="../paginainicio.php">Inicio</a></li>
-            <li><a href="../pedidos.php">Pedidos</a></li>
-            <li><a href="../sobrenos.html">Sobre nós</a></li>
-        </ul>
+    <nav class="nav-escolha"><img src="../img/logo.jpeg" alt="logo" class="logo">
+        <ul class="menu-principal"><li><a href="#porcaobatata">Detalhe</a></li><li><a href="#acompanhamentos">Voltar</a></li></ul>
     </nav>
 
-    <div class="produto-finalizacao">
-        <img src="../img/porcaobatata.png" alt="Porção Batata" class="img-produto-finalizacao">
-    </div>
+    <div class="produto-finalizacao"><img src="../img/porcaobatata.png" class="img-produto-finalizacao" alt="Porção Batata"></div>
 
     <form method="post">
         <input type="hidden" name="produto" value="Porção de Batata">
@@ -107,8 +85,8 @@ $nome = $_SESSION['nome_usuario'];
         <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
 
         <h2 class="forma-entrega">Tipo de Entrega</h2>
-        <label class="metodo-entrega"><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-        <label class="metodo-entrega"><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
+        <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+        <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
 
         <h3 class="forma-pagamento">Método Pagamento</h3>
         <select name="pagamento" class="escolha-pagamento" required>
@@ -122,210 +100,134 @@ $nome = $_SESSION['nome_usuario'];
     </form>
 </section>
 
-<!-- Porção Frango Frito -->
-<section id="porcaofrangofrito">
-    <nav class="nav-escolha">
-        <img src="../img/logo.png" alt="logo" class="logo">
-        <h1 class="titulo-pagina">Porção Frango Frito</h1>
-        <ul class="menu-principal">
-            <li><a href="../paginainicio.php">Inicio</a></li>
-            <li><a href="../pedidos.php">Pedidos</a></li>
-            <li><a href="../sobrenos.html">Sobre nós</a></li>
-        </ul>
+<!-- Frango Frito - detalhe -->
+<section id="porcaofrangofrito" class="produto-page">
+    <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><h1 class="titulo-pagina">Porção Frango Frito</h1>
+        <ul class="menu-principal"><li><a href="#acompanhamentos">Voltar</a></li></ul>
     </nav>
-
     <div class="produto-detalhe">
-        <img src="../img/porcaoFrangoFrito.png" alt="Frango Frito" class="produto-img-detalhe">
+        <img src="../img/porcaoFrangoFrito.png" class="produto-img-detalhe" alt="Frango Frito">
         <div>
-            <h1 class="produto-titulo">Porção Frango Frito</h1>
-            <p class="produto-descricao">Pedaços selecionados, crocantes por fora e suculentos por dentro, preparados na hora.</p>
+            <h2 class="produto-titulo">Porção Frango Frito</h2>
+            <p class="produto-descricao">Pedaços selecionados, crocantes por fora e suculentos por dentro.</p>
+            <form method="post" action="#finalizacaofrangofrito">
+                <input type="hidden" name="produto" value="Porção de Frango Frito">
+                <label class="label-qtd">Quantidade:</label>
+                <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
+                <button class="btn-comprar" type="submit">Ir para finalização</button>
+            </form>
         </div>
     </div>
-
-    <form method="post" action="#finalizacaofrangofrito">
-        <label class="label-qtd">Quantidade:</label>
-        <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-        <a class="btn-comprar" href="#finalizacaofrangofrito">Finalizar compra</a>
-    </form>
 </section>
 
-<!-- Finalização Frango Frito -->
 <section id="finalizacaofrangofrito" class="finalizacao">
-    <nav class="nav-escolha">
-        <img src="../img/logo.png" alt="logo" class="logo">
-        <ul class="menu-principal">
-            <li><a href="../paginainicio.php">Inicio</a></li>
-            <li><a href="../pedidos.php">Pedidos</a></li>
-            <li><a href="../sobrenos.html">Sobre nós</a></li>
-        </ul>
-    </nav>
-
-    <div class="produto-finalizacao">
-        <img src="../img/porcaoFrangoFrito.png" alt="Frango Frito" class="img-produto-finalizacao">
-    </div>
-
+    <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><ul class="menu-principal"><li><a href="#porcaofrangofrito">Detalhe</a></li><li><a href="#acompanhamentos">Voltar</a></li></ul></nav>
+    <div class="produto-finalizacao"><img src="../img/porcaoFrangoFrito.png" class="img-produto-finalizacao" alt="Frango Frito"></div>
     <form method="post">
         <input type="hidden" name="produto" value="Porção de Frango Frito">
         <label class="label-qtd">Quantidade:</label>
         <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-
         <h2 class="forma-entrega">Tipo de Entrega</h2>
-        <label class="metodo-entrega"><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-        <label class="metodo-entrega"><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-
+        <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+        <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
         <h3 class="forma-pagamento">Método Pagamento</h3>
-        <select name="pagamento" class="escolha-pagamento" required>
+        <select name="pagamento" required>
             <option value="cartao-credito">Cartão de Crédito</option>
             <option value="cartao-debito">Cartão de Débito</option>
             <option value="pix">Pix</option>
             <option value="dinheiro">Dinheiro</option>
         </select>
-
         <input type="submit" class="btn-pagamento" value="Enviar pedido">
     </form>
 </section>
 
-<!-- Porção Muçarela -->
-<section id="porcaomucarela">
-    <nav class="nav-escolha">
-        <img src="../img/logo.png" alt="logo" class="logo">
-        <h1 class="titulo-pagina">Porção Palitos de Muçarela</h1>
-        <ul class="menu-principal">
-            <li><a href="../paginainicio.php">Inicio</a></li>
-            <li><a href="../pedidos.php">Pedidos</a></li>
-            <li><a href="../sobrenos.html">Sobre nós</a></li>
-        </ul>
-    </nav>
-
-    <div class="produto-detalhe">
-        <img src="../img/porcaoMucarela.png" alt="Muçarela" class="produto-img-detalhe">
-        <div>
-            <h1 class="produto-titulo">Porção Palitos de Muçarela</h1>
-            <p class="produto-descricao">Deliciosos palitos de muçarela empanados, dourados e crocantes por fora.</p>
-        </div>
-    </div>
-
-    <form method="post" action="#finalizacaomucarela">
-        <label class="label-qtd">Quantidade:</label>
-        <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-        <a class="btn-comprar" href="#finalizacaomucarela">Finalizar compra</a>
-    </form>
+<!-- Muçarela -->
+<section id="porcaomucarela" class="produto-page">
+    <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><h1 class="titulo-pagina">Porção Palitos de Muçarela</h1><ul class="menu-principal"><li><a href="#acompanhamentos">Voltar</a></li></ul></nav>
+    <div class="produto-detalhe"><img src="../img/porcaoMucarela.png" class="produto-img-detalhe" alt="Muçarela"><div>
+        <h2 class="produto-titulo">Porção Palitos de Muçarela</h2>
+        <p class="produto-descricao">Deliciosos palitos empanados, dourados e crocantes.</p>
+        <form method="post" action="#finalizacaomucarela">
+            <input type="hidden" name="produto" value="Porção de Muçarela">
+            <label class="label-qtd">Quantidade:</label>
+            <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
+            <button class="btn-comprar" type="submit">Ir para finalização</button>
+        </form>
+    </div></div>
 </section>
 
-<!-- Finalização Muçarela -->
 <section id="finalizacaomucarela" class="finalizacao">
-    <nav class="nav-escolha">
-        <img src="../img/logo.png" alt="logo" class="logo">
-        <ul class="menu-principal">
-            <li><a href="../paginainicio.php">Inicio</a></li>
-            <li><a href="../pedidos.php">Pedidos</a></li>
-            <li><a href="../sobrenos.html">Sobre nós</a></li>
-        </ul>
-    </nav>
-
-    <div class="produto-finalizacao">
-        <img src="../img/porcaoMucarela.png" alt="Muçarela" class="img-produto-finalizacao">
-    </div>
-
+    <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><ul class="menu-principal"><li><a href="#porcaomucarela">Detalhe</a></li><li><a href="#acompanhamentos">Voltar</a></li></ul></nav>
+    <div class="produto-finalizacao"><img src="../img/porcaoMucarela.png" class="img-produto-finalizacao" alt="Muçarela"></div>
     <form method="post">
         <input type="hidden" name="produto" value="Porção de Muçarela">
         <label class="label-qtd">Quantidade:</label>
         <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-
         <h2 class="forma-entrega">Tipo de Entrega</h2>
-        <label class="metodo-entrega"><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-        <label class="metodo-entrega"><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-
+        <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+        <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
         <h3 class="forma-pagamento">Método Pagamento</h3>
-        <select name="pagamento" class="escolha-pagamento" required>
+        <select name="pagamento" required>
             <option value="cartao-credito">Cartão de Crédito</option>
             <option value="cartao-debito">Cartão de Débito</option>
             <option value="pix">Pix</option>
             <option value="dinheiro">Dinheiro</option>
         </select>
-
         <input type="submit" class="btn-pagamento" value="Enviar pedido">
     </form>
 </section>
 
-<!-- Porção Anéis de Cebola -->
-<section id="porcaocebola">
-    <nav class="nav-escolha">
-        <img src="../img/logo.png" alt="logo" class="logo">
-        <h1 class="titulo-pagina">Porção Anéis de Cebola</h1>
-        <ul class="menu-principal">
-            <li><a href="../paginainicio.php">Inicio</a></li>
-            <li><a href="../pedidos.php">Pedidos</a></li>
-            <li><a href="../sobrenos.html">Sobre nós</a></li>
-        </ul>
-    </nav>
-
-    <div class="produto-detalhe">
-        <img src="../img/porcaoAnelCebola.png" alt="Anéis de Cebola" class="produto-img-detalhe">
-        <div>
-            <h1 class="produto-titulo">Porção Anéis de Cebola</h1>
-            <p class="produto-descricao">Anéis de cebola empanados e fritos, crocantes e saborosos.</p>
-        </div>
-    </div>
-
-    <form method="post" action="#finalizacaocebola">
-        <label class="label-qtd">Quantidade:</label>
-        <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-        <a class="btn-comprar" href="#finalizacaocebola">Finalizar compra</a>
-    </form>
+<!-- Anéis de Cebola -->
+<section id="porcaocebola" class="produto-page">
+    <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><h1 class="titulo-pagina">Porção Anéis de Cebola</h1><ul class="menu-principal"><li><a href="#acompanhamentos">Voltar</a></li></ul></nav>
+    <div class="produto-detalhe"><img src="../img/porcaoAnelCebola.png" class="produto-img-detalhe" alt="Anéis de Cebola"><div>
+        <h2 class="produto-titulo">Porção Anéis de Cebola</h2>
+        <p class="produto-descricao">Anéis empanados e fritos, crocantes e saborosos.</p>
+        <form method="post" action="#finalizacaocebola">
+            <input type="hidden" name="produto" value="Porção Anéis de Cebola">
+            <label class="label-qtd">Quantidade:</label>
+            <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
+            <button class="btn-comprar" type="submit">Ir para finalização</button>
+        </form>
+    </div></div>
 </section>
 
-<!-- Finalização Anéis de Cebola -->
 <section id="finalizacaocebola" class="finalizacao">
-    <nav class="nav-escolha">
-        <img src="../img/logo.png" alt="logo" class="logo">
-        <ul class="menu-principal">
-            <li><a href="../paginainicio.php">Inicio</a></li>
-            <li><a href="../pedidos.php">Pedidos</a></li>
-            <li><a href="../sobrenos.html">Sobre nós</a></li>
-        </ul>
-    </nav>
-
-    <div class="produto-finalizacao">
-        <img src="../img/porcaoAnelCebola.png" alt="Anéis de Cebola" class="img-produto-finalizacao">
-    </div>
-
+    <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><ul class="menu-principal"><li><a href="#porcaocebola">Detalhe</a></li><li><a href="#acompanhamentos">Voltar</a></li></ul></nav>
+    <div class="produto-finalizacao"><img src="../img/porcaoAnelCebola.png" class="img-produto-finalizacao" alt="Anéis de Cebola"></div>
     <form method="post">
         <input type="hidden" name="produto" value="Porção Anéis de Cebola">
         <label class="label-qtd">Quantidade:</label>
         <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-
         <h2 class="forma-entrega">Tipo de Entrega</h2>
-        <label class="metodo-entrega"><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-        <label class="metodo-entrega"><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-
+        <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
+        <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
         <h3 class="forma-pagamento">Método Pagamento</h3>
-        <select name="pagamento" class="escolha-pagamento" required>
+        <select name="pagamento" required>
             <option value="cartao-credito">Cartão de Crédito</option>
             <option value="cartao-debito">Cartão de Débito</option>
             <option value="pix">Pix</option>
             <option value="dinheiro">Dinheiro</option>
         </select>
-
         <input type="submit" class="btn-pagamento" value="Enviar pedido">
     </form>
 </section>
 
 <script>
-function toggleMenu(button) {
+function toggleMenu(button){
     const menu = button.parentElement.querySelector('.menu-opcoes');
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 }
-
-window.addEventListener('click', function(e) {
-    document.querySelectorAll('.menu-opcoes').forEach(menu => {
+window.addEventListener('click', function(e){
+    document.querySelectorAll('.menu-opcoes').forEach(menu=>{
         const btn = menu.parentElement.querySelector('.menu-btn');
-        if (menu.style.display === "block" && !btn.contains(e.target) && !menu.contains(e.target)) {
-            menu.style.display = "none";
+        if(menu.style.display === 'block' && !btn.contains(e.target) && !menu.contains(e.target)){
+            menu.style.display = 'none';
         }
     });
 });
 </script>
+
 </body>
 </html>
 
