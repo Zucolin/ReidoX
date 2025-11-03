@@ -1,13 +1,15 @@
 <?php
 require_once "C:/Turma1/xampp/htdocs/programa/ReidoX/Model/UsuarioModel.php";
 
-class UsuarioController {
+class UsuarioController
+{
     private $usuarioModel;
     private $pdo;
 
-    public function __construct($pdo) {
+    public function __construct($pdo)
+    {
         $this->usuarioModel = new UsuarioModel($pdo);
-        $this->pdo = $pdo; 
+        $this->pdo = $pdo;
 
         // ==========================================
         // 🔹 Verificação e criação automática do admin
@@ -27,36 +29,43 @@ class UsuarioController {
         // ==========================================
     }
 
-    public function listar() {
+    public function listar()
+    {
         $usuarios = $this->usuarioModel->buscarTodos();
         include_once "C:/xampp/htdocs/ReidoX/admin.php";
         return $usuarios;
     }
 
-    public function buscarUsuario($id) {
+    public function buscarUsuario($id)
+    {
         return $this->usuarioModel->buscarUsuario(id: $id);
     }
 
-    public function cadastrar($nome, $email, $senha) {
+    public function cadastrar($nome, $email, $senha)
+    {
         return $this->usuarioModel->cadastrar($nome, $email, $senha);
     }
 
-    public function atualizar($cep, $rua, $numero, $idatual) {
+    public function atualizar($cep, $rua, $numero, $idatual)
+    {
         return $this->usuarioModel->atualizar($cep, $rua, $numero, $idatual);
     }
 
-    public function editar($nome, $email, $senha, $id) {
+    public function editar($nome, $email, $senha, $id)
+    {
         $this->usuarioModel->editar($nome, $email, $senha, $id);
     }
 
-    public function deletar($id) {
+    public function deletar($id)
+    {
         return $this->usuarioModel->deletar($id);
     }
 
     // ===========================
     // 🔹 Login com sessão
     // ===========================
-    public function login($email, $senha) {
+    public function login($email, $senha)
+    {
         $stmt = $this->pdo->prepare("SELECT * FROM clientes WHERE email = ?");
         $stmt->execute([$email]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -81,7 +90,8 @@ class UsuarioController {
     // ===========================
     // 🔹 Enviar pedidos para o usuário logado
     // ===========================
-    public function enviarpedidos($pedido): void {
+    public function enviarpedidos($pedido): void
+    {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -98,8 +108,8 @@ class UsuarioController {
             ':user_id' => $user_id
         ]);
     }
-  
-    
+
+
 }
 
 ?>
