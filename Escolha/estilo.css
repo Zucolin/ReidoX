@@ -189,4 +189,9 @@ form{ margin-top:10px }
 .menu-principal a{ opacity:0.95; }
 .menu-container .menu-btn{ white-space:nowrap; }
 
+h2, h3, label{
+    color:white;
+
+}
+
 /* Fim do CSS enxuto */
