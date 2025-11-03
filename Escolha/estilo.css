@@ -2,23 +2,20 @@
 
 /* Reset leve */
 
-*{
-  overflow-y:hidden;
-  padding: 0%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body{
-    padding:0%;
-}
-/* Forçar ausência de qualquer transform/rotacao (único lugar necessário) */
 
-/* NAV fixa: layout em grid (logo | centro (ul + título) | usuário) */
-section{
-    margin:0;
-    padding:0;
-    height:100vh;
-    width:200vh;
-    margin-right: 200px;
+body {
+    overflow-y: hidden;
+}
+
+section {
     background-color: #000;
+    margin: 0 auto;
+    padding: 0 4%;
 }
 .nav-escolha{
   top: 0;
