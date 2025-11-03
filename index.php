@@ -5,19 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <br>
-
-    <div class="enfeiteborda">
-        <br>
-    <div class="ajustalogo">
-        <img class="logo" src="img/logo.jpeg.jpeg" alt="">
-        <h2 class="tituloprincipal">Entrar</h2>
+<body class="fundo">
+    <div class="container">
+        <img class="logo" src="img/logo.png" alt="Logo">
+        <h1 class="titulo">Login</h1>
        
-        </div>
-        <br>
+
 <?php
 session_start();
 require_once 'DB/Database.php';
@@ -55,26 +50,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }
 ?>
-        <?php if ($erro)
-            echo "<p style='color:red;'>$erro</p>"; ?>
-        <div class="formulario">
-            <form method="post" class="titulos">
-                <label>E-mail:</label> <br>
-                <input type="email" name="email" required class="bordas">
+        <form method="post" class="formulario">
+                    <div class="campo">
+                    <input type="email" name="email" required class="input" placeholder=" ">
+                    <label class="label-flutuante">E-mail:</label>    
+                    </div>
+                    <div class="campo">
+                    <input type="password" name="senha" required class="input" placeholder=" ">
+                    <label class="label-flutuante">Senha:</label>
+                    </div>
 
-                <br><br>
-
-                <label>Senha:</label> <br>
-                <input type="password" name="senha" required class="bordas">
-                <br>
-
-                <input type="submit" value="Entrar"><br>
-            </form>
-
-            <a href="cadastro.php">Cadastrar-se</a> <br>
-        </div>
-
+            <input class="botao" type="submit" value="Entrar">
+        </form>
+                
+                
+            <?php if ($erro)
+            echo "<p class='erro' style='color:red;'>$erro</p>"; ?>
+            <a href="cadastro.php" class="link">Ainda não tem uma conta? Cadastrar-se</a>
     </div>
-    <br><br>
+
 </body>
 </html>

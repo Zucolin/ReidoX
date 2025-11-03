@@ -4,22 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <img src="img/logo.jpeg" alt=""> <!-- Logo no centro da tela-->
+<body class="fundo">
+    <header>
+        <img src="img/logo.png" alt="" class="logo-endereco" > <!-- Logo no centro da tela-->
+    </header>
+    <div class="container-endereco">
     <!-- Abaixo o formulario de cadastro-->
-    <form method="post"> 
-        <label for="cep">CEP:</label>
-        <input name="cep" type="text" required>
-        <label for="rua">Rua:</label>
-        <input name="rua" type="text" required>
-        <label for="numero">Numero/Bloco:</label>
-        <input name="numero" type="text" required>
-        <input type="submit">
+    <form method="post" class="formulario-endereco"> 
+        <div class="campo">
+        <input name="cep" type="text" class="input" placeholder=" " required>
+        <label for="cep" class="label-flutuante">CEP:</label> 
+        </div>
+        <div class="campo">
+        <input name="rua" type="text" class="input" placeholder=" " required> 
+        <label for="rua" class="label-flutuante">Rua:</label>  
+        </div>
+        <div class="campo">
+        <input name="numero" type="text" class="input" placeholder=" " required>
+        <label for="numero" class="label-flutuante">Numero/Bloco:</label>
+        </div>
+        <input type="submit" class="botao-endereco">
         <!-- Depois de o usuario enviar as informações para o banco de dados ele é redirecionado a paginainicio -->
     </form>
-    <a href="index.php">voltar</a>
+    </div>
 </body>
 
 <?php
@@ -49,8 +58,7 @@ try{
         exit;
 }
 }catch(Exception $e){
-    echo "<p style='color: red;'>Erro: " . htmlspecialchars($e->getMessage()) . "</p>";
+    echo "<p class='erro'>Erro: " . htmlspecialchars($e->getMessage()) . "</p>";
 }
-
 ?>
 </html>

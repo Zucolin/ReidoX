@@ -4,81 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <br>
-
-    <div class="enfeiteborda">
-        <br>
-        <div class="ajustarlogo">
-    <img class="logo" src="img/logo.jpeg.jpeg" alt=""> <!-- Logo no centro da tela-->
-    <!-- Abaixo o formulario de cadastro-->
-     <h1 class="tituloprincipal">Cadrastro: </h1>
-
-     </div>
-     <br>
-
-
-    <form method="post"> 
-        <div class="formulario">
-        <label  for="nome">Nome:</label>
-        <input class="bordas" name="nome" type="text" required><br>
-        <label for="email">E-mail:</label>
-        <input class="bordas" name="email" type="email" required><br>
-        <label for="senha">Senha:</label>
-        <input class="bordas" name="senha" type="password" required><br>
-        <label for="">Confirme sua senha:</label> <!-- If senha == confirmarsenha { envia } -->
-        <input class="bordas" name="senhaconfirm" type="password" required><br>
-
-<?php
-try{
-     require_once 'DB/Database.php';
-        require_once 'Controller/UsuarioController.php';
-        require_once 'verificar.php';
-        
-      $controller = new UsuarioController($pdo);
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome=$_POST['nome'];
-    $email=$_POST['email'];
-    $senha=$_POST['senha'];
-    $senhaconfirm=$_POST['senhaconfirm'];
-    if($senha == $senhaconfirm){
-       
-
-        
-       $idatual = $controller->cadastrar($nome, $email, $senha); // chama a função do controller aqui mesmo
-        
-        session_start();
-        $_SESSION['nome_usuario'] = $_POST['nome'];
-        $_SESSION['user_id'] = $idatual;
-        header("Location: endereco.php?id=$idatual"); // redireciona só depois da sessão estar salva
-        exit;
-        
-    }
-    else{
-        echo "<p>Erro ao se cadastrar! Senhas Diferrentes</p>";
-    }
+<body class="fundo">
+    <header>
+    <img class="logo-cadastro" src="img/logo.png" alt="Logo">    
+    </header>
     
-}
-}catch(Exception $e){
-    echo "<p style='color: red;'>Erro: " . htmlspecialchars($e->getMessage()) . "</p>";
-}
+    <div class="container-cadastro">
+        
+        <h1 class="titulo">Cadastro</h1>
 
-?>
+        <form method="post" class="formulario">
+            <div class="campo">
+            <input class="input" type="text" name="nome" placeholder=" " required>
+            <label class="label-flutuante">Nome</label>
+            </div>
 
-        <input type="submit"><br><br>
-        <!-- Depois de o usuario enviar as informações para o banco de dados ele é redirecionado a paginainicio -->
+            <div class="campo">
+            <input class="input" type="email" name="email" placeholder=" " required>
+            <label class="label-flutuante">E-mail</label>
+            </div>
+
+            <div class="campo">
+            <input class="input" type="password" name="senha" placeholder=" " required>
+            <label class="label-flutuante">Senha</label>
+            </div>
+
+            <div class="campo">
+            <input class="input" type="password" name="senhaconfirm" placeholder=" " required>
+            <label class="label-flutuante">Confirmar Senha</label>
+            </div>
+
+
+            <input class="botao" type="submit" value="Cadastrar">
+        </form>
+
+        <?php
+        try {
+            require_once 'DB/Database.php';
+            require_once 'Controller/UsuarioController.php';
+            require_once 'verificar.php';
+            
+            $controller = new UsuarioController($pdo);
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $nome = $_POST['nome'];
+                $email = $_POST['email'];
+                $senha = $_POST['senha'];
+                $senhaconfirm = $_POST['senhaconfirm'];
+
+                if ($senha == $senhaconfirm) {
+                    $idatual = $controller->cadastrar($nome, $email, $senha);
+                    session_start();
+                    $_SESSION['nome_usuario'] = $nome;
+                    $_SESSION['user_id'] = $idatual;
+                    header("Location: endereco.php?id=$idatual");
+                    exit;
+                } else {
+                    echo "<p class='erro'>Erro ao se cadastrar! Senhas diferentes.</p>";
+                }
+            }
+        } catch (Exception $e) {
+            echo "<p class='erro'>Erro: " . htmlspecialchars($e->getMessage()) . "</p>";
+        }
+        ?>
     
-    <a href="index.php">voltar</a>
-    <br>
-
-    </form>
-    <br><br>
-
-</div>
+    <a class="link" href="index.php">Login</a>
 </div>
 </body>
-
 </html>
