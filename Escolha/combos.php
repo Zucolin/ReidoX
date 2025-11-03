@@ -1,10 +1,27 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sair'])) {
-    session_destroy();
-    header('Location: ../index.php');
-    exit;
+/* processamento genérico de pedido / logout */
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['sair'])) {
+        session_destroy();
+        header('Location: ../index.php');
+        exit;
+    }
+
+    if (isset($_POST['produto']) && isset($_POST['quantidade'])) {
+        $nomepedido = $_POST['produto'];
+        $quantidade = intval($_POST['quantidade']);
+        $pedido = $nomepedido . " x" . $quantidade;
+
+        require_once '../Controller/UsuarioController.php';
+        // Nota: $pdo precisa estar definido no seu contexto
+        $controller = new UsuarioController($pdo);
+        $controller->enviarpedidos($pedido);
+
+        // Você pode redirecionar após envio se quiser:
+        // header('Location: ../pedidos.php'); exit;
+    }
 }
 
 if (!isset($_SESSION['nome_usuario'])) {
@@ -24,12 +41,12 @@ $nome = $_SESSION['nome_usuario'];
 </head>
 <body>
 
-<!-- Página principal (galeria de combos) -->
+<!-- Galeria principal -->
 <section id="combos">
     <nav class="nav-escolha">
         <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes">
+            <div class="menu-opcoes" style="display:none;">
                 <form method="post">
                     <button type="submit" name="editar">Editar</button>
                     <button type="submit" name="sair">Sair</button>
@@ -55,7 +72,7 @@ $nome = $_SESSION['nome_usuario'];
     </div>
 </section>
 
-<!-- X-Simples -->
+<!-- Produto: X-Simples (section 1 = detalhe) -->
 <section id="x-simples" class="produto-page">
     <nav class="nav-escolha">
         <img src="../img/logo.png" alt="logo" class="logo">
@@ -72,16 +89,18 @@ $nome = $_SESSION['nome_usuario'];
         <div>
             <h2 class="produto-titulo">X-Simples</h2>
             <p class="produto-descricao">Hambúrguer clássico com queijo, alface, tomate e batata frita crocante.</p>
+
+            <form method="post" action="#finalizacaox-simples">
+                <input type="hidden" name="produto" value="Combo Simples">
+                <label class="label-qtd">Quantidade:</label>
+                <input class="input-qtd" type="number" name="quantidade" min="1" value="1" required>
+                <button type="submit" class="btn-comprar">Finalizar compra</button>
+            </form>
         </div>
     </div>
-
-    <form method="post" action="#finalizacaox-simples">
-        <label class="label-qtd">Quantidade:</label>
-        <input class="input-qtd" type="number" name="quantidade" min="1" value="1" required>
-        <a class="btn-comprar" href="#finalizacaox-simples">Finalizar compra</a>
-    </form>
 </section>
 
+<!-- Produto: X-Simples (section 2 = finalização) -->
 <section id="finalizacaox-simples" class="finalizacao">
     <nav class="nav-escolha">
         <img src="../img/logo.png" alt="logo" class="logo">
@@ -117,7 +136,7 @@ $nome = $_SESSION['nome_usuario'];
     </form>
 </section>
 
-<!-- X-Individual -->
+<!-- Produto: X-Individual (section 1 = detalhe) -->
 <section id="x-individual" class="produto-page">
     <nav class="nav-escolha">
         <img src="../img/logo.png" alt="logo" class="logo">
@@ -134,16 +153,18 @@ $nome = $_SESSION['nome_usuario'];
         <div>
             <h2 class="produto-titulo">X-Individual</h2>
             <p class="produto-descricao">Combo completo com hambúrguer, fritas e bebida.</p>
+
+            <form method="post" action="#finalizacaox-individual">
+                <input type="hidden" name="produto" value="Combo Individual">
+                <label class="label-qtd">Quantidade:</label>
+                <input class="input-qtd" type="number" name="quantidade" min="1" value="1" required>
+                <button type="submit" class="btn-comprar">Finalizar compra</button>
+            </form>
         </div>
     </div>
-
-    <form method="post" action="#finalizacaox-individual">
-        <label class="label-qtd">Quantidade:</label>
-        <input class="input-qtd" type="number" name="quantidade" min="1" value="1" required>
-        <a class="btn-comprar" href="#finalizacaox-individual">Finalizar compra</a>
-    </form>
 </section>
 
+<!-- Produto: X-Individual (section 2 = finalização) -->
 <section id="finalizacaox-individual" class="finalizacao">
     <nav class="nav-escolha">
         <img src="../img/logo.png" alt="logo" class="logo">
@@ -179,7 +200,7 @@ $nome = $_SESSION['nome_usuario'];
     </form>
 </section>
 
-<!-- X-Família -->
+<!-- Produto: X-Família (section 1 = detalhe) -->
 <section id="x-familia" class="produto-page">
     <nav class="nav-escolha">
         <img src="../img/logo.png" alt="logo" class="logo">
@@ -196,16 +217,18 @@ $nome = $_SESSION['nome_usuario'];
         <div>
             <h2 class="produto-titulo">X-Família</h2>
             <p class="produto-descricao">Combo para compartilhar — ideal para família e amigos.</p>
+
+            <form method="post" action="#finalizacaox-familia">
+                <input type="hidden" name="produto" value="Combo Família">
+                <label class="label-qtd">Quantidade:</label>
+                <input class="input-qtd" type="number" name="quantidade" min="1" value="1" required>
+                <button type="submit" class="btn-comprar">Finalizar compra</button>
+            </form>
         </div>
     </div>
-
-    <form method="post" action="#finalizacaox-familia">
-        <label class="label-qtd">Quantidade:</label>
-        <input class="input-qtd" type="number" name="quantidade" min="1" value="1" required>
-        <a class="btn-comprar" href="#finalizacaox-familia">Finalizar compra</a>
-    </form>
 </section>
 
+<!-- Produto: X-Família (section 2 = finalização) -->
 <section id="finalizacaox-familia" class="finalizacao">
     <nav class="nav-escolha">
         <img src="../img/logo.png" alt="logo" class="logo">
@@ -258,23 +281,3 @@ window.addEventListener('click', function(e) {
 
 </body>
 </html>
-
-<?php
-// processamento genérico de pedido
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['sair'])) {
-        header('Location: ../index.php');
-        exit;
-    }
-
-    if (isset($_POST['produto']) && isset($_POST['quantidade'])) {
-        $nomepedido = $_POST['produto'];
-        $quantidade = intval($_POST['quantidade']);
-        $pedido = $nomepedido . " x" . $quantidade;
-
-        require_once '../Controller/UsuarioController.php';
-        $controller = new UsuarioController($pdo);
-        $controller->enviarpedidos($pedido);
-    }
-}
-?>
