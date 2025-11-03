@@ -9,6 +9,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
+  overflow-y: hidden;
 }
 
 nav {
@@ -222,66 +223,19 @@ nav ul li a:hover {
   padding: 50px; /* corrige '80x' para 50px padrão */
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(255, 255, 0, 0.05);
-  width: min(920px, 95%);    /* responsivo: até 920px ou 95% da tela */
-  max-width: 920px;
+  width: 786px; 
   margin: 30px auto;
   animation: fadeIn 0.8s ease-in-out;
-  height: auto;
   text-align: center;
   box-sizing: border-box;
 }
 
 /* ajustes específicos de espaçamento para variantes */
-.container-cadastro { margin-top: 110px; }
-.container-endereco { margin-top: 240px; }
+.container{ height: 900px; }
+.container-cadastro { margin-top: 100px; height: 800px; }
+.container-endereco { margin-top: 190px; }
 
-/* telas maiores — aproveita espaço do notebook grande */
-@media (min-width: 1400px) {
-  .container,
-  .container-cadastro,
-  .container-endereco {
-    max-width: 1100px;
-    padding: 60px;
-    width: min(1100px, 85%);
-  }
-}
 
-/* notebooks médios / tablets em modo paisagem */
-@media (min-width: 1000px) and (max-width: 1399px) {
-  .container,
-  .container-cadastro,
-  .container-endereco {
-    max-width: 920px;
-    padding: 48px;
-    width: min(920px, 90%);
-  }
-}
-
-/* celulares e telas pequenas */
-@media (max-width: 599px) {
-  .container,
-  .container-cadastro,
-  .container-endereco {
-    width: calc(100% - 32px);
-    padding: 18px;
-    border-radius: 12px;
-    margin-top: 20px;
-  }
-  .container-cadastro { margin-top: 80px; }
-  .container-endereco { margin-top: 120px; }
-}
-
-/* Animação de entrada suave */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 
 /* Logo */
 header img.logo-cadastro {
