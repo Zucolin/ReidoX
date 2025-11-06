@@ -2,27 +2,27 @@
 session_start();
 
 /* processamento genérico de pedido / logout */
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sair'])) {
-        session_destroy();
         header('Location: ../index.php');
         exit;
     }
 
     if (isset($_POST['produto']) && isset($_POST['quantidade'])) {
+       
         $nomepedido = $_POST['produto'];
         $quantidade = intval($_POST['quantidade']);
         $pedido = $nomepedido . " x" . $quantidade;
 
+        require_once '../DB/Database.php';
         require_once '../Controller/UsuarioController.php';
-        // Nota: $pdo precisa estar definido no seu contexto
         $controller = new UsuarioController($pdo);
         $controller->enviarpedidos($pedido);
-
-        // Você pode redirecionar após envio se quiser:
-        // header('Location: ../pedidos.php'); exit;
     }
 }
+
+
 
 if (!isset($_SESSION['nome_usuario'])) {
     header('Location: ../index.php');
