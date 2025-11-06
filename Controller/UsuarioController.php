@@ -1,5 +1,5 @@
 <?php
-require_once "C:/Turma1/xampp/htdocs/programa/ReidoX/Model/UsuarioModel.php";
+require_once "C:/Turma1/xampp/htdocs/ReidoX/Model/UsuarioModel.php";
 
 class UsuarioController
 {
@@ -32,7 +32,7 @@ class UsuarioController
     public function listar()
     {
         $usuarios = $this->usuarioModel->buscarTodos();
-        include_once "C:/xampp/htdocs/ReidoX/admin.php";
+        include_once "C:/Turma1/xampp/htdocs/ReidoX/admin.php";
         return $usuarios;
     }
 
@@ -92,6 +92,7 @@ class UsuarioController
     // ===========================
     public function enviarpedidos($pedido): void
     {
+        
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -107,8 +108,44 @@ class UsuarioController
             ':pedidos' => $pedido,
             ':user_id' => $user_id
         ]);
+     if ($stmt->rowCount() > 0) {
+
+        session_start();
+        $_SESSION['status'] = "Preparando";
+    
+echo "<script>
+    // Depois de 1 segundos (500 ms) envia para historico
+    setTimeout(() => {
+        window.location.href = '../pedidos.php';
+    }, 500);
+</script>";
+
+} 
     }
 
+    public function atualizaStatus($id){
+
+         $sql = "INSERT INTO historico (idpedido) VALUES (:pedido)";
+        $stmt= $this->pdo->prepare($sql);
+        $stmt->execute([
+            ':pedido'=>$id
+        ]);
+
+        if(session_status() === 'NONE'){    
+            session_start();
+        }
+        $_SESSION['status'] = "Pronto";
+
+        echo '<script>
+    // Depois de 1 segundos (1000 ms) envia para historico
+    setTimeout(() => {
+        window.location.href = "pedidos.php";
+    }, 1000);
+
+</script>';
+
+
+    }
 
 }
 

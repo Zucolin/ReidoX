@@ -205,16 +205,22 @@ $nome = $_SESSION['nome_usuario'];
 </body>
 </html>
 
+
 <?php
+// Processamento do pedido (mantive a lógica original)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sair'])) {
         header('Location: ../index.php');
         exit;
     }
+
     if (isset($_POST['produto']) && isset($_POST['quantidade'])) {
+       
         $nomepedido = $_POST['produto'];
         $quantidade = intval($_POST['quantidade']);
         $pedido = $nomepedido . " x" . $quantidade;
+
+        require_once '../DB/Database.php';
         require_once '../Controller/UsuarioController.php';
         $controller = new UsuarioController($pdo);
         $controller->enviarpedidos($pedido);

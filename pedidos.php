@@ -28,7 +28,7 @@ $pedidos = $usuario['pedidos'] ?? '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="pedidos.css">
 </head>
 
 <body>
@@ -40,12 +40,26 @@ $pedidos = $usuario['pedidos'] ?? '';
             // Supondo que os pedidos estejam separados por vírgula
             $listaPedidos = explode(',', $pedidos);
             foreach ($listaPedidos as $pedido): ?>
-                <li><?= htmlspecialchars(trim($pedido)) ?></li>
+                <li><?= htmlspecialchars(trim($pedido)); if($_SESSION['status'] == 'Preparando'){ echo '🔴 - Preparando';} else {echo '🟢 - Pronto';} ?></li>
             <?php endforeach; ?>
         </ul>
     <?php else: ?>
         <p>Você ainda não realizou nenhum pedido.</p>
-    <?php endif; ?>
-</body>
+    <?php endif; 
 
+
+
+if($_SESSION['status'] == 'Preparando'){
+    ?>
+    <script>
+    // Depois de 10 segundos (10000 ms) envia para historico
+    setTimeout(() => {
+        window.location.href = "processo.php?id=<?= $usuario['id']; ?>";
+    }, 10000);
+</script>
+<?php
+}
+?>
+<a href="paginainicio.php">voltar</a>
+</body>
 </html>
