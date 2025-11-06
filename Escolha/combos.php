@@ -4,7 +4,6 @@ session_start();
 /* processamento genérico de pedido / logout */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sair'])) {
-        session_destroy();
         header('Location: ../index.php');
         exit;
     }
@@ -42,35 +41,39 @@ $nome = $_SESSION['nome_usuario'];
 </head>
 
 <body>
-
-    <!-- Galeria principal -->
     <section id="combos">
-        <nav class="nav-escolha">
-            <div class="menu-container">
-                <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                <div class="menu-opcoes" style="display:none;">
-                    <form method="post">
-                        <button type="submit" name="editar">Editar</button>
-                        <button type="submit" name="sair">Sair</button>
-                        <button type="button">Detalhes</button>
-                    </form>
-                </div>
+    <nav class="nav-escolha">
+        <a href="../paginainicio.php"><img src="../img/logo.png" alt="logo" class="logo"></a>
+        <ul>
+            <li><a href="../paginainicio.php">Início</a></li>
+            <li><a href="../pedidos.php">Pedidos</a></li>
+            <li><a href="../sobrenos.html">Sobre nós</a></li>
+        </ul>
+        <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+        <div class="menu-opcoes" id="menu">
+            <form method="post">
+                <button><a href="../index.php">Sair</a></button>
+            </form>
+        </div>
+
+
+    </nav>
+    <h1 class="titulo-pagina">Combos</h1>
+    <!-- Galeria principal -->
+    
+        <div id="itens-container" class="grind">
+            <div class="card">
+                <a href="#x-simples" class="produto-link"><img src="../img/X_ComboSimples.png" alt="X-Simples"></a>
+                <p>Combo Simples</p>
             </div>
-
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <h1 class="titulo-pagina">Combos</h1>
-
-            <ul class="menu-principal">
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-        </nav>
-
-        <div style="text-align:center; width:100%; padding:18px 0;">
-            <a href="#x-simples" class="produto-link"><img src="../img/X_ComboSimples.png" alt="X-Simples"></a>
-            <a href="#x-individual" class="produto-link"><img src="../img/X_ComboIndividual.png" alt="X-Individual"></a>
-            <a href="#x-familia" class="produto-link"><img src="../img/X_ComboFamilia.png" alt="X-Família"></a>
+            <div class="card">
+                <a href="#x-individual" class="produto-link"><img src="../img/X_ComboIndividual.png" alt="X-Individual"></a>
+                <p>Combo Individual</p>
+            </div>
+            <div class="card">
+                <a href="#x-familia" class="produto-link"><img src="../img/X_ComboFamilia.png" alt="X-Família"></a>
+                <p>Combo Família</p>
+            </div>
         </div>
     </section>
 
@@ -119,8 +122,6 @@ $nome = $_SESSION['nome_usuario'];
 
         <form method="post">
             <input type="hidden" name="produto" value="Combo Simples">
-            <label class="label-qtd">Quantidade:</label>
-            <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
 
             <h2 class="forma-entrega">Tipo de Entrega</h2>
             <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
@@ -183,8 +184,6 @@ $nome = $_SESSION['nome_usuario'];
 
         <form method="post">
             <input type="hidden" name="produto" value="Combo Individual">
-            <label class="label-qtd">Quantidade:</label>
-            <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
 
             <h2 class="forma-entrega">Tipo de Entrega</h2>
             <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
@@ -247,8 +246,6 @@ $nome = $_SESSION['nome_usuario'];
 
         <form method="post">
             <input type="hidden" name="produto" value="Combo Família">
-            <label class="label-qtd">Quantidade:</label>
-            <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
 
             <h2 class="forma-entrega">Tipo de Entrega</h2>
             <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>

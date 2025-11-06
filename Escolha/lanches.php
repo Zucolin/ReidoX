@@ -23,7 +23,7 @@ $nome = $_SESSION['nome_usuario'];
 
 <body>
 
-    <section id="lanches">
+    <section id="lanches" id="primeira">
         <nav class="nav-escolha">
             <div class="menu-container">
                 <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -71,8 +71,6 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao"><img src="../img/X_CheeseBurguer.png" class="img-produto-finalizacao" alt="X-Cheese"></div>
         <form method="post">
             <input type="hidden" name="produto" value="X-Cheese">
-            <label class="label-qtd">Quantidade:</label>
-            <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
             <h2 class="forma-entrega">Tipo de Entrega</h2>
             <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
             <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
@@ -107,8 +105,6 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao"><img src="../img/X_Bacon.png" class="img-produto-finalizacao" alt="X-Bacon"></div>
         <form method="post">
             <input type="hidden" name="produto" value="X-Bacon">
-            <label class="label-qtd">Quantidade:</label>
-            <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
             <h2 class="forma-entrega">Tipo de Entrega</h2>
             <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
             <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
@@ -143,8 +139,6 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao"><img src="../img/X_Chicken.png" class="img-produto-finalizacao" alt="X-Chicken"></div>
         <form method="post">
             <input type="hidden" name="produto" value="X-Chicken">
-            <label class="label-qtd">Quantidade:</label>
-            <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
             <h2 class="forma-entrega">Tipo de Entrega</h2>
             <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
             <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
@@ -179,8 +173,6 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao"><img src="../img/X_Tudo.png" class="img-produto-finalizacao" alt="X-Tudo"></div>
         <form method="post">
             <input type="hidden" name="produto" value="X-Tudo">
-            <label class="label-qtd">Quantidade:</label>
-            <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
             <h2 class="forma-entrega">Tipo de Entrega</h2>
             <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
             <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>

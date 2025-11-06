@@ -22,7 +22,7 @@ $nome = $_SESSION['nome_usuario'];
 </head>
 <body>
 
-<section id="bebidas">
+<section id="bebidas" id="primeira">
     <nav class="nav-escolha">
         <div class="menu-container">
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
@@ -73,8 +73,6 @@ $nome = $_SESSION['nome_usuario'];
     <div class="produto-finalizacao"><img src="../img/agua.png" class="img-produto-finalizacao" alt="Água"></div>
     <form method="post">
         <input type="hidden" name="produto" value="Água 500ml">
-        <label class="label-qtd">Quantidade:</label>
-        <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
         <h2 class="forma-entrega">Tipo de Entrega</h2>
         <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
         <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
@@ -109,8 +107,6 @@ $nome = $_SESSION['nome_usuario'];
     <div class="produto-finalizacao"><img src="../img/coca.png" class="img-produto-finalizacao" alt="Coca"></div>
     <form method="post">
         <input type="hidden" name="produto" value="Coca-Cola 350ml">
-        <label class="label-qtd">Quantidade:</label>
-        <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
         <h2 class="forma-entrega">Tipo de Entrega</h2>
         <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
         <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
@@ -146,8 +142,6 @@ $nome = $_SESSION['nome_usuario'];
     <div class="produto-finalizacao"><img src="../img/sprite.png" class="img-produto-finalizacao" alt="Sprite"></div>
     <form method="post">
         <input type="hidden" name="produto" value="Sprite 350ml">
-        <label class="label-qtd">Quantidade:</label>
-        <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
         <h2 class="forma-entrega">Tipo de Entrega</h2>
         <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
         <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
@@ -182,8 +176,6 @@ $nome = $_SESSION['nome_usuario'];
     <div class="produto-finalizacao"><img src="../img/kuat.png" class="img-produto-finalizacao" alt="Kuat"></div>
     <form method="post">
         <input type="hidden" name="produto" value="Kuat 350ml">
-        <label class="label-qtd">Quantidade:</label>
-        <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
         <h2 class="forma-entrega">Tipo de Entrega</h2>
         <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
         <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
@@ -218,8 +210,6 @@ $nome = $_SESSION['nome_usuario'];
     <div class="produto-finalizacao"><img src="../img/sucoMaracuja.png" class="img-produto-finalizacao" alt="Suco Maracujá"></div>
     <form method="post">
         <input type="hidden" name="produto" value="Suco Maracujá 300ml">
-        <label class="label-qtd">Quantidade:</label>
-        <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
         <h2 class="forma-entrega">Tipo de Entrega</h2>
         <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
         <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
@@ -254,8 +244,6 @@ $nome = $_SESSION['nome_usuario'];
     <div class="produto-finalizacao"><img src="../img/sucoUva.png" class="img-produto-finalizacao" alt="Suco Uva"></div>
     <form method="post">
         <input type="hidden" name="produto" value="Suco de Uva 300ml">
-        <label class="label-qtd">Quantidade:</label>
-        <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
         <h2 class="forma-entrega">Tipo de Entrega</h2>
         <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
         <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
