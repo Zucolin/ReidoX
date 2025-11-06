@@ -1,52 +1,224 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-    <link rel="stylesheet" href="estilo.css">
-</head>
-<body class="fundo">
-    <h1 class="tabela-titulo">Clientes</h1>
-
 <?php
-
-require_once "DB/Database.php";
+// Espera-se que $usuarios seja fornecido pelo controller.
 require_once "Controller/UsuarioController.php";
-
+require_once "DB/Database.php";
 $usuarioController = new UsuarioController($pdo);
-
 $usuarios = $usuarioController->listar();
 
-if(empty($usuarios)){
-    echo "<p class='erro'>Nenhum usuário encontrado!</p>";
-    echo "<a href='cadastro.php'>Cadastrar</a>";
-    return;
-}
-echo "<h1 class='tabela-titulo'></h1>";
-echo "<table>";
-echo "<tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Senha</th><th>Pedidos</th><th>Cep</th><th>Rua</th><th>Número</th><th>Ações</th></tr>";
-
-foreach ($usuarios as $usuario) {
-    $id = $usuario['id'];
-    echo "<tr>";
-    echo "<td>{$id}</td>";
-    echo "<td>{$usuario['nome']}</td>";
-    echo "<td>{$usuario['email']}</td>";
-    echo "<td>{$usuario['senha']}</td>";
-    echo "<td>{$usuario['pedidos']}</td>";
-    echo "<td>{$usuario['cep']}</td>";
-    echo "<td>{$usuario['rua']}</td>";
-    echo "<td>{$usuario['numero']}</td>";
-    echo "<td><a class='del' href='deletar.php?id={$id}' onclick=\"return confirm('Tem certeza que deseja excluir o usuário?')\">Excluir</a></td>";
-    echo "</tr>";
-}
-
-echo "</table>";
-echo "<div class='voltar'>
-<a href='index.php'>Voltar</a>
-</div>";
-
 ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admin - Clientes</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+        :root{
+            --bg:#000;
+            --text:#fff;
+            --accent:#ffc72c; /* amarelo */
+            --panel: rgba(255,255,255,0.02);
+        }
+        *{box-sizing:border-box ; font-family: "Montserrat", sans-serif; }
+        html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family: "Helvetica Neue", Arial, sans-serif;-webkit-font-smoothing:antialiased}
+
+        /* Título no topo, centralizado */
+        header.title-wrap{
+            width:100%;
+            padding:20px 16px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        h1.title{
+            margin:0;
+            font-size:40px;
+            letter-spacing:0.6px;
+            text-align:center;
+            color:var(--accent);
+        }
+
+        .wrap{
+            min-height:calc(100vh - 96px); /* espaço compensando o header */
+            display:flex;
+            align-items:flex-start;
+            justify-content:center;
+            padding:20px 16px 40px;
+        }
+
+        .table-box{
+            width:100%;
+            max-width:1200px;
+            padding:28px;
+            border-radius:12px;
+            background:transparent;
+            display:flex;
+            flex-direction:column;
+            align-items:stretch;
+            gap:18px;
+        }
+
+        /* tabela com bordas sólidas amarelas ao redor, entre colunas e entre linhas */
+        .clientes-table{
+            width:100%;
+            border-collapse:separate;       /* separado para permitir bordas internas independentes */
+            border-spacing:0;               /* sem espaçamento entre células */
+            border:3px solid var(--accent); /* borda sólida ao redor da tabela */
+            border-radius:10px;
+            overflow:hidden;
+            background: rgba(0,0,0,0);
+            table-layout:fixed;
+        }
+
+        /* Cabeçalho */
+        .clientes-table thead th{
+            text-align:left;
+            padding:14px 18px;
+            font-size:15px;
+            background: rgba(255,255,255,0.02);
+            color:var(--accent); /* títulos em amarelo */
+            font-weight:700;
+            /* traço vertical entre colunas (sólido) */
+            border-left:2px solid var(--accent);
+            /* linha sólida abaixo do cabeçalho */
+            border-bottom:2px solid var(--accent);
+            word-wrap:break-word;
+        }
+        .clientes-table thead th:first-child{ border-left: none; }
+
+        /* Células do corpo com traço vertical separando colunas (sólido) */
+        .clientes-table tbody td{
+            padding:14px 18px;
+            font-size:15px;
+            color:rgba(255,255,255,0.9);
+            vertical-align:middle;
+            border-left:2px solid var(--accent);
+            word-wrap:break-word;
+        }
+        .clientes-table tbody td:first-child{ border-left:none; }
+
+        /* linha sólida entre linhas */
+        .clientes-table tbody tr + tr td {
+            border-top:2px solid var(--accent);
+        }
+
+        /* Remover dupla borda no canto interno (quando necessário) */
+        .clientes-table tbody tr:first-child td {
+            border-top: none;
+        }
+
+        .clientes-table tbody tr:hover{
+            background: rgba(255,199,44,0.03);
+        }
+
+        .actions form{display:inline-block}
+        .btn{
+            background:var(--accent);
+            color:#000;
+            border:0;
+            padding:8px 12px;
+            border-radius:8px;
+            font-weight:700;
+            cursor:pointer;
+            font-size:13px;
+        }
+
+        .btn.danger{ background:#c33; color:#fff }
+
+        .muted{color:rgba(255,255,255,0.6); font-size:13px}
+
+        .table-actions{
+            width:100%;
+            display:flex;
+            justify-content:center;
+            gap:14px;
+            margin-top:12px;
+        }
+        .table-actions a{
+            min-width:140px;
+            padding:10px 14px;
+            border-radius:10px;
+            font-weight:800;
+            text-align:center;
+            text-decoration:none;
+            display:inline-block;
+            color:#000;
+            background:rgba(255,199,44,1);
+        }
+
+        @media (max-width:900px){
+            h1.title{font-size:34px}
+            .wrap{min-height:calc(100vh - 84px)}
+        }
+
+        @media (max-width:700px){
+            .clientes-table thead{display:none}
+            .clientes-table, .clientes-table tbody, .clientes-table tr, .clientes-table td{display:block;width:100%}
+            .clientes-table tr{margin-bottom:12px;border:1px solid rgba(255,199,44,0.25);padding:12px;border-radius:8px}
+            .clientes-table td{padding:8px 12px}
+            .clientes-table td::before{
+                content: attr(data-label);
+                display:block;
+                font-weight:700;
+                color:var(--accent);
+                margin-bottom:6px;
+                font-size:13px;
+            }
+            .table-actions{flex-direction:column; gap:10px}
+            .table-actions a{width:100%}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Título fixado no topo da página, centralizado -->
+    <header class="title-wrap" role="banner">
+        <h1 class="title">Clientes</h1>
+    </header>
+
+    <div class="wrap">
+        <div class="table-box" role="region" aria-label="Lista de clientes">
+
+            <table class="clientes-table" role="table" aria-label="Tabela de clientes">
+                <thead>
+                    <tr>
+                        <th style="width:6%">ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Pedidos</th>
+                        <th style="text-align:center; width:18%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (count($usuarios) === 0): ?>
+                        <tr>
+                            <td colspan="5" style="text-align:center;padding:24px" class="muted">Nenhum cliente cadastrado.</td>
+                        </tr>
+                    <?php else: ?>
+                        <?php foreach ($usuarios as $u): ?>
+                            <tr>
+                                <td data-label="ID"><?= htmlspecialchars($u['id'] ?? '') ?></td>
+                                <td data-label="Nome"><?= htmlspecialchars($u['nome'] ?? '') ?></td>
+                                <td data-label="Email"><?= htmlspecialchars($u['email'] ?? '') ?></td>
+                                <td data-label="Pedidos"><?= nl2br(htmlspecialchars($u['pedidos'] ?? '')) ?></td>
+                                <td data-label="Ações" style="text-align:center">
+                                    <form method="post" action="deletar_usuario.php" style="display:inline-block" onsubmit="return confirm('Confirma exclusão?');">
+                                        <input type="hidden" name="id" value="<?= htmlspecialchars($u['id'] ?? '') ?>">
+                                        <button class="btn danger" type="submit">Excluir</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+
+            <div class="table-actions" role="group" aria-label="Ações da tabela">
+                <a class="btn" href="index.php" style="text-decoration:none;color:#000;background:rgba(255,199,44,1);">Voltar</a>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>

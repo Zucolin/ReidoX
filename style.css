@@ -184,79 +184,85 @@ nav ul li a:hover {
     margin: 0 25px;
 }
 
-/* ======== RESPONSIVO ======== */
-@media (max-width: 1000px) {
-    nav ul {
-        gap: 30px;
-    }
-
-    #inicio img {
-        width: 160px;
-        height: 160px;
-        margin: 10px;
-    }
+/* ======================
+   Responsividade baseada em tamanho do monitor
+   ====================== */
+:root{
+  --vh: 1vh;
+  --header-space: 140px;
 }
 
-@media (max-width: 700px) {
-    #inicio img {
-        width: 130px;
-        height: 130px;
-    }
-
-    nav img {
-        left: 20px;
-        width: 55px;
-        height: 55px;
-    }
-
-    .menu-container {
-        right: 25px;
-    }
-}
-
-/* Container principal */
+/* aumentar altura do container — substitua o bloco anterior por este */
 .container,
 .container-cadastro,
 .container-endereco {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid #ffd90080;
-  padding: 50px; /* corrige '80x' para 50px padrão */
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(255, 255, 0, 0.05);
-  width: 786px; 
-  margin: 30px auto;
-  animation: fadeIn 0.8s ease-in-out;
-  text-align: center;
+  padding: clamp(18px, 3.5vw, 64px);
+  border-radius: 16px;
+
+  /* largura permanece igual (não aumentar) */
+  width: clamp(320px, 60vw, 980px);
+  max-width: 980px;
+  margin: 28px auto;
   box-sizing: border-box;
+  text-align: center;
+
+  /* ALTURA AUMENTADA e responsiva — cresce com a viewport, sem tocar largura */
+  height: clamp(75vh, calc(var(--vh, 1vh) * 90 + 220px), 98vh);
+  min-height: 560px;
+  max-height: calc(var(--vh, 1vh) * 100 - var(--header-space));
+
+  /* sem rolagem interna */
+  overflow: visible;
 }
 
-/* ajustes específicos de espaçamento para variantes */
-.container{ height: 900px; }
-.container-cadastro { margin-top: 100px; height: 800px; }
-.container-endereco { margin-top: 190px; }
+/* margens fluídas */
+.container-cadastro { margin-top: clamp(48px, 10vw, 140px); }
+.container-endereco { margin-top: clamp(80px, 14vw, 200px); }
 
-@media (max-width: 599px) {
+/* ajustar header-space e alturas para viewports menores (valores elevados para altura maior) */
+@media (max-height: 900px) {
+  :root { --header-space: 120px; }
   .container,
   .container-cadastro,
   .container-endereco {
-    width: calc(100% - 32px);
-    padding: 14px;
-    border-radius: 12px;
-    margin: 18px auto;
-    max-height: calc(100vh - 120px);
+    padding: clamp(12px, 3vw, 36px);
+    height: clamp(56vh, calc(var(--vh, 1vh) * 72 + 80px), 90vh);
+    min-height: 420px;
   }
-  .container-cadastro { margin-top: 60px; }
-  .container-endereco { margin-top: 100px; }
 }
 
-/* telas muito grandes: limitar um pouco mais para não ficar esticado demais */
+@media (min-height: 1200px) {
+  :root { --header-space: 200px; }
+  .container,
+  .container-cadastro,
+  .container-endereco {
+    height: clamp(70vh, calc(var(--vh, 1vh) * 88 + 160px), 96vh);
+    max-height: calc(var(--vh,1vh) * 100 - var(--header-space));
+  }
+}
+
+/* telas menores — manter altura proporcional maior */
+@media (max-width: 999px) {
+  .container,
+  .container-cadastro,
+  .container-endereco {
+    width: calc(100% - 32px); /* largura reduzida em telas pequenas, sem aumentar */
+    padding: 14px;
+    border-radius: 12px;
+    margin: 16px auto;
+    height: clamp(58vh, calc(var(--vh, 1vh) * 72 + 40px), 92vh);
+    min-height: 380px;
+  }
+}
+
+/* telas muito largas — largura limitada, altura também grande */
 @media (min-width: 1400px) {
   .container,
   .container-cadastro,
   .container-endereco {
-    max-width: 1100px;
-    padding: 60px;
-    max-height: calc(200vh - 400px);
+    max-width: 1200px; /* largura limitada; ajuste se necessário */
+    padding: 64px;
+    height: clamp(72vh, calc(var(--vh,1vh) * 88 + 160px), 94vh);
   }
 }
 
