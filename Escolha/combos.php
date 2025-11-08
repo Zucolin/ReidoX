@@ -63,16 +63,16 @@ $nome = $_SESSION['nome_usuario'];
     <!-- Galeria principal -->
     
         <div id="itens-container" class="grind">
-            <div class="card">
-                <a href="#x-simples" class="produto-link"><img src="../img/X_ComboSimples.png" alt="X-Simples"></a>
+            <div onclick="location.href='#x-simples'" class="card">
+                <img src="../img/X_ComboSimples.png" alt="X-Simples">
                 <p>Combo Simples</p>
             </div>
-            <div class="card">
-                <a href="#x-individual" class="produto-link"><img src="../img/X_ComboIndividual.png" alt="X-Individual"></a>
+            <div onclick="location.href='#x-simples'" class="card">
+                <img src="../img/X_ComboIndividual.png" alt="X-Individual">
                 <p>Combo Individual</p>
             </div>
-            <div class="card">
-                <a href="#x-familia" class="produto-link"><img src="../img/X_ComboFamilia.png" alt="X-Família"></a>
+            <div onclick="location.href='#x-simples'" class="card">
+                <img src="../img/X_ComboFamilia.png" alt="X-Família">
                 <p>Combo Família</p>
             </div>
         </div>
@@ -82,12 +82,17 @@ $nome = $_SESSION['nome_usuario'];
     <section id="x-simples" class="produto-page">
         <nav class="nav-escolha">
             <img src="../img/logo.png" alt="logo" class="logo">
-            <h1 class="titulo-pagina">X-Simples</h1>
-            <ul class="menu-principal">
+            <ul>
                 <li><a href="../paginainicio.php">Início</a></li>
                 <li><a href="../pedidos.php">Pedidos</a></li>
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+            <form method="post">
+                <button><a href="../index.php">Sair</a></button>
+            </form>
+            </div>
         </nav>
 
         <div class="produto-detalhe">
@@ -95,7 +100,7 @@ $nome = $_SESSION['nome_usuario'];
             <div>
                 <h2 class="produto-titulo">X-Simples</h2>
                 <p class="produto-descricao">Hambúrguer clássico com queijo, alface, tomate e batata frita crocante.</p>
-
+                <p class="preco">Preço:<strong class="valor">20R$</strong> </p>
                 <form method="post" action="#finalizacaox-simples">
                     <input type="hidden" name="produto" value="Combo Simples">
                     <label class="label-qtd">Quantidade:</label>
@@ -104,6 +109,7 @@ $nome = $_SESSION['nome_usuario'];
                 </form>
             </div>
         </div>
+        <button class="voltar"><a href="#combos">Voltar</a></button>
     </section>
 
     <!-- Produto: X-Simples (section 2 = finalização) -->
