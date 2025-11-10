@@ -71,6 +71,20 @@ section .produto-detalhe{
             transition: transform .18s ease, box-shadow .18s ease;
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
+        #bebidas .card {
+          gap: -20px;
+          padding: 20px;
+          margin-left: 50px;
+          margin-right: 50px;
+            margin-top: 40px;
+            width: 780px;
+            /* restaurado para o tamanho anterior */
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            text-align: center;
+            transition: transform .18s ease, box-shadow .18s ease;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
 
         .card:hover {
             transform: translateY(-8px);
@@ -216,8 +230,9 @@ div#itens-container {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 600px;
-  width: 900px
+  height: 450px;
+  width: 900px;
+  background: var(--panel);
 }
 
 /* Personalização do PRIMEIRO .produto-detalhe (título acima, descrição organizada,
