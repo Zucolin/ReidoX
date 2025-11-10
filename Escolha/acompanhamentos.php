@@ -28,7 +28,7 @@ $nome = $_SESSION['nome_usuario'];
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Porções</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilo.css">
 </head>
 
 <body>
@@ -120,7 +120,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/porcaobatata.png" class="img-produto-finalizacao" alt="Porção Batata">
         
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Porção de Batata">
 
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
@@ -196,7 +196,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/porcaoFrangoFrito.png" class="img-produto-finalizacao" alt="Frango Frito">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Porção de Frango Frito">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -271,7 +271,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/porcaoMucarela.png" class="img-produto-finalizacao" alt="Muçarela">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Porção de Muçarela">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -346,7 +346,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/porcaoAnelCebola.png" class="img-produto-finalizacao" alt="Anéis de Cebola">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Porção Anéis de Cebola">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -390,22 +390,25 @@ window.addEventListener('click', function(e){
 
 <?php
 // Processamento do pedido (mantive a lógica original)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['sair'])) {
-        header('Location: ../index.php');
-        exit;
-    }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' 
+    && isset($_POST['produto']) 
+    && isset($_POST['entrega']) 
+    && isset($_POST['pagamento'])) {
 
-    if (isset($_POST['produto']) && isset($_POST['quantidade'])) {
-       
-        $nomepedido = $_POST['produto'];
-        $quantidade = intval($_POST['quantidade']);
-        $pedido = $nomepedido . " x" . $quantidade;
+    $produto = $_POST['produto'];
+    $quantidade = $_POST['quantidade'] ?? 1;
+    $entrega = $_POST['entrega'];
+    $pagamento = $_POST['pagamento'];
 
-        require_once '../DB/Database.php';
-        require_once '../Controller/UsuarioController.php';
-        $controller = new UsuarioController($pdo);
-        $controller->enviarpedidos($pedido);
-    }
+    $pedido = "$produto x $quantidade / Entrega : $entrega / Pagamento : $pagamento";
+
+    require_once '../DB/Database.php';
+    require_once '../Controller/UsuarioController.php';
+    $controller = new UsuarioController($pdo);
+    $controller->enviarpedidos($pedido);
+
+    header("Location: ../pedidos.php");
+    exit;
 }
+
 ?>

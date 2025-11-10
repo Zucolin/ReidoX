@@ -112,7 +112,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/X_CheeseBurguer.png" class="img-produto-finalizacao" alt="X-Cheese">
         
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="X-Cheese">
 
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
@@ -188,7 +188,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/X_Bacon.png" class="img-produto-finalizacao" alt="X-Bacon">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="X-Bacon">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -263,7 +263,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/X_Chicken.png" class="img-produto-finalizacao" alt="X-Chicken">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="X-Chicken">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -338,7 +338,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/X_Tudo.png" class="img-produto-finalizacao" alt="X-Tudo">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="X-Tudo">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -381,24 +381,28 @@ $nome = $_SESSION['nome_usuario'];
 </html>
 
 
+
 <?php
-// Processamento do pedido (mantive a lógica original)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['sair'])) {
-        header('Location: ../index.php');
-        exit;
-    }
 
-    if (isset($_POST['produto']) && isset($_POST['quantidade'])) {
-       
-        $nomepedido = $_POST['produto'];
-        $quantidade = intval($_POST['quantidade']);
-        $pedido = $nomepedido . " x" . $quantidade;
+if ($_SERVER['REQUEST_METHOD'] === 'POST' 
+    && isset($_POST['produto']) 
+    && isset($_POST['entrega']) 
+    && isset($_POST['pagamento'])) {
 
-        require_once '../DB/Database.php';
-        require_once '../Controller/UsuarioController.php';
-        $controller = new UsuarioController($pdo);
-        $controller->enviarpedidos($pedido);
-    }
+    $produto = $_POST['produto'];
+    $quantidade = $_POST['quantidade'] ?? 1;
+    $entrega = $_POST['entrega'];
+    $pagamento = $_POST['pagamento'];
+
+    $pedido = "$produto x $quantidade / Entrega : $entrega / Pagamento : $pagamento";
+
+    require_once '../DB/Database.php';
+    require_once '../Controller/UsuarioController.php';
+    $controller = new UsuarioController($pdo);
+    $controller->enviarpedidos($pedido);
+
+    header("Location: ../pedidos.php");
+    exit;
 }
+
 ?>

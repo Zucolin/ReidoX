@@ -121,7 +121,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/agua.png" class="img-produto-finalizacao" alt="Água">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Água 500ml">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -196,7 +196,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/coca.png" class="img-produto-finalizacao" alt="Coca">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Coca-Cola 350ml">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -271,7 +271,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/sprite.png" class="img-produto-finalizacao" alt="Sprite">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Sprite 350ml">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -346,7 +346,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/kuat.png" class="img-produto-finalizacao" alt="Kuat">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Kuat 350ml">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -421,7 +421,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/sucoMaracuja.png" class="img-produto-finalizacao" alt="Suco Maracujá">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Suco Maracujá 300ml">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -496,7 +496,7 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/sucoUva.png" class="img-produto-finalizacao" alt="Suco Uva">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Suco de Uva 300ml">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -540,22 +540,25 @@ window.addEventListener('click', function (e){
 
 <?php
 // Processamento do pedido (mantive a lógica original)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['sair'])) {
-        header('Location: ../index.php');
-        exit;
-    }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' 
+    && isset($_POST['produto']) 
+    && isset($_POST['entrega']) 
+    && isset($_POST['pagamento'])) {
 
-    if (isset($_POST['produto']) && isset($_POST['quantidade'])) {
-       
-        $nomepedido = $_POST['produto'];
-        $quantidade = intval($_POST['quantidade']);
-        $pedido = $nomepedido . " x" . $quantidade;
+    $produto = $_POST['produto'];
+    $quantidade = $_POST['quantidade'] ?? 1;
+    $entrega = $_POST['entrega'];
+    $pagamento = $_POST['pagamento'];
 
-        require_once '../DB/Database.php';
-        require_once '../Controller/UsuarioController.php';
-        $controller = new UsuarioController($pdo);
-        $controller->enviarpedidos($pedido);
-    }
+    $pedido = "$produto x $quantidade / Entrega : $entrega / Pagamento : $pagamento";
+
+    require_once '../DB/Database.php';
+    require_once '../Controller/UsuarioController.php';
+    $controller = new UsuarioController($pdo);
+    $controller->enviarpedidos($pedido);
+
+    header("Location: ../pedidos.php");
+    exit;
 }
+
 ?>
