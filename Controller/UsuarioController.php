@@ -125,10 +125,10 @@ echo "<script>
 
     public function atualizaStatus($id){
 
-         $sql = "INSERT INTO historico (idpedido) VALUES (:pedido)";
+         $sql = "INSERT INTO historico (idpedidos) VALUES (:pedidos)";
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([
-            ':pedido'=>$id
+            ':pedidos'=>$id
         ]);
 
         if(session_status() === 'NONE'){    
