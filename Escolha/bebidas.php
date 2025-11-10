@@ -20,7 +20,7 @@ $nome = $_SESSION['nome_usuario'];
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Bebidas</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>

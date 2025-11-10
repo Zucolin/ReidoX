@@ -178,8 +178,8 @@ $nome = $_SESSION['nome_usuario'];
 
         .card {
             margin-top: 40px;
-            width: 340px;
-            height: 340px;
+            width: 240px;
+            height: 290px;
             /* restaurado para o tamanho anterior */
             background: rgba(255, 255, 255, 0.04);
             border-radius: 12px;
@@ -213,7 +213,7 @@ $nome = $_SESSION['nome_usuario'];
 
         .card p {
             margin: 12px 0 0;
-            margin-top: 80px;
+            margin-top: 0px;
             font-size: 24px;
             font-weight: 700;
             color: var(--text);
