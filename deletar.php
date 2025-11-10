@@ -1,8 +1,8 @@
 <?php
 
 
-require_once "C:/xampp/htdocs/ReidoX/Controller/UsuarioController.php";
-require_once "C:/xampp/htdocs/ReidoX/DB/DataBase.php";
+require_once "C:/turma1/xampp/htdocs/ReidoX/Controller/UsuarioController.php";
+require_once "C:/turma1/xampp/htdocs/ReidoX/DB/DataBase.php";
 
 $UsuarioController = new UsuarioController($pdo);
 
