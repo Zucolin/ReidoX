@@ -1,7 +1,7 @@
 <?php
 $dsn = "mysql:host=localhost;dbname=db_reidox;charset=utf8";
 $usuario = 'root';
-$senha = '09876612vini';
+$senha = '';
 try {
     $pdo = new PDO($dsn, $usuario, $senha);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
