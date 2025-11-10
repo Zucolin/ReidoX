@@ -123,6 +123,7 @@ $nome = $_SESSION['nome_usuario'];
             
             <form method="post" action="">
                 <input type="hidden" name="produto" value="Água 500ml">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -198,6 +199,7 @@ $nome = $_SESSION['nome_usuario'];
             
             <form method="post" action="">
                 <input type="hidden" name="produto" value="Coca-Cola 350ml">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -273,6 +275,7 @@ $nome = $_SESSION['nome_usuario'];
             
             <form method="post" action="">
                 <input type="hidden" name="produto" value="Sprite 350ml">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -348,6 +351,7 @@ $nome = $_SESSION['nome_usuario'];
             
             <form method="post" action="">
                 <input type="hidden" name="produto" value="Kuat 350ml">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -423,6 +427,7 @@ $nome = $_SESSION['nome_usuario'];
             
             <form method="post" action="">
                 <input type="hidden" name="produto" value="Suco Maracujá 300ml">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -498,6 +503,7 @@ $nome = $_SESSION['nome_usuario'];
             
             <form method="post" action="">
                 <input type="hidden" name="produto" value="Suco de Uva 300ml">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>

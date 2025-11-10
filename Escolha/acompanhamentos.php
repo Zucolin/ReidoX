@@ -122,6 +122,7 @@ $nome = $_SESSION['nome_usuario'];
         
             <form method="post" action="">
                 <input type="hidden" name="produto" value="Porção de Batata">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
 
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
@@ -163,6 +164,7 @@ $nome = $_SESSION['nome_usuario'];
 
         <div class="produto-detalhe">
             <img src="../img/porcaoFrangoFrito.png" class="produto-img-detalhe" alt="Frango Frito">
+            
             <div>
                 <h2 class="produto-titulo">Porção Frango Frito</h2>
                 <p class="produto-descricao">Pedaços selecionados, crocantes por fora e suculentos por dentro.</p>
@@ -198,6 +200,7 @@ $nome = $_SESSION['nome_usuario'];
             
             <form method="post" action="">
                 <input type="hidden" name="produto" value="Porção de Frango Frito">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -273,6 +276,7 @@ $nome = $_SESSION['nome_usuario'];
             
             <form method="post" action="">
                 <input type="hidden" name="produto" value="Porção de Muçarela">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -319,7 +323,7 @@ $nome = $_SESSION['nome_usuario'];
                 <form method="post" action="#finalizacaocebola">
                     <input type="hidden" name="produto" value="Porção Anéis de Cebola">
                     <label class="label-qtd">Quantidade:</label>
-                    <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
+                    <input type="number" name="quantidade" class="input-qtd" min="1" required>
                     <button class="btn-comprar" type="submit">Finalizar compra</button>
                 </form>
             </div>
@@ -348,6 +352,7 @@ $nome = $_SESSION['nome_usuario'];
             
             <form method="post" action="">
                 <input type="hidden" name="produto" value="Porção Anéis de Cebola">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -389,14 +394,15 @@ window.addEventListener('click', function(e){
 </html>
 
 <?php
-// Processamento do pedido (mantive a lógica original)
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' 
     && isset($_POST['produto']) 
     && isset($_POST['entrega']) 
     && isset($_POST['pagamento'])) {
+        
 
     $produto = $_POST['produto'];
-    $quantidade = $_POST['quantidade'] ?? 1;
+    $quantidade = $_POST['quantidade'];
     $entrega = $_POST['entrega'];
     $pagamento = $_POST['pagamento'];
 

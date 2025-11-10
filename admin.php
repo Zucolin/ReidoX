@@ -187,6 +187,8 @@ $usuarios = $usuarioController->listar();
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Pedidos</th>
+                        <th>Rua</th>
+                        <th>Número</th>
                         <th style="text-align:center; width:18%">Ações</th>
                     </tr>
                 </thead>
@@ -202,8 +204,10 @@ $usuarios = $usuarioController->listar();
                                 <td data-label="Nome"><?= htmlspecialchars($u['nome'] ?? '') ?></td>
                                 <td data-label="Email"><?= htmlspecialchars($u['email'] ?? '') ?></td>
                                 <td data-label="Pedidos"><?= nl2br(htmlspecialchars($u['pedidos'] ?? '')) ?></td>
+                                <td data-label="Rua"><?= htmlspecialchars($u['rua'] ?? '') ?></td>
+                                <td data-label="Número"><?= htmlspecialchars($u['numero'] ?? '') ?></td>
                                 <td data-label="Ações" style="text-align:center">
-                                    <form method="post" action="deletar_usuario.php" style="display:inline-block" onsubmit="return confirm('Confirma exclusão?');">
+                                    <form method="post" action="deletar.php" style="display:inline-block" onsubmit="return confirm('Confirma exclusão?');">
                                         <input type="hidden" name="id" value="<?= htmlspecialchars($u['id'] ?? '') ?>">
                                         <button class="btn danger" type="submit">Excluir</button>
                                     </form>

@@ -102,6 +102,8 @@ class UsuarioController
             throw new Exception("Usuário não logado.");
         }
 
+        
+
         $sql = "UPDATE clientes SET pedidos = :pedidos WHERE id = :user_id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
