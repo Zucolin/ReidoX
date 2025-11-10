@@ -192,133 +192,64 @@ nav ul li a:hover {
   --header-space: 140px;
 }
 
-/* aumentar altura do container — substitua o bloco anterior por este */
-.container,
+/* aumentar altura do container — substitua o bloco anterior por este */.container,
 .container-cadastro,
 .container-endereco {
-  padding: clamp(18px, 3.5vw, 64px);
-  border-radius: 16px;
-
-  /* largura permanece igual (não aumentar) */
-  width: clamp(320px, 60vw, 980px);
-  max-width: 980px;
-  margin: 28px auto;
+  padding: clamp(10px, 2vw, 28px);
+  border-radius: 12px;
+  width: 380px;
+  margin: 18px auto;
   box-sizing: border-box;
   text-align: center;
-
-  /* ALTURA AUMENTADA e responsiva — cresce com a viewport, sem tocar largura */
-  height: clamp(75vh, calc(var(--vh, 1vh) * 90 + 220px), 98vh);
-  min-height: 560px;
-  max-height: calc(var(--vh, 1vh) * 100 - var(--header-space));
-
-  /* sem rolagem interna */
   overflow: visible;
 }
 
 /* margens fluídas */
-.container-cadastro { margin-top: clamp(48px, 10vw, 140px); }
-.container-endereco { margin-top: clamp(80px, 14vw, 200px); }
-
-/* ajustar header-space e alturas para viewports menores (valores elevados para altura maior) */
-@media (max-height: 900px) {
-  :root { --header-space: 120px; }
-  .container,
-  .container-cadastro,
-  .container-endereco {
-    padding: clamp(12px, 3vw, 36px);
-    height: clamp(56vh, calc(var(--vh, 1vh) * 72 + 80px), 90vh);
-    min-height: 420px;
-  }
-}
-
-@media (min-height: 1200px) {
-  :root { --header-space: 200px; }
-  .container,
-  .container-cadastro,
-  .container-endereco {
-    height: clamp(70vh, calc(var(--vh, 1vh) * 88 + 160px), 96vh);
-    max-height: calc(var(--vh,1vh) * 100 - var(--header-space));
-  }
-}
-
-/* telas menores — manter altura proporcional maior */
-@media (max-width: 999px) {
-  .container,
-  .container-cadastro,
-  .container-endereco {
-    width: calc(100% - 32px); /* largura reduzida em telas pequenas, sem aumentar */
-    padding: 14px;
-    border-radius: 12px;
-    margin: 16px auto;
-    height: clamp(58vh, calc(var(--vh, 1vh) * 72 + 40px), 92vh);
-    min-height: 380px;
-  }
-}
-
-/* telas muito largas — largura limitada, altura também grande */
-@media (min-width: 1400px) {
-  .container,
-  .container-cadastro,
-  .container-endereco {
-    max-width: 1200px; /* largura limitada; ajuste se necessário */
-    padding: 64px;
-    height: clamp(72vh, calc(var(--vh,1vh) * 88 + 160px), 94vh);
-  }
-}
+.container-cadastro { margin-top: clamp(30px, 6vw, 90px); }
+.container-endereco { margin-top: clamp(50px, 9vw, 120px); }
 
 /* Logo */
-header img.logo-cadastro {
-  position: fixed; /* fixa no canto da tela */
-  top: -30px;
-  left: 20px;
-  width: 200px; /* ajuste o tamanho da logo */
+header img.logo-cadastro,
+header img.logo-endereco {
+  position: fixed;
+  top: -10px;
+  left: 14px;
+  width: 120px;
   z-index: 10;
 }
 
-header img.logo-endereco {
-  position: fixed; /* fixa no canto da tela */
-  top: -30px;
-  left: 20px;
-  width: 200px; /* ajuste o tamanho da logo */
-  z-index: 10;
-}
 .logo {
-  width: 260px;
-  height: 370px;
-  margin-bottom: -50px;
+  width: 180px;
+  height: 240px;
+  margin-bottom: -30px;
 }
 
 /* Título */
 .titulo {
-  font-size: 2.2em;
+  font-size: 1.4em;
   font-weight: 700;
   color: #f5c400;
-  padding: 50px;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
+  padding: 22px;
+  letter-spacing: 1.2px;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 
 /* Formulário */
-.formulario {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 38px;
-}
+.formulario,
 .formulario-endereco {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 38px;
-  padding: 60px;
+  gap: 20px;
+  padding: 20px;
 }
 
 /* Cada campo do formulário */
 .campo {
   position: relative;
-  width: 75%;
-  padding: 10px;
+  width: 80%;
+  padding: 6px;
 }
 
 /* Inputs */
@@ -326,11 +257,11 @@ header img.logo-endereco {
   width: 100%;
   background: rgba(128, 128, 128, 0.25);
   border: 1px solid rgba(255, 255, 0, 0.4);
-  border-radius: 20px;
-  padding: 14px 14px 14px 18px;
+  border-radius: 14px;
+  padding: 10px 12px 10px 14px;
   color: #fff;
   outline: none;
-  font-size: 1rem;
+  font-size: 0.85rem;
   transition: 0.3s;
 }
 
@@ -348,17 +279,17 @@ header img.logo-endereco {
 /* Foco */
 .input:focus {
   border-color: #f5c400;
-  box-shadow: 0 0 8px #f5c40050;
+  box-shadow: 0 0 6px #f5c40050;
 }
 
 /* Label flutuante */
 .label-flutuante {
   position: absolute;
-  left: 18px;
-  top: 24px;
+  left: 14px;
+  top: 18px;
   color: #ffde08b3;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.85rem;
   pointer-events: none;
   transition: 0.25s ease;
 }
@@ -366,45 +297,46 @@ header img.logo-endereco {
 /* Quando o input está em foco ou preenchido */
 .input:focus + .label-flutuante,
 .input:not(:placeholder-shown) + .label-flutuante {
-  top: -27px;
-  left: 12px;
+  top: -20px;
+  left: 10px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: #f2c308;
-  padding: 0 6px;
+  padding: 0 4px;
   border-radius: 4px;
 }
 
 /* Botão */
 .botao {
   background-color: #f5c400;
-  width: 300px;
+  width: 180px;
   color: #000;
   border: none;
-  padding: 11px 20px;
-  border-radius: 20px;
+  padding: 8px 16px;
+  border-radius: 14px;
   cursor: pointer;
   font-weight: 700;
-  font-size: 1.05em;
+  font-size: 0.9em;
   transition: 0.3s;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 
 .botao:hover {
   background-color: #ffee003d;
   color: #f5c400;
 }
+
 .botao-endereco {
   background-color: #f5c400;
   color: #000;
   border: none;
-  padding: 11px 80px;
-  border-radius: 19px;
+  padding: 8px 36px;
+  border-radius: 14px;
   cursor: pointer;
   font-weight: 700;
-  font-size: 1.05em;
+  font-size: 0.9em;
   transition: 0.3s;
-  margin-top: 30px;
+  margin-top: 16px;
 }
 
 .botao-endereco:hover {
@@ -416,11 +348,11 @@ header img.logo-endereco {
 .link {
   color: #f5c400;
   text-decoration: none;
-  font-size: 0.95em;
+  font-size: 0.85em;
   display: inline-block;
   font-weight: 600;
   transition: 0.3s;
-  padding: 20px;
+  padding: 10px;
 }
 
 .link:hover {
@@ -430,8 +362,9 @@ header img.logo-endereco {
 /* Mensagens de erro */
 .erro {
   color: #ff4d4d;
-  margin-top: 10px;
+  margin-top: 6px;
   font-weight: 600;
+  font-size: 0.85em;
 }
 .tabela-titulo {
   text-align: center;

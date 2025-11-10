@@ -38,47 +38,42 @@ $nome = $_SESSION['nome_usuario'];
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Combos</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
     <section id="combos">
-    <nav class="nav-escolha">
-        <a href="../paginainicio.php"><img src="../img/logo.png" alt="logo" class="logo"></a>
-        <ul>
-            <li><a href="../paginainicio.php">Início</a></li>
-            <li><a href="../pedidos.php">Pedidos</a></li>
-            <li><a href="../sobrenos.html">Sobre nós</a></li>
-        </ul>
-        <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-        <div class="menu-opcoes" id="menu">
-            <form method="post">
-                <button><a href="../index.php">Sair</a></button>
-            </form>
-        </div>
-
-
-    </nav>
-    <h1 class="titulo-pagina">Combos</h1>
-    <!-- Galeria principal -->
-    
+        <nav class="nav-escolha">
+            <a href="../paginainicio.php"><img src="../img/logo.png" alt="logo" class="logo"></a>
+            <ul>
+                <li><a href="../paginainicio.php">Início</a></li>
+                <li><a href="../pedidos.php">Pedidos</a></li>
+                <li><a href="../sobrenos.html">Sobre nós</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+                    <button><a href="../index.php">Sair</a></button>
+                </form>
+            </div>
+        </nav>
+        <h1 class="titulo-pagina">Combos</h1>
         <div id="itens-container" class="grind">
             <div onclick="location.href='#x-simples'" class="card">
                 <img src="../img/X_ComboSimples.png" alt="X-Simples">
                 <p>Combo Simples</p>
             </div>
-            <div onclick="location.href='#x-simples'" class="card">
+            <div onclick="location.href='#x-individual'" class="card">
                 <img src="../img/X_ComboIndividual.png" alt="X-Individual">
                 <p>Combo Individual</p>
             </div>
-            <div onclick="location.href='#x-simples'" class="card">
+            <div onclick="location.href='#x-familia'" class="card">
                 <img src="../img/X_ComboFamilia.png" alt="X-Família">
                 <p>Combo Família</p>
             </div>
         </div>
     </section>
 
-    <!-- Produto: X-Simples (section 1 = detalhe) -->
     <section id="x-simples" class="produto-page">
         <nav class="nav-escolha">
             <img src="../img/logo.png" alt="logo" class="logo">
@@ -109,10 +104,9 @@ $nome = $_SESSION['nome_usuario'];
                 </form>
             </div>
         </div>
-        <button class="voltar"><a href="#combos">Voltar</a></button>
+        <a href="#combos"><button class="voltar">Voltar</button></a>
     </section>
 
-    <!-- Produto: X-Simples (section 2 = finalização) -->
     <section id="finalizacaox-simples" class="finalizacao">
         <nav class="nav-escolha">
             <img src="../img/logo.png" alt="logo" class="logo">
@@ -121,18 +115,29 @@ $nome = $_SESSION['nome_usuario'];
                 <li><a href="../pedidos.php">Pedidos</a></li>
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+        <div class="menu-opcoes" id="menu">
+            <form method="post">
+                <button><a href="../index.php">Sair</a></button>
+            </form>
+        </div>
         </nav>
 
         <div class="produto-finalizacao">
             <img src="../img/X_ComboSimples.png" alt="X-Simples" class="img-produto-finalizacao">
-        </div>
-
-        <form method="post">
+        
+        <form method="post" action="../pedidos.php">
             <input type="hidden" name="produto" value="Combo Simples">
 
-            <h2 class="forma-entrega">Tipo de Entrega</h2>
-            <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-            <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
+            <h1 class="forma-entrega">Tipo de Entrega</h1>
+            <div class="entrega">
+            <input type="radio" name="entrega" value="Entregar" required>
+            <label>Entregar</label>
+            </div>
+            <div class="entrega2">
+            <input type="radio" name="entrega" value="Retirar" required>
+            <label>Retirar</label>   
+            </div>
 
             <h3 class="forma-pagamento">Método Pagamento</h3>
             <select name="pagamento" class="escolha-pagamento" required>
@@ -144,18 +149,23 @@ $nome = $_SESSION['nome_usuario'];
 
             <input type="submit" class="btn-pagamento" value="Enviar pedido">
         </form>
+        </div>
     </section>
 
-    <!-- Produto: X-Individual (section 1 = detalhe) -->
     <section id="x-individual" class="produto-page">
         <nav class="nav-escolha">
             <img src="../img/logo.png" alt="logo" class="logo">
-            <h1 class="titulo-pagina">X-Individual</h1>
-            <ul class="menu-principal">
+            <ul>
                 <li><a href="../paginainicio.php">Início</a></li>
                 <li><a href="../pedidos.php">Pedidos</a></li>
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+            <form method="post">
+                <button><a href="../index.php">Sair</a></button>
+            </form>
+            </div>
         </nav>
 
         <div class="produto-detalhe">
@@ -163,7 +173,7 @@ $nome = $_SESSION['nome_usuario'];
             <div>
                 <h2 class="produto-titulo">X-Individual</h2>
                 <p class="produto-descricao">Combo completo com hambúrguer, fritas e bebida.</p>
-
+                <p class="preco">Preço:<strong class="valor">25R$</strong> </p> 
                 <form method="post" action="#finalizacaox-individual">
                     <input type="hidden" name="produto" value="Combo Individual">
                     <label class="label-qtd">Quantidade:</label>
@@ -172,9 +182,9 @@ $nome = $_SESSION['nome_usuario'];
                 </form>
             </div>
         </div>
+        <a href="#combos"><button class="voltar">Voltar</button></a>
     </section>
 
-    <!-- Produto: X-Individual (section 2 = finalização) -->
     <section id="finalizacaox-individual" class="finalizacao">
         <nav class="nav-escolha">
             <img src="../img/logo.png" alt="logo" class="logo">
@@ -183,18 +193,29 @@ $nome = $_SESSION['nome_usuario'];
                 <li><a href="../pedidos.php">Pedidos</a></li>
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+        <div class="menu-opcoes" id="menu">
+            <form method="post">
+                <button><a href="../index.php">Sair</a></button>
+            </form>
+        </div>
         </nav>
 
         <div class="produto-finalizacao">
             <img src="../img/X_ComboIndividual.png" alt="X-Individual" class="img-produto-finalizacao">
-        </div>
-
-        <form method="post">
+        
+        <form method="post" action="../pedidos.php">
             <input type="hidden" name="produto" value="Combo Individual">
 
-            <h2 class="forma-entrega">Tipo de Entrega</h2>
-            <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-            <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
+            <h1 class="forma-entrega">Tipo de Entrega</h1>
+            <div class="entrega">
+            <input type="radio" name="entrega" value="Entregar" required>
+            <label>Entregar</label>
+            </div>
+            <div class="entrega2">
+            <input type="radio" name="entrega" value="Retirar" required>
+            <label>Retirar</label>   
+            </div>
 
             <h3 class="forma-pagamento">Método Pagamento</h3>
             <select name="pagamento" class="escolha-pagamento" required>
@@ -206,18 +227,23 @@ $nome = $_SESSION['nome_usuario'];
 
             <input type="submit" class="btn-pagamento" value="Enviar pedido">
         </form>
+        </div>
     </section>
 
-    <!-- Produto: X-Família (section 1 = detalhe) -->
     <section id="x-familia" class="produto-page">
         <nav class="nav-escolha">
             <img src="../img/logo.png" alt="logo" class="logo">
-            <h1 class="titulo-pagina">X-Família</h1>
-            <ul class="menu-principal">
+            <ul>
                 <li><a href="../paginainicio.php">Início</a></li>
                 <li><a href="../pedidos.php">Pedidos</a></li>
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+            <form method="post">
+                <button><a href="../index.php">Sair</a></button>
+            </form>
+            </div>
         </nav>
 
         <div class="produto-detalhe">
@@ -225,7 +251,7 @@ $nome = $_SESSION['nome_usuario'];
             <div>
                 <h2 class="produto-titulo">X-Família</h2>
                 <p class="produto-descricao">Combo para compartilhar — ideal para família e amigos.</p>
-
+                <p class="preco">Preço:<strong class="valor">40R$</strong> </p>
                 <form method="post" action="#finalizacaox-familia">
                     <input type="hidden" name="produto" value="Combo Família">
                     <label class="label-qtd">Quantidade:</label>
@@ -234,9 +260,9 @@ $nome = $_SESSION['nome_usuario'];
                 </form>
             </div>
         </div>
+        <a href="#combos"><button class="voltar">Voltar</button></a>
     </section>
 
-    <!-- Produto: X-Família (section 2 = finalização) -->
     <section id="finalizacaox-familia" class="finalizacao">
         <nav class="nav-escolha">
             <img src="../img/logo.png" alt="logo" class="logo">
@@ -245,18 +271,29 @@ $nome = $_SESSION['nome_usuario'];
                 <li><a href="../pedidos.php">Pedidos</a></li>
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+        <div class="menu-opcoes" id="menu">
+            <form method="post">
+                <button><a href="../index.php">Sair</a></button>
+            </form>
+        </div>
         </nav>
 
         <div class="produto-finalizacao">
             <img src="../img/X_ComboFamilia.png" alt="X-Família" class="img-produto-finalizacao">
-        </div>
-
-        <form method="post">
+        
+        <form method="post" action="../pedidos.php">
             <input type="hidden" name="produto" value="Combo Família">
 
-            <h2 class="forma-entrega">Tipo de Entrega</h2>
-            <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-            <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
+            <h1 class="forma-entrega">Tipo de Entrega</h1>
+            <div class="entrega">
+            <input type="radio" name="entrega" value="Entregar" required>
+            <label>Entregar</label>
+            </div>
+            <div class="entrega2">
+            <input type="radio" name="entrega" value="Retirar" required>
+            <label>Retirar</label>   
+            </div>
 
             <h3 class="forma-pagamento">Método Pagamento</h3>
             <select name="pagamento" class="escolha-pagamento" required>
@@ -268,6 +305,7 @@ $nome = $_SESSION['nome_usuario'];
 
             <input type="submit" class="btn-pagamento" value="Enviar pedido">
         </form>
+        </div>
     </section>
 
     <script>

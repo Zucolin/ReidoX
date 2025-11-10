@@ -11,6 +11,8 @@ if (!isset($_SESSION['nome_usuario'])) {
 }
 $nome = $_SESSION['nome_usuario'];
 ?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -18,173 +20,346 @@ $nome = $_SESSION['nome_usuario'];
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Lanches</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
 
-    <section id="lanches" id="primeira">
-        <nav class="nav-escolha">
-            <div class="menu-container">
-                <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                <div class="menu-opcoes">
-                    <form method="post">
-                        <button type="submit" name="editar">Editar</button>
-                        <button type="submit" name="sair">Sair</button>
-                    </form>
-                </div>
-            </div>
-            <img src="logo.png" alt="logo" class="logo">
-            <h1 class="titulo-pagina">Lanches</h1>
-            <ul class="menu-principal">
-                <li><a href="../paginainicio.php">Inicio</a></li>
+    <section id="lanches"> <nav class="nav-escolha">
+            <a href="../paginainicio.php"><img src="../img/logo.png" alt="logo" class="logo"></a>
+            <ul>
+                <li><a href="../paginainicio.php">Início</a></li>
                 <li><a href="../pedidos.php">Pedidos</a></li>
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+                    <button><a href="../index.php">Sair</a></button>
+                </form>
+            </div>
         </nav>
-
-        <div style="text-align:center; width:100%;">
-            <a href="#x-cheese" class="produto-link"><img src="../img/X_CheeseBurguer.png" alt="X-Cheese"></a>
-            <a href="#x-bacon" class="produto-link"><img src="../img/X_Bacon.png" alt="X-Bacon"></a>
-            <a href="#x-chicken" class="produto-link"><img src="../img/X_Chicken.png" alt="X-Chicken"></a>
-            <a href="#x-tudo" class="produto-link"><img src="../img/X_Tudo.png" alt="X-Tudo"></a>
+        <h1 class="titulo-pagina">Lanches</h1>
+        
+        <div id="itens-container" class="grind">
+            <div onclick="location.href='#x-cheese'" class="card">
+                <img src="../img/X_CheeseBurguer.png" alt="X-Cheese">
+                <p>X-Cheese</p>
+            </div>
+            <div onclick="location.href='#x-bacon'" class="card">
+                <img src="../img/X_Bacon.png" alt="X-Bacon">
+                <p>X-Bacon</p>
+            </div>
+            <div onclick="location.href='#x-chicken'" class="card">
+                <img src="../img/X_Chicken.png" alt="X-Chicken">
+                <p>X-Chicken</p>
+            </div>
+            <div onclick="location.href='#x-tudo'" class="card">
+                <img src="../img/X_Tudo.png" alt="X-Tudo">
+                <p>X-Tudo</p>
+            </div>
         </div>
     </section>
 
-    <!-- X-Cheese - detalhe -->
     <section id="x-cheese" class="produto-page">
-        <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><h1 class="titulo-pagina">X-Cheese</h1><ul class="menu-principal"><li><a href="#lanches">Voltar</a></li></ul></nav>
-        <div class="produto-detalhe"><img src="../img/X_CheeseBurguer.png" class="produto-img-detalhe" alt="X-Cheese"><div>
-            <h2 class="produto-titulo">X-Cheese</h2>
-            <p class="produto-descricao">Hambúrguer com queijo derretido.</p>
-            <form method="post" action="#finalizacaox-cheese">
-                <input type="hidden" name="produto" value="X-Cheese">
-                <label class="label-qtd">Quantidade:</label>
-                <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-                <button class="btn-comprar" type="submit">Ir para finalização</button>
-            </form>
-        </div></div>
+        <nav class="nav-escolha">
+            <img src="../img/logo.png" alt="logo" class="logo">
+            <ul>
+                <li><a href="../paginainicio.php">Início</a></li>
+                <li><a href="../pedidos.php">Pedidos</a></li>
+                <li><a href="../sobrenos.html">Sobre nós</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+                    <button><a href="../index.php">Sair</a></button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="produto-detalhe">
+            <img src="../img/X_CheeseBurguer.png" class="produto-img-detalhe" alt="X-Cheese">
+            <div>
+                <h2 class="produto-titulo">X-Cheese</h2>
+                <p class="produto-descricao">Hambúrguer com queijo derretido.</p>
+                <form method="post" action="#finalizacaox-cheese">
+                    <input type="hidden" name="produto" value="X-Cheese">
+                    <label class="label-qtd">Quantidade:</label>
+                    <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
+                    <button class="btn-comprar" type="submit">Finalizar compra</button>
+                </form>
+            </div>
+        </div>
+        <a href="#lanches"><button class="voltar">Voltar</button></a>
     </section>
 
     <section id="finalizacaox-cheese" class="finalizacao">
-        <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><ul class="menu-principal"><li><a href="#x-cheese">Detalhe</a></li><li><a href="#lanches">Voltar</a></li></ul></nav>
-        <div class="produto-finalizacao"><img src="../img/X_CheeseBurguer.png" class="img-produto-finalizacao" alt="X-Cheese"></div>
-        <form method="post">
-            <input type="hidden" name="produto" value="X-Cheese">
-            <h2 class="forma-entrega">Tipo de Entrega</h2>
-            <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-            <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-            <h3 class="forma-pagamento">Método Pagamento</h3>
-            <select name="pagamento" required>
-                <option value="cartao-credito">Cartão de Crédito</option>
-                <option value="cartao-debito">Cartão de Débito</option>
-                <option value="pix">Pix</option>
-                <option value="dinheiro">Dinheiro</option>
-            </select>
-            <input type="submit" class="btn-pagamento" value="Enviar pedido">
-        </form>
+        <nav class="nav-escolha">
+            <img src="../img/logo.png" alt="logo" class="logo">
+            <ul class="menu-principal">
+                <li><a href="../paginainicio.php">Início</a></li>
+                <li><a href="../pedidos.php">Pedidos</a></li>
+                <li><a href="../sobrenos.html">Sobre nós</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+                    <button><a href="../index.php">Sair</a></button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="produto-finalizacao">
+            <img src="../img/X_CheeseBurguer.png" class="img-produto-finalizacao" alt="X-Cheese">
+        
+            <form method="post" action="../pedidos.php">
+                <input type="hidden" name="produto" value="X-Cheese">
+
+                <h1 class="forma-entrega">Tipo de Entrega</h1>
+                <div class="entrega">
+                    <input type="radio" name="entrega" value="Entregar" required>
+                    <label>Entregar</label>
+                </div>
+                <div class="entrega2">
+                    <input type="radio" name="entrega" value="Retirar" required>
+                    <label>Retirar</label>   
+                </div>
+
+                <h3 class="forma-pagamento">Método Pagamento</h3>
+                <select name="pagamento" class="escolha-pagamento" required>
+                    <option value="cartao-credito">Cartão de Crédito</option>
+                    <option value="cartao-debito">Cartão de Débito</option>
+                    <option value="pix">Pix</option>
+                    <option value="dinheiro">Dinheiro</option>
+                </select>
+                <input type="submit" class="btn-pagamento" value="Enviar pedido">
+            </form>
+        </div>
     </section>
 
-    <!-- X-Bacon -->
     <section id="x-bacon" class="produto-page">
-        <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><h1 class="titulo-pagina">X-Bacon</h1><ul class="menu-principal"><li><a href="#lanches">Voltar</a></li></ul></nav>
-        <div class="produto-detalhe"><img src="../img/X_Bacon.png" class="produto-img-detalhe" alt="X-Bacon"><div>
-            <h2 class="produto-titulo">X-Bacon</h2>
-            <p class="produto-descricao">Hambúrguer com bacon crocante.</p>
-            <form method="post" action="#finalizacaox-bacon">
-                <input type="hidden" name="produto" value="X-Bacon">
-                <label class="label-qtd">Quantidade:</label>
-                <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-                <button class="btn-comprar" type="submit">Ir para finalização</button>
-            </form>
-        </div></div>
+        <nav class="nav-escolha">
+            <img src="../img/logo.png" alt="logo" class="logo">
+            <ul>
+                <li><a href="../paginainicio.php">Início</a></li>
+                <li><a href="../pedidos.php">Pedidos</a></li>
+                <li><a href="../sobrenos.html">Sobre nós</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+                    <button><a href="../index.php">Sair</a></button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="produto-detalhe">
+            <img src="../img/X_Bacon.png" class="produto-img-detalhe" alt="X-Bacon">
+            <div>
+                <h2 class="produto-titulo">X-Bacon</h2>
+                <p class="produto-descricao">Hambúrguer com bacon crocante.</p>
+                <form method="post" action="#finalizacaox-bacon">
+                    <input type="hidden" name="produto" value="X-Bacon">
+                    <label class="label-qtd">Quantidade:</label>
+                    <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
+                    <button class="btn-comprar" type="submit">Finalizar compra</button>
+                </form>
+            </div>
+        </div>
+        <a href="#lanches"><button class="voltar">Voltar</button></a>
     </section>
 
     <section id="finalizacaox-bacon" class="finalizacao">
-        <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><ul class="menu-principal"><li><a href="#x-bacon">Detalhe</a></li><li><a href="#lanches">Voltar</a></li></ul></nav>
-        <div class="produto-finalizacao"><img src="../img/X_Bacon.png" class="img-produto-finalizacao" alt="X-Bacon"></div>
-        <form method="post">
-            <input type="hidden" name="produto" value="X-Bacon">
-            <h2 class="forma-entrega">Tipo de Entrega</h2>
-            <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-            <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-            <h3 class="forma-pagamento">Método Pagamento</h3>
-            <select name="pagamento" required>
-                <option value="cartao-credito">Cartão de Crédito</option>
-                <option value="cartao-debito">Cartão de Débito</option>
-                <option value="pix">Pix</option>
-                <option value="dinheiro">Dinheiro</option>
-            </select>
-            <input type="submit" class="btn-pagamento" value="Enviar pedido">
-        </form>
+        <nav class="nav-escolha">
+            <img src="../img/logo.png" alt="logo" class="logo">
+            <ul class="menu-principal">
+                <li><a href="../paginainicio.php">Início</a></li>
+                <li><a href="../pedidos.php">Pedidos</a></li>
+                <li><a href="../sobrenos.html">Sobre nós</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+                    <button><a href="../index.php">Sair</a></button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="produto-finalizacao">
+            <img src="../img/X_Bacon.png" class="img-produto-finalizacao" alt="X-Bacon">
+            
+            <form method="post" action="../pedidos.php">
+                <input type="hidden" name="produto" value="X-Bacon">
+                <h1 class="forma-entrega">Tipo de Entrega</h1>
+                <div class="entrega">
+                    <input type="radio" name="entrega" value="Entregar" required>
+                    <label>Entregar</label>
+                </div>
+                <div class="entrega2">
+                    <input type="radio" name="entrega" value="Retirar" required>
+                    <label>Retirar</label>   
+                </div>
+
+                <h3 class="forma-pagamento">Método Pagamento</h3>
+                <select name="pagamento" class="escolha-pagamento" required>
+                    <option value="cartao-credito">Cartão de Crédito</option>
+                    <option value="cartao-debito">Cartão de Débito</option>
+                    <option value="pix">Pix</option>
+                    <option value="dinheiro">Dinheiro</option>
+                </select>
+                <input type="submit" class="btn-pagamento" value="Enviar pedido">
+            </form>
+        </div>
     </section>
 
-    <!-- X-Chicken -->
     <section id="x-chicken" class="produto-page">
-        <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><h1 class="titulo-pagina">X-Chicken</h1><ul class="menu-principal"><li><a href="#lanches">Voltar</a></li></ul></nav>
-        <div class="produto-detalhe"><img src="../img/X_Chicken.png" class="produto-img-detalhe" alt="X-Chicken"><div>
-            <h2 class="produto-titulo">X-Chicken</h2>
-            <p class="produto-descricao">Hambúrguer de frango empanado.</p>
-            <form method="post" action="#finalizacaox-chicken">
-                <input type="hidden" name="produto" value="X-Chicken">
-                <label class="label-qtd">Quantidade:</label>
-                <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-                <button class="btn-comprar" type="submit">Ir para finalização</button>
-            </form>
-        </div></div>
+        <nav class="nav-escolha">
+            <img src="../img/logo.png" alt="logo" class="logo">
+            <ul>
+                <li><a href="../paginainicio.php">Início</a></li>
+                <li><a href="../pedidos.php">Pedidos</a></li>
+                <li><a href="../sobrenos.html">Sobre nós</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+                    <button><a href="../index.php">Sair</a></button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="produto-detalhe">
+            <img src="../img/X_Chicken.png" class="produto-img-detalhe" alt="X-Chicken">
+            <div>
+                <h2 class="produto-titulo">X-Chicken</h2>
+                <p class="produto-descricao">Hambúrguer de frango empanado.</p>
+                <form method="post" action="#finalizacaox-chicken">
+                    <input type="hidden" name="produto" value="X-Chicken">
+                    <label class="label-qtd">Quantidade:</label>
+                    <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
+                    <button class="btn-comprar" type="submit">Finalizar compra</button>
+                </form>
+            </div>
+        </div>
+        <a href="#lanches"><button class="voltar">Voltar</button></a>
     </section>
 
     <section id="finalizacaox-chicken" class="finalizacao">
-        <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><ul class="menu-principal"><li><a href="#x-chicken">Detalhe</a></li><li><a href="#lanches">Voltar</a></li></ul></nav>
-        <div class="produto-finalizacao"><img src="../img/X_Chicken.png" class="img-produto-finalizacao" alt="X-Chicken"></div>
-        <form method="post">
-            <input type="hidden" name="produto" value="X-Chicken">
-            <h2 class="forma-entrega">Tipo de Entrega</h2>
-            <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-            <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-            <h3 class="forma-pagamento">Método Pagamento</h3>
-            <select name="pagamento" required>
-                <option value="cartao-credito">Cartão de Crédito</option>
-                <option value="cartao-debito">Cartão de Débito</option>
-                <option value="pix">Pix</option>
-                <option value="dinheiro">Dinheiro</option>
-            </select>
-            <input type="submit" class="btn-pagamento" value="Enviar pedido">
-        </form>
+        <nav class="nav-escolha">
+            <img src="../img/logo.png" alt="logo" class="logo">
+            <ul class="menu-principal">
+                <li><a href="../paginainicio.php">Início</a></li>
+                <li><a href="../pedidos.php">Pedidos</a></li>
+                <li><a href="../sobrenos.html">Sobre nós</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+                    <button><a href="../index.php">Sair</a></button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="produto-finalizacao">
+            <img src="../img/X_Chicken.png" class="img-produto-finalizacao" alt="X-Chicken">
+            
+            <form method="post" action="../pedidos.php">
+                <input type="hidden" name="produto" value="X-Chicken">
+                <h1 class="forma-entrega">Tipo de Entrega</h1>
+                <div class="entrega">
+                    <input type="radio" name="entrega" value="Entregar" required>
+                    <label>Entregar</label>
+                </div>
+                <div class="entrega2">
+                    <input type="radio" name="entrega" value="Retirar" required>
+                    <label>Retirar</label>   
+                </div>
+
+                <h3 class="forma-pagamento">Método Pagamento</h3>
+                <select name="pagamento" class="escolha-pagamento" required>
+                    <option value="cartao-credito">Cartão de Crédito</option>
+                    <option value="cartao-debito">Cartão de Débito</option>
+                    <option value="pix">Pix</option>
+                    <option value="dinheiro">Dinheiro</option>
+                </select>
+                <input type="submit" class="btn-pagamento" value="Enviar pedido">
+            </form>
+        </div>
     </section>
 
-    <!-- X-Tudo -->
     <section id="x-tudo" class="produto-page">
-        <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><h1 class="titulo-pagina">X-Tudo</h1><ul class="menu-principal"><li><a href="#lanches">Voltar</a></li></ul></nav>
-        <div class="produto-detalhe"><img src="../img/X_Tudo.png" class="produto-img-detalhe" alt="X-Tudo"><div>
-            <h2 class="produto-titulo">X-Tudo</h2>
-            <p class="produto-descricao">Hambúrguer completo com vários acompanhamentos.</p>
-            <form method="post" action="#finalizacaox-tudo">
-                <input type="hidden" name="produto" value="X-Tudo">
-                <label class="label-qtd">Quantidade:</label>
-                <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-                <button class="btn-comprar" type="submit">Ir para finalização</button>
-            </form>
-        </div></div>
+        <nav class="nav-escolha">
+            <img src="../img/logo.png" alt="logo" class="logo">
+            <ul>
+                <li><a href="../paginainicio.php">Início</a></li>
+                <li><a href="../pedidos.php">Pedidos</a></li>
+                <li><a href="../sobrenos.html">Sobre nós</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+                    <button><a href="../index.php">Sair</a></button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="produto-detalhe">
+            <img src="../img/X_Tudo.png" class="produto-img-detalhe" alt="X-Tudo">
+            <div>
+                <h2 class="produto-titulo">X-Tudo</h2>
+                <p class="produto-descricao">Hambúrguer completo com vários acompanhamentos.</p>
+                <form method="post" action="#finalizacaox-tudo">
+                    <input type="hidden" name="produto" value="X-Tudo">
+                    <label class="label-qtd">Quantidade:</label>
+                    <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
+                    <button class="btn-comprar" type="submit">Finalizar compra</button>
+                </form>
+            </div>
+        </div>
+        <a href="#lanches"><button class="voltar">Voltar</button></a>
     </section>
 
     <section id="finalizacaox-tudo" class="finalizacao">
-        <nav class="nav-escolha"><img src="../img/logo.png" class="logo" alt="logo"><ul class="menu-principal"><li><a href="#x-tudo">Detalhe</a></li><li><a href="#lanches">Voltar</a></li></ul></nav>
-        <div class="produto-finalizacao"><img src="../img/X_Tudo.png" class="img-produto-finalizacao" alt="X-Tudo"></div>
-        <form method="post">
-            <input type="hidden" name="produto" value="X-Tudo">
-            <h2 class="forma-entrega">Tipo de Entrega</h2>
-            <label><input type="radio" name="entrega" value="Entregar" required> Entregar</label>
-            <label><input type="radio" name="entrega" value="Retirar" required> Retirar</label>
-            <h3 class="forma-pagamento">Método Pagamento</h3>
-            <select name="pagamento" required>
-                <option value="cartao-credito">Cartão de Crédito</option>
-                <option value="cartao-debito">Cartão de Débito</option>
-                <option value="pix">Pix</option>
-                <option value="dinheiro">Dinheiro</option>
-            </select>
-            <input type="submit" class="btn-pagamento" value="Enviar pedido">
-        </form>
+        <nav class="nav-escolha">
+            <img src="../img/logo.png" alt="logo" class="logo">
+            <ul class="menu-principal">
+                <li><a href="../paginainicio.php">Início</a></li>
+                <li><a href="../pedidos.php">Pedidos</a></li>
+                <li><a href="../sobrenos.html">Sobre nós</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
+            <div class="menu-opcoes" id="menu">
+                <form method="post">
+                    <button><a href="../index.php">Sair</a></button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="produto-finalizacao">
+            <img src="../img/X_Tudo.png" class="img-produto-finalizacao" alt="X-Tudo">
+            
+            <form method="post" action="../pedidos.php">
+                <input type="hidden" name="produto" value="X-Tudo">
+                <h1 class="forma-entrega">Tipo de Entrega</h1>
+                <div class="entrega">
+                    <input type="radio" name="entrega" value="Entregar" required>
+                    <label>Entregar</label>
+                </div>
+                <div class="entrega2">
+                    <input type="radio" name="entrega" value="Retirar" required>
+                    <label>Retirar</label>   
+                </div>
+
+                <h3 class="forma-pagamento">Método Pagamento</h3>
+                <select name="pagamento" class="escolha-pagamento" required>
+                    <option value="cartao-credito">Cartão de Crédito</option>
+                    <option value="cartao-debito">Cartão de Débito</option>
+                    <option value="pix">Pix</option>
+                    <option value="dinheiro">Dinheiro</option>
+                </select>
+                <input type="submit" class="btn-pagamento" value="Enviar pedido">
+            </form>
+        </div>
     </section>
 
     <script>
