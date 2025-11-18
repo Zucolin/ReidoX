@@ -63,9 +63,6 @@ if (!$usuario) {
             </div>
             <button type="submit" class="btn">Salvar Alterações</button>
         </form>
-        <div class="footer-links">
-            <a href="paginainicio.php">Voltar para a página inicial</a>
-        </div>
     </div>
 </body>
 </html>

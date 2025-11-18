@@ -36,7 +36,7 @@ try {
     if ($sucesso) {
         // Atualiza o nome na sessão, caso tenha sido alterado
         $_SESSION['nome_usuario'] = $nome;
-        header('Location: editar_usuario.php?sucesso=1');
+        header('Location: paginainicio.php');
         exit;
     } else {
         header('Location: editar_usuario.php?erro=Ocorreu um erro ao atualizar o perfil.');

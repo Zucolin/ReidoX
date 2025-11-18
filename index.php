@@ -40,9 +40,7 @@
 
                 // Redireciona usuário normal
                 $verificar = new Verificar();
-                $permitido = true;
-                $verificar->Usuariopermitido($permitido);
-                header('Location: paginainicio.php');
+                $verificar->Usuariopermitido($usuario);
                 exit;
             } else {
                 $erro = "E-mail ou senha incorretos!";
