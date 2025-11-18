@@ -62,5 +62,32 @@ public function editar($nome, $email, $senha, $id) {
         $id
     ]);
 }
+
+public function buscarUsuarioPorId($id) {
+    $stmt = $this->pdo->prepare("SELECT id, nome, email, cep, rua, numero FROM clientes WHERE id = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero) {
+    $params = [
+        'id' => $id,
+        'nome' => $nome,
+        'email' => $email,
+        'cep' => $cep,
+        'rua' => $rua,
+        'numero' => $numero
+    ];
+
+    if (!empty($senha)) {
+        $sql = "UPDATE clientes SET nome = :nome, email = :email, senha = :senha, cep = :cep, rua = :rua, numero = :numero WHERE id = :id";
+        $params['senha'] = password_hash($senha, PASSWORD_DEFAULT);
+    } else {
+        $sql = "UPDATE clientes SET nome = :nome, email = :email, cep = :cep, rua = :rua, numero = :numero WHERE id = :id";
+    }
+
+    $stmt = $this->pdo->prepare($sql);
+    return $stmt->execute($params);
+}
 }
 ?>

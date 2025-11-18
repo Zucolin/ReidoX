@@ -281,12 +281,25 @@ $nome = $_SESSION['nome_usuario'];
             <div class="menu-container">
                 <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
                 <div class="menu-opcoes" id="menu">
-                    <form method="post">
-                        <button type="submit" name="sair">Sair</button>
-                    </form>
+                    <a href="editar_usuario.php" class="menu-link">Editar Perfil</a>
+                    <a href="logout.php" class="menu-link">Sair</a>
                 </div>
             </div>
         </nav>
+
+        <style>
+            .menu-link {
+                display: block;
+                padding: 12px 16px;
+                color: var(--text);
+                text-decoration: none;
+                font-weight: 600;
+            }
+            .menu-link:hover {
+                background: rgba(255, 255, 255, 0.03);
+                color: var(--accent);
+            }
+        </style>
 
         <div id="itens-container" class="grid">
             <div class="card">
