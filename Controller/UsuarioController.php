@@ -1,5 +1,5 @@
 <?php
-require_once "C:/xampp/htdocs/ReidoX/Model/UsuarioModel.php";
+require_once "C:/turma1/xampp/htdocs/ReidoX/Model/UsuarioModel.php";
 
 class UsuarioController
 {
@@ -32,7 +32,7 @@ class UsuarioController
     public function listar()
     {
         $usuarios = $this->usuarioModel->buscarTodos();
-        include_once "C:/xampp/htdocs/ReidoX/admin.php";
+        include_once "C:/turma1/xampp/htdocs/ReidoX/admin.php";
         return $usuarios;
     }
 
@@ -101,6 +101,8 @@ class UsuarioController
         if ($user_id === 0) {
             throw new Exception("Usuário não logado.");
         }
+
+        
 
         $sql = "UPDATE clientes SET pedidos = :pedidos WHERE id = :user_id";
         $stmt = $this->pdo->prepare($sql);

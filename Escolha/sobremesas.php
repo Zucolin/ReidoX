@@ -10,17 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    if (isset($_POST['produto']) && isset($_POST['quantidade'])) {
-       
-        $nomepedido = $_POST['produto'];
-        $quantidade = intval($_POST['quantidade']);
-        $pedido = $nomepedido . " x" . $quantidade;
-
-        require_once '../DB/Database.php';
-        require_once '../Controller/UsuarioController.php';
-        $controller = new UsuarioController($pdo);
-        $controller->enviarpedidos($pedido);
-    }
 }
 
 
@@ -38,7 +27,7 @@ $nome = $_SESSION['nome_usuario'];
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Sobremesas</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
@@ -135,9 +124,9 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/brownieSorvete.png" class="img-produto-finalizacao" alt="Brownie">
         
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Brownie com Sorvete">
-
+<input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -212,8 +201,9 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/mousseMaracuja.png" class="img-produto-finalizacao" alt="Mousse Maracujá">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Mousse de Maracujá">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -288,8 +278,9 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/mousseMorango.png" class="img-produto-finalizacao" alt="Mousse Morango">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Mousse de Morango">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -364,8 +355,9 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/sorveteflocos.png" class="img-produto-finalizacao" alt="Sorvete Flocos">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Sorvete Flocos">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -440,8 +432,9 @@ $nome = $_SESSION['nome_usuario'];
         <div class="produto-finalizacao">
             <img src="../img/torta.png" class="img-produto-finalizacao" alt="Torta">
             
-            <form method="post" action="../pedidos.php">
+            <form method="post" action="">
                 <input type="hidden" name="produto" value="Torta Doce">
+                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
                 <h1 class="forma-entrega">Tipo de Entrega</h1>
                 <div class="entrega">
                     <input type="radio" name="entrega" value="Entregar" required>
@@ -481,4 +474,28 @@ $nome = $_SESSION['nome_usuario'];
 
 </body>
 
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' 
+    && isset($_POST['produto']) 
+    && isset($_POST['entrega']) 
+    && isset($_POST['pagamento'])) {
+
+    $produto = $_POST['produto'];
+    $quantidade = $_POST['quantidade'] ?? 1;
+    $entrega = $_POST['entrega'];
+    $pagamento = $_POST['pagamento'];
+
+    $pedido = "$produto x $quantidade / Entrega : $entrega / Pagamento : $pagamento";
+
+    require_once '../DB/Database.php';
+    require_once '../Controller/UsuarioController.php';
+    $controller = new UsuarioController($pdo);
+    $controller->enviarpedidos($pedido);
+
+    header("Location: ../pedidos.php");
+    exit;
+}
+
+?>
 </html>

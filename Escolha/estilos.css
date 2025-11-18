@@ -71,6 +71,48 @@ section .produto-detalhe{
             transition: transform .18s ease, box-shadow .18s ease;
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
+        #bebidas .card {
+          gap: -20px;
+          padding: 20px;
+          margin-left: 50px;
+          margin-right: 50px;
+            margin-top: 40px;
+            width: 780px;
+            /* restaurado para o tamanho anterior */
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            text-align: center;
+            transition: transform .18s ease, box-shadow .18s ease;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        #sobremesas .card {
+          gap: -20px;
+          padding: 10px;
+          margin-left: 50px;
+          margin-right: 50px;
+            margin-top: 40px;
+            width: 980px;
+            /* restaurado para o tamanho anterior */
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            text-align: center;
+            transition: transform .18s ease, box-shadow .18s ease;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        #acompanhamentos .card {
+          gap: -20px;
+          padding: 10px;
+          margin-left: 50px;
+          margin-right: 50px;
+            margin-top: 40px;
+            width: 980px;
+            /* restaurado para o tamanho anterior */
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            text-align: center;
+            transition: transform .18s ease, box-shadow .18s ease;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
 
         .card:hover {
             transform: translateY(-8px);
@@ -99,10 +141,8 @@ section .produto-detalhe{
         }
 /* NAV FIXA E LAYOUT: logo(esq) - menu(center) - olá(dir) */
 section .nav-escolha {
-  padding: 0 var(--nav-padding-x);
   z-index: 1000;             /* nav acima do resto */
   background: rgba(0,0,0,0.22);
-  backdrop-filter: blur(6px);
   overflow: visible;
   display: flex;
   align-items: center;     /* Add this line */       /* Add this line */            /* Add this line */
@@ -140,17 +180,20 @@ section .nav-escolha {
   display: none;
   position: absolute;
   right: 0;
-  top: calc(100% + 10px);
   z-index: 1200;             /* permanece por cima */
   width: 200px;
   background: var(--panel);
   overflow: visible;
-  margin-top: -70px;
+  margin-top: 40px;
+  border-radius: 40px ;
+}
+.menu-opcoes a{
+  text-decoration: none;
+    color: #ffc72c;
 }
 div#itens-container {
     display: flex;
     justify-content: center;
-    gap: 1em;
 }
 #menu form {
             display: flex;
@@ -213,11 +256,10 @@ div#itens-container {
   padding-top: calc(var(--nav-height) + 36px);
   border-radius: 70px;
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 600px;
-  width: 900px
+  background: var(--panel);
 }
 
 /* Personalização do PRIMEIRO .produto-detalhe (título acima, descrição organizada,
@@ -230,6 +272,8 @@ div#itens-container {
   gap: 80px; /* espaço entre imagem e texto */
   padding-top: calc(var(--nav-height) + 36px);
   border-radius: 70px;
+  height: 450px;
+  width: 900px;
 }
 
 /* bloco de texto à direita da imagem */
@@ -373,7 +417,7 @@ div#itens-container {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 50%;
+  top: 59%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: 500px;

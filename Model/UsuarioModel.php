@@ -55,6 +55,8 @@ public function editar($nome, $email, $senha, $id) {
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$nome, $email, $senha, $id]);
     }
+
+    
     public function deletar($id){
     $sql = "DELETE FROM clientes WHERE id = ?";
     $stmt= $this->pdo->prepare($sql);
