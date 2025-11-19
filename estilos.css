@@ -244,6 +244,13 @@ header img.logo-endereco {
   gap: 20px;
   padding: 20px;
 }
+.formulario-editar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
 
 /* Cada campo do formulário */
 .campo {
@@ -251,6 +258,12 @@ header img.logo-endereco {
   width: 80%;
   padding: 6px;
 }
+.formulario-editar .campo {
+  position: relative;
+  width: 80%;
+  padding: 13px;
+}
+
 
 /* Inputs */
 .input {

@@ -178,6 +178,7 @@ $pedidos = $usuario['pedidos'] ?? '';
 </head>
 
 <body>
+    
     <div class="container">
         <h1>Pedidos de <?= htmlspecialchars($usuario['nome']) ?></h1>
         <div class="meta">Aqui estão seus pedidos recentes</div>

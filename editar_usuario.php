@@ -26,6 +26,9 @@ if (!$usuario) {
     <title>Editar Perfil - Rei do X</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
+<style>
+
+</style>
 <body>
     <div class="container">
         <h2>Editar Perfil</h2>
@@ -36,32 +39,32 @@ if (!$usuario) {
             <p class="erro"><?php echo htmlspecialchars($_GET['erro']); ?></p>
         <?php endif; ?>
 
-        <form action="processar_edicao.php" method="POST">
-            <div class="input-group">
-                <label for="nome">Nome Completo</label>
-                <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($usuario['nome']); ?>" required>
+        <form action="processar_edicao.php" method="POST" class="formulario-editar">
+            <div class="campo">
+                <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($usuario['nome']); ?>" required class="input" placeholder=" ">
+                <label for="nome" class="label-flutuante">Nome Completo</label>
             </div>
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($usuario['email']); ?>" required>
+            <div class="campo">
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($usuario['email']); ?>" required class="input" placeholder=" ">
+                <label for="email" class="label-flutuante">Email</label>
             </div>
-            <div class="input-group">
-                <label for="senha">Nova Senha (deixe em branco para não alterar)</label>
-                <input type="password" id="senha" name="senha">
+            <div class="campo">
+                <input type="password" id="senha" name="senha" class="input" placeholder=" ">
+                <label for="senha" class="label-flutuante">Nova Senha</label>
             </div>
-            <div class="input-group">
-                <label for="cep">CEP</label>
-                <input type="text" id="cep" name="cep" value="<?php echo htmlspecialchars($usuario['cep']); ?>">
+            <div class="campo">
+                <input type="text" id="cep" name="cep" value="<?php echo htmlspecialchars($usuario['cep']); ?>" class="input" placeholder=" ">
+                <label for="cep" class="label-flutuante">CEP</label>
             </div>
-            <div class="input-group">
-                <label for="rua">Rua</label>
-                <input type="text" id="rua" name="rua" value="<?php echo htmlspecialchars($usuario['rua']); ?>">
+            <div class="campo">
+                <input type="text" id="rua" name="rua" value="<?php echo htmlspecialchars($usuario['rua']); ?>" class="input" placeholder=" ">
+                <label for="rua" class="label-flutuante">Rua</label>
             </div>
-            <div class="input-group">
-                <label for="numero">Número</label>
-                <input type="text" id="numero" name="numero" value="<?php echo htmlspecialchars($usuario['numero']); ?>">
+            <div class="campo">
+                <input type="text" id="numero" name="numero" value="<?php echo htmlspecialchars($usuario['numero']); ?>" class="input" placeholder=" ">
+                <label for="numero" class="label-flutuante">Número</label>
             </div>
-            <button type="submit" class="btn">Salvar Alterações</button>
+            <input class="botao" type="submit" value="Salvar Alterações">
         </form>
     </div>
 </body>

@@ -42,6 +42,7 @@ $nome = $_SESSION['nome_usuario'];
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes" id="menu">
                 <form method="post">
+                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
                     <button><a href="../index.php">Sair</a></button>
                 </form>
             </div>
@@ -84,6 +85,7 @@ $nome = $_SESSION['nome_usuario'];
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes" id="menu">
                 <form method="post">
+                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
                     <button><a href="../index.php">Sair</a></button>
                 </form>
             </div>
@@ -116,6 +118,7 @@ $nome = $_SESSION['nome_usuario'];
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes" id="menu">
                 <form method="post">
+                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
                     <button><a href="../index.php">Sair</a></button>
                 </form>
             </div>
@@ -161,6 +164,7 @@ $nome = $_SESSION['nome_usuario'];
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes" id="menu">
                 <form method="post">
+                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
                     <button><a href="../index.php">Sair</a></button>
                 </form>
             </div>
@@ -193,6 +197,7 @@ $nome = $_SESSION['nome_usuario'];
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes" id="menu">
                 <form method="post">
+                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
                     <button><a href="../index.php">Sair</a></button>
                 </form>
             </div>
@@ -238,6 +243,7 @@ $nome = $_SESSION['nome_usuario'];
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes" id="menu">
                 <form method="post">
+                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
                     <button><a href="../index.php">Sair</a></button>
                 </form>
             </div>
@@ -270,6 +276,7 @@ $nome = $_SESSION['nome_usuario'];
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes" id="menu">
                 <form method="post">
+                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
                     <button><a href="../index.php">Sair</a></button>
                 </form>
             </div>
@@ -315,6 +322,7 @@ $nome = $_SESSION['nome_usuario'];
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes" id="menu">
                 <form method="post">
+                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
                     <button><a href="../index.php">Sair</a></button>
                 </form>
             </div>
@@ -347,6 +355,7 @@ $nome = $_SESSION['nome_usuario'];
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes" id="menu">
                 <form method="post">
+                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
                     <button><a href="../index.php">Sair</a></button>
                 </form>
             </div>
@@ -392,6 +401,7 @@ $nome = $_SESSION['nome_usuario'];
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes" id="menu">
                 <form method="post">
+                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
                     <button><a href="../index.php">Sair</a></button>
                 </form>
             </div>
@@ -424,6 +434,7 @@ $nome = $_SESSION['nome_usuario'];
             <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
             <div class="menu-opcoes" id="menu">
                 <form method="post">
+                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
                     <button><a href="../index.php">Sair</a></button>
                 </form>
             </div>
