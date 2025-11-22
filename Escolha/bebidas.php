@@ -1,31 +1,81 @@
 <?php
 session_start();
+require_once "../DB/Database.php";
+require_once "../Model/UsuarioModel.php";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sair'])) {
-    session_destroy();
-    header('Location: ../index.php');
-    exit;
-}
 if (!isset($_SESSION['nome_usuario'])) {
     header('Location: ../index.php');
     exit;
 }
 $nome = $_SESSION['nome_usuario'];
+
+$usuarioModel = new UsuarioModel($pdo);
+$bebidas = $usuarioModel->listarProdutosPorCategoria('bebida');
 ?>
- 
+
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Bebidas</title>
     <link rel="stylesheet" href="estilos.css">
+    <style>
+        /* Mantive o style inline que você tinha no final do arquivo original */
+        .user-menu { position: relative; }
+        .menu-opcoes {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: #333;
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 10;
+            width: 150px;
+        }
+        .menu-opcoes.active { display: block; }
+        .menu-opcoes a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 12px;
+        }
+        .menu-opcoes a:hover { background-color: #555; }
+
+        /* Sugestão básica para os cards (opcional) */
+        #itens-container.grind {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            cursor: pointer;
+            width: 180px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        .card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        .titulo-pagina {
+            text-transform: capitalize;
+            text-align: center;
+            color: #fff;
+            margin-top: 24px;
+        }
+    </style>
 </head>
-
 <body>
-
-<section id="bebidas">
+    <section id="bebidas">
         <nav class="nav-escolha">
             <a href="../paginainicio.php"><img src="../img/logo.png" alt="logo" class="logo"></a>
             <ul>
@@ -33,551 +83,41 @@ $nome = $_SESSION['nome_usuario'];
                 <li><a href="../pedidos.php">Pedidos</a></li>
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
+            <div class="user-menu">
+                <button class="menu-btn">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                <div class="menu-opcoes">
+                    <a href="../editar_usuario.php">Editar Perfil</a>
+                    <a href="../logout.php">Sair</a>
+                </div>
             </div>
         </nav>
+
         <h1 class="titulo-pagina">Bebidas</h1>
         
         <div id="itens-container" class="grind">
-            <div onclick="location.href='#agua'" class="card">
-                <img src="../img/agua.png" alt="Água">
-                <p>Água</p>
-            </div>
-            <div onclick="location.href='#coca'" class="card">
-                <img src="../img/coca.png" alt="Coca-Cola">
-                <p>Coca-Cola</p>
-            </div>
-            <div onclick="location.href='#sprite'" class="card">
-                <img src="../img/sprite.png" alt="Sprite">
-                <p>Sprite</p>
-            </div>
-            <div onclick="location.href='#kuat'" class="card">
-                <img src="../img/kuat.png" alt="Kuat">
-                <p>Kuat</p>
-            </div>
-            <div onclick="location.href='#suco-maracuja'" class="card">
-                <img src="../img/sucoMaracuja.png" alt="Suco Maracujá">
-                <p>Suco Maracujá</p>
-            </div>
-            <div onclick="location.href='#suco-uva'" class="card">
-                <img src="../img/sucoUva.png" alt="Suco Uva">
-                <p>Suco Uva</p>
-            </div>
+            <?php if (empty($bebidas)): ?>
+                <p style="text-align: center; color: #fff; width: 100%;">Nenhuma bebida disponível.</p>
+            <?php else: ?>
+                <?php foreach ($bebidas as $bebida): ?>
+                    <div class="card" onclick="location.href='../produto.php?id=<?= urlencode($bebida['id']) ?>'">
+                        <img src="../img/<?= htmlspecialchars($bebida['imagem']) ?>" alt="<?= htmlspecialchars($bebida['nome']) ?>">
+                        <p><?= htmlspecialchars($bebida['nome']) ?></p>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </section>
 
-    <section id="agua" class="produto-page">
-        <nav class="nav-escolha">
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <ul>
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
-            </div>
-        </nav>
-
-        <div class="produto-detalhe">
-            <img src="../img/agua.png" class="produto-img-detalhe" alt="Água">
-            <div>
-                <h2 class="produto-titulo">Água 500ml</h2>
-                <p class="produto-descricao">Garrafa de água 500ml.</p>
-                <form method="post" action="#finalizacao-agua">
-                    <input type="hidden" name="produto" value="Água 500ml">
-                    <label class="label-qtd">Quantidade:</label>
-                    <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-                    <button class="btn-comprar" type="submit">Finalizar compra</button>
-                </form>
-            </div>
-        </div>
-        <a href="#bebidas"><button class="voltar">Voltar</button></a>
-    </section>
-
-    <section id="finalizacao-agua" class="finalizacao">
-        <nav class="nav-escolha">
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <ul class="menu-principal">
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
-            </div>
-        </nav>
-
-        <div class="produto-finalizacao">
-            <img src="../img/agua.png" class="img-produto-finalizacao" alt="Água">
-            
-            <form method="post" action="">
-                <input type="hidden" name="produto" value="Água 500ml">
-                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
-                <h1 class="forma-entrega">Tipo de Entrega</h1>
-                <div class="entrega">
-                    <input type="radio" name="entrega" value="Entregar" required>
-                    <label>Entregar</label>
-                </div>
-                <div class="entrega2">
-                    <input type="radio" name="entrega" value="Retirar" required>
-                    <label>Retirar</label>   
-                </div>
-
-                <h3 class="forma-pagamento">Método Pagamento</h3>
-                <select name="pagamento" class="escolha-pagamento" required>
-                    <option value="cartao-credito">Cartão de Crédito</option>
-                    <option value="cartao-debito">Cartão de Débito</option>
-                    <option value="pix">Pix</option>
-                    <option value="dinheiro">Dinheiro</option>
-                </select>
-                <input type="submit" class="btn-pagamento" value="Enviar pedido">
-            </form>
-        </div>
-    </section>
-
-    <section id="coca" class="produto-page">
-        <nav class="nav-escolha">
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <ul>
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
-            </div>
-        </nav>
-
-        <div class="produto-detalhe">
-            <img src="../img/coca.png" class="produto-img-detalhe" alt="Coca">
-            <div>
-                <h2 class="produto-titulo">Coca-Cola 350ml</h2>
-                <p class="produto-descricao">Lata 350ml.</p>
-                <form method="post" action="#finalizacaococa">
-                    <input type="hidden" name="produto" value="Coca-Cola 350ml">
-                    <label class="label-qtd">Quantidade:</label>
-                    <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-                    <button class="btn-comprar" type="submit">Finalizar compra</button>
-                </form>
-            </div>
-        </div>
-        <a href="#bebidas"><button class="voltar">Voltar</button></a>
-    </section>
-
-    <section id="finalizacaococa" class="finalizacao">
-        <nav class="nav-escolha">
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <ul class="menu-principal">
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
-            </div>
-        </nav>
-
-        <div class="produto-finalizacao">
-            <img src="../img/coca.png" class="img-produto-finalizacao" alt="Coca">
-            
-            <form method="post" action="">
-                <input type="hidden" name="produto" value="Coca-Cola 350ml">
-                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
-                <h1 class="forma-entrega">Tipo de Entrega</h1>
-                <div class="entrega">
-                    <input type="radio" name="entrega" value="Entregar" required>
-                    <label>Entregar</label>
-                </div>
-                <div class="entrega2">
-                    <input type="radio" name="entrega" value="Retirar" required>
-                    <label>Retirar</label>   
-                </div>
-
-                <h3 class="forma-pagamento">Método Pagamento</h3>
-                <select name="pagamento" class="escolha-pagamento" required>
-                    <option value="cartao-credito">Cartão de Crédito</option>
-                    <option value="cartao-debito">Cartão de Débito</option>
-                    <option value="pix">Pix</option>
-                    <option value="dinheiro">Dinheiro</option>
-                </select>
-                <input type="submit" class="btn-pagamento" value="Enviar pedido">
-            </form>
-        </div>
-    </section>
-
-    <section id="sprite" class="produto-page">
-        <nav class="nav-escolha">
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <ul>
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
-            </div>
-        </nav>
-
-        <div class="produto-detalhe">
-            <img src="../img/sprite.png" class="produto-img-detalhe" alt="Sprite">
-            <div>
-                <h2 class="produto-titulo">Sprite 350ml</h2>
-                <p class="produto-descricao">Lata 350ml.</p>
-                <form method="post" action="#finalizacaosprite">
-                    <input type="hidden" name="produto" value="Sprite 350ml">
-                    <label class="label-qtd">Quantidade:</label>
-                    <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-                    <button class="btn-comprar" type="submit">Finalizar compra</button>
-                </form>
-            </div>
-        </div>
-        <a href="#bebidas"><button class="voltar">Voltar</button></a>
-    </section>
-
-    <section id="finalizacaosprite" class="finalizacao">
-        <nav class="nav-escolha">
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <ul class="menu-principal">
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
-            </div>
-        </nav>
-
-        <div class="produto-finalizacao">
-            <img src="../img/sprite.png" class="img-produto-finalizacao" alt="Sprite">
-            
-            <form method="post" action="">
-                <input type="hidden" name="produto" value="Sprite 350ml">
-                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
-                <h1 class="forma-entrega">Tipo de Entrega</h1>
-                <div class="entrega">
-                    <input type="radio" name="entrega" value="Entregar" required>
-                    <label>Entregar</label>
-                </div>
-                <div class="entrega2">
-                    <input type="radio" name="entrega" value="Retirar" required>
-                    <label>Retirar</label>   
-                </div>
-
-                <h3 class="forma-pagamento">Método Pagamento</h3>
-                <select name="pagamento" class="escolha-pagamento" required>
-                    <option value="cartao-credito">Cartão de Crédito</option>
-                    <option value="cartao-debito">Cartão de Débito</option>
-                    <option value="pix">Pix</option>
-                    <option value="dinheiro">Dinheiro</option>
-                </select>
-                <input type="submit" class="btn-pagamento" value="Enviar pedido">
-            </form>
-        </div>
-    </section>
-
-    <section id="kuat" class="produto-page">
-        <nav class="nav-escolha">
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <ul>
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
-            </div>
-        </nav>
-
-        <div class="produto-detalhe">
-            <img src="../img/kuat.png" class="produto-img-detalhe" alt="Kuat">
-            <div>
-                <h2 class="produto-titulo">Kuat 350ml</h2>
-                <p class="produto-descricao">Lata 350ml.</p>
-                <form method="post" action="#finalizacaokuat">
-                    <input type="hidden" name="produto" value="Kuat 350ml">
-                    <label class="label-qtd">Quantidade:</label>
-                    <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-                    <button class="btn-comprar" type="submit">Finalizar compra</button>
-                </form>
-            </div>
-        </div>
-        <a href="#bebidas"><button class="voltar">Voltar</button></a>
-    </section>
-
-    <section id="finalizacaokuat" class="finalizacao">
-        <nav class="nav-escolha">
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <ul class="menu-principal">
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
-            </div>
-        </nav>
-
-        <div class="produto-finalizacao">
-            <img src="../img/kuat.png" class="img-produto-finalizacao" alt="Kuat">
-            
-            <form method="post" action="">
-                <input type="hidden" name="produto" value="Kuat 350ml">
-                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
-                <h1 class="forma-entrega">Tipo de Entrega</h1>
-                <div class="entrega">
-                    <input type="radio" name="entrega" value="Entregar" required>
-                    <label>Entregar</label>
-                </div>
-                <div class="entrega2">
-                    <input type="radio" name="entrega" value="Retirar" required>
-                    <label>Retirar</label>   
-                </div>
-
-                <h3 class="forma-pagamento">Método Pagamento</h3>
-                <select name="pagamento" class="escolha-pagamento" required>
-                    <option value="cartao-credito">Cartão de Crédito</option>
-                    <option value="cartao-debito">Cartão de Débito</option>
-                    <option value="pix">Pix</option>
-                    <option value="dinheiro">Dinheiro</option>
-                </select>
-                <input type="submit" class="btn-pagamento" value="Enviar pedido">
-            </form>
-        </div>
-    </section>
-
-    <section id="suco-maracuja" class="produto-page">
-        <nav class="nav-escolha">
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <ul>
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
-            </div>
-        </nav>
-
-        <div class="produto-detalhe">
-            <img src="../img/sucoMaracuja.png" class="produto-img-detalhe" alt="Suco Maracujá">
-            <div>
-                <h2 class="produto-titulo">Suco Maracujá 300ml</h2>
-                <p class="produto-descricao">Suco natural batido na hora.</p>
-                <form method="post" action="#finalizacaosuco-maracuja">
-                    <input type="hidden" name="produto" value="Suco Maracujá 300ml">
-                    <label class="label-qtd">Quantidade:</label>
-                    <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-                    <button class="btn-comprar" type="submit">Finalizar compra</button>
-                </form>
-            </div>
-        </div>
-        <a href="#bebidas"><button class="voltar">Voltar</button></a>
-    </section>
-
-    <section id="finalizacaosuco-maracuja" class="finalizacao">
-        <nav class="nav-escolha">
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <ul class="menu-principal">
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
-            </div>
-        </nav>
-
-        <div class="produto-finalizacao">
-            <img src="../img/sucoMaracuja.png" class="img-produto-finalizacao" alt="Suco Maracujá">
-            
-            <form method="post" action="">
-                <input type="hidden" name="produto" value="Suco Maracujá 300ml">
-                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
-                <h1 class="forma-entrega">Tipo de Entrega</h1>
-                <div class="entrega">
-                    <input type="radio" name="entrega" value="Entregar" required>
-                    <label>Entregar</label>
-                </div>
-                <div class="entrega2">
-                    <input type="radio" name="entrega" value="Retirar" required>
-                    <label>Retirar</label>   
-                </div>
-
-                <h3 class="forma-pagamento">Método Pagamento</h3>
-                <select name="pagamento" class="escolha-pagamento" required>
-                    <option value="cartao-credito">Cartão de Crédito</option>
-                    <option value="cartao-debito">Cartão de Débito</option>
-                    <option value="pix">Pix</option>
-                    <option value="dinheiro">Dinheiro</option>
-                </select>
-                <input type="submit" class="btn-pagamento" value="Enviar pedido">
-            </form>
-        </div>
-    </section>
-
-    <section id="suco-uva" class="produto-page">
-        <nav class="nav-escolha">
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <ul>
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
-            </div>
-        </nav>
-
-        <div class="produto-detalhe">
-            <img src="../img/sucoUva.png" class="produto-img-detalhe" alt="Suco Uva">
-            <div>
-                <h2 class="produto-titulo">Suco de Uva 300ml</h2>
-                <p class="produto-descricao">Suco natural de uva.</p>
-                <form method="post" action="#finalizacaosuco-uva">
-                    <input type="hidden" name="produto" value="Suco de Uva 300ml">
-                    <label class="label-qtd">Quantidade:</label>
-                    <input type="number" name="quantidade" class="input-qtd" min="1" value="1" required>
-                    <button class="btn-comprar" type="submit">Finalizar compra</button>
-                </form>
-            </div>
-        </div>
-        <a href="#bebidas"><button class="voltar">Voltar</button></a>
-    </section>
-
-    <section id="finalizacaosuco-uva" class="finalizacao">
-        <nav class="nav-escolha">
-            <img src="../img/logo.png" alt="logo" class="logo">
-            <ul class="menu-principal">
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <button class="menu-btn" onclick="toggleMenu(this)">Olá, <?= htmlspecialchars($nome) ?>!</button>
-            <div class="menu-opcoes" id="menu">
-                <form method="post">
-                     <button><a href="editar_usuario.php" class="menu-link">Editar Perfil</a></button>
-                    <button><a href="../index.php">Sair</a></button>
-                </form>
-            </div>
-        </nav>
-
-        <div class="produto-finalizacao">
-            <img src="../img/sucoUva.png" class="img-produto-finalizacao" alt="Suco Uva">
-            
-            <form method="post" action="">
-                <input type="hidden" name="produto" value="Suco de Uva 300ml">
-                <input type="hidden" name="quantidade" value="<?= $_POST['quantidade']; ?>">
-                <h1 class="forma-entrega">Tipo de Entrega</h1>
-                <div class="entrega">
-                    <input type="radio" name="entrega" value="Entregar" required>
-                    <label>Entregar</label>
-                </div>
-                <div class="entrega2">
-                    <input type="radio" name="entrega" value="Retirar" required>
-                    <label>Retirar</label>   
-                </div>
-
-                <h3 class="forma-pagamento">Método Pagamento</h3>
-                <select name="pagamento" class="escolha-pagamento" required>
-                    <option value="cartao-credito">Cartão de Crédito</option>
-                    <option value="cartao-debito">Cartão de Débito</option>
-                    <option value="pix">Pix</option>
-                    <option value="dinheiro">Dinheiro</option>
-                </select>
-                <input type="submit" class="btn-pagamento" value="Enviar pedido">
-            </form>
-        </div>
-    </section>
-
-<script>
-function toggleMenu(button){
-    const menu = button.parentElement.querySelector('.menu-opcoes');
-    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-}
-window.addEventListener('click', function (e){
-    document.querySelectorAll('.menu-opcoes').forEach(menu=>{
-        const btn = menu.parentElement.querySelector('.menu-btn');
-        if(menu.style.display === 'block' && !btn.contains(e.target) && !menu.contains(e.target)){
-            menu.style.display = 'none';
-        }
-    });
-});
-</script>
-
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.menu-opcoes').classList.toggle('active');
+        });
+        window.addEventListener('click', function(e) {
+            const userMenu = document.querySelector('.user-menu');
+            if (!userMenu.contains(e.target)) {
+                document.querySelector('.menu-opcoes').classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
-
-<?php
-// Processamento do pedido (mantive a lógica original)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' 
-    && isset($_POST['produto']) 
-    && isset($_POST['entrega']) 
-    && isset($_POST['pagamento'])) {
-
-    $produto = $_POST['produto'];
-    $quantidade = $_POST['quantidade'] ?? 1;
-    $entrega = $_POST['entrega'];
-    $pagamento = $_POST['pagamento'];
-
-    $pedido = "$produto x $quantidade / Entrega : $entrega / Pagamento : $pagamento";
-
-    require_once '../DB/Database.php';
-    require_once '../Controller/UsuarioController.php';
-    $controller = new UsuarioController($pdo);
-    $controller->enviarpedidos($pedido);
-
-    header("Location: ../pedidos.php");
-    exit;
-}
-
-?>

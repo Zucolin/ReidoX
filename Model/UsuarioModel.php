@@ -91,5 +91,58 @@ public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero
     $stmt = $this->pdo->prepare($sql);
     return $stmt->execute($params);
 }
+
+// Funções para Produtos
+
+public function cadastrarProduto($nome, $descricao, $preco, $categoria, $imagem) {
+    $sql = "INSERT INTO produtos (nome, descricao, preco, categoria, imagem) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $this->pdo->prepare($sql);
+    return $stmt->execute([$nome, $descricao, $preco, $categoria, $imagem]);
+}
+
+public function listarProdutos() {
+    $stmt = $this->pdo->query("SELECT * FROM produtos ORDER BY id DESC");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+public function listarProdutosPorCategoria($categoria) {
+    $stmt = $this->pdo->prepare("SELECT * FROM produtos WHERE categoria = ? ORDER BY nome");
+    $stmt->execute([$categoria]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+public function buscarProdutoPorId($id) {
+    $stmt = $this->pdo->prepare("SELECT * FROM produtos WHERE id = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+public function editarProduto($id, $nome, $descricao, $preco, $categoria, $imagem) {
+    $params = [$nome, $descricao, $preco, $categoria];
+    $sql = "UPDATE produtos SET nome = ?, descricao = ?, preco = ?, categoria = ?";
+
+    if ($imagem) {
+        $sql .= ", imagem = ?";
+        $params[] = $imagem;
+    }
+
+    $sql .= " WHERE id = ?";
+    $params[] = $id;
+
+    $stmt = $this->pdo->prepare($sql);
+    return $stmt->execute($params);
+}
+
+public function deletarProduto($id) {
+    // Primeiro, buscar o nome do arquivo da imagem para poder excluí-lo
+    $produto = $this->buscarProdutoPorId($id);
+
+    // Agora, exclui o registro do banco de dados
+    $sql = "DELETE FROM produtos WHERE id = ?";
+    $stmt = $this->pdo->prepare($sql);
+    return $stmt->execute([$id]);
+}
+
+
 }
 ?>

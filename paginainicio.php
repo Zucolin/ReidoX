@@ -301,30 +301,82 @@ $nome = $_SESSION['nome_usuario'];
             }
         </style>
 
-        <div id="itens-container" class="grid">
-            <div class="card">
-                <a href="Escolha/combos.php"><img src="img/X_ComboIndividual.png" alt="Combos"></a>
-                <p>Combos</p>
-            </div>
-            <div class="card">
-                <a href="Escolha/lanches.php"><img src="img/X_Tudo.png" alt="Lanches"></a>
-                <p>Lanches</p>
-            </div>
-            <div class="card">
-                <a href="Escolha/acompanhamentos.php"><img src="img/porcaobatata.png" alt="Acompanhamentos"></a>
-                <p>Acompanhamentos</p>
-            </div>
-            <div class="card">
-                <a href="Escolha/sobremesas.php"><img src="img/mousseMaracuja.png" alt="Sobremesas"></a>
-                <p>Sobremesas</p>
-            </div>
-            <div class="card">
-                <a href="Escolha/bebidas.php"><img src="img/refri_capa.png" alt="Bebidas"></a>
-                <p>Bebidas</p>
-            </div>
+        <div class="header-cardapio">
+            <h1>Nosso Cardápio</h1>
+        </div>
+
+        <div class="category-grid">
+            <a href="Escolha/combos.php" class="category-card">
+                <img src="img/X_ComboIndividual.png" alt="Combos">
+                <h2>Combos</h2>
+            </a>
+            <a href="Escolha/lanches.php" class="category-card">
+                <img src="img/X_Tudo.png" alt="Lanches">
+                <h2>Lanches</h2>
+            </a>
+            <a href="Escolha/acompanhamentos.php" class="category-card">
+                <img src="img/porcaobatata.png" alt="Acompanhamentos">
+                <h2>Acompanhamentos</h2>
+            </a>
+            <a href="Escolha/sobremesas.php" class="category-card">
+                <img src="img/mousseMaracuja.png" alt="Sobremesas">
+                <h2>Sobremesas</h2>
+            </a>
+            <a href="Escolha/bebidas.php" class="category-card">
+                <img src="img/refri_capa.png" alt="Bebidas">
+                <h2>Bebidas</h2>
+            </a>
         </div>
 
     </section>
+
+    <style>
+        .header-cardapio {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .header-cardapio h1 {
+            color: var(--accent);
+            font-size: 3rem;
+            margin: 0;
+            font-family: "Montserrat", sans-serif;
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto; /* Centralizar a grade */
+            padding: 20px;
+        }
+        .category-card {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 10px;
+        }
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 199, 44, 0.2);
+        }
+        .category-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .category-card h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-family: "Montserrat", sans-serif;
+        }
+    </style>
 
     <script>
         function toggleMenu() {
@@ -336,7 +388,7 @@ $nome = $_SESSION['nome_usuario'];
         window.addEventListener('click', function (e) {
             const menu = document.getElementById("menu");
             const btn = document.querySelector('.menu-btn');
-            if (!btn.contains(e.target) && !menu.contains(e.target)) {
+            if (menu && btn && !btn.contains(e.target) && !menu.contains(e.target)) {
                 menu.style.display = "none";
             }
         });

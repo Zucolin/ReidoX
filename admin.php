@@ -195,7 +195,7 @@ $usuarios = $usuarioController->listar();
                 <tbody>
                     <?php if (count($usuarios) === 0): ?>
                         <tr>
-                            <td colspan="5" style="text-align:center;padding:24px" class="muted">Nenhum cliente cadastrado.</td>
+                            <td colspan="7" style="text-align:center;padding:24px" class="muted">Nenhum cliente cadastrado.</td>
                         </tr>
                     <?php else: ?>
                         <?php foreach ($usuarios as $u): ?>
@@ -217,6 +217,95 @@ $usuarios = $usuarioController->listar();
                     <?php endif; ?>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <!-- SEÇÃO DE PRODUTOS -->
+    <header class="title-wrap" role="banner">
+        <h1 class="title">Gerenciar Produtos</h1>
+    </header>
+
+    <div class="wrap">
+        <div class="table-box" role="region" aria-label="Gerenciamento de Produtos">
+
+            <!-- Formulário para Adicionar Produto -->
+            <div class="form-container" style="margin-bottom: 40px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+                <h2 style="color: var(--accent); text-align: center;">Adicionar Novo Produto</h2>
+                <form action="processar_produto.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="action" value="add">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <textarea name="descricao" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="preco">Preço</label>
+                        <input type="number" step="0.01" name="preco" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <select name="categoria" required>
+                            <option value="lanche">Lanche</option>
+                            <option value="bebida">Bebida</option>
+                            <option value="sobremesa">Sobremesa</option>
+                            <option value="acompanhamento">Acompanhamento</option>
+                            <option value="combo">Combo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="imagem">Imagem</label>
+                        <input type="file" name="imagem" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn">Adicionar Produto</button>
+                </form>
+            </div>
+
+            <!-- Tabela de Produtos Existentes -->
+            <?php
+            require_once "Model/UsuarioModel.php";
+            $produtoModel = new UsuarioModel($pdo);
+            $produtos = $produtoModel->listarProdutos();
+            ?>
+            <table class="clientes-table" role="table" aria-label="Tabela de Produtos">
+                <thead>
+                    <tr>
+                        <th style="width:5%">ID</th>
+                        <th style="width:20%">Nome</th>
+                        <th>Descrição</th>
+                        <th style="width:10%">Preço</th>
+                        <th style="width:10%">Categoria</th>
+                        <th style="text-align:center; width:15%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (empty($produtos)): ?>
+                        <tr>
+                            <td colspan="7" style="text-align:center;padding:24px" class="muted">Nenhum produto cadastrado.</td>
+                        </tr>
+                    <?php else: ?>
+                        <?php foreach ($produtos as $p): ?>
+                            <tr>
+                                <td data-label="ID"><?= htmlspecialchars($p['id']) ?></td>
+                                <td data-label="Nome"><?= htmlspecialchars($p['nome']) ?></td>
+                                <td data-label="Descrição"><?= htmlspecialchars($p['descricao']) ?></td>
+                                <td data-label="Preço">R$ <?= number_format($p['preco'], 2, ',', '.') ?></td>
+                                <td data-label="Categoria"><?= htmlspecialchars($p['categoria']) ?></td>
+                                <td data-label="Ações" style="text-align:center">
+                                    <a href="editar_produto.php?id=<?= $p['id'] ?>" class="btn" style="text-decoration:none; display: inline-block; margin-right: 5px;">Editar</a>
+                                    <form method="post" action="processar_produto.php" style="display:inline-block" onsubmit="return confirm('Tem certeza que deseja excluir este produto?');">
+                                        <input type="hidden" name="id" value="<?= $p['id'] ?>">
+                                        <input type="hidden" name="action" value="delete">
+                                        <button class="btn danger" type="submit">Excluir</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
 
             <div class="table-actions" role="group" aria-label="Ações da tabela">
                 <a class="btn" href="index.php" style="text-decoration:none;color:#000;background:rgba(255,199,44,1);">Voltar</a>
@@ -224,5 +313,18 @@ $usuarios = $usuarioController->listar();
 
         </div>
     </div>
+    <style>
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; color: var(--accent); font-weight: 700; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid var(--accent);
+            background: transparent;
+            color: #fff;
+            font-size: 14px;
+        }
+    </style>
 </body>
 </html>
