@@ -7,8 +7,12 @@ if (!isset($_SESSION['nome_usuario'])) {
     header('Location: ../index.php');
     exit;
 }
-$nome = $_SESSION['nome_usuario'];
 
+$nome = $_SESSION['nome_usuario'];
+if (!isset($_SESSION['nome_usuario']) || $_SESSION['nome_usuario'] == 'admin') {
+    header('Location: index.php');
+    exit;
+}
 $usuarioModel = new UsuarioModel($pdo);
 $bebidas = $usuarioModel->listarProdutosPorCategoria('bebida');
 ?>
@@ -21,58 +25,46 @@ $bebidas = $usuarioModel->listarProdutosPorCategoria('bebida');
     <title>Bebidas</title>
     <link rel="stylesheet" href="estilos.css">
     <style>
-        /* Mantive o style inline que você tinha no final do arquivo original */
-        .user-menu { position: relative; }
-        .menu-opcoes {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 100%;
-            background-color: #333;
-            border-radius: 8px;
-            padding: 10px;
-            z-index: 10;
-            width: 150px;
-        }
-        .menu-opcoes.active { display: block; }
-        .menu-opcoes a {
-            display: block;
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 12px;
-        }
-        .menu-opcoes a:hover { background-color: #555; }
-
-        /* Sugestão básica para os cards (opcional) */
-        #itens-container.grind {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-            padding: 20px;
-        }
-        .card {
-            cursor: pointer;
-            width: 180px;
-            background: rgba(255,255,255,0.06);
-            border-radius: 8px;
-            padding: 12px;
-            text-align: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        }
-        .card img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 6px;
-        }
-        .titulo-pagina {
-            text-transform: capitalize;
-            text-align: center;
-            color: #fff;
-            margin-top: 24px;
-        }
-    </style>
+    .user-menu { position: relative; }
+    .menu-opcoes {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        background-color: #333;
+        border-radius: 8px;
+        padding: 10px;
+        z-index: 10;
+        width: 150px;
+    }
+    .menu-opcoes.active { display: block; }
+    .menu-opcoes a {
+        display: block;
+        color: #fff;
+        text-decoration: none;
+        padding: 8px 12px;
+    }
+    .menu-opcoes a:hover { background-color: #555; }
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+    }
+    .card form {
+        margin-top: 10px;
+    }
+    .card button {
+        background-color: #f5c518;
+        color: black;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+</style>
 </head>
 <body>
     <section id="bebidas">
@@ -81,6 +73,7 @@ $bebidas = $usuarioModel->listarProdutosPorCategoria('bebida');
             <ul>
                 <li><a href="../paginainicio.php">Início</a></li>
                 <li><a href="../pedidos.php">Pedidos</a></li>
+                <li><a href="../carrinho.php">Carrinho</a></li>
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
             <div class="user-menu">
@@ -96,12 +89,21 @@ $bebidas = $usuarioModel->listarProdutosPorCategoria('bebida');
         
         <div id="itens-container" class="grind">
             <?php if (empty($bebidas)): ?>
-                <p style="text-align: center; color: #fff; width: 100%;">Nenhuma bebida disponível.</p>
+                <p style="text-align: center; color: #fff; width: 100%;">Nenhuma bebida dísponivel.</p>
             <?php else: ?>
                 <?php foreach ($bebidas as $bebida): ?>
-                    <div class="card" onclick="location.href='../produto.php?id=<?= urlencode($bebida['id']) ?>'">
-                        <img src="../img/<?= htmlspecialchars($bebida['imagem']) ?>" alt="<?= htmlspecialchars($bebida['nome']) ?>">
-                        <p><?= htmlspecialchars($bebida['nome']) ?></p>
+                    <div class="card">
+                        <div>
+                            <img src="../img/<?= htmlspecialchars($bebida['imagem']) ?>" alt="<?= htmlspecialchars($bebida['nome']) ?>">
+                            <p><?= htmlspecialchars($bebida['nome']) ?></p>
+                            <p>R$ <?= number_format($bebida['preco'], 2, ',', '.') ?></p>
+                        </div>
+                        <form action="../processar_carrinho.php" method="post">
+                            <input type="hidden" name="produto_id" value="<?= $bebida['id'] ?>">
+                            <input type="hidden" name="produto_nome" value="<?= htmlspecialchars($bebida['nome']) ?>">
+                            <input type="hidden" name="produto_preco" value="<?= $bebida['preco'] ?>">
+                            <button type="submit">Adicionar ao Carrinho</button>
+                        </form>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>

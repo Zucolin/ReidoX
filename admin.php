@@ -189,6 +189,7 @@ $usuarios = $usuarioController->listar();
                         <th>Pedidos</th>
                         <th>Rua</th>
                         <th>Número</th>
+                        <th>Role</th>
                         <th style="text-align:center; width:18%">Ações</th>
                     </tr>
                 </thead>
@@ -206,7 +207,9 @@ $usuarios = $usuarioController->listar();
                                 <td data-label="Pedidos"><?= nl2br(htmlspecialchars($u['pedidos'] ?? '')) ?></td>
                                 <td data-label="Rua"><?= htmlspecialchars($u['rua'] ?? '') ?></td>
                                 <td data-label="Número"><?= htmlspecialchars($u['numero'] ?? '') ?></td>
+                                <td data-label="Role"><?= htmlspecialchars($u['role'] ?? 'cliente') ?></td>
                                 <td data-label="Ações" style="text-align:center">
+                                    <a href="editar_usuario.php?id=<?= $u['id'] ?>" class="btn" style="text-decoration:none; display: inline-block; margin-right: 5px;">Editar</a>
                                     <form method="post" action="deletar.php" style="display:inline-block" onsubmit="return confirm('Confirma exclusão?');">
                                         <input type="hidden" name="id" value="<?= htmlspecialchars($u['id'] ?? '') ?>">
                                         <button class="btn danger" type="submit">Excluir</button>
@@ -227,6 +230,34 @@ $usuarios = $usuarioController->listar();
 
     <div class="wrap">
         <div class="table-box" role="region" aria-label="Gerenciamento de Produtos">
+
+            <!-- Formulário para Adicionar Usuário -->
+            <div class="form-container" style="margin-bottom: 40px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+                <h2 style="color: var(--accent); text-align: center;">Adicionar Novo Usuário</h2>
+                <form action="processar_usuario.php" method="post">
+                    <input type="hidden" name="action" value="add">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" name="senha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <select name="role" required>
+                            <option value="cliente">Cliente</option>
+                            <option value="chapeiro">Chapeiro</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Adicionar Usuário</button>
+                </form>
+            </div>
 
             <!-- Formulário para Adicionar Produto -->
             <div class="form-container" style="margin-bottom: 40px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">

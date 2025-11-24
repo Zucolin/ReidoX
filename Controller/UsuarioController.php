@@ -41,9 +41,9 @@ class UsuarioController
         return $this->usuarioModel->buscarUsuario(id: $id);
     }
 
-    public function cadastrar($nome, $email, $senha)
+    public function cadastrar($nome, $email, $senha, $role = 'cliente', $cep = null, $rua = null, $numero = null)
     {
-        return $this->usuarioModel->cadastrar($nome, $email, $senha);
+        return $this->usuarioModel->cadastrar($nome, $email, $senha, $role, $cep, $rua, $numero);
     }
 
     public function atualizar($cep, $rua, $numero, $idatual)
@@ -51,14 +51,24 @@ class UsuarioController
         return $this->usuarioModel->atualizar($cep, $rua, $numero, $idatual);
     }
 
-    public function editar($nome, $email, $senha, $id)
+    public function editar($nome, $email, $senha, $id, $role)
     {
-        $this->usuarioModel->editar($nome, $email, $senha, $id);
+        $this->usuarioModel->editar($nome, $email, $senha, $id, $role);
     }
 
     public function deletar($id)
     {
         return $this->usuarioModel->deletar($id);
+    }
+
+    public function buscarUsuarioPorId($id)
+    {
+        return $this->usuarioModel->buscarUsuarioPorId($id);
+    }
+
+    public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $role, $pedidos)
+    {
+        return $this->usuarioModel->atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $role, $pedidos);
     }
 
     // ===========================

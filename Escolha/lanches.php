@@ -8,7 +8,10 @@ if (!isset($_SESSION['nome_usuario'])) {
     exit;
 }
 $nome = $_SESSION['nome_usuario'];
-
+if (!isset($_SESSION['nome_usuario']) || $_SESSION['nome_usuario'] == 'admin') {
+    header('Location: index.php');
+    exit;
+}
 $usuarioModel = new UsuarioModel($pdo);
 $lanches = $usuarioModel->listarProdutosPorCategoria('lanche');
 ?>
@@ -20,55 +23,7 @@ $lanches = $usuarioModel->listarProdutosPorCategoria('lanche');
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Lanches</title>
     <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-    <section id="lanches">
-        <nav class="nav-escolha">
-            <a href="../paginainicio.php"><img src="../img/logo.png" alt="logo" class="logo"></a>
-            <ul>
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <div class="user-menu">
-                <button class="menu-btn">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                <div class="menu-opcoes">
-                    <a href="../editar_usuario.php">Editar Perfil</a>
-                    <a href="../logout.php">Sair</a>
-                </div>
-            </div>
-        </nav>
-
-        <h1 class="titulo-pagina">Lanches</h1>
-        
-        <div id="itens-container" class="grind">
-            <?php if (empty($lanches)): ?>
-                <p style="text-align: center; color: #fff; width: 100%;">Nenhum lanche dísponivel.</p>
-            <?php else: ?>
-                <?php foreach ($lanches as $lanche): ?>
-                    <div class="card" onclick="location.href='../produto.php?id=<?= $lanche['id'] ?>'">
-                        <img src="../img/<?= htmlspecialchars($lanche['imagem']) ?>" alt="<?= htmlspecialchars($lanche['nome']) ?>">
-                        <p><?= htmlspecialchars($lanche['nome']) ?></p>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-    </section>
-
-    <script>
-        document.querySelector('.menu-btn').addEventListener('click', function() {
-            document.querySelector('.menu-opcoes').classList.toggle('active');
-        });
-        window.addEventListener('click', function(e) {
-            const userMenu = document.querySelector('.user-menu');
-            if (!userMenu.contains(e.target)) {
-                document.querySelector('.menu-opcoes').classList.remove('active');
-            }
-        });
-    </script>
-</body>
-</html>
-<style>
+    <style>
     .user-menu { position: relative; }
     .menu-opcoes {
         display: none;
@@ -89,4 +44,81 @@ $lanches = $usuarioModel->listarProdutosPorCategoria('lanche');
         padding: 8px 12px;
     }
     .menu-opcoes a:hover { background-color: #555; }
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+    }
+    .card form {
+        margin-top: 10px;
+    }
+    .card button {
+        background-color: #f5c518;
+        color: black;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+        font-weight: bold;
+    }
 </style>
+</head>
+<body>
+    <section id="lanches">
+        <nav class="nav-escolha">
+            <a href="../paginainicio.php"><img src="../img/logo.png" alt="logo" class="logo"></a>
+            <ul>
+                <li><a href="../paginainicio.php">Início</a></li>
+                <li><a href="../pedidos.php">Pedidos</a></li>
+                <li><a href="../carrinho.php">Carrinho</a></li>
+                <li><a href="../sobrenos.html">Sobre nós</a></li>
+            </ul>
+            <div class="user-menu">
+                <button class="menu-btn">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                <div class="menu-opcoes">
+                    <a href="../editar_usuario.php">Editar Perfil</a>
+                    <a href="../logout.php">Sair</a>
+                </div>
+            </div>
+        </nav>
+
+        <h1 class="titulo-pagina">Lanches</h1>
+        
+        <div id="itens-container" class="grind">
+            <?php if (empty($lanches)): ?>
+                <p style="text-align: center; color: #fff; width: 100%;">Nenhum lanche dísponivel.</p>
+            <?php else: ?>
+                <?php foreach ($lanches as $lanche): ?>
+                    <div class="card">
+                        <div>
+                            <img src="../img/<?= htmlspecialchars($lanche['imagem']) ?>" alt="<?= htmlspecialchars($lanche['nome']) ?>">
+                            <p><?= htmlspecialchars($lanche['nome']) ?></p>
+                            <p>R$ <?= number_format($lanche['preco'], 2, ',', '.') ?></p>
+                        </div>
+                        <form action="../processar_carrinho.php" method="post">
+                            <input type="hidden" name="produto_id" value="<?= $lanche['id'] ?>">
+                            <input type="hidden" name="produto_nome" value="<?= htmlspecialchars($lanche['nome']) ?>">
+                            <input type="hidden" name="produto_preco" value="<?= $lanche['preco'] ?>">
+                            <button type="submit">Adicionar ao Carrinho</button>
+                        </form>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.menu-opcoes').classList.toggle('active');
+        });
+        window.addEventListener('click', function(e) {
+            const userMenu = document.querySelector('.user-menu');
+            if (!userMenu.contains(e.target)) {
+                document.querySelector('.menu-opcoes').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

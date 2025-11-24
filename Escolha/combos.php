@@ -8,6 +8,10 @@ if (!isset($_SESSION['nome_usuario'])) {
     exit;
 }
 $nome = $_SESSION['nome_usuario'];
+if (!isset($_SESSION['nome_usuario']) || $_SESSION['nome_usuario'] == 'admin') {
+    header('Location: index.php');
+    exit;
+}
 
 $usuarioModel = new UsuarioModel($pdo);
 $combos = $usuarioModel->listarProdutosPorCategoria('combo');
@@ -18,57 +22,9 @@ $combos = $usuarioModel->listarProdutosPorCategoria('combo');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>combos</title>
+    <title>Combos</title>
     <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-    <section id="combos">
-        <nav class="nav-escolha">
-            <a href="../paginainicio.php"><img src="../img/logo.png" alt="logo" class="logo"></a>
-            <ul>
-                <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../sobrenos.html">Sobre nós</a></li>
-            </ul>
-            <div class="user-menu">
-                <button class="menu-btn">Olá, <?= htmlspecialchars($nome) ?>!</button>
-                <div class="menu-opcoes">
-                    <a href="../editar_usuario.php">Editar Perfil</a>
-                    <a href="../logout.php">Sair</a>
-                </div>
-            </div>
-        </nav>
-
-        <h1 class="titulo-pagina">combos</h1>
-        
-        <div id="itens-container" class="grind">
-            <?php if (empty($soberemesas)): ?>
-                <p style="text-align: center; color: #fff; width: 100%;">Nenhum uma combo dísponivel.</p>
-            <?php else: ?>
-                <?php foreach ($soberemesas as $combo): ?>
-                    <div class="card" onclick="location.href='../produto.php?id=<?= $combo['id'] ?>'">
-                        <img src="../img/<?= htmlspecialchars($combo['imagem']) ?>" alt="<?= htmlspecialchars($combo['nome']) ?>">
-                        <p><?= htmlspecialchars($combo['nome']) ?></p>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-    </section>
-
-    <script>
-        document.querySelector('.menu-btn').addEventListener('click', function() {
-            document.querySelector('.menu-opcoes').classList.toggle('active');
-        });
-        window.addEventListener('click', function(e) {
-            const userMenu = document.querySelector('.user-menu');
-            if (!userMenu.contains(e.target)) {
-                document.querySelector('.menu-opcoes').classList.remove('active');
-            }
-        });
-    </script>
-</body>
-</html>
-<style>
+    <style>
     .user-menu { position: relative; }
     .menu-opcoes {
         display: none;
@@ -89,4 +45,81 @@ $combos = $usuarioModel->listarProdutosPorCategoria('combo');
         padding: 8px 12px;
     }
     .menu-opcoes a:hover { background-color: #555; }
-</style>                                                                                                                                                                                                                                                                                                                                                                                                                                          
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+    }
+    .card form {
+        margin-top: 10px;
+    }
+    .card button {
+        background-color: #f5c518;
+        color: black;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <section id="combos">
+        <nav class="nav-escolha">
+            <a href="../paginainicio.php"><img src="../img/logo.png" alt="logo" class="logo"></a>
+            <ul>
+                <li><a href="../paginainicio.php">Início</a></li>
+                <li><a href="../pedidos.php">Pedidos</a></li>
+                <li><a href="../carrinho.php">Carrinho</a></li>
+                <li><a href="../sobrenos.html">Sobre nós</a></li>
+            </ul>
+            <div class="user-menu">
+                <button class="menu-btn">Olá, <?= htmlspecialchars($nome) ?>!</button>
+                <div class="menu-opcoes">
+                    <a href="../editar_usuario.php">Editar Perfil</a>
+                    <a href="../logout.php">Sair</a>
+                </div>
+            </div>
+        </nav>
+
+        <h1 class="titulo-pagina">Combos</h1>
+        
+        <div id="itens-container" class="grind">
+            <?php if (empty($combos)): ?>
+                <p style="text-align: center; color: #fff; width: 100%;">Nenhum combo dísponivel.</p>
+            <?php else: ?>
+                <?php foreach ($combos as $combo): ?>
+                    <div class="card">
+                        <div>
+                            <img src="../img/<?= htmlspecialchars($combo['imagem']) ?>" alt="<?= htmlspecialchars($combo['nome']) ?>">
+                            <p><?= htmlspecialchars($combo['nome']) ?></p>
+                            <p>R$ <?= number_format($combo['preco'], 2, ',', '.') ?></p>
+                        </div>
+                        <form action="../processar_carrinho.php" method="post">
+                            <input type="hidden" name="produto_id" value="<?= $combo['id'] ?>">
+                            <input type="hidden" name="produto_nome" value="<?= htmlspecialchars($combo['nome']) ?>">
+                            <input type="hidden" name="produto_preco" value="<?= $combo['preco'] ?>">
+                            <button type="submit">Adicionar ao Carrinho</button>
+                        </form>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.menu-opcoes').classList.toggle('active');
+        });
+        window.addEventListener('click', function(e) {
+            const userMenu = document.querySelector('.user-menu');
+            if (!userMenu.contains(e.target)) {
+                document.querySelector('.menu-opcoes').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

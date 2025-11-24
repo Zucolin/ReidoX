@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sair'])) {
 }
 
 // Verifica se o usuário está logado
-if (!isset($_SESSION['nome_usuario'])) {
+if (!isset($_SESSION['nome_usuario']) || $_SESSION['nome_usuario'] == 'admin') {
     header('Location: index.php');
     exit;
 }

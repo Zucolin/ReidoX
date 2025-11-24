@@ -1,71 +1,87 @@
 <?php
-session_start();
-require_once 'DB/Database.php';
-require_once 'Model/UsuarioModel.php';
+require_once 'C:/xampp/htdocs/ReidoX/DB/Database.php'; // Inclui e cria a variável $pdo
+require_once 'C:/xampp/htdocs/ReidoX/Controller/UsuarioController.php';
 
-// Verifica se o usuário está logado
-if (!isset($_SESSION['id_usuario'])) {
-    header('Location: index.php');
-    exit;
+// A variável $pdo já está disponível a partir do require_once acima
+$usuarioController = new UsuarioController($pdo);
+
+$usuario = null;
+if (isset($_GET['id'])) {
+    $usuario = $usuarioController->buscarUsuarioPorId($_GET['id']);
 }
 
-$usuarioModel = new UsuarioModel($pdo);
-$usuario = $usuarioModel->buscarUsuarioPorId($_SESSION['id_usuario']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $cep = $_POST['cep'];
+    $rua = $_POST['rua'];
+    $numero = $_POST['numero'];
+    $role = $_POST['role'];
+    $pedidos = $_POST['pedidos'];
 
-if (!$usuario) {
-    // Se não encontrar o usuário, redireciona ou mostra erro
-    echo "Usuário não encontrado.";
+    $usuarioController->atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $role, $pedidos);
+    header('Location: admin.php');
     exit;
 }
 ?>
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Perfil - Rei do X</title>
-    <link rel="stylesheet" href="estilos.css">
+    <title>Editar Usuário</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<style>
-
-</style>
 <body>
-    <div class="container">
-        <h2>Editar Perfil</h2>
-        <?php if (isset($_GET['sucesso'])): ?>
-            <p class="sucesso">Perfil atualizado com sucesso!</p>
-        <?php endif; ?>
-        <?php if (isset($_GET['erro'])): ?>
-            <p class="erro"><?php echo htmlspecialchars($_GET['erro']); ?></p>
-        <?php endif; ?>
-
-        <form action="processar_edicao.php" method="POST" class="formulario-editar">
-            <div class="campo">
-                <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($usuario['nome']); ?>" required class="input" placeholder=" ">
-                <label for="nome" class="label-flutuante">Nome Completo</label>
-            </div>
-            <div class="campo">
-                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($usuario['email']); ?>" required class="input" placeholder=" ">
-                <label for="email" class="label-flutuante">Email</label>
-            </div>
-            <div class="campo">
-                <input type="password" id="senha" name="senha" class="input" placeholder=" ">
-                <label for="senha" class="label-flutuante">Nova Senha</label>
-            </div>
-            <div class="campo">
-                <input type="text" id="cep" name="cep" value="<?php echo htmlspecialchars($usuario['cep']); ?>" class="input" placeholder=" ">
-                <label for="cep" class="label-flutuante">CEP</label>
-            </div>
-            <div class="campo">
-                <input type="text" id="rua" name="rua" value="<?php echo htmlspecialchars($usuario['rua']); ?>" class="input" placeholder=" ">
-                <label for="rua" class="label-flutuante">Rua</label>
-            </div>
-            <div class="campo">
-                <input type="text" id="numero" name="numero" value="<?php echo htmlspecialchars($usuario['numero']); ?>" class="input" placeholder=" ">
-                <label for="numero" class="label-flutuante">Número</label>
-            </div>
-            <input class="botao" type="submit" value="Salvar Alterações">
-        </form>
-    </div>
+<div class="container mt-5">
+    <h2>Editar Usuário</h2>
+    <?php if ($usuario): ?>
+    <form action="editar_usuario.php" method="post">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id']) ?>">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" value="<?= htmlspecialchars($usuario['nome']) ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="senha">Nova Senha (deixe em branco para não alterar)</label>
+            <input type="password" class="form-control" id="senha" name="senha">
+        </div>
+        <div class="form-group">
+            <label for="cep">CEP</label>
+            <input type="text" class="form-control" id="cep" name="cep" value="<?= htmlspecialchars($usuario['cep'] ?? '') ?>">
+        </div>
+        <div class="form-group">
+            <label for="rua">Rua</label>
+            <input type="text" class="form-control" id="rua" name="rua" value="<?= htmlspecialchars($usuario['rua'] ?? '') ?>">
+        </div>
+        <div class="form-group">
+            <label for="numero">Número</label>
+            <input type="text" class="form-control" id="numero" name="numero" value="<?= htmlspecialchars($usuario['numero'] ?? '') ?>">
+        </div>
+        <div class="form-group">
+            <label for="pedidos">Pedidos</label>
+            <textarea class="form-control" id="pedidos" name="pedidos" rows="3"><?= htmlspecialchars($usuario['pedidos'] ?? '') ?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select class="form-control" id="role" name="role">
+                <option value="cliente" <?= ($usuario['role'] ?? 'cliente') == 'cliente' ? 'selected' : '' ?>>Cliente</option>
+                <option value="chapeiro" <?= ($usuario['role'] ?? '') == 'chapeiro' ? 'selected' : '' ?>>Chapeiro</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        <a href="admin.php" class="btn btn-secondary">Cancelar</a>
+    </form>
+    <?php else: ?>
+    <p>Usuário não encontrado.</p>
+    <?php endif; ?>
+</div>
 </body>
 </html>
