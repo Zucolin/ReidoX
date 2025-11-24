@@ -9,7 +9,7 @@ if (!isset($_SESSION['nome_usuario'])) {
 }
 $nome = $_SESSION['nome_usuario'];
 if (!isset($_SESSION['nome_usuario']) || $_SESSION['nome_usuario'] == 'admin') {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit;
 }
 

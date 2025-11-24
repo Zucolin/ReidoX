@@ -12,15 +12,15 @@ public function buscarUsuario($id){
         $stmt = $this->pdo->query("SELECT * FROM clientes WHERE id = $id");
         return $stmt->fetch(PDO::FETCH_ASSOC);
 }
-public function cadastrar($nome, $email, $senha, $role = 'cliente', $cep = null, $rua = null, $numero = null){
+public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $cep = null, $rua = null, $numero = null){
     try{
-        $sql = "INSERT INTO clientes (nome, email, senha, role, cep, rua, numero) VALUES (:nome, :email, :senha, :role, :cep, :rua, :numero)";
+        $sql = "INSERT INTO clientes (nome, email, senha, cargo, cep, rua, numero) VALUES (:nome, :email, :senha, :cargo, :cep, :rua, :numero)";
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([
             ':nome'=>$nome,
             ':email'=>$email,
             ':senha'=>$senha,
-            ':role'=>$role,
+            ':cargo'=>$cargo,
             ':cep'=>$cep,
             ':rua'=>$rua,
             ':numero'=>$numero,
@@ -53,10 +53,10 @@ public function atualizar($cep,$rua,$numero,$idatual){
     
 }
 
-public function editar($nome, $email, $senha, $id, $role) {
-        $sql = "UPDATE clientes SET nome=?, email=?, senha=?, role=? WHERE id = ?";
+public function editar($nome, $email, $senha, $id, $cargo) {
+        $sql = "UPDATE clientes SET nome=?, email=?, senha=?, cargo=? WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$nome, $email, $senha, $id, $role]);
+        return $stmt->execute([$nome, $email, $senha, $id, $cargo]);
     }
 
     
@@ -69,12 +69,12 @@ public function editar($nome, $email, $senha, $id, $role) {
 }
 
 public function buscarUsuarioPorId($id) {
-    $stmt = $this->pdo->prepare("SELECT id, nome, email, cep, rua, numero, role, pedidos FROM clientes WHERE id = ?");
+    $stmt = $this->pdo->prepare("SELECT id, nome, email, cep, rua, numero, cargo, pedidos FROM clientes WHERE id = ?");
     $stmt->execute([$id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $role, $pedidos) {
+public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $cargo, $pedidos) {
     $params = [
         'id' => $id,
         'nome' => $nome,
@@ -82,15 +82,15 @@ public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero
         'cep' => $cep,
         'rua' => $rua,
         'numero' => $numero,
-        'role' => $role,
+        'cargo' => $cargo,
         'pedidos' => $pedidos
     ];
 
     if (!empty($senha)) {
-        $sql = "UPDATE clientes SET nome = :nome, email = :email, senha = :senha, cep = :cep, rua = :rua, numero = :numero, role = :role, pedidos = :pedidos WHERE id = :id";
+        $sql = "UPDATE clientes SET nome = :nome, email = :email, senha = :senha, cep = :cep, rua = :rua, numero = :numero, cargo = :cargo, pedidos = :pedidos WHERE id = :id";
         $params['senha'] = password_hash($senha, PASSWORD_DEFAULT);
     } else {
-        $sql = "UPDATE clientes SET nome = :nome, email = :email, cep = :cep, rua = :rua, numero = :numero, role = :role, pedidos = :pedidos WHERE id = :id";
+        $sql = "UPDATE clientes SET nome = :nome, email = :email, cep = :cep, rua = :rua, numero = :numero, cargo = :cargo, pedidos = :pedidos WHERE id = :id";
     }
 
     $stmt = $this->pdo->prepare($sql);

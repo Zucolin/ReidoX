@@ -1,6 +1,6 @@
 <?php
-require_once 'C:/xampp/htdocs/ReidoX/DB/Database.php'; // Inclui e cria a variável $pdo
-require_once 'C:/xampp/htdocs/ReidoX/Controller/UsuarioController.php';
+require_once 'C:/turma1/xampp/htdocs/ReidoX/Controller/UsuarioController.php';
+require_once 'C:/turma1/xampp/htdocs/ReidoX/DB/Database.php'; // Inclui e cria a variável $pdo
 
 // A variável $pdo já está disponível a partir do require_once acima
 $usuarioController = new UsuarioController($pdo);
@@ -18,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cep = $_POST['cep'];
     $rua = $_POST['rua'];
     $numero = $_POST['numero'];
-    $role = $_POST['role'];
+    $cargo = $_POST['cargo'];
     $pedidos = $_POST['pedidos'];
 
-    $usuarioController->atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $role, $pedidos);
+    $usuarioController->atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $cargo, $pedidos);
     header('Location: admin.php');
     exit;
 }
@@ -70,10 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <textarea class="form-control" id="pedidos" name="pedidos" rows="3"><?= htmlspecialchars($usuario['pedidos'] ?? '') ?></textarea>
         </div>
         <div class="form-group">
-            <label for="role">Role</label>
-            <select class="form-control" id="role" name="role">
-                <option value="cliente" <?= ($usuario['role'] ?? 'cliente') == 'cliente' ? 'selected' : '' ?>>Cliente</option>
-                <option value="chapeiro" <?= ($usuario['role'] ?? '') == 'chapeiro' ? 'selected' : '' ?>>Chapeiro</option>
+            <label for="cargo">cargo</label>
+            <select class="form-control" id="cargo" name="cargo">
+                <option value="cliente" <?= ($usuario['cargo'] ?? 'cliente') == 'cliente' ? 'selected' : '' ?>>Cliente</option>
+                <option value="chapeiro" <?= ($usuario['cargo'] ?? '') == 'chapeiro' ? 'selected' : '' ?>>Chapeiro</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Salvar Alterações</button>

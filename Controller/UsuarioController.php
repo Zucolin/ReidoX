@@ -1,5 +1,5 @@
 <?php
-require_once "C:/xampp/htdocs/ReidoX/Model/UsuarioModel.php";
+require_once "C:/turma1/xampp/htdocs/ReidoX/Model/UsuarioModel.php";
 
 class UsuarioController
 {
@@ -32,7 +32,7 @@ class UsuarioController
     public function listar()
     {
         $usuarios = $this->usuarioModel->buscarTodos();
-        include_once "C:/xampp/htdocs/ReidoX/admin.php";
+        include_once "C:/turma1/xampp/htdocs/ReidoX/admin.php";
         return $usuarios;
     }
 
@@ -41,9 +41,9 @@ class UsuarioController
         return $this->usuarioModel->buscarUsuario(id: $id);
     }
 
-    public function cadastrar($nome, $email, $senha, $role = 'cliente', $cep = null, $rua = null, $numero = null)
+    public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $cep = null, $rua = null, $numero = null)
     {
-        return $this->usuarioModel->cadastrar($nome, $email, $senha, $role, $cep, $rua, $numero);
+        return $this->usuarioModel->cadastrar($nome, $email, $senha, $cargo, $cep, $rua, $numero);
     }
 
     public function atualizar($cep, $rua, $numero, $idatual)
@@ -51,9 +51,9 @@ class UsuarioController
         return $this->usuarioModel->atualizar($cep, $rua, $numero, $idatual);
     }
 
-    public function editar($nome, $email, $senha, $id, $role)
+    public function editar($nome, $email, $senha, $id, $cargo)
     {
-        $this->usuarioModel->editar($nome, $email, $senha, $id, $role);
+        $this->usuarioModel->editar($nome, $email, $senha, $id, $cargo);
     }
 
     public function deletar($id)
@@ -66,9 +66,9 @@ class UsuarioController
         return $this->usuarioModel->buscarUsuarioPorId($id);
     }
 
-    public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $role, $pedidos)
+    public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $cargo, $pedidos)
     {
-        return $this->usuarioModel->atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $role, $pedidos);
+        return $this->usuarioModel->atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $cargo, $pedidos);
     }
 
     // ===========================
