@@ -9,17 +9,43 @@ require_once "DB/Database.php";
 $usuarioController = new UsuarioController($pdo);
 
 // Verifica se usuário está logado
-if (!isset($_SESSION['user_id'])) {
-    echo "Você precisa estar logado para ver seus pedidos.";
+if (!isset($_SESSION['id_usuario'])) {
+    header('Location: index.php?erro=' . urlencode('Você precisa estar logado para ver seus pedidos.'));
     exit;
 }
 
 // Busca dados do usuário logado
-$userId = $_SESSION['user_id'];
+$userId = $_SESSION['id_usuario'];
 $usuario = $usuarioController->buscarUsuario($userId);
 
 // Verifica se existem pedidos
 $pedidos = $usuario['pedidos'] ?? '';
+
+// Processar a string de pedidos
+$itensPedido = [];
+$infoTotal = '';
+$infoPagamento = '';
+$infoEntrega = '';
+
+if (!empty($pedidos)) {
+    $partes = explode('|', $pedidos);
+    
+    // Itens do pedido (primeira parte, separada por vírgula)
+    if (isset($partes[0])) {
+        $itensPedido = explode(',', $partes[0]);
+    }
+    
+    // Restantes das informações
+    foreach ($partes as $parte) {
+        if (strpos($parte, 'Total:') !== false) {
+            $infoTotal = trim($parte);
+        } elseif (strpos($parte, 'Pagamento:') !== false) {
+            $infoPagamento = trim($parte);
+        } elseif (strpos($parte, 'Entrega:') !== false) {
+            $infoEntrega = trim($parte);
+        }
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -169,6 +195,17 @@ $pedidos = $usuario['pedidos'] ?? '';
             box-shadow: 0 12px 30px rgba(0,0,0,0.32);
         }
 
+        .info-pedido {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .info-pedido p {
+            margin: 5px 0;
+        }
+
         @media (max-width:480px){
             .container{ padding:18px; border-radius:10px;}
             .pedido-item{ font-size:0.95rem; padding:10px; }
@@ -181,25 +218,39 @@ $pedidos = $usuario['pedidos'] ?? '';
     
     <div class="container">
         <h1>Pedidos de <?= htmlspecialchars($usuario['nome']) ?></h1>
-        <div class="meta">Aqui estão seus pedidos recentes</div>
+        <div class="meta">Aqui está seu pedido mais recente</div>
 
-        <?php if (!empty($pedidos)): ?>
+        <?php if (!empty($itensPedido)): ?>
             <ul class="pedidos-list">
                 <?php
-                // Supondo que os pedidos estejam separados por vírgula
-                $listaPedidos = explode(',', $pedidos);
-                foreach ($listaPedidos as $pedido): 
-                    $texto = htmlspecialchars(trim($pedido));
-                    $isPreparing = isset($_SESSION['status']) && $_SESSION['status'] === 'Preparando';
+                foreach ($itensPedido as $item): 
+                    $texto = htmlspecialchars(trim($item));
+                    if (empty($texto)) continue;
+                    
+                    // Define o status inicial com base na sessão
+                    $isPreparing = isset($_SESSION['status_pedido']) && $_SESSION['status_pedido'] === 'Preparando';
                 ?>
                     <li class="pedido-item">
                         <span><?= $texto ?></span>
-                        <span class="status <?= $isPreparing ? 'preparing' : 'ready' ?>">
+                        <span id="status-pedido" class="status <?= $isPreparing ? 'preparing' : 'ready' ?>">
                             <?= $isPreparing ? '🔴 Preparando' : '🟢 Pronto' ?>
                         </span>
                     </li>
                 <?php endforeach; ?>
             </ul>
+
+            <div class="info-pedido">
+                <?php if (!empty($infoTotal)): ?>
+                    <p><?= htmlspecialchars($infoTotal) ?></p>
+                <?php endif; ?>
+                <?php if (!empty($infoPagamento)): ?>
+                    <p><?= htmlspecialchars($infoPagamento) ?></p>
+                <?php endif; ?>
+                <?php if (!empty($infoEntrega)): ?>
+                    <p><?= htmlspecialchars($infoEntrega) ?></p>
+                <?php endif; ?>
+            </div>
+
         <?php else: ?>
             <p class="empty">Você ainda não realizou nenhum pedido.</p>
         <?php endif; ?>
@@ -208,15 +259,27 @@ $pedidos = $usuario['pedidos'] ?? '';
     </div>
 
 <?php
-if (isset($_SESSION['status']) && $_SESSION['status'] === 'Preparando'):
-    ?>
-    <script>
-    // Depois de 10 segundos (10000 ms) envia para historico
+// Se o pedido estiver "Preparando", inicia o temporizador para mudar para "Pronto"
+if (isset($_SESSION['status_pedido']) && $_SESSION['status_pedido'] === 'Preparando'):
+?>
+<script>
     setTimeout(() => {
-        window.location.href = "processo.php?id=<?= intval($usuario['id']); ?>";
-    }, 10000);
-    </script>
+        const statusElement = document.getElementById('status-pedido');
+        if (statusElement) {
+            statusElement.classList.remove('preparing');
+            statusElement.classList.add('ready');
+            statusElement.innerHTML = '🟢 Pronto';
+        }
+        
+        // Limpa o status da sessão via AJAX para não afetar recarregamentos
+        fetch('processo.php', { method: 'POST' })
+            .catch(error => console.error('Erro ao limpar status:', error));
+
+    }, 5000); // Muda após 5 segundos
+</script>
 <?php
+    // Limpa o status da sessão para que não persista em futuras visitas à página
+    unset($_SESSION['status_pedido']);
 endif;
 ?>
 </body>

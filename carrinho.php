@@ -68,6 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['finalizar'])) {
             $usuarioModel->adicionarPedido($userId, $pedidosStr);
         }
 
+        // Define o status do pedido como "Preparando"
+        $_SESSION['status_pedido'] = 'Preparando';
+
         // Limpa o carrinho
         unset($_SESSION['carrinho']);
 
