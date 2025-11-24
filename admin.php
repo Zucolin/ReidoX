@@ -1,10 +1,16 @@
 <?php
-// Espera-se que $usuarios seja fornecido pelo controller.
+session_start();
 require_once "Controller/UsuarioController.php";
 require_once "DB/Database.php";
+
+// Verifica se o usuário tem permissão de administrador
+if (!isset($_SESSION['cargo']) || ($_SESSION['cargo'] !== 'admin' && $_SESSION['cargo'] !== 'chapeiro')) {
+    header('Location: index.php?erro=' . urlencode('Acesso negado. Área restrita para administradores.'));
+    exit;
+}
+
 $usuarioController = new UsuarioController($pdo);
 $usuarios = $usuarioController->listar();
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -189,7 +195,7 @@ $usuarios = $usuarioController->listar();
                         <th>Pedidos</th>
                         <th>Rua</th>
                         <th>Número</th>
-                        <th>Role</th>
+                        <th>Cargo</th>
                         <th style="text-align:center; width:18%">Ações</th>
                     </tr>
                 </thead>
@@ -207,9 +213,9 @@ $usuarios = $usuarioController->listar();
                                 <td data-label="Pedidos"><?= nl2br(htmlspecialchars($u['pedidos'] ?? '')) ?></td>
                                 <td data-label="Rua"><?= htmlspecialchars($u['rua'] ?? '') ?></td>
                                 <td data-label="Número"><?= htmlspecialchars($u['numero'] ?? '') ?></td>
-                                <td data-label="Role"><?= htmlspecialchars($u['role'] ?? 'cliente') ?></td>
+                                <td data-label="Role"><?= htmlspecialchars($u['cargo'] ?? 'cliente') ?></td>
                                 <td data-label="Ações" style="text-align:center">
-                                    <a href="editar_usuario.php?id=<?= $u['id'] ?>" class="btn" style="text-decoration:none; display: inline-block; margin-right: 5px;">Editar</a>
+                                    <a href="editar_usuarioadmin.php?id=<?= $u['id'] ?>" class="btn" style="text-decoration:none; display: inline-block; margin-right: 5px;">Editar</a>
                                     <form method="post" action="deletar.php" style="display:inline-block" onsubmit="return confirm('Confirma exclusão?');">
                                         <input type="hidden" name="id" value="<?= htmlspecialchars($u['id'] ?? '') ?>">
                                         <button class="btn danger" type="submit">Excluir</button>
@@ -249,8 +255,8 @@ $usuarios = $usuarioController->listar();
                         <input type="password" name="senha" required>
                     </div>
                     <div class="form-group">
-                        <label for="role">Role</label>
-                        <select name="role" required>
+                        <label for="cargo">Cargo</label>
+                        <select name="cargo" required>
                             <option value="cliente">Cliente</option>
                             <option value="chapeiro">Chapeiro</option>
                         </select>

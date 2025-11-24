@@ -35,7 +35,8 @@ CREATE TABLE `clientes` (
   `cep` varchar(255) DEFAULT NULL,
   `rua` varchar(255) DEFAULT NULL,
   `numero` varchar(255) DEFAULT NULL,
-  `pedidos` varchar(255) NOT NULL
+  `pedidos` varchar(255) NOT NULL,
+  `cargo` varchar(255)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -64,13 +65,13 @@ INSERT INTO `historico` (`idhistorico`, `idpedidos`) VALUES
 --
 
 CREATE TABLE `produtos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `descricao` text NOT NULL,
   `preco` decimal(10,2) NOT NULL,
   `categoria` varchar(255) NOT NULL,
   `imagem` varchar(255) DEFAULT NULL
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Índices para tabelas despejadas
@@ -109,6 +110,10 @@ ALTER TABLE `clientes`
 --
 ALTER TABLE `historico`
   MODIFY `idhistorico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+ALTER TABLE `historico`
+  MODIFY `idhistorico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
 
 --
 -- AUTO_INCREMENT de tabela `produtos`

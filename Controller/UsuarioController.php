@@ -1,5 +1,5 @@
 <?php
-require_once "C:/turma1/xampp/htdocs/ReidoX/Model/UsuarioModel.php";
+require_once "C:/turma1/xampp/htdocs/programa/ReidoX/Model/UsuarioModel.php";
 
 class UsuarioController
 {
@@ -15,16 +15,17 @@ class UsuarioController
         // 🔹 Verificação e criação automática do admin
         // ==========================================
         $emailAdmin = 'admin@hotmail.com';
-        $senhaAdmin = '123'; // sem criptografia
+        $senhaAdmin = '123'; // Senha sem criptografia
         $nomeAdmin = 'admin';
+        $cargoAdmin = 'admin';
 
         $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM clientes WHERE email = ?");
         $stmt->execute([$emailAdmin]);
         $existe = $stmt->fetchColumn();
 
         if ($existe == 0) {
-            $insert = $this->pdo->prepare("INSERT INTO clientes (nome, email, senha) VALUES (?, ?, ?)");
-            $insert->execute([$nomeAdmin, $emailAdmin, $senhaAdmin]);
+            $insert = $this->pdo->prepare("INSERT INTO clientes (nome, email, senha, cargo) VALUES (:nome, :email, :senha, :cargo)");
+            $insert->execute([':nome' => $nomeAdmin, ':email' => $emailAdmin, ':senha' => $senhaAdmin, ':cargo' => $cargoAdmin]);
         }
         // ==========================================
     }
@@ -32,8 +33,7 @@ class UsuarioController
     public function listar()
     {
         $usuarios = $this->usuarioModel->buscarTodos();
-        include_once "C:/turma1/xampp/htdocs/ReidoX/admin.php";
-        return $usuarios;
+        return $usuarios; // Apenas retorna os usuários. A view (admin.php) é quem deve ser chamada pelo fluxo normal.
     }
 
     public function buscarUsuario($id)
@@ -80,17 +80,10 @@ class UsuarioController
         $stmt->execute([$email]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($usuario && $senha === $usuario['senha']) { // ajuste se usar hash
-            // inicia sessão
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
-
-            // salva informações do usuário na sessão
-            $_SESSION['user_id'] = $usuario['id'];
-            $_SESSION['user_email'] = $usuario['email'];
-            $_SESSION['user_nome'] = $usuario['nome'];
-
+        // Verifica se o usuário existe e se a senha corresponde à salva no banco (sem criptografia)
+        if ($usuario && $senha === $usuario['senha']) {
+            // A função login agora apenas retorna os dados do usuário.
+            // A responsabilidade de iniciar a sessão e definir as variáveis fica no index.php.
             return $usuario;
         }
 

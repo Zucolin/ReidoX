@@ -31,17 +31,19 @@
             if ($usuario) {
                 $_SESSION['nome_usuario'] = $usuario['nome'];
                 $_SESSION['id_usuario'] = $usuario['id'];
+                $_SESSION['email'] = $usuario['email']; // Adiciona o email na sessão
+                $_SESSION['cargo'] = $usuario['cargo']; // Adiciona o cargo na sessão
 
                 // Se for admin
-                if ($usuario['email'] === "admin@hotmail.com") {
+                if ($usuario['cargo'] === 'admin' || $usuario['cargo'] === 'chapeiro' || $usuario['email'] === 'admin@hotmail.com') {
                     header('Location: admin.php');
-                    exit;
+                    exit; // Impede que o script continue e redirecione para outro lugar
                 }
 
                 // Redireciona usuário normal
                 $verificar = new Verificar();
-                $verificar->Usuariopermitido($usuario);
-                exit;
+                // A classe Verificar já tem um exit() dentro dela.
+                $verificar->Usuariopermitido($usuario); 
             } else {
                 $erro = "E-mail ou senha incorretos!";
             }

@@ -24,7 +24,12 @@ public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $cep = null
             ':cep'=>$cep,
             ':rua'=>$rua,
             ':numero'=>$numero,
+            ':cargo'=>$cargo
+            
         ]);
+        if(':cargo' == null){
+                $cargo = 'cliente';
+        } 
 
          // ✅ Retorna o ID do cliente recém-inserido
         return $this->pdo->lastInsertId();
@@ -73,8 +78,27 @@ public function buscarUsuarioPorId($id) {
     $stmt->execute([$id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero) {
+    $params = [
+        'id' => $id,
+        'nome' => $nome,
+        'email' => $email,
+        'cep' => $cep,
+        'rua' => $rua,
+        'numero' => $numero,
+    ];
 
-public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $cargo, $pedidos) {
+    if (!empty($senha)) {
+        $sql = "UPDATE clientes SET nome = :nome, email = :email, senha = :senha, cep = :cep, rua = :rua, numero = :numero  WHERE id = :id";
+        $params['senha'] = $senha; // Salva a nova senha sem criptografia
+    } else {
+        $sql = "UPDATE clientes SET nome = :nome, email = :email, cep = :cep, rua = :rua, numero = :numero WHERE id = :id";
+    }
+
+    $stmt = $this->pdo->prepare($sql);
+    return $stmt->execute($params);
+}
+public function atualizarUsuarioAdmin($id, $nome, $email, $senha, $cep, $rua, $numero, $cargo, $pedidos) {
     $params = [
         'id' => $id,
         'nome' => $nome,
@@ -88,7 +112,7 @@ public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero
 
     if (!empty($senha)) {
         $sql = "UPDATE clientes SET nome = :nome, email = :email, senha = :senha, cep = :cep, rua = :rua, numero = :numero, cargo = :cargo, pedidos = :pedidos WHERE id = :id";
-        $params['senha'] = password_hash($senha, PASSWORD_DEFAULT);
+        $params['senha'] = $senha; // Salva a nova senha sem criptografia
     } else {
         $sql = "UPDATE clientes SET nome = :nome, email = :email, cep = :cep, rua = :rua, numero = :numero, cargo = :cargo, pedidos = :pedidos WHERE id = :id";
     }

@@ -54,9 +54,12 @@
                 $email = $_POST['email'];
                 $senha = $_POST['senha'];
                 $senhaconfirm = $_POST['senhaconfirm'];
+                $cargo = null;
 
                 if ($senha == $senhaconfirm) {
-                    $idatual = $controller->cadastrar($nome, $email, $senha);
+                    // Salva a senha sem criptografia
+                    $idatual = $controller->cadastrar($nome, $email, $senha, $cargo);
+                    
                     session_start();
                     $_SESSION['nome_usuario'] = $nome;
                     $_SESSION['user_id'] = $idatual;

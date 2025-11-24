@@ -3,18 +3,21 @@ session_start();
 require_once 'C:/turma1/xampp/htdocs/programa/ReidoX/Controller/UsuarioController.php';
 require_once 'C:/turma1/xampp/htdocs/programa/ReidoX/DB/Database.php'; // Inclui e cria a variável $pdo
 
-// Verifica se o usuário está logado
-if (!isset($_SESSION['id_usuario'])) {
-    // Se não estiver logado, redireciona para a página de login com uma mensagem de erro
-    header('Location: index.php?erro=' . urlencode('Você precisa estar logado para editar o perfil.'));
+// Verifica se o usuário tem permissão (admin ou chapeiro)
+if (!isset($_SESSION['cargo']) || ($_SESSION['cargo'] !== 'admin' && $_SESSION['cargo'] !== 'chapeiro')) {
+    header('Location: index.php?erro=' . urlencode('Acesso negado. Área restrita para administradores.'));
     exit;
 }
 
 $usuarioController = new UsuarioController($pdo);
 
-// Busca o usuário pelo ID armazenado na sessão
-$id_usuario_logado = $_SESSION['id_usuario'];
-$usuario = $usuarioController->buscarUsuarioPorId($id_usuario_logado);
+// Busca o usuário pelo ID passado na URL
+$id_usuario_a_editar = $_GET['id'] ?? 0;
+if (!$id_usuario_a_editar) {
+    header('Location: admin.php?erro=' . urlencode('ID de usuário inválido.'));
+    exit;
+}
+$usuario = $usuarioController->buscarUsuarioPorId($id_usuario_a_editar);
 
 $erro = $_GET['erro'] ?? '';
 ?>
@@ -35,15 +38,15 @@ $erro = $_GET['erro'] ?? '';
     <?php endif; ?>
 
     <?php if ($usuario): ?>
-    <form action="processar_edicao.php" method="post">
+    <form action="processar_edicaoadmin.php" method="post">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id']) ?>">
         <div class="form-group">
             <label for="nome">Nome</label>
             <input type="text" class="form-control" id="nome" name="nome" value="<?= htmlspecialchars($usuario['nome']) ?>" required>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required readonly>
-            <small class="form-text text-muted">O e-mail não pode ser alterado.</small>
+            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required>
         </div>
         <div class="form-group">
             <label for="senha">Nova Senha (deixe em branco para não alterar)</label>
@@ -63,9 +66,28 @@ $erro = $_GET['erro'] ?? '';
             <label for="numero">Número/Bloco</label>
             <input type="text" class="form-control" id="numero" name="numero" value="<?= htmlspecialchars($usuario['numero'] ?? '') ?>">
         </div>
+        <div class="form-group">
+            <label for="pedidos">Pedidos</label>
+            <input type="text" class="form-control" id="pedidos" name="pedidos" value="<?= htmlspecialchars($usuario['pedidos'] ?? '') ?>">
+        </div>
+        <?php if (isset($usuario['cargo']) && $usuario['cargo'] === 'admin'): ?>
+            <div class="form-group">
+                <label>Cargo</label>
+                <p class="form-control-static">Admin</p>
+                <input type="hidden" name="cargo" value="admin">
+            </div>
+        <?php else: ?>
+            <div class="form-group">
+                <label for="cargo">Cargo</label>
+                <select class="form-control" id="cargo" name="cargo" required>
+                    <option value="cliente" <?= ($usuario['cargo'] ?? 'cliente') == 'cliente' ? 'selected' : '' ?>>Cliente</option>
+                    <option value="chapeiro" <?= ($usuario['cargo'] ?? '') == 'chapeiro' ? 'selected' : '' ?>>Chapeiro</option>
+                </select>
+            </div>
+        <?php endif; ?>
         
         <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-        <a href="paginainicio.php" class="btn btn-secondary">Cancelar</a>
+        <a href="admin.php" class="btn btn-secondary">Cancelar</a>
     </form>
     <?php else: ?>
     <div class="alert alert-warning">
