@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once 'C:/turma1/xampp/htdocs/programa/ReidoX/Controller/UsuarioController.php';
-require_once 'C:/turma1/xampp/htdocs/programa/ReidoX/DB/Database.php'; // Inclui e cria a variável $pdo
+require_once 'C:/turma1/xampp/htdocs/ReidoX/Controller/UsuarioController.php';
+require_once 'C:/turma1/xampp/htdocs/ReidoX/DB/Database.php'; // Inclui e cria a variável $pdo
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['id_usuario'])) {

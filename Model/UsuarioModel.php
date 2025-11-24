@@ -14,6 +14,9 @@ public function buscarUsuario($id){
 }
 public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $cep = null, $rua = null, $numero = null){
     try{
+          if($cargo === null){
+                $cargo = 'cliente';
+        } 
         $sql = "INSERT INTO clientes (nome, email, senha, cargo, cep, rua, numero) VALUES (:nome, :email, :senha, :cargo, :cep, :rua, :numero)";
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([
@@ -23,13 +26,10 @@ public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $cep = null
             ':cargo'=>$cargo,
             ':cep'=>$cep,
             ':rua'=>$rua,
-            ':numero'=>$numero,
-            ':cargo'=>$cargo
+            ':numero'=>$numero
             
         ]);
-        if(':cargo' == null){
-                $cargo = 'cliente';
-        } 
+      
 
          // ✅ Retorna o ID do cliente recém-inserido
         return $this->pdo->lastInsertId();

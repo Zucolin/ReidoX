@@ -71,10 +71,13 @@ $sobremesas = $usuarioModel->listarProdutosPorCategoria('sobremesa');
             <a href="../paginainicio.php"><img src="../img/logo.png" alt="logo" class="logo"></a>
             <ul>
                 <li><a href="../paginainicio.php">Início</a></li>
-                <li><a href="../pedidos.php">Pedidos</a></li>
-                <li><a href="../carrinho.php">Carrinho</a></li>
+                <li><a href="../pedidos.php">Pedidos</a></li>             
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
+              <div class="carrinho">
+                 <a href="../carrinho.php"><img src="../img/carrinho1.png" alt="" class="carrinhoimg"></a>
+                 <p class="contagemcarrinho">11</p> 
+            </div>
             <div class="user-menu">
                 <button class="menu-btn">Olá, <?= htmlspecialchars($nome) ?>!</button>
                 <div class="menu-opcoes">
