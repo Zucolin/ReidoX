@@ -76,10 +76,8 @@ $acompanhamentos = $usuarioModel->listarProdutosPorCategoria('acompanhamento');
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
             <div class="carrinho">
-                 <a href="../carrinho.php"><img src="../img/carrinho1.png" alt="" class="carrinhoimg"></a>
-               
-                    <p class="contagemcarrinho">11</p>
-                 
+                  <p class="contagemcarrinho">11</p>
+                 <a href="../carrinho.php"><img src="../img/carrinho1.png" alt="" class="carrinhoimg"></a>             
             </div>
             <div class="user-menu">
                 <button class="menu-btn">Olá, <?= htmlspecialchars($nome) ?>!</button>
