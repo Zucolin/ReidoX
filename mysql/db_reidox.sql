@@ -112,7 +112,7 @@ ALTER TABLE `historico`
   MODIFY `idhistorico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 ALTER TABLE `historico`
-  MODIFY `idhistorico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `idhistorico` int(11) NOT NULL AUTO_INCREMENT;
 
 
 --
