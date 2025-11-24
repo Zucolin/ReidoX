@@ -64,13 +64,13 @@ INSERT INTO `historico` (`idhistorico`, `idpedidos`) VALUES
 --
 
 CREATE TABLE `produtos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
   `descricao` text NOT NULL,
   `preco` decimal(10,2) NOT NULL,
   `categoria` varchar(255) NOT NULL,
   `imagem` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+)
 
 --
 -- Índices para tabelas despejadas
@@ -113,9 +113,6 @@ ALTER TABLE `historico`
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
-ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
