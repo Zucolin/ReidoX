@@ -175,23 +175,10 @@ public function deletarProduto($id) {
 
 public function adicionarPedido($userId, $pedido) {
     try {
-        // 1. Buscar os pedidos existentes
-        $stmt = $this->pdo->prepare("SELECT pedidos FROM clientes WHERE id = ?");
-        $stmt->execute([$userId]);
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        $pedidosAtuais = $resultado['pedidos'] ?? '';
-
-        // 2. Concatenar o novo pedido
-        $novosPedidos = $pedidosAtuais;
-        if (!empty($pedidosAtuais) && !empty($pedido)) {
-            $novosPedidos .= ', '; // Adiciona um separador se já houver pedidos
-        }
-        $novosPedidos .= $pedido;
-
-        // 3. Atualizar a coluna de pedidos
+        // Substitui os pedidos existentes pelo novo pedido
         $sql = "UPDATE clientes SET pedidos = ? WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$novosPedidos, $userId]);
+        return $stmt->execute([$pedido, $userId]);
     } catch (PDOException $e) {
         // Log do erro para depuração
         error_log("Erro ao adicionar pedido: " . $e->getMessage());
