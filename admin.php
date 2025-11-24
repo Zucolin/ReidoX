@@ -178,10 +178,16 @@ $usuarios = $usuarioController->listar();
 <body>
 
     <!-- Título fixado no topo da página, centralizado -->
+<section id="inicio">
+<button><a href="#lista-usuario">Tabela Usuario</a></button>
+<button><a href="#criar-usuario">Criar Usuario</a></button>
+<button><a href="#criar-produto">Criar Produto</a></button>
+<button><a href="tabela-produto">Tabela Produto</a></button>
+</section>    
+<section id="lista-usuarios">
     <header class="title-wrap" role="banner">
         <h1 class="title">Clientes</h1>
     </header>
-
     <div class="wrap">
         <div class="table-box" role="region" aria-label="Lista de clientes">
 
@@ -192,6 +198,7 @@ $usuarios = $usuarioController->listar();
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Pedidos</th>
+                        <th>Cep</th>
                         <th>Rua</th>
                         <th>Número</th>
                         <th>Cargo</th>
@@ -210,6 +217,7 @@ $usuarios = $usuarioController->listar();
                                 <td data-label="Nome"><?= htmlspecialchars($u['nome'] ?? '') ?></td>
                                 <td data-label="Email"><?= htmlspecialchars($u['email'] ?? '') ?></td>
                                 <td data-label="Pedidos"><?= nl2br(htmlspecialchars($u['pedidos'] ?? '')) ?></td>
+                                <td data-label="Cep"><?= htmlspecialchars($u['cep'] ?? '') ?></td>
                                 <td data-label="Rua"><?= htmlspecialchars($u['rua'] ?? '') ?></td>
                                 <td data-label="Número"><?= htmlspecialchars($u['numero'] ?? '') ?></td>
                                 <td data-label="Role"><?= htmlspecialchars($u['cargo'] ?? 'cliente') ?></td>
@@ -227,14 +235,15 @@ $usuarios = $usuarioController->listar();
             </table>
         </div>
     </div>
-
+    </section>
+<section id="criar-usuario">
     <!-- SEÇÃO DE PRODUTOS -->
     <header class="title-wrap" role="banner">
-        <h1 class="title">Gerenciar Produtos</h1>
+        <h1 class="title">Criar Novo Usuário</h1>
     </header>
 
     <div class="wrap">
-        <div class="table-box" role="region" aria-label="Gerenciamento de Produtos">
+        <div class="table-box" role="region">
 
             <!-- Formulário para Adicionar Usuário -->
             <div class="form-container" style="margin-bottom: 40px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
@@ -254,6 +263,18 @@ $usuarios = $usuarioController->listar();
                         <input type="password" name="senha" required>
                     </div>
                     <div class="form-group">
+                        <label for="cep">Cep</label>
+                        <input type="text" name="cep">
+                    </div>
+                    <div class="form-group">
+                        <label for="rua">Rua</label>
+                        <input type="text" name="rua">
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Numero/Bloco</label>
+                        <input type="text" name="numero">
+                    </div>
+                    <div class="form-group">
                         <label for="cargo">Cargo</label>
                         <select name="cargo" required>
                             <option value="cliente">Cliente</option>
@@ -263,10 +284,13 @@ $usuarios = $usuarioController->listar();
                     <button type="submit" class="btn">Adicionar Usuário</button>
                 </form>
             </div>
+</section>
 
-            <!-- Formulário para Adicionar Produto -->
-            <div class="form-container" style="margin-bottom: 40px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
-                <h2 style="color: var(--accent); text-align: center;">Adicionar Novo Produto</h2>
+<section id="criar-produto">
+    <header class="title-wrap" role="banner">
+        <h1 class="title">Adicionar Produto</h1>
+    </header>
+            
                 <form action="processar_produto.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="add">
                     <div class="form-group">
@@ -298,6 +322,7 @@ $usuarios = $usuarioController->listar();
                     <button type="submit" class="btn">Adicionar Produto</button>
                 </form>
             </div>
+    </section>
 
             <!-- Tabela de Produtos Existentes -->
             <?php
@@ -305,6 +330,10 @@ $usuarios = $usuarioController->listar();
             $produtoModel = new UsuarioModel($pdo);
             $produtos = $produtoModel->listarProdutos();
             ?>
+    <section id="tabela-produto">
+        <header class="title-wrap" role="banner">
+        <h1 class="title">Tabela Produto</h1>
+        </header>
             <table class="clientes-table" role="table" aria-label="Tabela de Produtos">
                 <thead>
                     <tr>
@@ -342,6 +371,7 @@ $usuarios = $usuarioController->listar();
                     <?php endif; ?>
                 </tbody>
             </table>
+        </section>
 
             <div class="table-actions" role="group" aria-label="Ações da tabela">
                 <a class="btn" href="index.php" style="text-decoration:none;color:#000;background:rgba(255,199,44,1);">Voltar</a>
