@@ -259,19 +259,20 @@ $nome = $_SESSION['nome_usuario'];
             }
             
         }
-        .carrinho{
+   
+.carrinho{
   position: absolute;
   margin-left: 85%;  
 }
 .carrinhoimg{
-height: 9vh;
-width:9vh;
+height: 8vh;
+width:8vh;
 border-radius: 50%;
-margin-bottom: -1vh;
+margin-top: -1vh;
 
 }
 .contagemcarrinho{
-  background-color: red;
+  background-color: yellow;
   display: flex;
   border-radius: 50%;
   width: 25px;
@@ -282,8 +283,11 @@ margin-bottom: -1vh;
     font-size: clamp(8px, 2vw, 12px);
   max-width: 40px;
   text-align: center;
+  margin-left: 63px;
 }
-
+.contagemcarrinho{
+  color: rgb(0, 0, 0);
+}
     </style>
 </head>
 
@@ -304,9 +308,10 @@ margin-bottom: -1vh;
                 </ul>
             </div>
   <div class="carrinho">
+     <p class="contagemcarrinho">11</p>
                  <a href="carrinho.php"><img src="img/carrinho1.png" alt="" class="carrinhoimg"></a>
                
-                    <p class="contagemcarrinho">11</p>
+                   
                  
             </div>
             <div class="menu-container">
