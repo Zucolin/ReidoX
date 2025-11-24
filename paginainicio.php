@@ -257,7 +257,33 @@ $nome = $_SESSION['nome_usuario'];
                 height: 44px;
                 max-height: 44px
             }
+            
         }
+        .carrinho{
+  position: absolute;
+  margin-left: 85%;  
+}
+.carrinhoimg{
+height: 9vh;
+width:9vh;
+border-radius: 50%;
+margin-bottom: -1vh;
+
+}
+.contagemcarrinho{
+  background-color: red;
+  display: flex;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  justify-self: end;
+  align-items: center;
+    font-size: clamp(8px, 2vw, 12px);
+  max-width: 40px;
+  text-align: center;
+}
+
     </style>
 </head>
 
@@ -277,7 +303,12 @@ $nome = $_SESSION['nome_usuario'];
                     <li><a href="sobrenos.html">Sobre nós</a></li>
                 </ul>
             </div>
-
+  <div class="carrinho">
+                 <a href="carrinho.php"><img src="img/carrinho1.png" alt="" class="carrinhoimg"></a>
+               
+                    <p class="contagemcarrinho">11</p>
+                 
+            </div>
             <div class="menu-container">
                 <button class="menu-btn" onclick="toggleMenu()">Olá, <?= htmlspecialchars($nome) ?>!</button>
                 <div class="menu-opcoes" id="menu">

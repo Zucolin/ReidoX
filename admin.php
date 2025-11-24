@@ -67,7 +67,6 @@ $usuarios = $usuarioController->listar();
 
         /* tabela com bordas sólidas amarelas ao redor, entre colunas e entre linhas */
         .clientes-table{
-            width:100%;
             border-collapse:separate;       /* separado para permitir bordas internas independentes */
             border-spacing:0;               /* sem espaçamento entre células */
             border:3px solid var(--accent); /* borda sólida ao redor da tabela */
@@ -326,8 +325,8 @@ $usuarios = $usuarioController->listar();
                         <?php foreach ($produtos as $p): ?>
                             <tr>
                                 <td data-label="ID"><?= htmlspecialchars($p['id']) ?></td>
-                                <td data-label="Nome"><?= htmlspecialchars($p['nome']) ?></td>
                                 <td data-label="Descrição"><?= htmlspecialchars($p['descricao']) ?></td>
+                                <td data-label="Nome"><?= htmlspecialchars($p['nome']) ?></td>
                                 <td data-label="Preço">R$ <?= number_format($p['preco'], 2, ',', '.') ?></td>
                                 <td data-label="Categoria"><?= htmlspecialchars($p['categoria']) ?></td>
                                 <td data-label="Ações" style="text-align:center">
