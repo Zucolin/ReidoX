@@ -19,7 +19,7 @@ public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $telefone =
         $stmt->execute([$email]);
         if ($stmt->fetchColumn() > 0) {
             throw new Exception("Este e-mail já está cadastrado.");
-        }
+        }else{
 
         $sql = "INSERT INTO clientes (nome, email, senha, cargo, telefone, rua, numero) VALUES (:nome, :email, :senha, :cargo, :telefone, :rua, :numero)";
         $stmt= $this->pdo->prepare($sql);
@@ -34,7 +34,7 @@ public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $telefone =
         ]);
 
         return $this->pdo->lastInsertId();
-
+    }
     }catch(PDOException $e){
         // Trata outros erros de banco de dados, se necessário
         throw $e;
