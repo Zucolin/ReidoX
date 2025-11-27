@@ -1,5 +1,5 @@
 <?php
-require_once "C:/Turma1/xampp/htdocs/programa/ReidoX/Model/UsuarioModel.php";
+require_once "C:/Turma1/xampp/htdocs/ReidoX/Model/UsuarioModel.php";
 
 class UsuarioController
 {
@@ -54,7 +54,7 @@ class UsuarioController
 
     public function editar($nome, $email, $senha, $id, $cargo)
     {
-        $this.usuarioModel->editar($nome, $email, $senha, $id, $cargo);
+        $this->usuarioModel->editar($nome, $email, $senha, $id, $cargo);
     }
 
     public function deletar($id)
