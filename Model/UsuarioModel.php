@@ -12,19 +12,19 @@ public function buscarUsuario($id){
         $stmt = $this->pdo->query("SELECT * FROM clientes WHERE id = $id");
         return $stmt->fetch(PDO::FETCH_ASSOC);
 }
-public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $cep = null, $rua = null, $numero = null){
+public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $telefone = null, $rua = null, $numero = null){
     try{
           if($cargo === null){
                 $cargo = 'cliente';
         } 
-        $sql = "INSERT INTO clientes (nome, email, senha, cargo, cep, rua, numero) VALUES (:nome, :email, :senha, :cargo, :cep, :rua, :numero)";
+        $sql = "INSERT INTO clientes (nome, email, senha, cargo, telefone, rua, numero) VALUES (:nome, :email, :senha, :cargo, :telefone, :rua, :numero)";
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([
             ':nome'=>$nome,
             ':email'=>$email,
             ':senha'=>$senha,
             ':cargo'=>$cargo,
-            ':cep'=>$cep,
+            ':telefone'=>$telefone,
             ':rua'=>$rua,
             ':numero'=>$numero
             
@@ -34,23 +34,23 @@ public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $cep = null
          // ✅ Retorna o ID do cliente recém-inserido
         return $this->pdo->lastInsertId();
 
-    }catch(PDOException $e){
+    }catch(PDOExtelefonetion $e){
         if ($e->getCode() == 23000 && strpos($e->getMessage(), 'Duplicate entry') !== false) {
-            throw new Exception("E-mail já cadastrado!");
+            throw new Extelefonetion("E-mail já cadastrado!");
         } else {
             throw $e;
         }
     }
     
 }
-public function atualizar($cep,$rua,$numero,$idatual){
+public function atualizar($telefone,$rua,$numero,$idatual){
     try{
-        $sql = "UPDATE clientes SET cep=?, rua=?, numero=? WHERE id = ?";
+        $sql = "UPDATE clientes SET telefone=?, rua=?, numero=? WHERE id = ?";
         $stmt= $this->pdo->prepare($sql);
-        return $stmt->execute([$cep,$rua,$numero,$idatual]);
-    }catch(PDOException $e){
+        return $stmt->execute([$telefone,$rua,$numero,$idatual]);
+    }catch(PDOExtelefonetion $e){
         if ($e->getCode() == 23000 && strpos($e->getMessage(), 'Duplicate entry') !== false) {
-            throw new Exception("E-mail já cadastrado!");
+            throw new Extelefonetion("E-mail já cadastrado!");
         } else {
             throw $e;
         }
@@ -74,36 +74,36 @@ public function editar($nome, $email, $senha, $id, $cargo) {
 }
 
 public function buscarUsuarioPorId($id) {
-    $stmt = $this->pdo->prepare("SELECT id, nome, email, cep, rua, numero, cargo, pedidos FROM clientes WHERE id = ?");
+    $stmt = $this->pdo->prepare("SELECT id, nome, email, telefone, rua, numero, cargo, pedidos FROM clientes WHERE id = ?");
     $stmt->execute([$id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
-public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero) {
+public function atualizarUsuario($id, $nome, $email, $senha, $telefone, $rua, $numero) {
     $params = [
         'id' => $id,
         'nome' => $nome,
         'email' => $email,
-        'cep' => $cep,
+        'telefone' => $telefone,
         'rua' => $rua,
         'numero' => $numero,
     ];
 
     if (!empty($senha)) {
-        $sql = "UPDATE clientes SET nome = :nome, email = :email, senha = :senha, cep = :cep, rua = :rua, numero = :numero  WHERE id = :id";
+        $sql = "UPDATE clientes SET nome = :nome, email = :email, senha = :senha, telefone = :telefone, rua = :rua, numero = :numero  WHERE id = :id";
         $params['senha'] = $senha; // Salva a nova senha sem criptografia
     } else {
-        $sql = "UPDATE clientes SET nome = :nome, email = :email, cep = :cep, rua = :rua, numero = :numero WHERE id = :id";
+        $sql = "UPDATE clientes SET nome = :nome, email = :email, telefone = :telefone, rua = :rua, numero = :numero WHERE id = :id";
     }
 
     $stmt = $this->pdo->prepare($sql);
     return $stmt->execute($params);
 }
-public function atualizarUsuarioAdmin($id, $nome, $email, $senha, $cep, $rua, $numero, $cargo, $pedidos) {
+public function atualizarUsuarioAdmin($id, $nome, $email, $senha, $telefone, $rua, $numero, $cargo, $pedidos) {
     $params = [
         'id' => $id,
         'nome' => $nome,
         'email' => $email,
-        'cep' => $cep,
+        'telefone' => $telefone,
         'rua' => $rua,
         'numero' => $numero,
         'cargo' => $cargo,
@@ -111,10 +111,10 @@ public function atualizarUsuarioAdmin($id, $nome, $email, $senha, $cep, $rua, $n
     ];
 
     if (!empty($senha)) {
-        $sql = "UPDATE clientes SET nome = :nome, email = :email, senha = :senha, cep = :cep, rua = :rua, numero = :numero, cargo = :cargo, pedidos = :pedidos WHERE id = :id";
+        $sql = "UPDATE clientes SET nome = :nome, email = :email, senha = :senha, telefone = :telefone, rua = :rua, numero = :numero, cargo = :cargo, pedidos = :pedidos WHERE id = :id";
         $params['senha'] = $senha; // Salva a nova senha sem criptografia
     } else {
-        $sql = "UPDATE clientes SET nome = :nome, email = :email, cep = :cep, rua = :rua, numero = :numero, cargo = :cargo, pedidos = :pedidos WHERE id = :id";
+        $sql = "UPDATE clientes SET nome = :nome, email = :email, telefone = :telefone, rua = :rua, numero = :numero, cargo = :cargo, pedidos = :pedidos WHERE id = :id";
     }
 
     $stmt = $this->pdo->prepare($sql);
@@ -179,7 +179,7 @@ public function adicionarPedido($userId, $pedido) {
         $sql = "UPDATE clientes SET pedidos = ? WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$pedido, $userId]);
-    } catch (PDOException $e) {
+    } catch (PDOExtelefonetion $e) {
         // Log do erro para depuração
         error_log("Erro ao adicionar pedido: " . $e->getMessage());
         return false;

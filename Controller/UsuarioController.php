@@ -42,14 +42,14 @@ class UsuarioController
         return $this->usuarioModel->buscarUsuario(id: $id);
     }
 
-    public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $cep = null, $rua = null, $numero = null)
+    public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $telefone = null, $rua = null, $numero = null)
     {
-        return $this->usuarioModel->cadastrar($nome, $email, $senha, $cargo, $cep, $rua, $numero);
+        return $this->usuarioModel->cadastrar($nome, $email, $senha, $cargo, $telefone, $rua, $numero);
     }
 
-    public function atualizar($cep, $rua, $numero, $idatual)
+    public function atualizar($telefone, $rua, $numero, $idatual)
     {
-        return $this->usuarioModel->atualizar($cep, $rua, $numero, $idatual);
+        return $this->usuarioModel->atualizar($telefone, $rua, $numero, $idatual);
     }
 
     public function editar($nome, $email, $senha, $id, $cargo)
@@ -67,9 +67,9 @@ class UsuarioController
         return $this->usuarioModel->buscarUsuarioPorId($id);
     }
 
-    public function atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $cargo, $pedidos)
+    public function atualizarUsuario($id, $nome, $email, $senha, $telefone, $rua, $numero, $cargo, $pedidos)
     {
-        return $this->usuarioModel->atualizarUsuario($id, $nome, $email, $senha, $cep, $rua, $numero, $cargo, $pedidos);
+        return $this->usuarioModel->atualizarUsuario($id, $nome, $email, $senha, $telefone, $rua, $numero, $cargo, $pedidos);
     }
 
     // ===========================
