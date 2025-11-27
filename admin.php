@@ -28,7 +28,11 @@ $produtos = $produtoModel->listarProdutos(); // Puxa a lista de produtos
     <title>Admin Dashboard</title>
 <style>
  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap");
-    
+      
+ option{
+    background-color: #000;
+ }
+ 
     /* Variáveis CSS */
     :root{
         --bg:#000;
@@ -197,7 +201,7 @@ $produtos = $produtoModel->listarProdutos(); // Puxa a lista de produtos
         border: 1px solid rgba(255,199,44,0.08);
         
         /* Limita a altura e permite rolagem APENAS SE NECESSÁRIO */
-        height: 540px 
+        height: 540px ;
 
     }
 
@@ -409,6 +413,7 @@ position: relative;
         .table-actions{flex-direction:column; gap:10px; max-width: 100%;}
         .table-actions a{width:100%}
         .main-menu { max-width: 90%; }
+       
 </style>
 </head>
 <body>
