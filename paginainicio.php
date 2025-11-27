@@ -355,11 +355,11 @@ margin-left: -150px;
                 <h2>Combos</h2>
             </a>
             <a href="Escolha/lanches.php" class="category-card">
-                <img src="img/X_Tudo.png" alt="Lanches">
+                <img src="img/lanche.png" alt="Lanches">
                 <h2>Lanches</h2>
             </a>
             <a href="Escolha/acompanhamentos.php" class="category-card">
-                <img src="img/porcaobatata.png" alt="Acompanhamentos">
+                <img src="img/acompanhamento.png" alt="Acompanhamentos">
                 <h2>Acompanhamentos</h2>
             </a>
             <a href="Escolha/sobremesas.php" class="category-card">
@@ -367,7 +367,7 @@ margin-left: -150px;
                 <h2>Sobremesas</h2>
             </a>
             <a href="Escolha/bebidas.php" class="category-card">
-                <img src="img/refri_capa.png" alt="Bebidas">
+                <img src="img/coca.png" alt="Bebidas">
                 <h2>Bebidas</h2>
             </a>
         </div>

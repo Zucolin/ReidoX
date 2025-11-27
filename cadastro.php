@@ -57,9 +57,8 @@
                 $cargo = null;
 
                 if ($senha == $senhaconfirm) {
-                    // Criptografa a senha
-                    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-                    $idatual = $controller->cadastrar($nome, $email, $senhaHash, $cargo);
+                    // Salva a senha como texto plano, sem criptografia
+                    $idatual = $controller->cadastrar($nome, $email, $senha, $cargo);
                     
                     session_start();
                     $_SESSION['nome_usuario'] = $nome;

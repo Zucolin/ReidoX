@@ -1,8 +1,7 @@
 <?php
-require_once 'DB/Database.php'; // Inclui e cria a variável $pdo
+require_once 'DB/Database.php';
 require_once 'Controller/UsuarioController.php';
 
-// A variável $pdo já está disponível a partir do require_once acima
 $usuarioController = new UsuarioController($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,13 +11,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
-        $cargo = $_POST['cargo'];
+        $cargo = $_POST['cargo'] ?? 'cliente'; // Define 'cliente' como padrão
 
-        // Salva a senha sem criptografia
-        $usuarioController->cadastrar($nome, $email, $senha, $cargo);
+        try {
+            // Tenta cadastrar o usuário (salvando a senha como texto plano)
+            $usuarioController->cadastrar($nome, $email, $senha, $cargo);
+            header('Location: admin.php?status=success');
+        } catch (Exception $e) {
+            // Se o e-mail já existir, exibe um alerta e redireciona
+            echo "<script>
+                alert('{$e->getMessage()}');
+                window.location.href = 'admin.php';
+            </script>";
+        }
+        exit;
     }
-
-    header('Location: admin.php');
-    exit;
 }
+
+// Se não for uma ação de adicionar, redireciona para o admin
+header('Location: admin.php');
+exit;
 ?>

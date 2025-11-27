@@ -28,7 +28,7 @@ section {
   overflow-y: auto; /* Adicionado para permitir rolagem */
 }
 nav{
-  margin-top: -30px;
+  margin-top: -10px;
 }
 ul{
     display: flex;

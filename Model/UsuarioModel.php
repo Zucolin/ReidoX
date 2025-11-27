@@ -14,34 +14,31 @@ public function buscarUsuario($id){
 }
 public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $cep = null, $rua = null, $numero = null){
     try{
-          if($cargo === null){
-                $cargo = 'cliente';
-        } 
+        // Verifica se o e-mail já existe
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM clientes WHERE email = ?");
+        $stmt->execute([$email]);
+        if ($stmt->fetchColumn() > 0) {
+            throw new Exception("Este e-mail já está cadastrado.");
+        }
+
         $sql = "INSERT INTO clientes (nome, email, senha, cargo, cep, rua, numero) VALUES (:nome, :email, :senha, :cargo, :cep, :rua, :numero)";
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([
             ':nome'=>$nome,
             ':email'=>$email,
-            ':senha'=>$senha,
+            ':senha'=>$senha, // Salva a senha como texto plano
             ':cargo'=>$cargo,
             ':cep'=>$cep,
             ':rua'=>$rua,
             ':numero'=>$numero
-            
         ]);
-      
 
-         // ✅ Retorna o ID do cliente recém-inserido
         return $this->pdo->lastInsertId();
 
     }catch(PDOException $e){
-        if ($e->getCode() == 23000 && strpos($e->getMessage(), 'Duplicate entry') !== false) {
-            throw new Exception("E-mail já cadastrado!");
-        } else {
-            throw $e;
-        }
+        // Trata outros erros de banco de dados, se necessário
+        throw $e;
     }
-    
 }
 public function atualizar($cep,$rua,$numero,$idatual){
     try{
