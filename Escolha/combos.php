@@ -77,7 +77,7 @@ if (isset($_SESSION['carrinho'])) {
             </ul>
               <div class="carrinho">
                   <p class="contagemcarrinho"></p>
-                 <a href="../carrinho.php"><img src="../img/carrinho1.png" alt="" class="carrinhoimg"></a>
+                 <a href="../carrinho.php"><img src="../img/sacola.png" alt="" class="carrinhoimg"></a>
                
                   
                  
