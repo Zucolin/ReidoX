@@ -55,8 +55,8 @@ $erro = $_GET['erro'] ?? '';
         <hr>
         <h5>Endereço</h5>
         <div class="form-group">
-            <label for="cep">CEP</label>
-            <input type="text" class="form-control" id="cep" name="cep" value="<?= htmlspecialchars($usuario['cep'] ?? '') ?>">
+            <label for="telefone">Telefone</label>
+            <input type="text" class="form-control" id="telefone" name="telefone" value="<?= htmlspecialchars($usuario['telefone'] ?? '') ?>">
         </div>
         <div class="form-group">
             <label for="rua">Rua</label>

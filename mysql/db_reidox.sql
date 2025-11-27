@@ -114,7 +114,7 @@ ALTER TABLE `historico`
 ALTER TABLE `historico`
   MODIFY `idhistorico` int(11) NOT NULL AUTO_INCREMENT;
 
-
+ALTER TABLE usuarios CHANGE cep telefone VARCHAR(20);
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --

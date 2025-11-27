@@ -14,6 +14,12 @@ if (!isset($_SESSION['nome_usuario']) || $_SESSION['nome_usuario'] == 'admin') {
     header('Location: index.php');
     exit;
 }
+$total_itens_carrinho = 0;
+if (isset($_SESSION['carrinho'])) {
+    foreach ($_SESSION['carrinho'] as $item) {
+        $total_itens_carrinho += $item['quantidade'];
+    }
+}
 
 // Pega o nome do usuário logado
 $nome = $_SESSION['nome_usuario'];
@@ -59,9 +65,10 @@ $nome = $_SESSION['nome_usuario'];
             gap: 20px;
             padding: 12px 32px;
             position: sticky;
-            top: 0;
+            margin-top: -37px;
             z-index: 100;
         }
+        
 
         .brand {
             flex: 0;
@@ -126,7 +133,6 @@ $nome = $_SESSION['nome_usuario'];
             cursor: pointer;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
             letter-spacing: 0.3px;
-            margin-top: -100px;
         }
 
         /* Dropdown */
@@ -267,26 +273,28 @@ $nome = $_SESSION['nome_usuario'];
 .carrinhoimg{
 height: 8vh;
 width:8vh;
-border-radius: 50%;
-margin-top: -1vh;
+margin-left: -150px;
 
 }
 .contagemcarrinho{
-  background-color: yellow;
+    position:absolute;
+  background-color:#ffc72c;
   display: flex;
   border-radius: 50%;
   width: 25px;
   height: 25px;
   justify-content: center;
-  justify-self: end;
-  align-items: center;
     font-size: clamp(8px, 2vw, 12px);
+    align-items: center;
   max-width: 40px;
   text-align: center;
-  margin-left: 63px;
+  margin-left: -85px;
+  margin-top: -3px;
 }
 .contagemcarrinho{
   color: rgb(0, 0, 0);
+  font-size: 10px;
+  font-weight: 700;
 }
     </style>
 </head>
@@ -308,7 +316,7 @@ margin-top: -1vh;
                 </ul>
             </div>
   <div class="carrinho">
-     <p class="contagemcarrinho">11</p>
+     <p class="contagemcarrinho"><?= $total_itens_carrinho ?><p>
                  <a href="carrinho.php"><img src="img/carrinho1.png" alt="" class="carrinhoimg"></a>
                
                    

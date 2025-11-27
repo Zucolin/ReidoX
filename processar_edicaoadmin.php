@@ -18,7 +18,7 @@ $id = $_POST['id'] ?? 0; // Pega o ID do usuário que está sendo editado (vindo
 $nome = $_POST['nome'] ?? '';
 $email = $_POST['email'] ?? '';
 $senha = $_POST['senha'] ?? ''; // Nova senha (pode ser vazia)
-$cep = $_POST['cep'] ?? '';
+$telefone = $_POST['telefone'] ?? '';
 $rua = $_POST['rua'] ?? '';
 $numero = $_POST['numero'] ?? '';
 $cargo = $_POST['cargo'] ?? '';
@@ -33,7 +33,7 @@ if (empty($id) || empty($nome) || empty($email)) {
 try {
     $usuarioModel = new UsuarioModel($pdo);
     // Chama a função específica para atualização de admin, que inclui cargo e pedidos
-    $sucesso = $usuarioModel->atualizarUsuarioAdmin($id, $nome, $email, $senha, $cep, $rua, $numero, $cargo, $pedidos);
+    $sucesso = $usuarioModel->atualizarUsuarioAdmin($id, $nome, $email, $senha, $telefone, $rua, $numero, $cargo, $pedidos);
 
     if ($sucesso) {
         // Verifica se o usuário editado é o próprio usuário logado

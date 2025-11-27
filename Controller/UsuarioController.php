@@ -1,5 +1,5 @@
 <?php
-require_once "C:/turma1/xampp/htdocs/programa/ReidoX/Model/UsuarioModel.php";
+require_once "C:/xampp/htdocs/ReidoX/Model/UsuarioModel.php";
 
 class UsuarioController
 {
@@ -19,13 +19,14 @@ class UsuarioController
         $nomeAdmin = 'admin';
         $cargoAdmin = 'admin';
 
-        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM clientes WHERE email = ?");
+        $stmt = $this->pdo->prepare("SELECT * FROM clientes WHERE email = ?");
         $stmt->execute([$emailAdmin]);
-        $existe = $stmt->fetchColumn();
+        $admin = $stmt->fetch();
 
-        if ($existe == 0) {
+        if (!$admin) {
+            $senhaHash = password_hash($senhaAdmin, PASSWORD_DEFAULT);
             $insert = $this->pdo->prepare("INSERT INTO clientes (nome, email, senha, cargo) VALUES (:nome, :email, :senha, :cargo)");
-            $insert->execute([':nome' => $nomeAdmin, ':email' => $emailAdmin, ':senha' => $senhaAdmin, ':cargo' => $cargoAdmin]);
+            $insert->execute([':nome' => $nomeAdmin, ':email' => $emailAdmin, ':senha' => $senhaHash, ':cargo' => $cargoAdmin]);
         }
         // ==========================================
     }
@@ -80,8 +81,8 @@ class UsuarioController
         $stmt->execute([$email]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Verifica se o usuário existe e se a senha corresponde à salva no banco (sem criptografia)
-        if ($usuario && $senha === $usuario['senha']) {
+        // Verifica se o usuário existe e se a senha corresponde à salva no banco (com criptografia)
+        if ($usuario && password_verify($senha, $usuario['senha'])) {
             // A função login agora apenas retorna os dados do usuário.
             // A responsabilidade de iniciar a sessão e definir as variáveis fica no index.php.
             return $usuario;

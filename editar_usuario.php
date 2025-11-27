@@ -1,22 +1,32 @@
 <?php
 session_start();
-require_once 'C:/turma1/xampp/htdocs/ReidoX/Controller/UsuarioController.php';
-require_once 'C:/turma1/xampp/htdocs/ReidoX/DB/Database.php'; // Inclui e cria a variável $pdo
+require_once 'C:/xampp/htdocs/ReidoX/DB/Database.php'; // Inclui e cria a variável $pdo
+require_once 'C:/xampp/htdocs/ReidoX/Controller/UsuarioController.php';
 
-// Verifica se o usuário está logado
-if (!isset($_SESSION['id_usuario'])) {
-    // Se não estiver logado, redireciona para a página de login com uma mensagem de erro
-    header('Location: index.php?erro=' . urlencode('Você precisa estar logado para editar o perfil.'));
-    exit;
-}
-
+// A variável $pdo já está disponível a partir do require_once acima
 $usuarioController = new UsuarioController($pdo);
 
-// Busca o usuário pelo ID armazenado na sessão
-$id_usuario_logado = $_SESSION['id_usuario'];
-$usuario = $usuarioController->buscarUsuarioPorId($id_usuario_logado);
+$usuario = null;
+// Use o ID da sessão para buscar o usuário
+if (isset($_SESSION['id_usuario'])) {
+    $usuario = $usuarioController->buscarUsuarioPorId($_SESSION['id_usuario']);
+}
 
-$erro = $_GET['erro'] ?? '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $telefone = $_POST['telefone'];
+    $rua = $_POST['rua'];
+    $numero = $_POST['numero'];
+    $cargo = $_POST['cargo'];
+    $pedidos = $_POST['pedidos'];
+
+    $usuarioController->atualizarUsuario($id, $nome, $email, $senha, $telefone, $rua, $numero, $cargo, $pedidos);
+    header('Location: paginainicio.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,53 +34,55 @@ $erro = $_GET['erro'] ?? '';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Perfil</title>
+    <title>Editar Usuário</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container mt-5">
-    <h2>Editar Perfil</h2>
-    <?php if ($erro): ?>
-        <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>
-    <?php endif; ?>
-
+    <h2>Editar Usuário</h2>
     <?php if ($usuario): ?>
-    <form action="processar_edicao.php" method="post">
+    <form action="editar_usuario.php" method="post">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id']) ?>">
         <div class="form-group">
             <label for="nome">Nome</label>
             <input type="text" class="form-control" id="nome" name="nome" value="<?= htmlspecialchars($usuario['nome']) ?>" required>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required readonly>
-            <small class="form-text text-muted">O e-mail não pode ser alterado.</small>
+            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required>
         </div>
         <div class="form-group">
             <label for="senha">Nova Senha (deixe em branco para não alterar)</label>
             <input type="password" class="form-control" id="senha" name="senha">
         </div>
-        <hr>
-        <h5>Endereço</h5>
         <div class="form-group">
-            <label for="cep">CEP</label>
-            <input type="text" class="form-control" id="cep" name="cep" value="<?= htmlspecialchars($usuario['cep'] ?? '') ?>">
+            <label for="telefone">Telefone</label>
+            <input type="text" class="form-control" id="telefone" name="telefone" value="<?= htmlspecialchars($usuario['telefone'] ?? '') ?>">
         </div>
         <div class="form-group">
             <label for="rua">Rua</label>
             <input type="text" class="form-control" id="rua" name="rua" value="<?= htmlspecialchars($usuario['rua'] ?? '') ?>">
         </div>
         <div class="form-group">
-            <label for="numero">Número/Bloco</label>
+            <label for="numero">Número</label>
             <input type="text" class="form-control" id="numero" name="numero" value="<?= htmlspecialchars($usuario['numero'] ?? '') ?>">
         </div>
-        
+        <div class="form-group">
+            <label for="pedidos">Pedidos</label>
+            <textarea class="form-control" id="pedidos" name="pedidos" rows="3"><?= htmlspecialchars($usuario['pedidos'] ?? '') ?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="cargo">Cargo</label>
+            <select class="form-control" id="cargo" name="cargo">
+                <option value="cliente" <?= ($usuario['cargo'] ?? 'cliente') == 'cliente' ? 'selected' : '' ?>>Cliente</option>
+                <option value="chapeiro" <?= ($usuario['cargo'] ?? '') == 'chapeiro' ? 'selected' : '' ?>>Chapeiro</option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Salvar Alterações</button>
         <a href="paginainicio.php" class="btn btn-secondary">Cancelar</a>
     </form>
     <?php else: ?>
-    <div class="alert alert-warning">
-        <p>Usuário não encontrado. Por favor, <a href="logout.php">faça o login novamente</a>.</p>
-    </div>
+    <p>Usuário não encontrado.</p>
     <?php endif; ?>
 </div>
 </body>

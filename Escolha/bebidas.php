@@ -15,6 +15,11 @@ if (!isset($_SESSION['nome_usuario']) || $_SESSION['nome_usuario'] == 'admin') {
 }
 $usuarioModel = new UsuarioModel($pdo);
 $bebidas = $usuarioModel->listarProdutosPorCategoria('bebida');
+if (isset($_SESSION['carrinho'])) {
+    foreach ($_SESSION['carrinho'] as $item) {
+        $total_itens_carrinho += $item['quantidade'];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +28,7 @@ $bebidas = $usuarioModel->listarProdutosPorCategoria('bebida');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Bebidas</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilo.css">
     <style>
     .user-menu { position: relative; }
     .menu-opcoes {
@@ -45,12 +50,6 @@ $bebidas = $usuarioModel->listarProdutosPorCategoria('bebida');
         padding: 8px 12px;
     }
     .menu-opcoes a:hover { background-color: #555; }
-    .card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        text-align: center;
-    }
     .card form {
         margin-top: 10px;
     }
@@ -77,7 +76,7 @@ $bebidas = $usuarioModel->listarProdutosPorCategoria('bebida');
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
               <div class="carrinho">
-                    <p class="contagemcarrinho">11</p>
+                    <p class="contagemcarrinho"><?= $total_itens_carrinho ?></p>
                  <a href="../carrinho.php"><img src="../img/carrinho1.png" alt="" class="carrinhoimg"></a>
                
                 

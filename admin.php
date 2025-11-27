@@ -1,204 +1,447 @@
 <?php
 session_start();
+// Assumindo que essas classes/arquivos existem e estão configurados
 require_once "Controller/UsuarioController.php";
 require_once "DB/Database.php";
+require_once "Model/UsuarioModel.php"; // Adicionado para listar produtos
 
-// Verifica se o usuário tem permissão de administrador
+// Configuração de conexão DB (assumindo que $pdo é definido em Database.php)
+
+// Verifica se o usuário tem permissão de administrador ou chapeiro
 if (!isset($_SESSION['cargo']) || ($_SESSION['cargo'] !== 'admin' && $_SESSION['cargo'] !== 'chapeiro')) {
-    header('Location: index.php?erro=' . urlencode('Acesso negado. Área restrita para administradores.'));
+    header('Location: index.php?erro=' . urlencode('Acesso negado. Área restrita.'));
     exit;
 }
 
+// Inicializa controllers/models
 $usuarioController = new UsuarioController($pdo);
 $usuarios = $usuarioController->listar();
+
+$produtoModel = new UsuarioModel($pdo); 
+$produtos = $produtoModel->listarProdutos(); // Puxa a lista de produtos
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Admin - Clientes</title>
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
-        :root{
-            --bg:#000;
-            --text:#fff;
-            --accent:#ffc72c; /* amarelo */
-            --panel: rgba(255,255,255,0.02);
-        }
-        *{box-sizing:border-box ; font-family: "Montserrat", sans-serif; }
-        html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family: "Helvetica Neue", Arial, sans-serif;-webkit-font-smoothing:antialiased}
+    <title>Admin Dashboard</title>
+<style>
+ @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap");
+    
+    /* Variáveis CSS */
+    :root{
+        --bg:#000;
+        --text:#fff;
+        --accent:#ffc72c; /* Amarelo principal */
+        --accent-dark: #cc9f23; 
+        --panel: rgba(255,255,255,0.02);
+        --danger: #c33; 
+        --soft-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+    
+    /* Reset, Fontes e TRAVAMENTO DA ROLAGEM PRINCIPAL */
+    *{box-sizing:border-box ; font-family: "Montserrat", sans-serif; }
+    html,body{
+        height:100%;
+        width: 100%;
+        margin:0;
+        background:var(--bg);
+        color:var(--text);
+        -webkit-font-smoothing:antialiased; 
+        overflow: hidden; 
+        scroll-behavior: smooth;
+    }
+    
+    /* 1. Layout de Seções (Páginas Inteiras) */
+    section {
+        width: 100vw;
+        height: 100vh; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Alinhamento base: Título + Conteúdo + Ações */
+        justify-content: flex-start;
+        padding: 20px 16px;
+    }
 
-        /* Título no topo, centralizado */
-        header.title-wrap{
-            width:100%;
-            padding:20px 16px;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }
-        h1.title{
-            margin:0;
-            font-size:40px;
-            letter-spacing:0.6px;
-            text-align:center;
-            color:var(--accent);
-        }
+    /* Header (Título) */
+    header.title-wrap{
+        width:100%;
+        padding:20px 16px 10px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    h1.title{
+        font-size: clamp(30px, 5vw, 40px);
+        letter-spacing:0.8px;
+        text-align:center;
+        color:var(--accent);
+        text-transform: uppercase;
+    }
 
-        .wrap{
-            min-height:calc(100vh - 96px); /* espaço compensando o header */
-            display:flex;
-            align-items:flex-start;
-            justify-content:center;
-            padding:20px 16px 40px;
-        }
+    /* 2. Estilo do Menu Principal e Formulários (CENTRALIZAÇÃO) */
+    #inicio {
+        justify-content: center; 
+    }
+    /* MUDANÇA: Centraliza o bloco inteiro do formulário */
+    #criar-usuario, #criar-produto {
+        justify-content: center; 
+    }
 
-        .table-box{
-            width:100%;
-            max-width:1200px;
-            padding:28px;
-            border-radius:12px;
-            background:transparent;
-            display:flex;
-            flex-direction:column;
-            align-items:stretch;
-            gap:18px;
-        }
+    /* Container de navegação (Menu) */
+    .main-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        max-width: 300px; 
+        padding: 20px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+    }
 
-        /* tabela com bordas sólidas amarelas ao redor, entre colunas e entre linhas */
-        .clientes-table{
-            border-collapse:separate;       /* separado para permitir bordas internas independentes */
-            border-spacing:0;               /* sem espaçamento entre células */
-            border:3px solid var(--accent); /* borda sólida ao redor da tabela */
-            border-radius:10px;
-            overflow:hidden;
-            background: rgba(0,0,0,0);
-            table-layout:fixed;
-        }
+    .main-menu a, .main-menu button {
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: 16px;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        text-align: center;
+        display: block; 
+    }
+    
+    .main-menu .menu-btn {
+        background: var(--accent);
+        color: var(--bg);
+        box-shadow: 0 4px 10px rgba(255, 199, 44, 0.4);
+    }
 
-        /* Cabeçalho */
-        .clientes-table thead th{
-            text-align:left;
-            padding:14px 18px;
-            font-size:15px;
-            background: rgba(255,255,255,0.02);
-            color:var(--accent); /* títulos em amarelo */
-            font-weight:700;
-            /* traço vertical entre colunas (sólido) */
-            border-left:2px solid var(--accent);
-            /* linha sólida abaixo do cabeçalho */
-            border-bottom:2px solid var(--accent);
-            word-wrap:break-word;
-        }
-        .clientes-table thead th:first-child{ border-left: none; }
+    .main-menu .menu-btn:hover {
+        background: var(--accent-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(255, 199, 44, 0.6);
+    }
 
-        /* Células do corpo com traço vertical separando colunas (sólido) */
-        .clientes-table tbody td{
-            padding:14px 18px;
-            font-size:15px;
-            color:rgba(255,255,255,0.9);
-            vertical-align:middle;
-            border-left:2px solid var(--accent);
-            word-wrap:break-word;
-        }
-        .clientes-table tbody td:first-child{ border-left:none; }
+    .main-menu .logout-btn {
+        background: var(--danger);
+        color: var(--text);
+        margin-top: 10px;
+        box-shadow: 0 4px 10px rgba(192, 51, 51, 0.4);
+    }
 
-        /* linha sólida entre linhas */
-        .clientes-table tbody tr + tr td {
-            border-top:2px solid var(--accent);
-        }
+    .main-menu .logout-btn:hover {
+        background: #992222;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(192, 51, 51, 0.6);
+    }
+    
+    /* 3. Estilos do Container Wrap */
+    .wrap{
+        width:100%;
+        /* Altura adaptável para Listas (ocupa espaço restante e rola) */
+        height: calc(100vh - 170px); 
+        overflow-y: auto; 
+        display:flex;
+        align-items:flex-start;
+        justify-content:center;
+        padding: 20px 0;
+    }
+    
+    /* MUDANÇA: Estilos do Wrap APENAS nas seções de Formulário */
+    #criar-usuario .wrap, #criar-produto .wrap {
+        height: auto; 
+        overflow-y: visible; 
+        max-height: calc(100vh - 170px); 
+        padding: 0; 
+        
+        /* Centraliza o formulário no centro do wrap */
+        align-items: center; 
+        justify-content: center; 
+    }
 
-        /* Remover dupla borda no canto interno (quando necessário) */
-        .clientes-table tbody tr:first-child td {
-            border-top: none;
-        }
+    .table-box{
+        width:100%;
+        max-width:1200px;
+        padding: 0 16px; 
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+        gap:18px;
+    }
 
-        .clientes-table tbody tr:hover{
-            background: rgba(255,199,44,0.03);
-        }
+    /* ====== ALTERAÇÕES IMPORTANTES PARA CENTRALIZAR E DIMINUIR ====== */
+    /* Faz a caixa interna centralizar seus conteúdos (formulários menores) */
+    #criar-usuario .table-box,
+    #criar-produto .table-box {
+        align-items: center; /* centraliza horizontalmente o form-container */
+    }
 
-        .actions form{display:inline-block}
-        .btn{
-            background:var(--accent);
-            color:#000;
-            border:0;
-            padding:8px 12px;
+    /* Formulário com largura reduzida e visual melhorado */
+    .form-container { 
+        overflow: visible;
+        background: rgba(255,255,255,0.03); 
+        padding: 22px; 
+        border-radius: 12px; 
+        width: 900px;
+        box-shadow: var(--soft-shadow);
+        border: 1px solid rgba(255,199,44,0.08);
+        
+        /* Limita a altura e permite rolagem APENAS SE NECESSÁRIO */
+        height: 540px 
+
+    }
+
+    /* Etiqueta menor e inputs mais compactos */
+    .form-group { margin-bottom: 5px; }
+    .form-group label { display: block; margin-bottom: 6px; color: var(--accent); font-weight: 700; font-size: 13px; }
+    .form-group input, .form-group textarea, .form-group select {
+        width: 850px;
+        height: 36px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.03);
+        color: #fff;
+        font-size: 15px;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group textarea { min-height: 82px; resize: vertical; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--accent-dark);
+            outline: none;
+            box-shadow: 0 0 8px rgba(255, 199, 44, 0.14);
+    }
+
+    /* Botão principal maior, porém com borda arredondada suave */
+    .form-container .btn[type="submit"] {
+    display: block;
+    padding: 12px 30px; /* Aumentei um pouco a largura interna */
+    font-size: 15px;
+    
+    /* O SEGREDO DA CENTRALIZAÇÃO: */
+    width: fit-content; /* O botão fica do tamanho do texto */
+    margin-left: auto;  /* Empurra da esquerda */
+    margin-right: auto; /* Empurra da direita */
+    margin-top: 20px;   /* Espaço acima do botão */
+    margin-bottom: 10px; /* Espaço abaixo do botão */
+
+    border-radius: 10px;
+    font-weight: 800;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+    /* Arquivo (file input) styled: esconder input real e usar label */
+    .file-input-wrap {
+position: relative;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+    .file-input-wrap input[type="file"]{
+        display: inline-block;
+    }
+    /* Se quiser melhorar visual do file input: usar JS/CSS mais avançado.
+       Mantive o padrão por compatibilidade, mas dei padding e borda ao redor. */
+    .form-group .file-wrapper {
+        border: 2px solid var(--accent);
+        padding: 8px;
+        border-radius: 8px;
+        display:flex;
+        align-items:center;
+        gap:10px;
+        background: rgba(255,255,255,0.01);
+    }
+
+    /* Tabela (Sem alterações) */
+    .clientes-table{
+        border-collapse:separate;
+        border-spacing:0;
+        border:3px solid var(--accent);
+        border-radius:10px;
+        overflow:hidden;
+        background: rgba(0,0,0,0);
+        table-layout:fixed;
+        width: 100%;
+    }
+    .clientes-table thead th{
+        text-align:left;
+        padding:14px 18px;
+        font-size:15px;
+        background: rgba(255,255,255,0.05);
+        color:var(--accent);
+        font-weight:700;
+        border-left:2px solid var(--accent);
+        border-bottom:2px solid var(--accent);
+        word-wrap:break-word;
+    }
+    .clientes-table thead th:first-child{ border-left: none; }
+
+    .clientes-table tbody td{
+        padding:14px 18px;
+        font-size:15px;
+        color:rgba(255,255,255,0.9);
+        vertical-align:middle;
+        border-left:2px solid var(--accent);
+        word-wrap:break-word;
+    }
+    .clientes-table tbody td:first-child{ border-left:none; }
+    .clientes-table tbody tr + tr td {
+        border-top:2px solid var(--accent);
+    }
+    .clientes-table tbody tr:hover{
+        background: rgba(255,199,44,0.05);
+    }
+    
+    /* Botões de Ação na Tabela */
+    .actions form{display:inline-block}
+    .btn{
+        background:var(--accent);
+        color:#000;
+        border:0;
+        padding:8px 12px;
+        border-radius:8px;
+        font-weight:700;
+        cursor:pointer;
+        font-size:13px;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .btn:hover { background: var(--accent-dark); }
+    .btn.danger{ background:var(--danger); color:#fff }
+    .btn.danger:hover{ background:#992222; }
+
+    .muted{color:rgba(255,255,255,0.6); font-size:13px}
+
+    /* Ações globais (Sair/Voltar) */
+    .table-actions{
+        width:100%;
+        max-width: 300px; 
+        display:flex;
+        justify-content:center;
+        gap:14px;
+        margin-top:12px;
+    }
+    .table-actions a{
+        min-width:140px;
+        padding:10px 14px;
+        border-radius:10px;
+        font-weight:800;
+        text-align:center;
+        text-decoration:none;
+        display:inline-block;
+        color:var(--bg);
+        background:rgba(255,199,44,1);
+        transition: background-color 0.3s;
+            position: fixed; 
+            
+            /* 2. Coloca o elemento a 20 pixels da borda inferior da janela */
+            bottom: 20px; 
+            
+            /* 3. Coloca o elemento a 20 pixels da borda direita da janela */
+            right: 20px; 
+            
+            /* 4. Estilos de exemplo para você visualizar o elemento */
+            background-color: #007bff; /* Azul */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+    }
+    .table-actions a.logout{
+        background:var(--danger) !important;
+        color:var(--text) !important;
+    }
+    .table-actions a:hover{ background:var(--accent-dark); }
+    .table-actions a.logout:hover{ background:#992222 !important; }
+
+    /* Responsividade */
+    @media (max-width:900px){
+        h1.title{font-size:34px}
+    }
+
+    @media (max-width:700px){
+        /* Ajusta o wrap de LISTAS para garantir rolagem em telas menores */
+        #lista-usuarios .wrap, #tabela-produto .wrap { height: calc(100vh - 150px); padding: 10px 0;} 
+        
+        /* Ajusta o wrap de FORMULÁRIOS para ser mais contido */
+        #criar-usuario .wrap, #criar-produto .wrap {
+            max-height: calc(100vh - 150px);
+        }
+        
+        /* No mobile, o formulário deve ocupar mais espaço horizontal */
+        .form-container { max-width: 92%; padding: 16px; }
+
+        .clientes-table thead{display:none}
+        .clientes-table, .clientes-table tbody, .clientes-table tr, .clientes-table td{display:block;width:100%}
+        .clientes-table tr{
+            margin-bottom:12px;
+            border:1px solid rgba(255,199,44,0.25);
+            padding:12px;
             border-radius:8px;
+        }
+        .clientes-table td{
+            padding:8px 12px;
+            border-left:none !important; 
+            border-top: none !important; 
+        }
+
+        .clientes-table td::before{
+            content: attr(data-label);
+            display:block;
             font-weight:700;
-            cursor:pointer;
-            font-size:13px;
+            color:var(--accent);
+            margin-bottom:4px; 
+            font-size:12px; 
         }
-
-        .btn.danger{ background:#c33; color:#fff }
-
-        .muted{color:rgba(255,255,255,0.6); font-size:13px}
-
-        .table-actions{
-            width:100%;
-            display:flex;
-            justify-content:center;
-            gap:14px;
-            margin-top:12px;
-        }
-        .table-actions a{
-            min-width:140px;
-            padding:10px 14px;
-            border-radius:10px;
-            font-weight:800;
-            text-align:center;
-            text-decoration:none;
-            display:inline-block;
-            color:#000;
-            background:rgba(255,199,44,1);
-        }
-
-        @media (max-width:900px){
-            h1.title{font-size:34px}
-            .wrap{min-height:calc(100vh - 84px)}
-        }
-
-        @media (max-width:700px){
-            .clientes-table thead{display:none}
-            .clientes-table, .clientes-table tbody, .clientes-table tr, .clientes-table td{display:block;width:100%}
-            .clientes-table tr{margin-bottom:12px;border:1px solid rgba(255,199,44,0.25);padding:12px;border-radius:8px}
-            .clientes-table td{padding:8px 12px}
-            .clientes-table td::before{
-                content: attr(data-label);
-                display:block;
-                font-weight:700;
-                color:var(--accent);
-                margin-bottom:6px;
-                font-size:13px;
-            }
-            .table-actions{flex-direction:column; gap:10px}
-            .table-actions a{width:100%}
-        }
-    </style>
+        
+        .table-actions{flex-direction:column; gap:10px; max-width: 100%;}
+        .table-actions a{width:100%}
+        .main-menu { max-width: 90%; }
+</style>
 </head>
 <body>
 
-    <!-- Título fixado no topo da página, centralizado -->
 <section id="inicio">
-<button><a href="#lista-usuario">Tabela Usuario</a></button>
-<button><a href="#criar-usuario">Criar Usuario</a></button>
-<button><a href="#criar-produto">Criar Produto</a></button>
-<button><a href="tabela-produto">Tabela Produto</a></button>
-</section>    
+    <header class="title-wrap" role="banner">
+        <h1 class="title">🍔 Dashboard Administrativo</h1>
+    </header>
+
+    <div class="main-menu" role="navigation" aria-label="Menu principal de navegação">
+        <a href="#lista-usuarios" class="menu-btn">Tabela Usuário</a>
+        <a href="#criar-usuario" class="menu-btn">Criar Novo Usuário</a>
+        <a href="#tabela-produto" class="menu-btn">Tabela Produto</a>
+        <a href="#criar-produto" class="menu-btn">Adicionar Novo Produto</a>
+        <a href="index.php" class="logout-btn">Sair</a>
+    </div>
+</section>
+
 <section id="lista-usuarios">
     <header class="title-wrap" role="banner">
-        <h1 class="title">Clientes</h1>
+        <h1 class="title">Clientes Cadastrados</h1>
     </header>
     <div class="wrap">
         <div class="table-box" role="region" aria-label="Lista de clientes">
-
             <table class="clientes-table" role="table" aria-label="Tabela de clientes">
                 <thead>
                     <tr>
                         <th style="width:6%">ID</th>
                         <th>Nome</th>
                         <th>Email</th>
+                        <th>Senha</th>
                         <th>Pedidos</th>
-                        <th>Cep</th>
+                        <th>Telefone</th>
                         <th>Rua</th>
                         <th>Número</th>
                         <th>Cargo</th>
@@ -208,7 +451,7 @@ $usuarios = $usuarioController->listar();
                 <tbody>
                     <?php if (count($usuarios) === 0): ?>
                         <tr>
-                            <td colspan="7" style="text-align:center;padding:24px" class="muted">Nenhum cliente cadastrado.</td>
+                            <td colspan="9" style="text-align:center;padding:24px" class="muted">Nenhum cliente cadastrado.</td>
                         </tr>
                     <?php else: ?>
                         <?php foreach ($usuarios as $u): ?>
@@ -216,14 +459,15 @@ $usuarios = $usuarioController->listar();
                                 <td data-label="ID"><?= htmlspecialchars($u['id'] ?? '') ?></td>
                                 <td data-label="Nome"><?= htmlspecialchars($u['nome'] ?? '') ?></td>
                                 <td data-label="Email"><?= htmlspecialchars($u['email'] ?? '') ?></td>
+                                <td data-label="Email"><?= htmlspecialchars($u['senha'] ?? '') ?></td>
                                 <td data-label="Pedidos"><?= nl2br(htmlspecialchars($u['pedidos'] ?? '')) ?></td>
-                                <td data-label="Cep"><?= htmlspecialchars($u['cep'] ?? '') ?></td>
+                                <td data-label="Telefone"><?= htmlspecialchars($u['telefone'] ?? '') ?></td>
                                 <td data-label="Rua"><?= htmlspecialchars($u['rua'] ?? '') ?></td>
                                 <td data-label="Número"><?= htmlspecialchars($u['numero'] ?? '') ?></td>
-                                <td data-label="Role"><?= htmlspecialchars($u['cargo'] ?? 'cliente') ?></td>
-                                <td data-label="Ações" style="text-align:center">
-                                    <a href="editar_usuarioadmin.php?id=<?= $u['id'] ?>" class="btn" style="text-decoration:none; display: inline-block; margin-right: 5px;">Editar</a>
-                                    <form method="post" action="deletar.php" style="display:inline-block" onsubmit="return confirm('Confirma exclusão?');">
+                                <td data-label="Cargo"><?= htmlspecialchars($u['cargo'] ?? 'cliente') ?></td>
+                                <td data-label="Ações" style="text-align:center" class="actions">
+                                    <a href="editar_usuarioadmin.php?id=<?= $u['id'] ?>" class="btn" style="text-decoration:none;">Editar</a>
+                                    <form method="post" action="deletar.php" onsubmit="return confirm('Confirma exclusão do usuário <?= htmlspecialchars($u['nome'] ?? '') ?>?');">
                                         <input type="hidden" name="id" value="<?= htmlspecialchars($u['id'] ?? '') ?>">
                                         <button class="btn danger" type="submit">Excluir</button>
                                     </form>
@@ -235,79 +479,89 @@ $usuarios = $usuarioController->listar();
             </table>
         </div>
     </div>
-    </section>
+    <div class="table-actions" role="group" aria-label="Ações da tabela">
+        <a class="btn" href="#inicio" style="background:var(--accent); color:var(--bg);">Voltar ao Menu</a>
+    </div>
+</section>
+
 <section id="criar-usuario">
-    <!-- SEÇÃO DE PRODUTOS -->
     <header class="title-wrap" role="banner">
-        <h1 class="title">Criar Novo Usuário</h1>
+        <h1 class="title">👥 Adicionar Novo Usuário</h1>
     </header>
 
     <div class="wrap">
         <div class="table-box" role="region">
-
-            <!-- Formulário para Adicionar Usuário -->
-            <div class="form-container" style="margin-bottom: 40px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
-                <h2 style="color: var(--accent); text-align: center;">Adicionar Novo Usuário</h2>
+            <div class="form-container">
                 <form action="processar_usuario.php" method="post">
                     <input type="hidden" name="action" value="add">
                     <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" name="nome" required>
+                        <input type="text" id="nome" name="nome" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" required>
+                        <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
                         <label for="senha">Senha</label>
-                        <input type="password" name="senha" required>
+                        <input type="password" id="senha" name="senha" required>
                     </div>
                     <div class="form-group">
-                        <label for="cep">Cep</label>
-                        <input type="text" name="cep">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" id="telefone" name="telefone">
                     </div>
                     <div class="form-group">
                         <label for="rua">Rua</label>
-                        <input type="text" name="rua">
+                        <input type="text" id="rua" name="rua">
                     </div>
                     <div class="form-group">
-                        <label for="numero">Numero/Bloco</label>
-                        <input type="text" name="numero">
+                        <label for="numero">Número/Bloco</label>
+                        <input type="text" id="numero" name="numero">
                     </div>
                     <div class="form-group">
                         <label for="cargo">Cargo</label>
-                        <select name="cargo" required>
+                        <select id="cargo" name="cargo" required>
                             <option value="cliente">Cliente</option>
                             <option value="chapeiro">Chapeiro</option>
+                            <?php if ($_SESSION['cargo'] === 'admin'): ?>
+                                <option value="admin">Administrador</option>
+                            <?php endif; ?>
                         </select>
                     </div>
                     <button type="submit" class="btn">Adicionar Usuário</button>
                 </form>
             </div>
+        </div>
+    </div>
+    <div class="table-actions" role="group" aria-label="Ações de navegação">
+        <a class="btn" href="#inicio" style="background:var(--accent); color:var(--bg);">Voltar ao Menu</a>
+    </div>
 </section>
 
 <section id="criar-produto">
     <header class="title-wrap" role="banner">
-        <h1 class="title">Adicionar Produto</h1>
+        <h1 class="title">➕ Adicionar Produto</h1>
     </header>
-            
+    <div class="wrap">
+        <div class="table-box" role="region">
+            <div class="form-container">
                 <form action="processar_produto.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="add">
                     <div class="form-group">
-                        <label for="nome">Nome</label>
-                        <input type="text" name="nome" required>
+                        <label for="produto_nome">Nome</label>
+                        <input type="text" id="produto_nome" name="nome" required>
                     </div>
                     <div class="form-group">
                         <label for="descricao">Descrição</label>
-                        <textarea name="descricao" required></textarea>
+                        <textarea id="descricao" name="descricao" rows="3" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="preco">Preço</label>
-                        <input type="number" step="0.01" name="preco" required>
+                        <label for="preco">Preço (R$)</label>
+                        <input type="number" step="0.01" id="preco" name="preco" required>
                     </div>
                     <div class="form-group">
                         <label for="categoria">Categoria</label>
-                        <select name="categoria" required>
+                        <select id="categoria" name="categoria" required>
                             <option value="lanche">Lanche</option>
                             <option value="bebida">Bebida</option>
                             <option value="sobremesa">Sobremesa</option>
@@ -317,23 +571,24 @@ $usuarios = $usuarioController->listar();
                     </div>
                     <div class="form-group">
                         <label for="imagem">Imagem</label>
-                        <input type="file" name="imagem" accept="image/*" required>
+                        <input type="file" id="imagem" name="imagem" accept="image/*" required>
                     </div>
                     <button type="submit" class="btn">Adicionar Produto</button>
                 </form>
             </div>
-    </section>
+        </div>
+    </div>
+    <div class="table-actions" role="group" aria-label="Ações de navegação">
+        <a class="btn" href="#inicio" style="background:var(--accent); color:var(--bg);">Voltar ao Menu</a>
+    </div>
+</section>
 
-            <!-- Tabela de Produtos Existentes -->
-            <?php
-            require_once "Model/UsuarioModel.php";
-            $produtoModel = new UsuarioModel($pdo);
-            $produtos = $produtoModel->listarProdutos();
-            ?>
-    <section id="tabela-produto">
-        <header class="title-wrap" role="banner">
-        <h1 class="title">Tabela Produto</h1>
-        </header>
+<section id="tabela-produto">
+    <header class="title-wrap" role="banner">
+        <h1 class="title">🍔 Tabela de Produtos</h1>
+    </header>
+    <div class="wrap">
+        <div class="table-box" role="region" aria-label="Lista de produtos">
             <table class="clientes-table" role="table" aria-label="Tabela de Produtos">
                 <thead>
                     <tr>
@@ -348,19 +603,19 @@ $usuarios = $usuarioController->listar();
                 <tbody>
                     <?php if (empty($produtos)): ?>
                         <tr>
-                            <td colspan="7" style="text-align:center;padding:24px" class="muted">Nenhum produto cadastrado.</td>
+                            <td colspan="6" style="text-align:center;padding:24px" class="muted">Nenhum produto cadastrado.</td>
                         </tr>
                     <?php else: ?>
                         <?php foreach ($produtos as $p): ?>
                             <tr>
                                 <td data-label="ID"><?= htmlspecialchars($p['id']) ?></td>
-                                <td data-label="Descrição"><?= htmlspecialchars($p['descricao']) ?></td>
                                 <td data-label="Nome"><?= htmlspecialchars($p['nome']) ?></td>
+                                <td data-label="Descrição"><?= htmlspecialchars($p['descricao']) ?></td>
                                 <td data-label="Preço">R$ <?= number_format($p['preco'], 2, ',', '.') ?></td>
                                 <td data-label="Categoria"><?= htmlspecialchars($p['categoria']) ?></td>
-                                <td data-label="Ações" style="text-align:center">
-                                    <a href="editar_produto.php?id=<?= $p['id'] ?>" class="btn" style="text-decoration:none; display: inline-block; margin-right: 5px;">Editar</a>
-                                    <form method="post" action="processar_produto.php" style="display:inline-block" onsubmit="return confirm('Tem certeza que deseja excluir este produto?');">
+                                <td data-label="Ações" style="text-align:center" class="actions">
+                                    <a href="editar_produto.php?id=<?= $p['id'] ?>" class="btn" style="text-decoration:none;">Editar</a>
+                                    <form method="post" action="processar_produto.php" onsubmit="return confirm('Tem certeza que deseja excluir o produto <?= htmlspecialchars($p['nome']) ?>?');">
                                         <input type="hidden" name="id" value="<?= $p['id'] ?>">
                                         <input type="hidden" name="action" value="delete">
                                         <button class="btn danger" type="submit">Excluir</button>
@@ -371,26 +626,15 @@ $usuarios = $usuarioController->listar();
                     <?php endif; ?>
                 </tbody>
             </table>
-        </section>
-
-            <div class="table-actions" role="group" aria-label="Ações da tabela">
-                <a class="btn" href="index.php" style="text-decoration:none;color:#000;background:rgba(255,199,44,1);">Voltar</a>
-            </div>
-
         </div>
     </div>
-    <style>
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; color: var(--accent); font-weight: 700; }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 2px solid var(--accent);
-            background: transparent;
-            color: #fff;
-            font-size: 14px;
-        }
-    </style>
+    <div class="table-actions" role="group" aria-label="Ações de navegação">
+        <a class="btn" href="#inicio" style="background:var(--accent); color:var(--bg);">Voltar ao Menu</a>
+    </div>
+</section>
+
+<div style="height: 1px; width: 1px; overflow: hidden; position: fixed; top: 0;">
+    </div>
+
 </body>
 </html>

@@ -16,8 +16,8 @@
         <!-- Abaixo o formulario de cadastro-->
         <form method="post" class="formulario-endereco">
             <div class="campo">
-                <input name="cep" type="text" class="input" placeholder=" " required>
-                <label for="cep" class="label-flutuante">CEP:</label>
+                <input name="telefone" type="text" class="input" placeholder=" " required>
+                <label for="telefone" class="label-flutuante">Telefone:</label>
             </div>
             <div class="campo">
                 <input name="rua" type="text" class="input" placeholder=" " required>
@@ -44,12 +44,12 @@ try {
     $controller = new UsuarioController($pdo);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $cep = $_POST['cep'];
+        $rua = $_POST['telefone'];
         $rua = $_POST['rua'];
         $numero = $_POST['numero'];
 
 
-        $controller->atualizar($cep, $rua, $numero, $idatual); // chama a função do controller aqui mesmo
+        $controller->atualizar($rua, $rua, $numero, $idatual); // chama a função do controller aqui mesmo
 
         session_start();
 

@@ -15,6 +15,12 @@ if (!isset($_SESSION['nome_usuario']) || $_SESSION['nome_usuario'] == 'admin') {
 }
 $usuarioModel = new UsuarioModel($pdo);
 $acompanhamentos = $usuarioModel->listarProdutosPorCategoria('acompanhamento');
+$total_itens_carrinho = 0;
+if (isset($_SESSION['carrinho'])) {
+    foreach ($_SESSION['carrinho'] as $item) {
+        $total_itens_carrinho += $item['quantidade'];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +29,7 @@ $acompanhamentos = $usuarioModel->listarProdutosPorCategoria('acompanhamento');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Acompanhamentos</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilo.css">
     <style>
     .user-menu { position: relative; }
     .menu-opcoes {
@@ -45,12 +51,6 @@ $acompanhamentos = $usuarioModel->listarProdutosPorCategoria('acompanhamento');
         padding: 8px 12px;
     }
     .menu-opcoes a:hover { background-color: #555; }
-    .card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        text-align: center;
-    }
     .card form {
         margin-top: 10px;
     }
@@ -75,9 +75,12 @@ $acompanhamentos = $usuarioModel->listarProdutosPorCategoria('acompanhamento');
                 <li><a href="../pedidos.php">Pedidos</a></li>
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
-            <div class="carrinho">
-                  <p class="contagemcarrinho">11</p>
-                 <a href="../carrinho.php"><img src="../img/carrinho1.png" alt="" class="carrinhoimg"></a>             
+              <div class="carrinho">
+                  <p class="contagemcarrinho"><?= $total_itens_carrinho ?></p>
+                 <a href="../carrinho.php"><img src="../img/carrinho1.png" alt="" class="carrinhoimg"></a>
+               
+                  
+                 
             </div>
             <div class="user-menu">
                 <button class="menu-btn">Olá, <?= htmlspecialchars($nome) ?>!</button>

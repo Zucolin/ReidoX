@@ -25,6 +25,10 @@ section {
   background: var(--bg);
   position: relative;
   flex-direction: column;
+  overflow-y: auto; /* Adicionado para permitir rolagem */
+}
+nav{
+  margin-top: -30px;
 }
 ul{
     display: flex;
@@ -51,13 +55,12 @@ section .produto-detalhe{
           margin-left: 50px;
           margin-right: 50px;
             margin-top: 40px;
-            width: 580px;
+            width: 280px;
             /* restaurado para o tamanho anterior */
             background: rgba(255, 255, 255, 0.04);
             border-radius: 12px;
             text-align: center;
             transition: transform .18s ease, box-shadow .18s ease;
-            border: 1px solid rgba(255, 255, 255, 0.04);
         }
         #lanches .card {
           gap: -20px;
@@ -65,12 +68,12 @@ section .produto-detalhe{
           margin-left: 50px;
           margin-right: 50px;
             margin-top: 40px;
+            width: 280px;
             /* restaurado para o tamanho anterior */
             background: rgba(255, 255, 255, 0.04);
             border-radius: 12px;
             text-align: center;
             transition: transform .18s ease, box-shadow .18s ease;
-            border: 1px solid rgba(255, 255, 255, 0.04);
         }
         #bebidas .card {
           gap: -20px;
@@ -78,13 +81,12 @@ section .produto-detalhe{
           margin-left: 50px;
           margin-right: 50px;
             margin-top: 40px;
-            width: 780px;
+            width: 280px;
             /* restaurado para o tamanho anterior */
             background: rgba(255, 255, 255, 0.04);
             border-radius: 12px;
             text-align: center;
             transition: transform .18s ease, box-shadow .18s ease;
-            border: 1px solid rgba(255, 255, 255, 0.04);
         }
         #sobremesas .card {
           gap: -20px;
@@ -92,13 +94,12 @@ section .produto-detalhe{
           margin-left: 50px;
           margin-right: 50px;
             margin-top: 40px;
-            width: 980px;
+            width: 280pxx;
             /* restaurado para o tamanho anterior */
             background: rgba(255, 255, 255, 0.04);
             border-radius: 12px;
             text-align: center;
             transition: transform .18s ease, box-shadow .18s ease;
-            border: 1px solid rgba(255, 255, 255, 0.04);
         }
         #acompanhamentos .card {
           gap: -20px;
@@ -106,13 +107,12 @@ section .produto-detalhe{
           margin-left: 50px;
           margin-right: 50px;
             margin-top: 40px;
-            width: 980px;
+            width: 280px;
             /* restaurado para o tamanho anterior */
             background: rgba(255, 255, 255, 0.04);
             border-radius: 12px;
             text-align: center;
             transition: transform .18s ease, box-shadow .18s ease;
-            border: 1px solid rgba(255, 255, 255, 0.04);
         }
 
         .card:hover {
@@ -123,20 +123,18 @@ section .produto-detalhe{
 
         .card img {
             width: 100%;
-            height: 200px;
-            /* restaurado para 160px */
+            height: 180px; /* Altura padrão para a imagem */
             object-fit: contain;
             background: transparent;
             border-radius: 8px;
             pointer-events: none;
-            margin-top: 20px;
+            margin-top: 0; /* Ajustado */
         }
 
         .card p {
             color: #ccc;
             margin: 12px 0 0;
-            margin-top: 80px;
-            font-size: 24px;
+            font-size: 22px; /* Fonte padronizada */
             font-weight: 700;
             color: var(--text);
         }
@@ -173,28 +171,32 @@ section .nav-escolha {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
   letter-spacing: 0.3px;
   max-height: 50%;
-  margin-top: -70px;
+  margin-right: 20px;
 }
 
 /* DROPDOWN */
 .menu-opcoes {
   display: none;
-  position: absolute;
   right: 0;
   z-index: 1200;             /* permanece por cima */
   width: 200px;
   background: var(--panel);
   overflow: visible;
-  margin-top: 70px;
+  margin-top: 20px;
   border-radius: 20px ;
+  margin-right: 35px;
 }
 .menu-opcoes a{
   text-decoration: none;
     color: #ffc72c;
+    font-weight: 600;
+    font-style: none;
 }
 div#itens-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Permite a quebra de linha */
+    padding: 20px 5%;
 }
 #menu form {
             display: flex;
@@ -547,27 +549,28 @@ input[type="radio"]:checked + label {
   margin-left: 88%;  
 }
 .carrinhoimg{
-height: 8vh;
-width:8vh;
-border-radius: 50%;
-margin-top: -1vh;
+    height: 8vh;
+    width: 8vh;
+    margin-left: -150px;
 
 }
 .contagemcarrinho{
-  background-color: yellow;
-  display: flex;
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  justify-content: center;
-  justify-self: end;
-  align-items: center;
+  position: absolute;
+    background-color:#ffc72c;
+    display: flex;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
     font-size: clamp(8px, 2vw, 12px);
-  max-width: 40px;
-  text-align: center;
-  margin-left: 63px;
+    max-width: 40px;
+    text-align: center;
+    margin-left: -86px;
+    margin-top: -20px;
 }
 .contagemcarrinho{
   color: rgb(0, 0, 0);
+  font-size: 15px;
+  font-weight: 900;
 }
-
