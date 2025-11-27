@@ -44,12 +44,12 @@ try {
     $controller = new UsuarioController($pdo);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $rua = $_POST['telefone'];
+        $telefone = $_POST['telefone'];
         $rua = $_POST['rua'];
         $numero = $_POST['numero'];
 
 
-        $controller->atualizar($rua, $rua, $numero, $idatual); // chama a função do controller aqui mesmo
+        $controller->atualizar($telefone, $rua, $numero, $idatual); // chama a função do controller aqui mesmo
 
         session_start();
 

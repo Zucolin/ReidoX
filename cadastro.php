@@ -57,6 +57,8 @@
                 $cargo = null;
 
                 if ($senha == $senhaconfirm) {
+                    // Criptografa a senha
+                    $idatual = $controller->cadastrar($nome, $email, $senha, $cargo);
                     // Salva a senha como texto plano, sem criptografia
                     $idatual = $controller->cadastrar($nome, $email, $senha, $cargo);
                     

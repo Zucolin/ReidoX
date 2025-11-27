@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once 'C:/xampp/htdocs/ReidoX/DB/Database.php'; // Inclui e cria a variável $pdo
-require_once 'C:/xampp/htdocs/ReidoX/Controller/UsuarioController.php';
+require_once 'C:/turma1/xampp/htdocs/ReidoX/Controller/UsuarioController.php';
+require_once 'C:/turma1/xampp/htdocs/ReidoX/DB/Database.php'; // Inclui e cria a variável $pdo
 
 // A variável $pdo já está disponível a partir do require_once acima
 $usuarioController = new UsuarioController($pdo);
