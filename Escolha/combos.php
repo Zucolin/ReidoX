@@ -15,6 +15,7 @@ if (!isset($_SESSION['nome_usuario']) || $_SESSION['nome_usuario'] == 'admin') {
 
 $usuarioModel = new UsuarioModel($pdo);
 $combos = $usuarioModel->listarProdutosPorCategoria('combo');
+$total_itens_carrinho= 0;
 if (isset($_SESSION['carrinho'])) {
     foreach ($_SESSION['carrinho'] as $item) {
         $total_itens_carrinho += $item['quantidade'];
@@ -75,7 +76,7 @@ if (isset($_SESSION['carrinho'])) {
                 <li><a href="../sobrenos.html">Sobre nós</a></li>
             </ul>
               <div class="carrinho">
-                  <p class="contagemcarrinho"><?= $total_itens_carrinho ?></p>
+                  <p class="contagemcarrinho"></p>
                  <a href="../carrinho.php"><img src="../img/carrinho1.png" alt="" class="carrinhoimg"></a>
                
                   

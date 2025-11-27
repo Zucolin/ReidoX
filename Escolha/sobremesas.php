@@ -14,6 +14,7 @@ if (!isset($_SESSION['nome_usuario']) || $_SESSION['nome_usuario'] == 'admin') {
 }
 $usuarioModel = new UsuarioModel($pdo);
 $sobremesas = $usuarioModel->listarProdutosPorCategoria('sobremesa');
+$total_itens_carrinho= 0;
 if (isset($_SESSION['carrinho'])) {
     foreach ($_SESSION['carrinho'] as $item) {
         $total_itens_carrinho += $item['quantidade'];

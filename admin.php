@@ -205,12 +205,13 @@ $produtos = $produtoModel->listarProdutos(); // Puxa a lista de produtos
 
     }
 
+
     /* Etiqueta menor e inputs mais compactos */
-    .form-group { margin-bottom: 5px; }
+    .form-group { margin-bottom: 5px;  }
     .form-group label { display: block; margin-bottom: 6px; color: var(--accent); font-weight: 700; font-size: 13px; }
     .form-group input, .form-group textarea, .form-group select {
         width: 850px;
-        height: 36px;
+        height: 46px;
         padding: 10px;
         border-radius: 8px;
         border: 2px solid var(--accent);
@@ -320,6 +321,7 @@ position: relative;
         transition: background-color 0.3s;
         text-decoration: none;
         display: inline-block;
+        margin-top: -200px;
     }
     .btn:hover { background: var(--accent-dark); }
     .btn.danger{ background:var(--danger); color:#fff }
@@ -420,7 +422,7 @@ position: relative;
 
 <section id="inicio">
     <header class="title-wrap" role="banner">
-        <h1 class="title">🍔 Dashboard Administrativo</h1>
+        <h1 class="title">⚙️ Painel Administrativo</h1>
     </header>
 
     <div class="main-menu" role="navigation" aria-label="Menu principal de navegação">

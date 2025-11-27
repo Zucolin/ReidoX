@@ -21,7 +21,7 @@ public function cadastrar($nome, $email, $senha, $cargo = 'cliente', $telefone =
             throw new Exception("Este e-mail já está cadastrado.");
         }
 
-        $sql = "INSERT INTO clientes (nome, email, senha, cargo, cep, rua, numero) VALUES (:nome, :email, :senha, :cargo, :cep, :rua, :numero)";
+        $sql = "INSERT INTO clientes (nome, email, senha, cargo, telefone, rua, numero) VALUES (:nome, :email, :senha, :cargo, :telefone, :rua, :numero)";
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([
             ':nome'=>$nome,
@@ -45,9 +45,9 @@ public function atualizar($telefone,$rua,$numero,$idatual){
         $sql = "UPDATE clientes SET telefone=?, rua=?, numero=? WHERE id = ?";
         $stmt= $this->pdo->prepare($sql);
         return $stmt->execute([$telefone,$rua,$numero,$idatual]);
-    }catch(PDOExtelefonetion $e){
+    }catch(PDOException $e){
         if ($e->getCode() == 23000 && strpos($e->getMessage(), 'Duplicate entry') !== false) {
-            throw new Extelefonetion("E-mail já cadastrado!");
+            throw new Exception("E-mail já cadastrado!");
         } else {
             throw $e;
         }
@@ -176,7 +176,7 @@ public function adicionarPedido($userId, $pedido) {
         $sql = "UPDATE clientes SET pedidos = ? WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$pedido, $userId]);
-    } catch (PDOExtelefonetion $e) {
+    } catch (PDOException $e) {
         // Log do erro para depuração
         error_log("Erro ao adicionar pedido: " . $e->getMessage());
         return false;

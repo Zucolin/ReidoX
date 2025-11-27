@@ -386,13 +386,11 @@ margin-left: -150px;
             font-family: "Montserrat", sans-serif;
         }
         .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
             gap: 20px;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto; /* Centralizar a grade */
-            padding: 20px;
+            width: auto;
+            align-items: center;
+            justify-content: center;
         }
         .category-card {
             background: rgba(255,255,255,0.05);
@@ -403,6 +401,7 @@ margin-left: -150px;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             padding: 10px;
+            width: 400px;
         }
         .category-card:hover {
             transform: translateY(-10px);

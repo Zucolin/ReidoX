@@ -3,10 +3,15 @@
     margin: 0;
     padding: 0;
 }
-
+h
 body {
     background-color: #000;
-    overflow-y: hidden;
+    overflow-y: none;
+    overflow: none;
+
+    height: 100%;
+    width: 100%;
+
 }
 
 /* VARIÁVEIS CSS */
@@ -21,11 +26,11 @@ body {
 /* SEÇÕES COMO PÁGINAS INTEIRAS */
 section {
   height: 100vh;
+    width: 100%;
   display: flex;
   background: var(--bg);
   position: relative;
   flex-direction: column;
-  overflow-y: auto; /* Adicionado para permitir rolagem */
 }
 nav{
   margin-top: -10px;

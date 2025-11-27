@@ -15,7 +15,7 @@ class UsuarioController
         // 🔹 Verificação e criação automática do admin
         // ==========================================/
         $emailAdmin = 'admin@hotmail.com';
-        $senhaAdmin = '123'; // Senha em texto plano
+        $senhaAdmin = '123';
         $nomeAdmin = 'admin';
         $cargoAdmin = 'admin';
 
